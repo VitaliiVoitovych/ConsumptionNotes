@@ -1,20 +1,63 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:ConsumptionNotes.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="using:FluentAvalonia.UI.Controls"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ConsumptionNotes.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="ConsumptionNotes">
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    <Grid
+        RowDefinitions="Auto, *">
+        
+        <StackPanel
+            Height="35"
+            Orientation="Horizontal">
+            <TextBlock 
+                Text="{Binding $parent[Window].Title}"
+                VerticalAlignment="Center"
+                FontSize="18"
+                FontWeight="Bold"/>
+        </StackPanel>
+        
+        <ui:NavigationView
+            Grid.Row="1"
+            IsSettingsVisible="False"
+            OpenPaneLength="185"
+            SelectionChanged="NavigationView_OnSelectionChanged">
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem
+                    IsSelected="True"
+                    Content="Головна"
+                    Tag="HomeView">
+                    <ui:NavigationViewItem.IconSource>
+                        <ui:ImageIconSource Source="{SvgImage /Assets/home.svg}"/>
+                    </ui:NavigationViewItem.IconSource>
+                </ui:NavigationViewItem>
+            
+                <ui:NavigationViewItem
+                    Content="Електроенергія"
+                    Tag="ElectricityView">
+                    <ui:NavigationViewItem.IconSource>
+                        <ui:ImageIconSource Source="{SvgImage /Assets/electricity.svg}"/>
+                    </ui:NavigationViewItem.IconSource>
+                </ui:NavigationViewItem>
+            
+                <ui:NavigationViewItem
+                    Content="Газ"
+                    Tag="NaturalGasView">
+                    <ui:NavigationViewItem.IconSource>
+                        <ui:ImageIconSource Source="{SvgImage /Assets/gas.svg}"/>
+                    </ui:NavigationViewItem.IconSource>
+                </ui:NavigationViewItem>
+            
+            </ui:NavigationView.MenuItems>
+        
+            <ui:Frame x:Name="ContentFrame"/>
+        
+        </ui:NavigationView>
+        
+    </Grid>
+    
 </Window>
