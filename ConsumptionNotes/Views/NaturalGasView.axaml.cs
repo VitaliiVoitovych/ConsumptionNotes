@@ -6,6 +6,6 @@ public partial class NaturalGasView : UserControl
     {
         InitializeComponent();
 
-        DataContext = App.Host.Services.GetRequiredService<NaturalGasViewModel>();
+        DataContext = Ioc.Default.GetRequiredService<NaturalGasViewModel>();
     }
 }

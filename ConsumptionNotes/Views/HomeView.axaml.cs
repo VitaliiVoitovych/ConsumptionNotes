@@ -6,6 +6,6 @@ public partial class HomeView : UserControl
     {
         InitializeComponent();
 
-        DataContext = App.Host.Services.GetRequiredService<HomeViewModel>();
+        DataContext = Ioc.Default.GetRequiredService<HomeViewModel>();
     }
 }

@@ -6,6 +6,6 @@ public partial class ElectricityView : UserControl
     {
         InitializeComponent();
 
-        DataContext = App.Host.Services.GetRequiredService<ElectricityViewModel>();
+        DataContext = Ioc.Default.GetRequiredService<ElectricityViewModel>();
     }
 }

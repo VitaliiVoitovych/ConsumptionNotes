@@ -2,19 +2,15 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using ConsumptionNotes.Services.Charting;
 using ConsumptionNotes.Views;
-using Microsoft.Extensions.Hosting;
 
 namespace ConsumptionNotes;
 public partial class App : Application
 {
-    public static IHost Host { get; private set; }
-    
     public override void Initialize()
     {
-        Host = Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder()
-            .ConfigureServices(ConfigureServices)
-            .Build();
+        Ioc.Default.ConfigureServices(ConfigureServices());
         
         AvaloniaXamlLoader.Load(this);
     }
@@ -30,11 +26,15 @@ public partial class App : Application
         base.OnFrameworkInitializationCompleted();
     }
 
-    private void ConfigureServices(IServiceCollection services)
+    private ServiceProvider ConfigureServices()
     {
+        var services = new ServiceCollection();
+        
         // Added view models
         services.AddTransient<HomeViewModel>();
         services.AddTransient<ElectricityViewModel>();
         services.AddTransient<NaturalGasViewModel>();
+
+        return services.BuildServiceProvider();
     }
 }
