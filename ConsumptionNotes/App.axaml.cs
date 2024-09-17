@@ -1,8 +1,8 @@
+using System.Globalization;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using ConsumptionNotes.Services.Charting;
 using ConsumptionNotes.Views;
 
 namespace ConsumptionNotes;
@@ -10,13 +10,15 @@ public partial class App : Application
 {
     public override void Initialize()
     {
-        Ioc.Default.ConfigureServices(ConfigureServices());
-        
         AvaloniaXamlLoader.Load(this);
     }
 
     public override void OnFrameworkInitializationCompleted()
     {
+        CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("uk-UA");
+        
+        Ioc.Default.ConfigureServices(ConfigureServices());
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             BindingPlugins.DataValidators.RemoveAt(0);
@@ -26,11 +28,15 @@ public partial class App : Application
         base.OnFrameworkInitializationCompleted();
     }
 
-    private ServiceProvider ConfigureServices()
+    private static ServiceProvider ConfigureServices()
     {
         var services = new ServiceCollection();
         
-        // Added view models
+        // Chart services 
+        services.AddSingleton<ElectricityChartService>();
+        services.AddSingleton<NaturalGasChartService>();
+        
+        // View models
         services.AddTransient<HomeViewModel>();
         services.AddTransient<ElectricityViewModel>();
         services.AddTransient<NaturalGasViewModel>();

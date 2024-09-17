@@ -1,7 +1,4 @@
-using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using ConsumptionNotes.ViewModels;
-using System;
 
 namespace ConsumptionNotes
 {

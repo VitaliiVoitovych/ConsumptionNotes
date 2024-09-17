@@ -25,4 +25,8 @@
     <PackageReference Include="LiveChartsCore.SkiaSharpView.Avalonia" Version="2.0.0-rc2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConsumptionNotes.Domain\ConsumptionNotes.Domain.csproj" />
+  </ItemGroup>
 </Project>

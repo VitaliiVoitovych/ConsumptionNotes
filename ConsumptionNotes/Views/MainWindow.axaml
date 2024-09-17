@@ -58,8 +58,7 @@
             </ui:NavigationView.MenuItems>
         
             <ui:Frame 
-                x:Name="ContentFrame"
-                Background="{StaticResource MediumDarkBrush}"/>
+                x:Name="ContentFrame"/>
         
         </ui:NavigationView>
         

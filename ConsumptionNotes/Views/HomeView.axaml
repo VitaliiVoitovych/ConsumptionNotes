@@ -11,11 +11,17 @@
         ColumnDefinitions="*,*">
         
         <controls:ChartWidget
-            Text="Електроенергія"/>
+            Text="Електроенергія"
+            Series="{Binding ElectricityChartService.AmountsToPaySeries}"
+            YAxes="{Binding ElectricityChartService.AmountToPayYAxes}"
+            XAxes="{Binding ElectricityChartService.DateXAxes}"/>
         
         <controls:ChartWidget
             Grid.Column="1"
-            Text="Газ"/>
+            Text="Газ"
+            Series="{Binding NaturalGasChartService.AmountsToPaySeries}"
+            YAxes="{Binding NaturalGasChartService.AmountToPayYAxes}"
+            XAxes="{Binding NaturalGasChartService.DateXAxes}"/>
         
     </Grid>
 </UserControl>
