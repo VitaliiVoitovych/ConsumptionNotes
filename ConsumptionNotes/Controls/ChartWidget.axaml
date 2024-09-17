@@ -7,8 +7,11 @@
              x:Class="ConsumptionNotes.Controls.ChartWidget"
              x:Name="Widget">
     <Border
+        Margin="10"
         Padding="10"
-        CornerRadius="10">
+        CornerRadius="10"
+        BorderThickness="1"
+        BorderBrush="{StaticResource LightDarkBrush}">
         
         <Grid
             RowDefinitions="Auto,*">

@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="using:FluentAvalonia.UI.Controls"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
         x:Class="ConsumptionNotes.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="ConsumptionNotes">
@@ -13,7 +13,8 @@
         
         <StackPanel
             Height="35"
-            Orientation="Horizontal">
+            Orientation="Horizontal"
+            Background="{StaticResource DarkBrush}">
             <TextBlock 
                 Text="{Binding $parent[Window].Title}"
                 VerticalAlignment="Center"
@@ -22,9 +23,11 @@
         </StackPanel>
         
         <ui:NavigationView
+            Background="{DynamicResource DarkBrush}"
             Grid.Row="1"
             IsSettingsVisible="False"
             OpenPaneLength="185"
+            PaneDisplayMode="Left"
             SelectionChanged="NavigationView_OnSelectionChanged">
             <ui:NavigationView.MenuItems>
                 <ui:NavigationViewItem
@@ -54,7 +57,9 @@
             
             </ui:NavigationView.MenuItems>
         
-            <ui:Frame x:Name="ContentFrame"/>
+            <ui:Frame 
+                x:Name="ContentFrame"
+                Background="{StaticResource MediumDarkBrush}"/>
         
         </ui:NavigationView>
         
