@@ -3,6 +3,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 using ConsumptionNotes.Views;
 
 namespace ConsumptionNotes;
@@ -15,6 +16,8 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        Current!.RequestedThemeVariant = ThemeVariant.Dark;
+        
         CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("uk-UA");
         
         Ioc.Default.ConfigureServices(ConfigureServices());

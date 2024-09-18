@@ -23,12 +23,18 @@
         </StackPanel>
         
         <ui:NavigationView
-            Background="{DynamicResource DarkBrush}"
+            Background="{StaticResource DarkBrush}"
+            Foreground="{StaticResource LightBrush}"
             Grid.Row="1"
             IsSettingsVisible="False"
             OpenPaneLength="185"
             PaneDisplayMode="Left"
             SelectionChanged="NavigationView_OnSelectionChanged">
+            <ui:NavigationView.Resources>
+                <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="MediumDarkBrush"/>
+                <Thickness x:Key="NavigationViewContentGridBorderThickness">0</Thickness>
+                <CornerRadius x:Key="NavigationViewContentGridCornerRadius">12,0,0,0</CornerRadius>
+            </ui:NavigationView.Resources>
             <ui:NavigationView.MenuItems>
                 <ui:NavigationViewItem
                     IsSelected="True"

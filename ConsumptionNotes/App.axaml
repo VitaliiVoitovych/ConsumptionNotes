@@ -1,13 +1,8 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="ConsumptionNotes.App"
-             xmlns:local="using:ConsumptionNotes"
              xmlns:sty="using:FluentAvalonia.Styling"
              RequestedThemeVariant="Dark">
-
-    <Application.DataTemplates>
-        <local:ViewLocator/>
-    </Application.DataTemplates>
   
     <Application.Resources>
         <ResourceDictionary>
@@ -19,5 +14,6 @@
     
     <Application.Styles>
         <sty:FluentAvaloniaTheme PreferUserAccentColor="True"/>
+        <StyleInclude Source="/Styles/Styles.axaml"/>
     </Application.Styles>
 </Application>

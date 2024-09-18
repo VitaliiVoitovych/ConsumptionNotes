@@ -1,5 +1,6 @@
 using System;
 using FluentAvalonia.UI.Controls;
+using FluentAvalonia.UI.Media.Animation;
 using FluentAvalonia.UI.Windowing;
 
 namespace ConsumptionNotes.Views
@@ -22,7 +23,8 @@ namespace ConsumptionNotes.Views
             var viewFullName = $"ConsumptionNotes.Views.{selectedView}";
             var viewType = Type.GetType(viewFullName);
 
-            ContentFrame.Navigate(viewType);
+            
+            ContentFrame.Navigate(viewType, null, new SuppressNavigationTransitionInfo());
         }
     }
 }
