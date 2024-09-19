@@ -3,8 +3,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:ConsumptionNotes.ViewModels"
+             xmlns:controls="using:ConsumptionNotes.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ConsumptionNotes.Views.ElectricityView"
              x:DataType="vm:ElectricityViewModel">
-    Електроенергія
+    <Grid
+        ColumnDefinitions="*,*">
+        
+        <ScrollViewer
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel
+                Spacing="10">
+                
+                <controls:ChartWidget
+                    Text="До оплати"
+                    Height="{Binding $parent[UserControl].Bounds.Height}"
+                    Series="{Binding ElectricityChartService.AmountsToPaySeries}"
+                    XAxes="{Binding ElectricityChartService.DateXAxes}"
+                    YAxes="{Binding ElectricityChartService.AmountToPayYAxes}"/>
+                
+                <controls:ChartWidget
+                    Text="Споживання"
+                    Height="{Binding $parent[UserControl].Bounds.Height}"
+                    Series="{Binding ElectricityChartService.KilowattConsumedSeries}"
+                    XAxes="{Binding ElectricityChartService.DateXAxes}"
+                    YAxes="{Binding ElectricityChartService.ConsumedYAxed}"
+                    LegendPosition="Top"
+                    LegendTextPaint="{Binding ElectricityChartService.LegendTextPaint}"/>
+                
+            </StackPanel>
+        </ScrollViewer>
+        
+    </Grid>
 </UserControl>

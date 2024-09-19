@@ -3,8 +3,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:ConsumptionNotes.ViewModels"
+             xmlns:controls="using:ConsumptionNotes.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ConsumptionNotes.Views.NaturalGasView"
              x:DataType="vm:NaturalGasViewModel">
-    Газ
+    <Grid
+        ColumnDefinitions="*,*">
+        
+        <ScrollViewer
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel
+                Spacing="10">
+                
+                <controls:ChartWidget
+                    Text="До оплати"
+                    Height="{Binding $parent[UserControl].Bounds.Height}"
+                    Series="{Binding NaturalGasChartService.AmountsToPaySeries}"
+                    XAxes="{Binding NaturalGasChartService.DateXAxes}"
+                    YAxes="{Binding NaturalGasChartService.AmountToPayYAxes}"/>
+                
+                <controls:ChartWidget
+                    Text="Споживання"
+                    Height="{Binding $parent[UserControl].Bounds.Height}"
+                    Series="{Binding NaturalGasChartService.CubicMeterConsumedSeries}"
+                    XAxes="{Binding NaturalGasChartService.DateXAxes}"
+                    YAxes="{Binding NaturalGasChartService.ConsumedYAxed}"
+                    LegendTextPaint="{Binding NaturalGasChartService.LegendTextPaint}"/>
+                
+            </StackPanel>
+        </ScrollViewer>
+        
+    </Grid>
 </UserControl>

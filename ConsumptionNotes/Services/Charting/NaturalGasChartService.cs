@@ -1,6 +1,4 @@
 ﻿using LiveChartsCore;
-using LiveChartsCore.SkiaSharpView;
-using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
 
 namespace ConsumptionNotes.Services.Charting;

@@ -10,6 +10,7 @@ public abstract class BaseChartService<T>
     where T: BaseConsumption
 {
     private readonly SKColor _amountToPaySeriesColor = SKColor.Parse("#256F33");
+    private readonly SolidColorPaint _axisLabelsPaint = new(SKColor.Parse("#95b5cf"));
     
     private readonly ObservableCollection<decimal> _amountsToPayValues = [];
     private readonly ObservableCollection<string> _dateLabels = [];
@@ -35,13 +36,13 @@ public abstract class BaseChartService<T>
         {
             Labels = _dateLabels,
             MaxLimit = 12,
-            LabelsPaint = new SolidColorPaint(SKColor.Parse("#95b5cf")),
+            LabelsPaint = _axisLabelsPaint,
         }
     ];
 
-    public SolidColorPaint LegendTextPaint => new SolidColorPaint(SKColor.Parse("#abb0b3"));
+    public SolidColorPaint LegendTextPaint => new SolidColorPaint(SKColor.Parse("#e9ecef"));
     
-    private static Axis CreateValueYAxis(Func<double, string>? labeler = default)
+    private Axis CreateValueYAxis(Func<double, string>? labeler = default)
     {
         return new Axis
         {
@@ -52,7 +53,7 @@ public abstract class BaseChartService<T>
             },
             Labeler = labeler ?? Labelers.Default,
             TextSize = 15,
-            LabelsPaint = new SolidColorPaint(SKColor.Parse("#95b5cf"))
+            LabelsPaint = _axisLabelsPaint,
         };
     }
 

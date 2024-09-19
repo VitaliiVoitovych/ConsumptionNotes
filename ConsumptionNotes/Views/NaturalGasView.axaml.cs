@@ -1,4 +1,7 @@
-﻿namespace ConsumptionNotes.Views;
+﻿using System.Diagnostics;
+using Avalonia;
+
+namespace ConsumptionNotes.Views;
 
 public partial class NaturalGasView : UserControl
 {
