@@ -17,10 +17,17 @@ public class ElectricityChartService : BaseChartService<ElectricityConsumption>
         CreateLineSeries("Ніч", _nightKilowattConsumed, _nightSeriesColor),
     ];
     
-    public override void AddValues(ElectricityConsumption consumption)
+    public override void AddValues(int index, ElectricityConsumption consumption)
     {
-        base.AddValues(consumption);
-        _dayKilowattConsumed.Add(consumption.DayKilowattConsumed);
-        _nightKilowattConsumed.Add(consumption.NightKilowattConsumed);
+        base.AddValues(index, consumption);
+        _dayKilowattConsumed.Insert(index, consumption.DayKilowattConsumed);
+        _nightKilowattConsumed.Insert(index, consumption.NightKilowattConsumed);
+    }
+
+    public override void RemoveValues(int index)
+    {
+        base.RemoveValues(index);
+        _dayKilowattConsumed.RemoveAt(index);
+        _nightKilowattConsumed.RemoveAt(index);
     }
 }

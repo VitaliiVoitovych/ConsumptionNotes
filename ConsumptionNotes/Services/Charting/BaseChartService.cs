@@ -71,9 +71,15 @@ public abstract class BaseChartService<T>
         };
     }
     
-    public virtual void AddValues(T consumption)
+    public virtual void AddValues(int index, T consumption)
     {
-        _dateLabels.Add(consumption.Date.ToString("MMM yyyy"));
-        _amountsToPayValues.Add(consumption.AmountToPay);
+        _dateLabels.Insert(index, consumption.Date.ToString("MMM yyyy"));
+        _amountsToPayValues.Insert(index, consumption.AmountToPay);
+    }
+
+    public virtual void RemoveValues(int index)
+    {
+        _dateLabels.RemoveAt(index);
+        _amountsToPayValues.RemoveAt(index);
     }
 }
