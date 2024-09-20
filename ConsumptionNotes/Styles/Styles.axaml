@@ -10,4 +10,17 @@
     <Style Selector="TextBlock">
         <Setter Property="Foreground" Value="{StaticResource LightBrush}"/>
     </Style>
+    
+    <Style Selector="DataGridColumnHeader">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        
+        <Style Selector="^ /template/ Grid#PART_ColumnHeaderRoot TextBlock">
+            <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+        </Style>
+        
+        <Style Selector="^ /template/ Grid#PART_ColumnHeaderRoot ContentPresenter">
+            <Setter Property="Grid.ColumnSpan" Value="2"/>
+        </Style>
+    </Style>
 </Styles>

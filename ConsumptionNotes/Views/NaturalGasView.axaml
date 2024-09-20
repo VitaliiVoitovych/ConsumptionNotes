@@ -4,12 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:ConsumptionNotes.ViewModels"
              xmlns:controls="using:ConsumptionNotes.Controls"
+             xmlns:models="using:ConsumptionNotes.Domain.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ConsumptionNotes.Views.NaturalGasView"
              x:DataType="vm:NaturalGasViewModel">
     <Grid
         ColumnDefinitions="*,*">
         
+        <!-- Charts -->
         <ScrollViewer
             VerticalScrollBarVisibility="Hidden">
             <StackPanel
@@ -32,6 +34,43 @@
                 
             </StackPanel>
         </ScrollViewer>
+        
+        <!-- Data -->
+        <DataGrid
+            Grid.Column="1">
+            <DataGrid.Columns>
+                
+                <DataGridTextColumn
+                    Header="Місяць та рік"
+                    Width="*"/>
+                
+                <DataGridTextColumn
+                    Header="Спожито вдень"
+                    Width="*"/>
+                
+                <DataGridTextColumn
+                    Header="Спожито вночі"
+                    Width="*"/>
+                
+                <DataGridTextColumn
+                    Header="До оплати"
+                    Width="*"/>
+                
+                <DataGridTemplateColumn
+                    Width="Auto">
+                    <DataTemplate x:DataType="models:NaturalGasConsumption">
+                        <StackPanel 
+                            Orientation="Horizontal"
+                            Spacing="5">
+                            
+                            <Button>E</Button>
+                            <Button>X</Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGridTemplateColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
         
     </Grid>
 </UserControl>
