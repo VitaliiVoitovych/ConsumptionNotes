@@ -39,6 +39,10 @@ public partial class App : Application
         services.AddSingleton<ElectricityChartService>();
         services.AddSingleton<NaturalGasChartService>();
         
+        // Note services
+        services.AddSingleton<ElectricityNotesService>();
+        services.AddSingleton<NaturalGasNotesService>();
+        
         // View models
         services.AddTransient<HomeViewModel>();
         services.AddTransient<ElectricityViewModel>();
