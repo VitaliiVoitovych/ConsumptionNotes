@@ -1,6 +1,8 @@
 ﻿namespace ConsumptionNotes.ViewModels;
 
-public class ElectricityViewModel(ElectricityChartService electricityChartService) : ViewModelBase
+public class ElectricityViewModel(ElectricityNotesService notesService) : ViewModelBase
 {
-    public ElectricityChartService ElectricityChartService => electricityChartService;
+    public ElectricityNotesService NotesService => notesService;
+
+    public ElectricityChartService ChartService => notesService.ChartService;
 }

@@ -1,6 +1,7 @@
 ﻿namespace ConsumptionNotes.ViewModels;
 
-public class NaturalGasViewModel(NaturalGasChartService naturalGasChartService) : ViewModelBase
+public class NaturalGasViewModel(NaturalGasNotesService notesService) : ViewModelBase
 {
-    public NaturalGasChartService NaturalGasChartService => naturalGasChartService;
+    public NaturalGasNotesService NotesService => notesService;
+    public NaturalGasChartService ChartService => notesService.ChartService;
 }

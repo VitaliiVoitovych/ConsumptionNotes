@@ -1,20 +1,13 @@
-﻿using System;
+﻿namespace ConsumptionNotes.ViewModels;
 
-namespace ConsumptionNotes.ViewModels;
-
-public class HomeViewModel : ViewModelBase
+public class HomeViewModel(
+    ElectricityNotesService electricityNotesService,
+    NaturalGasNotesService naturalGasNotesService
+    ) : ViewModelBase
 {
-    public ElectricityChartService ElectricityChartService { get; }
-    public NaturalGasChartService NaturalGasChartService { get; }
-    
-    public HomeViewModel(ElectricityChartService electricityChartService, NaturalGasChartService naturalGasChartService)
-    {
-        ElectricityChartService = electricityChartService;
-        NaturalGasChartService = naturalGasChartService;
+    public ElectricityNotesService ElectricityNotesService => electricityNotesService;
+    public NaturalGasNotesService NaturalGasNotesService => naturalGasNotesService;
 
-        ElectricityChartService.AddValues(new ElectricityConsumption(DateOnly.FromDateTime(DateTime.Now), 23, 23, 231));
-        NaturalGasChartService.AddValues(new NaturalGasConsumption(DateOnly.FromDateTime(DateTime.Now), 34, 344));
-        ElectricityChartService.AddValues(new ElectricityConsumption(DateOnly.FromDateTime(DateTime.Now), 23,23, 231));
-        NaturalGasChartService.AddValues(new NaturalGasConsumption(DateOnly.FromDateTime(DateTime.Now), 34, 344));
-    }
+    public ElectricityChartService ElectricityChartService => ElectricityNotesService.ChartService;
+    public NaturalGasChartService NaturalGasChartService => NaturalGasNotesService.ChartService;
 }

@@ -12,6 +12,7 @@
         
         <controls:ChartWidget
             Text="Електроенергія"
+            AverageValue="{Binding ElectricityNotesService.AverageAmount}"
             Series="{Binding ElectricityChartService.AmountsToPaySeries}"
             YAxes="{Binding ElectricityChartService.AmountToPayYAxes}"
             XAxes="{Binding ElectricityChartService.DateXAxes}"/>
@@ -19,6 +20,7 @@
         <controls:ChartWidget
             Grid.Column="1"
             Text="Газ"
+            AverageValue="{Binding NaturalGasNotesService.AverageAmount}"
             Series="{Binding NaturalGasChartService.AmountsToPaySeries}"
             YAxes="{Binding NaturalGasChartService.AmountToPayYAxes}"
             XAxes="{Binding NaturalGasChartService.DateXAxes}"/>

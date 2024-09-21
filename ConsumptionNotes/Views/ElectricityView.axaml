@@ -19,43 +19,50 @@
                 
                 <controls:ChartWidget
                     Text="До оплати"
+                    AverageValue="{Binding NotesService.AverageAmount}"
                     Height="{Binding $parent[UserControl].Bounds.Height}"
-                    Series="{Binding ElectricityChartService.AmountsToPaySeries}"
-                    XAxes="{Binding ElectricityChartService.DateXAxes}"
-                    YAxes="{Binding ElectricityChartService.AmountToPayYAxes}"/>
+                    Series="{Binding ChartService.AmountsToPaySeries}"
+                    XAxes="{Binding ChartService.DateXAxes}"
+                    YAxes="{Binding ChartService.AmountToPayYAxes}"/>
                 
                 <controls:ChartWidget
                     Text="Споживання"
+                    AverageValue="{Binding NotesService.AverageKilowattConsumed}"
                     Height="{Binding $parent[UserControl].Bounds.Height}"
-                    Series="{Binding ElectricityChartService.KilowattConsumedSeries}"
-                    XAxes="{Binding ElectricityChartService.DateXAxes}"
-                    YAxes="{Binding ElectricityChartService.ConsumedYAxed}"
+                    Series="{Binding ChartService.KilowattConsumedSeries}"
+                    XAxes="{Binding ChartService.DateXAxes}"
+                    YAxes="{Binding ChartService.ConsumedYAxed}"
                     LegendPosition="Top"
-                    LegendTextPaint="{Binding ElectricityChartService.LegendTextPaint}"/>
+                    LegendTextPaint="{Binding ChartService.LegendTextPaint}"/>
                 
             </StackPanel>
         </ScrollViewer>
         
         <!-- Data -->
         <DataGrid
-            Grid.Column="1">
+            Grid.Column="1"
+            ItemsSource="{Binding NotesService.ElectricityConsumptions}">
             <DataGrid.Columns>
                 
                 <DataGridTextColumn
                     Header="Місяць та рік"
-                    Width="*"/>
+                    Width="*"
+                    Binding="{Binding Date, StringFormat=\MMMM yyyy}"/>
                 
                 <DataGridTextColumn
                     Header="Спожито вдень"
-                    Width="*"/>
+                    Width="*"
+                    Binding="{Binding DayKilowattConsumed}"/>
                 
                 <DataGridTextColumn
                     Header="Спожито вночі"
-                    Width="*"/>
+                    Width="*"
+                    Binding="{Binding NightKilowattConsumed}"/>
                 
                 <DataGridTextColumn
                     Header="До оплати"
-                    Width="*"/>
+                    Width="*"
+                    Binding="{Binding AmountToPay}"/>
                 
                 <DataGridTemplateColumn
                     Width="Auto">
@@ -63,9 +70,9 @@
                         <StackPanel 
                             Orientation="Horizontal"
                             Spacing="5">
-                            
-                            <Button>E</Button>
+                                
                             <Button>X</Button>
+                                
                         </StackPanel>
                     </DataTemplate>
                 </DataGridTemplateColumn>
