@@ -39,45 +39,55 @@
         </ScrollViewer>
         
         <!-- Data -->
-        <DataGrid
+        <Grid
             Grid.Column="1"
-            ItemsSource="{Binding NotesService.ElectricityConsumptions}">
-            <DataGrid.Columns>
+            RowDefinitions="*,Auto">
+            
+            <DataGrid
+                ItemsSource="{Binding NotesService.ElectricityConsumptions}">
+                <DataGrid.Columns>
                 
-                <DataGridTextColumn
-                    Header="Місяць та рік"
-                    Width="*"
-                    Binding="{Binding Date, StringFormat=\MMMM yyyy}"/>
+                    <DataGridTextColumn
+                        Header="Місяць та рік"
+                        Width="*"
+                        Binding="{Binding Date, StringFormat=\MMMM yyyy}"/>
                 
-                <DataGridTextColumn
-                    Header="Спожито вдень"
-                    Width="*"
-                    Binding="{Binding DayKilowattConsumed}"/>
+                    <DataGridTextColumn
+                        Header="Спожито вдень"
+                        Width="*"
+                        Binding="{Binding DayKilowattConsumed}"/>
                 
-                <DataGridTextColumn
-                    Header="Спожито вночі"
-                    Width="*"
-                    Binding="{Binding NightKilowattConsumed}"/>
+                    <DataGridTextColumn
+                        Header="Спожито вночі"
+                        Width="*"
+                        Binding="{Binding NightKilowattConsumed}"/>
                 
-                <DataGridTextColumn
-                    Header="До оплати"
-                    Width="*"
-                    Binding="{Binding AmountToPay}"/>
+                    <DataGridTextColumn
+                        Header="До оплати"
+                        Width="*"
+                        Binding="{Binding AmountToPay}"/>
                 
-                <DataGridTemplateColumn
-                    Width="Auto">
-                    <DataTemplate x:DataType="models:ElectricityConsumption">
-                        <StackPanel 
-                            Orientation="Horizontal"
-                            Spacing="5">
+                    <DataGridTemplateColumn
+                        Width="Auto">
+                        <DataTemplate x:DataType="models:ElectricityConsumption">
+                            <StackPanel 
+                                Orientation="Horizontal"
+                                Spacing="5">
                                 
-                            <Button>X</Button>
+                                <Button>X</Button>
                                 
-                        </StackPanel>
-                    </DataTemplate>
-                </DataGridTemplateColumn>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn>
                 
-            </DataGrid.Columns>
-        </DataGrid>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+            <Button
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                Content="Додати"/>
+            
+        </Grid>
     </Grid>
 </UserControl>

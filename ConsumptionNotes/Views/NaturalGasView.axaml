@@ -38,41 +38,50 @@
         </ScrollViewer>
         
         <!-- Data -->
-        <DataGrid
+        <Grid
             Grid.Column="1"
-            ItemsSource="{Binding NotesService.NaturalGasConsumptions}">
-            <DataGrid.Columns>
+            RowDefinitions="*,Auto">
+            
+            <DataGrid
+                ItemsSource="{Binding NotesService.NaturalGasConsumptions}">
+                <DataGrid.Columns>
                 
-                <DataGridTextColumn
-                    Header="Місяць та рік"
-                    Width="*"
-                    Binding="{Binding Date, StringFormat=\MMMM yyyy}"/>
+                    <DataGridTextColumn
+                        Header="Місяць та рік"
+                        Width="*"
+                        Binding="{Binding Date, StringFormat=\MMMM yyyy}"/>
                 
-                <DataGridTextColumn
-                    Header="Спожито"
-                    Width="*"
-                    Binding="{Binding CubicMeterConsumed}"/>
+                    <DataGridTextColumn
+                        Header="Спожито"
+                        Width="*"
+                        Binding="{Binding CubicMeterConsumed}"/>
                 
-                <DataGridTextColumn
-                    Header="До оплати"
-                    Width="*"
-                    Binding="{Binding AmountToPay}"/>
+                    <DataGridTextColumn
+                        Header="До оплати"
+                        Width="*"
+                        Binding="{Binding AmountToPay}"/>
                 
-                <DataGridTemplateColumn
-                    Width="Auto">
-                    <DataTemplate x:DataType="models:NaturalGasConsumption">
-                        <StackPanel 
-                            Orientation="Horizontal"
-                            Spacing="5">
+                    <DataGridTemplateColumn
+                        Width="Auto">
+                        <DataTemplate x:DataType="models:NaturalGasConsumption">
+                            <StackPanel 
+                                Orientation="Horizontal"
+                                Spacing="5">
                                 
-                            <Button>X</Button>
+                                <Button>X</Button>
                             
-                        </StackPanel>
-                    </DataTemplate>
-                </DataGridTemplateColumn>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn>
                 
-            </DataGrid.Columns>
-        </DataGrid>
-        
+                </DataGrid.Columns>
+            </DataGrid>
+            
+            <Button
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                Content="Додати"/>
+            
+        </Grid>
     </Grid>
 </UserControl>
