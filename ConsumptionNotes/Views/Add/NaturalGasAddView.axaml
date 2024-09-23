@@ -20,14 +20,11 @@
             
         </StackPanel>
         
-        <TextBlock
-            Text="Спожито"/>
-        
         <StackPanel
             Orientation="Horizontal">
             
             <TextBlock
-                Text="День"/>
+                Text="Спожито м³"/>
             
             <NumericUpDown
                 Minimum="0"
@@ -41,7 +38,7 @@
             Orientation="Horizontal">
             
             <TextBlock
-                Text="Ціна за кВт/год"/>
+                Text="Ціна за м³"/>
             
             <NumericUpDown
                 Minimum="0"

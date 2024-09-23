@@ -19,7 +19,7 @@
                 
                 <controls:ChartWidget
                     Text="До оплати"
-                    AverageValue="{Binding NotesService.AverageAmount}"
+                    AverageValue="{Binding NotesService.AverageAmount, StringFormat=\C2}"
                     Height="{Binding $parent[UserControl].Bounds.Height}"
                     Series="{Binding ChartService.AmountsToPaySeries}"
                     XAxes="{Binding ChartService.DateXAxes}"
@@ -27,7 +27,7 @@
                 
                 <controls:ChartWidget
                     Text="Споживання"
-                    AverageValue="{Binding NotesService.AverageKilowattConsumed}"
+                    AverageValue="{Binding NotesService.AverageKilowattConsumed, StringFormat=\0.00 кВт/год}"
                     Height="{Binding $parent[UserControl].Bounds.Height}"
                     Series="{Binding ChartService.KilowattConsumedSeries}"
                     XAxes="{Binding ChartService.DateXAxes}"
@@ -66,7 +66,7 @@
                     <DataGridTextColumn
                         Header="До оплати"
                         Width="*"
-                        Binding="{Binding AmountToPay}"/>
+                        Binding="{Binding AmountToPay, StringFormat=\C2}"/>
                 
                     <DataGridTemplateColumn
                         Width="Auto">

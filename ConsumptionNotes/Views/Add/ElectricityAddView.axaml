@@ -21,7 +21,7 @@
         </StackPanel>
         
         <TextBlock
-            Text="Спожито"/>
+            Text="Спожито кВт/год"/>
         
         <StackPanel
             Orientation="Horizontal">

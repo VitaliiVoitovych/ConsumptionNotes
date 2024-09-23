@@ -18,10 +18,10 @@ public partial class ChartWidget : UserControl
         set => SetValue(TextProperty, value);
     }
 
-    public static readonly StyledProperty<decimal> AverageValueProperty = AvaloniaProperty.Register<ChartWidget, decimal>(
+    public static readonly StyledProperty<string> AverageValueProperty = AvaloniaProperty.Register<ChartWidget, string>(
         nameof(AverageValue));
 
-    public decimal AverageValue
+    public string AverageValue
     {
         get => GetValue(AverageValueProperty);
         set => SetValue(AverageValueProperty, value);
