@@ -26,4 +26,10 @@ public partial class ElectricityViewModel(ElectricityNotesService notesService) 
 
         await addDialog.ShowAsync();
     }
+
+    [RelayCommand]
+    private void Remove(ElectricityConsumption consumption)
+    {
+        notesService.RemoveNote(consumption);
+    }
 }

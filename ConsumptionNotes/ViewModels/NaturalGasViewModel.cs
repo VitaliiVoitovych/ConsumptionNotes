@@ -26,4 +26,10 @@ public partial class NaturalGasViewModel(NaturalGasNotesService notesService) : 
 
         await addDialog.ShowAsync();
     }
+
+    [RelayCommand]
+    private void Remove(NaturalGasConsumption consumption)
+    {
+        notesService.RemoveNote(consumption);
+    }
 }

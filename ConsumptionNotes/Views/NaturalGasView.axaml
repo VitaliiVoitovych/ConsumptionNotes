@@ -43,6 +43,7 @@
             RowDefinitions="*,Auto">
             
             <DataGrid
+                x:Name="NaturalGasDataGrid"
                 ItemsSource="{Binding NotesService.NaturalGasConsumptions}">
                 <DataGrid.Columns>
                 
@@ -68,7 +69,10 @@
                                 Orientation="Horizontal"
                                 Spacing="5">
                                 
-                                <Button>X</Button>
+                                <Button
+                                    Command="{Binding #NaturalGasDataGrid.((vm:NaturalGasViewModel)DataContext).RemoveCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Content="X"/>
                             
                             </StackPanel>
                         </DataTemplate>
