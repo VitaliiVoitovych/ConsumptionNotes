@@ -1,0 +1,69 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ConsumptionNotes.ViewModels.Add"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ConsumptionNotes.Views.Add.ElectricityAddView"
+             x:DataType="vm:ElectricityAddViewModel">
+    <StackPanel
+        HorizontalAlignment="Center">
+        <StackPanel
+            Orientation="Horizontal">
+            
+            <TextBlock
+                Text="Обрати місяць та рік"/>
+            
+            <DatePicker
+                DayVisible="False"
+                SelectedDate="{Binding SelectedDate}"/>
+            
+        </StackPanel>
+        
+        <TextBlock
+            Text="Спожито"/>
+        
+        <StackPanel
+            Orientation="Horizontal">
+            
+            <TextBlock
+                Text="День"/>
+            
+            <NumericUpDown
+                Minimum="0"
+                Maximum="10000"
+                Increment="1"
+                Value="{Binding DayKilowattConsumed}"/>
+            
+        </StackPanel>
+        
+        <StackPanel
+            Orientation="Horizontal">
+            
+            <TextBlock
+                Text="Ніч"/>
+            
+            <NumericUpDown
+                Minimum="0"
+                Maximum="10000"
+                Increment="1"
+                Value="{Binding NightKilowattConsumed}"/>
+            
+        </StackPanel>
+        
+        <StackPanel
+            Orientation="Horizontal">
+            
+            <TextBlock
+                Text="Ціна за кВт/год"/>
+            
+            <NumericUpDown
+                Minimum="0"
+                Maximum="1000"
+                Increment=".01"
+                Value="{Binding KilowattPerHourPrice}"/>
+            
+        </StackPanel>
+        
+    </StackPanel>
+</UserControl>

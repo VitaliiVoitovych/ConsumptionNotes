@@ -1,8 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿namespace ConsumptionNotes.ViewModels;
 
-namespace ConsumptionNotes.ViewModels
+public abstract class ViewModelBase : ObservableObject
 {
-    public class ViewModelBase : ObservableObject
-    {
-    }
 }
+

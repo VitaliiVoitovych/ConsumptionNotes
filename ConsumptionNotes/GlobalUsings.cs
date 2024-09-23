@@ -1,10 +1,14 @@
 ﻿global using Avalonia.Controls;
 global using ConsumptionNotes.Domain.Models;
 global using ConsumptionNotes.ViewModels;
+global using ConsumptionNotes.ViewModels.Add;
 global using ConsumptionNotes.Services.Notes;
 global using ConsumptionNotes.Services.Charting;
+global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.DependencyInjection;
+global using CommunityToolkit.Mvvm.Input;
 global using Microsoft.Extensions.DependencyInjection;
 global using System;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
+global using System.Threading.Tasks;

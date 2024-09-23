@@ -23,4 +23,8 @@
             <Setter Property="Grid.ColumnSpan" Value="2"/>
         </Style>
     </Style>
+    
+    <Style Selector="ui|ContentDialog">
+        <Setter Property="Background" Value="{StaticResource DarkBrush}"/>
+    </Style>
 </Styles>
