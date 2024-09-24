@@ -1,20 +1,17 @@
-﻿using LiveChartsCore;
-using SkiaSharp;
+﻿using ConsumptionNotes.Services.Charting.Styles;
+using ConsumptionNotes.Services.Charting.Utils;
 
 namespace ConsumptionNotes.Services.Charting;
 
 public class ElectricityChartService : BaseChartService<ElectricityConsumption>
 {
-    private readonly SKColor _daySeriesColor = SKColor.Parse("#e2e38b");
-    private readonly SKColor _nightSeriesColor = SKColor.Parse("#29297d");
-    
     private readonly ObservableCollection<int> _dayKilowattConsumed = [];
     private readonly ObservableCollection<int> _nightKilowattConsumed = [];
 
     public IEnumerable<ISeries> KilowattConsumedSeries =>
     [
-        CreateLineSeries("День", _dayKilowattConsumed, _daySeriesColor),
-        CreateLineSeries("Ніч", _nightKilowattConsumed, _nightSeriesColor),
+        ChartUtils.CreateLineSeries(_dayKilowattConsumed, ChartColors.DaySeriesColor, "День"),
+        ChartUtils.CreateLineSeries(_nightKilowattConsumed, ChartColors.NightSeriesColor, "Ніч"),
     ];
     
     public override void AddValues(int index, ElectricityConsumption consumption)

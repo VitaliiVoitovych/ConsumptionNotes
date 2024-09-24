@@ -8,6 +8,8 @@ global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.DependencyInjection;
 global using CommunityToolkit.Mvvm.Input;
 global using Microsoft.Extensions.DependencyInjection;
+global using LiveChartsCore;
+global using SkiaSharp;
 global using System;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;

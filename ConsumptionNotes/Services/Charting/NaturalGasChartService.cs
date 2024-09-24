@@ -1,17 +1,15 @@
-﻿using LiveChartsCore;
-using SkiaSharp;
+﻿using ConsumptionNotes.Services.Charting.Styles;
+using ConsumptionNotes.Services.Charting.Utils;
 
 namespace ConsumptionNotes.Services.Charting;
 
 public class NaturalGasChartService : BaseChartService<NaturalGasConsumption>
 {
-    private readonly SKColor _gasConsumedSeriesColor = SKColor.Parse("#367fd7");
-    
     private readonly ObservableCollection<int> _cubicMeterConsumed = [];
 
     public IEnumerable<ISeries> CubicMeterConsumedSeries =>
     [
-        CreateLineSeries(null, _cubicMeterConsumed, _gasConsumedSeriesColor),
+        ChartUtils.CreateLineSeries(_cubicMeterConsumed, ChartColors.GasSeriesColor),
     ];
     
     public override void AddValues(int index, NaturalGasConsumption consumption)

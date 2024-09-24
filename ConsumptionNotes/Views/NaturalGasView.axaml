@@ -31,7 +31,7 @@
                     Height="{Binding $parent[UserControl].Bounds.Height}"
                     Series="{Binding ChartService.CubicMeterConsumedSeries}"
                     XAxes="{Binding ChartService.DateXAxes}"
-                    YAxes="{Binding ChartService.ConsumedYAxed}"
+                    YAxes="{Binding ChartService.ConsumedYAxes}"
                     LegendTextPaint="{Binding ChartService.LegendTextPaint}"/>
                 
             </StackPanel>
