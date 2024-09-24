@@ -45,7 +45,7 @@
             
             <DataGrid
                 x:Name="ElectricityDataGrid"
-                ItemsSource="{Binding NotesService.ElectricityConsumptions}">
+                ItemsSource="{Binding NotesService.Consumptions}">
                 <DataGrid.Columns>
                 
                     <DataGridTextColumn
