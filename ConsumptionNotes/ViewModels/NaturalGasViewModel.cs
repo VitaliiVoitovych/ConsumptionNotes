@@ -1,5 +1,5 @@
-﻿using ConsumptionNotes.Views.Add;
-using FluentAvalonia.UI.Controls;
+﻿using ConsumptionNotes.Utils.Dialogs;
+using ConsumptionNotes.Views.Add;
 
 namespace ConsumptionNotes.ViewModels;
 
@@ -13,17 +13,8 @@ public partial class NaturalGasViewModel(NaturalGasNotesService notesService) : 
     {
         var addView = Ioc.Default.GetRequiredService<NaturalGasAddView>();
         var addViewModel = addView.DataContext as NaturalGasAddViewModel;
-        
-        var addDialog = new ContentDialog
-        {
-            PrimaryButtonText = "Додати",
-            CloseButtonText = "Відмінити",
-            Title = "Новий запис",
-            Content = addView,
-            PrimaryButtonCommand = addViewModel?.AddCommand,
-            DefaultButton = ContentDialogButton.Primary,
-        };
 
+        var addDialog = Dialogs.CreateAdditionDialog(addView, addViewModel!.AddCommand);
         await addDialog.ShowAsync();
     }
 

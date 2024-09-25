@@ -1,4 +1,4 @@
-﻿using FluentAvalonia.UI.Controls;
+﻿using ConsumptionNotes.Utils.Dialogs;
 
 namespace ConsumptionNotes.ViewModels.Add;
 
@@ -24,14 +24,8 @@ public partial class ElectricityAddViewModel(ElectricityNotesService notesServic
         }
         catch (ArgumentException ex)
         {
-            var contentDialog = new ContentDialog()
-            {
-                Title = "Помилка!",
-                Content = ex.Message,
-                CloseButtonText = "Зрозуміло"
-            };
-
-            await contentDialog.ShowAsync();
+            var messageDialog = Dialogs.CreateMessageDialog("Помилка", ex.Message);
+            await messageDialog.ShowAsync();
         }
     }
 }
