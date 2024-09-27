@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using ConsumptionNotes.Domain.Extensions;
 using ConsumptionNotes.Services.Notes.Interfaces;
 
 namespace ConsumptionNotes.Services.Notes;
@@ -24,10 +25,7 @@ public abstract partial class BaseNotesService<TConsumption, TChartService> : Ob
         if (Consumptions.Any(c => EqualsYearAndMonth(c.Date, consumption.Date)))
             throw new ArgumentException("Запис про цей місяць вже є");
 
-        var lastConsumptionBeforeDate  = Consumptions.LastOrDefault(c => c.Date < consumption.Date);
-        var index = lastConsumptionBeforeDate is null 
-            ? 0
-            : Consumptions.IndexOf(lastConsumptionBeforeDate) + 1;
+        var index = Consumptions.LastMatchingIndex(c => c.Date < consumption.Date) + 1;
         
         Consumptions.Insert(index, consumption);
         ChartService.AddValues(index, consumption);
