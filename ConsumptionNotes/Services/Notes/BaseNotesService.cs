@@ -1,16 +1,17 @@
 ﻿using System.Linq;
+using ConsumptionNotes.Services.Notes.Interfaces;
 
 namespace ConsumptionNotes.Services.Notes;
 
-public abstract partial class BaseNotesService<TNote, TChartService> : ObservableObject
-    where TNote : BaseConsumption
-    where TChartService : BaseChartService<TNote>
+public abstract partial class BaseNotesService<TConsumption, TChartService> : ObservableObject, INotesService<TConsumption>
+    where TConsumption : BaseConsumption
+    where TChartService : BaseChartService<TConsumption>
 {
     [ObservableProperty] private decimal _averageAmount;
     
     public TChartService ChartService { get; }
 
-    public ObservableCollection<TNote> Consumptions { get; }
+    public ObservableCollection<TConsumption> Consumptions { get; }
     
     protected BaseNotesService(TChartService chartService)
     {
@@ -18,23 +19,25 @@ public abstract partial class BaseNotesService<TNote, TChartService> : Observabl
         Consumptions = [];
     }
 
-    public void AddNote(TNote note)
+    public void AddNote(TConsumption consumption)
     {
-        if (Consumptions.Any(n => EqualsYearAndMonth(n.Date, note.Date)))
+        if (Consumptions.Any(c => EqualsYearAndMonth(c.Date, consumption.Date)))
             throw new ArgumentException("Запис про цей місяць вже є");
 
-        var lastConditionNote = Consumptions.LastOrDefault(n => n.Date < note.Date);
-        var index = Consumptions.IndexOf(lastConditionNote!) + 1;
+        var lastConsumptionBeforeDate  = Consumptions.LastOrDefault(c => c.Date < consumption.Date);
+        var index = lastConsumptionBeforeDate is null 
+            ? 0
+            : Consumptions.IndexOf(lastConsumptionBeforeDate) + 1;
         
-        Consumptions.Insert(index, note);
-        ChartService.AddValues(index, note);
+        Consumptions.Insert(index, consumption);
+        ChartService.AddValues(index, consumption);
         
         UpdateAverageValues();
     }
 
-    public void RemoveNote(TNote note)
+    public void RemoveNote(TConsumption consumption)
     {
-        var index = Consumptions.IndexOf(note);
+        var index = Consumptions.IndexOf(consumption);
         Consumptions.RemoveAt(index);
         ChartService.RemoveValues(index);
         

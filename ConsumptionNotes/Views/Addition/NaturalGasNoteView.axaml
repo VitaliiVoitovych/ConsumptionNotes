@@ -2,10 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="using:ConsumptionNotes.ViewModels.Add"
+             xmlns:vm="using:ConsumptionNotes.ViewModels.Addition"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ConsumptionNotes.Views.Add.ElectricityAddView"
-             x:DataType="vm:ElectricityAddViewModel">
+             x:Class="ConsumptionNotes.Views.Addition.NaturalGasNoteView"
+             x:DataType="vm:NaturalGasNoteViewModel">
     <StackPanel
         HorizontalAlignment="Center">
         <StackPanel
@@ -20,20 +20,17 @@
             
         </StackPanel>
         
-        <TextBlock
-            Text="Спожито кВт/год"/>
-        
         <StackPanel
             Orientation="Horizontal">
             
             <TextBlock
-                Text="День"/>
+                Text="Спожито м³"/>
             
             <NumericUpDown
                 Minimum="0"
                 Maximum="10000"
                 Increment="1"
-                Value="{Binding DayKilowattConsumed}"/>
+                Value="{Binding CubicMetersConsumed}"/>
             
         </StackPanel>
         
@@ -41,27 +38,13 @@
             Orientation="Horizontal">
             
             <TextBlock
-                Text="Ніч"/>
-            
-            <NumericUpDown
-                Minimum="0"
-                Maximum="10000"
-                Increment="1"
-                Value="{Binding NightKilowattConsumed}"/>
-            
-        </StackPanel>
-        
-        <StackPanel
-            Orientation="Horizontal">
-            
-            <TextBlock
-                Text="Ціна за кВт/год"/>
+                Text="Ціна за м³"/>
             
             <NumericUpDown
                 Minimum="0"
                 Maximum="1000"
                 Increment=".01"
-                Value="{Binding KilowattPerHourPrice}"/>
+                Value="{Binding CubicMeterPrice}"/>
             
         </StackPanel>
         

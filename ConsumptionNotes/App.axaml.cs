@@ -5,7 +5,7 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 using ConsumptionNotes.Views;
-using ConsumptionNotes.Views.Add;
+using ConsumptionNotes.Views.Addition;
 
 namespace ConsumptionNotes;
 public partial class App : Application
@@ -48,12 +48,13 @@ public partial class App : Application
         services.AddTransient<HomeViewModel>();
         services.AddTransient<ElectricityViewModel>();
         services.AddTransient<NaturalGasViewModel>();
-        services.AddTransient<ElectricityAddViewModel>();
-        services.AddTransient<NaturalGasAddViewModel>();
+        
+        services.AddScoped<ElectricityNoteViewModel>();
+        services.AddScoped<NaturalGasNoteViewModel>();
 
         // Add views
-        services.AddTransient<ElectricityAddView>();
-        services.AddTransient<NaturalGasAddView>();
+        services.AddTransient<ElectricityNoteView>();
+        services.AddTransient<NaturalGasNoteView>();
         
         return services.BuildServiceProvider();
     }

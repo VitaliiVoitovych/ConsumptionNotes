@@ -1,5 +1,5 @@
 ﻿using ConsumptionNotes.Utils.Dialogs;
-using ConsumptionNotes.Views.Add;
+using ConsumptionNotes.Views.Addition;
 
 namespace ConsumptionNotes.ViewModels;
 
@@ -11,8 +11,8 @@ public partial class NaturalGasViewModel(NaturalGasNotesService notesService) : 
     [RelayCommand]
     private async Task OpenAddDialog()
     {
-        var addView = Ioc.Default.GetRequiredService<NaturalGasAddView>();
-        var addViewModel = addView.DataContext as NaturalGasAddViewModel;
+        var addView = Ioc.Default.GetRequiredService<NaturalGasNoteView>();
+        var addViewModel = addView.DataContext as NaturalGasNoteViewModel;
 
         var addDialog = Dialogs.CreateAdditionDialog(addView, addViewModel!.AddCommand);
         await addDialog.ShowAsync();
