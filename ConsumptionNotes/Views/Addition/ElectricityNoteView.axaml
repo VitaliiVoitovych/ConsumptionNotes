@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:ConsumptionNotes.ViewModels.Addition"
+             xmlns:controls="using:ConsumptionNotes.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ConsumptionNotes.Views.Addition.ElectricityNoteView"
              x:DataType="vm:ElectricityNoteViewModel">
@@ -23,47 +24,26 @@
         <TextBlock
             Text="Спожито кВт/год"/>
         
-        <StackPanel
-            Orientation="Horizontal">
-            
-            <TextBlock
-                Text="День"/>
-            
-            <NumericUpDown
-                Minimum="0"
-                Maximum="10000"
-                Increment="1"
-                Value="{Binding DayKilowattsConsumed}"/>
-            
-        </StackPanel>
+        <controls:LabeledNumericUpDown
+            Text="День"
+            Minimum="0"
+            Maximum="10000"
+            Increment="1"
+            Value="{Binding DayKilowattsConsumed, Mode=TwoWay}"/>
         
-        <StackPanel
-            Orientation="Horizontal">
-            
-            <TextBlock
-                Text="Ніч"/>
-            
-            <NumericUpDown
-                Minimum="0"
-                Maximum="10000"
-                Increment="1"
-                Value="{Binding NightKilowattsConsumed}"/>
-            
-        </StackPanel>
+        <controls:LabeledNumericUpDown
+            Text="Ніч"
+            Minimum="0"
+            Maximum="10000"
+            Increment="1"
+            Value="{Binding NightKilowattsConsumed, Mode=TwoWay}"/>
         
-        <StackPanel
-            Orientation="Horizontal">
-            
-            <TextBlock
-                Text="Ціна за кВт/год"/>
-            
-            <NumericUpDown
-                Minimum="0"
-                Maximum="1000"
-                Increment=".01"
-                Value="{Binding KilowattPerHourPrice}"/>
-            
-        </StackPanel>
+        <controls:LabeledNumericUpDown
+            Text="Ціна за кВт/год"
+            Minimum="0"
+            Maximum="1000"
+            Increment=".01"
+            Value="{Binding KilowattPerHourPrice, Mode=TwoWay}"/>
         
     </StackPanel>
 </UserControl>

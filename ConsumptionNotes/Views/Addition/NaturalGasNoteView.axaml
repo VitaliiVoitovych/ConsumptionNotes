@@ -3,50 +3,30 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:ConsumptionNotes.ViewModels.Addition"
+             xmlns:controls="using:ConsumptionNotes.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ConsumptionNotes.Views.Addition.NaturalGasNoteView"
              x:DataType="vm:NaturalGasNoteViewModel">
     <StackPanel
         HorizontalAlignment="Center">
-        <StackPanel
-            Orientation="Horizontal">
-            
-            <TextBlock
-                Text="Обрати місяць та рік"/>
-            
-            <DatePicker
-                DayVisible="False"
-                SelectedDate="{Binding SelectedDate}"/>
-            
-        </StackPanel>
         
-        <StackPanel
-            Orientation="Horizontal">
-            
-            <TextBlock
-                Text="Спожито м³"/>
-            
-            <NumericUpDown
-                Minimum="0"
-                Maximum="10000"
-                Increment="1"
-                Value="{Binding CubicMetersConsumed}"/>
-            
-        </StackPanel>
+        <controls:LabeledMonthYearPicker
+            Text="Обрати місяць та рік"
+            SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
         
-        <StackPanel
-            Orientation="Horizontal">
-            
-            <TextBlock
-                Text="Ціна за м³"/>
-            
-            <NumericUpDown
-                Minimum="0"
-                Maximum="1000"
-                Increment=".01"
-                Value="{Binding CubicMeterPrice}"/>
-            
-        </StackPanel>
+        <controls:LabeledNumericUpDown
+            Text="День"
+            Minimum="0"
+            Maximum="10000"
+            Increment="1"
+            Value="{Binding CubicMetersConsumed, Mode=TwoWay}"/>
+        
+        <controls:LabeledNumericUpDown
+            Text="Ціна за м³"
+            Minimum="0"
+            Maximum="1000"
+            Increment=".01"
+            Value="{Binding CubicMeterPrice, Mode=TwoWay}"/>
         
     </StackPanel>
 </UserControl>
