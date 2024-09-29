@@ -13,7 +13,14 @@ public class ElectricityChartService : BaseChartService<ElectricityConsumption>
         ChartUtils.CreateLineSeries(_dayKilowattConsumed, ChartColors.DaySeriesColor, "День"),
         ChartUtils.CreateLineSeries(_nightKilowattConsumed, ChartColors.NightSeriesColor, "Ніч"),
     ];
-    
+
+    public override void AddValues(ElectricityConsumption consumption)
+    {
+        base.AddValues(consumption);
+        _dayKilowattConsumed.Add(consumption.DayKilowattConsumed);
+        _nightKilowattConsumed.Add(consumption.NightKilowattConsumed);
+    }
+
     public override void AddValues(int index, ElectricityConsumption consumption)
     {
         base.AddValues(index, consumption);

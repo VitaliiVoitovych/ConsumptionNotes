@@ -37,6 +37,12 @@ public abstract class BaseChartService<T>
     ];
 
     public SolidColorPaint LegendTextPaint => ChartPaints.LegendTextPaint;
+
+    public virtual void AddValues(T consumption)
+    {
+        _dateLabels.Add(consumption.Date.ToString(ChartConstants.DateFormat));
+        _amountsToPayValues.Add(consumption.AmountToPay);
+    }
     
     public virtual void AddValues(int index, T consumption)
     {

@@ -2,11 +2,13 @@
 
 namespace ConsumptionNotes.Services.Notes;
 
-public partial class NaturalGasNotesService : BaseNotesService<NaturalGasConsumption, NaturalGasChartService>
+public partial class NaturalGasNotesService 
+    : BaseNotesService<NaturalGasConsumption, NaturalGasChartService, NaturalGasConsumptionRepository>
 {
     [ObservableProperty] private double _averageCubicMeterConsumed;
     
-    public NaturalGasNotesService(NaturalGasChartService chartService) : base(chartService)
+    public NaturalGasNotesService(NaturalGasChartService chartService, NaturalGasConsumptionRepository repository) 
+        : base(chartService, repository)
     {
     }
 

@@ -1,13 +1,23 @@
 ﻿namespace ConsumptionNotes.ViewModels;
 
-public class HomeViewModel(
-    ElectricityNotesService electricityNotesService,
-    NaturalGasNotesService naturalGasNotesService
-    ) : ViewModelBase
+public class HomeViewModel: ViewModelBase
 {
-    public ElectricityNotesService ElectricityNotesService => electricityNotesService;
-    public NaturalGasNotesService NaturalGasNotesService => naturalGasNotesService;
+    public ElectricityNotesService ElectricityNotesService { get; }
+    public NaturalGasNotesService NaturalGasNotesService { get; }
 
     public ElectricityChartService ElectricityChartService => ElectricityNotesService.ChartService;
     public NaturalGasChartService NaturalGasChartService => NaturalGasNotesService.ChartService;
+
+    public HomeViewModel(ElectricityNotesService electricityNotesService,
+        NaturalGasNotesService naturalGasNotesService)
+    {
+        ElectricityNotesService = electricityNotesService;
+        NaturalGasNotesService = naturalGasNotesService;
+
+        Task.Run(async () =>
+        {
+            await ElectricityNotesService.LoadDataAsync();
+            await NaturalGasNotesService.LoadDataAsync();
+        });
+    }
 }

@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
+using ConsumptionNotes.Dal.Extensions;
 using ConsumptionNotes.Views;
 using ConsumptionNotes.Views.Addition;
 
@@ -35,6 +36,12 @@ public partial class App : Application
     private static ServiceProvider ConfigureServices()
     {
         var services = new ServiceCollection();
+        
+        // DbContext
+        services.AddConsumptionDbContext("Data Source=test.db");
+        
+        // Repositories
+        services.AddRepositories();
         
         // Chart services 
         services.AddSingleton<ElectricityChartService>();

@@ -2,12 +2,13 @@
 
 namespace ConsumptionNotes.Services.Notes;
 
-public partial class ElectricityNotesService : BaseNotesService<ElectricityConsumption, ElectricityChartService>
+public partial class ElectricityNotesService
+    : BaseNotesService<ElectricityConsumption, ElectricityChartService, ElectricityConsumptionRepository>
 {
     [ObservableProperty] private double _averageKilowattConsumed;
     
-    public ElectricityNotesService(ElectricityChartService chartService) 
-        : base(chartService)
+    public ElectricityNotesService(ElectricityChartService chartService, ElectricityConsumptionRepository repository) 
+        : base(chartService, repository)
     {
         
     }

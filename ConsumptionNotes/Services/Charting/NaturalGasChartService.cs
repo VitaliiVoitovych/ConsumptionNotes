@@ -11,7 +11,13 @@ public class NaturalGasChartService : BaseChartService<NaturalGasConsumption>
     [
         ChartUtils.CreateLineSeries(_cubicMeterConsumed, ChartColors.GasSeriesColor),
     ];
-    
+
+    public override void AddValues(NaturalGasConsumption consumption)
+    {
+        base.AddValues(consumption);
+        _cubicMeterConsumed.Add(consumption.CubicMeterConsumed);
+    }
+
     public override void AddValues(int index, NaturalGasConsumption consumption)
     {
         base.AddValues(index, consumption);

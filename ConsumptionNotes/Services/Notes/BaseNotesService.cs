@@ -1,25 +1,44 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
+using ConsumptionNotes.Dal.Repositories.Base;
 using ConsumptionNotes.Domain.Extensions;
 using ConsumptionNotes.Services.Notes.Interfaces;
 
 namespace ConsumptionNotes.Services.Notes;
 
-public abstract partial class BaseNotesService<TConsumption, TChartService> : ObservableObject, INotesService<TConsumption>
+public abstract partial class BaseNotesService<TConsumption, TChartService, TRepository> : ObservableObject, INotesService<TConsumption>
     where TConsumption : BaseConsumption
     where TChartService : BaseChartService<TConsumption>
+    where TRepository : BaseRepository<TConsumption>
 {
     [ObservableProperty] private decimal _averageAmount;
+    private readonly TRepository _repository;
     
     public TChartService ChartService { get; }
 
     public ObservableCollection<TConsumption> Consumptions { get; }
     
-    protected BaseNotesService(TChartService chartService)
+    protected BaseNotesService(TChartService chartService, TRepository repository)
     {
         ChartService = chartService;
+        _repository = repository;
         Consumptions = [];
     }
 
+    public async Task LoadDataAsync()
+    {
+        var consumptions = await _repository.GetAll();
+        
+        Debug.WriteLine($"Loaded {consumptions.Count} consumptions from {typeof(TRepository).Name}");
+        
+        foreach (var consumption in consumptions)
+        {
+            Consumptions.Add(consumption);
+            ChartService.AddValues(consumption);
+        }
+        UpdateAverageValues();
+    }
+    
     public void AddNote(TConsumption consumption)
     {
         if (Consumptions.Any(c => EqualsYearAndMonth(c.Date, consumption.Date)))
@@ -29,6 +48,8 @@ public abstract partial class BaseNotesService<TConsumption, TChartService> : Ob
         
         Consumptions.Insert(index, consumption);
         ChartService.AddValues(index, consumption);
+
+        _repository.Add(consumption);
         
         UpdateAverageValues();
     }
@@ -38,6 +59,8 @@ public abstract partial class BaseNotesService<TConsumption, TChartService> : Ob
         var index = Consumptions.IndexOf(consumption);
         Consumptions.RemoveAt(index);
         ChartService.RemoveValues(index);
+
+        _repository.Remove(consumption);
         
         UpdateAverageValues();
     }
