@@ -29,7 +29,7 @@ public abstract class BaseRepository<T>
 
     public virtual async Task<List<T>> GetAll()
     {
-        return await Table.ToListAsync();
+        return await Table.OrderBy(e => e.Date).ToListAsync();
     }
 
     public int SaveChanges()
