@@ -5,6 +5,7 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 using ConsumptionNotes.Dal.Extensions;
+using ConsumptionNotes.Services.Files;
 using ConsumptionNotes.Views;
 using ConsumptionNotes.Views.Addition;
 
@@ -22,18 +23,19 @@ public partial class App : Application
         
         CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("uk-UA");
         
-        Ioc.Default.ConfigureServices(ConfigureServices());
-        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             BindingPlugins.DataValidators.RemoveAt(0);
-            desktop.MainWindow = new MainWindow();
+            var mainWindow = new MainWindow();
+            Ioc.Default.ConfigureServices(ConfigureServices(mainWindow));
+            
+            desktop.MainWindow = mainWindow;
         }
 
         base.OnFrameworkInitializationCompleted();
     }
 
-    private static ServiceProvider ConfigureServices()
+    private static ServiceProvider ConfigureServices(Window window)
     {
         var services = new ServiceCollection();
         
@@ -50,6 +52,9 @@ public partial class App : Application
         // Note services
         services.AddSingleton<ElectricityNotesService>();
         services.AddSingleton<NaturalGasNotesService>();
+        
+        // Data Service
+        services.AddSingleton<FileService>(d => new FileService(window));
         
         // View models
         services.AddTransient<HomeViewModel>();

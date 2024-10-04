@@ -1,4 +1,3 @@
-using System;
 using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Media.Animation;
 using FluentAvalonia.UI.Windowing;
@@ -13,8 +12,6 @@ namespace ConsumptionNotes.Views
 
             TitleBar.ExtendsContentIntoTitleBar = true;
             TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
-            
-            ContentFrame.Navigate(typeof(HomeView));
         }
 
         private void NavigationView_OnSelectionChanged(object? sender, NavigationViewSelectionChangedEventArgs e)

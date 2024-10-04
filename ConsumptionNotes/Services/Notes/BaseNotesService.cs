@@ -38,6 +38,26 @@ public abstract partial class BaseNotesService<TConsumption, TChartService, TRep
         }
         UpdateAverageValues();
     }
+
+    public async Task ImportDataAsync(IAsyncEnumerable<TConsumption> data)
+    {
+        Clear();
+        
+        await foreach (var consumption in data)
+        {
+            AddNote(consumption);
+        }
+    }
+
+    private void Clear()
+    {
+        var consumptions = Consumptions.ToList();
+
+        foreach (var consumption in consumptions)
+        {
+            RemoveNote(consumption);
+        }
+    }
     
     public void AddNote(TConsumption consumption)
     {

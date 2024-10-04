@@ -87,11 +87,25 @@
                 </DataGrid.Columns>
             </DataGrid>
             
-            <Button
+            <StackPanel
                 Grid.Row="1"
+                Orientation="Horizontal"
                 HorizontalAlignment="Right"
-                Content="Додати"
-                Command="{Binding OpenAddDialogCommand}"/>
+                Spacing="15">
+                
+                <Button
+                    Content="Імпорт"
+                    Command="{Binding ImportDataCommand}"/>
+                
+                <Button
+                    Content="Експорт"
+                    Command="{Binding ExportDataCommand}"/>
+                
+                <Button
+                    Content="Додати"
+                    Command="{Binding OpenAddDialogCommand}"/>
+                
+            </StackPanel>
             
         </Grid>
     </Grid>
