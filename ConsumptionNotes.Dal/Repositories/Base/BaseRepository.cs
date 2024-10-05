@@ -9,7 +9,7 @@ public abstract class BaseRepository<T>
     public ConsumptionNotesDbContext Context { get; }
     public DbSet<T> Table { get; }
 
-    public BaseRepository(ConsumptionNotesDbContext context)
+    protected BaseRepository(ConsumptionNotesDbContext context)
     {
         Context = context;
         Table = Context.Set<T>();

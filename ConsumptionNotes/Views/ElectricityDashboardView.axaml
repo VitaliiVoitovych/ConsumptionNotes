@@ -6,8 +6,8 @@
              xmlns:controls="using:ConsumptionNotes.Controls"
              xmlns:models="using:ConsumptionNotes.Domain.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ConsumptionNotes.Views.NaturalGasView"
-             x:DataType="vm:NaturalGasViewModel">
+             x:Class="ConsumptionNotes.Views.ElectricityDashboardView"
+             x:DataType="vm:ElectricityDashboardViewModel">
     <Grid
         ColumnDefinitions="*,*">
         
@@ -27,11 +27,12 @@
                 
                 <controls:ChartWidget
                     Text="Споживання"
-                    AverageValue="{Binding NotesService.AverageCubicMeterConsumed, StringFormat=\0.00 м³}"
+                    AverageValue="{Binding NotesService.AverageKilowattConsumed, StringFormat=\0.00 кВт/год}"
                     Height="{Binding $parent[UserControl].Bounds.Height}"
-                    Series="{Binding ChartService.CubicMeterConsumedSeries}"
+                    Series="{Binding ChartService.KilowattConsumedSeries}"
                     XAxes="{Binding ChartService.DateXAxes}"
                     YAxes="{Binding ChartService.ConsumedYAxes}"
+                    LegendPosition="Top"
                     LegendTextPaint="{Binding ChartService.LegendTextPaint}"/>
                 
             </StackPanel>
@@ -43,7 +44,7 @@
             RowDefinitions="*,Auto">
             
             <DataGrid
-                x:Name="NaturalGasDataGrid"
+                x:Name="ElectricityDataGrid"
                 ItemsSource="{Binding NotesService.Consumptions}">
                 <DataGrid.Columns>
                 
@@ -53,9 +54,14 @@
                         Binding="{Binding Date, StringFormat=\MMMM yyyy}"/>
                 
                     <DataGridTextColumn
-                        Header="Спожито"
+                        Header="Спожито вдень"
                         Width="*"
-                        Binding="{Binding CubicMeterConsumed}"/>
+                        Binding="{Binding DayKilowattConsumed}"/>
+                
+                    <DataGridTextColumn
+                        Header="Спожито вночі"
+                        Width="*"
+                        Binding="{Binding NightKilowattConsumed}"/>
                 
                     <DataGridTextColumn
                         Header="До оплати"
@@ -64,16 +70,16 @@
                 
                     <DataGridTemplateColumn
                         Width="Auto">
-                        <DataTemplate x:DataType="models:NaturalGasConsumption">
+                        <DataTemplate x:DataType="models:ElectricityConsumption">
                             <StackPanel 
                                 Orientation="Horizontal"
                                 Spacing="5">
                                 
                                 <Button
-                                    Command="{Binding #NaturalGasDataGrid.((vm:NaturalGasViewModel)DataContext).RemoveCommand}"
+                                    Command="{Binding #ElectricityDataGrid.((vm:ElectricityDashboardViewModel)DataContext).RemoveCommand}"
                                     CommandParameter="{Binding .}"
                                     Content="X"/>
-                            
+                                
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn>

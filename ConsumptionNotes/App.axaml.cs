@@ -10,6 +10,7 @@ using ConsumptionNotes.Views;
 using ConsumptionNotes.Views.Addition;
 
 namespace ConsumptionNotes;
+
 public partial class App : Application
 {
     public override void Initialize()
@@ -40,7 +41,7 @@ public partial class App : Application
         var services = new ServiceCollection();
         
         // DbContext
-        services.AddConsumptionDbContext("Data Source=test.db");
+        services.AddConsumptionDbContext("Data Source=test.db"); // TODO: Add Configuration file
         
         // Repositories
         services.AddRepositories();
@@ -54,12 +55,12 @@ public partial class App : Application
         services.AddSingleton<NaturalGasNotesService>();
         
         // Data Service
-        services.AddSingleton<FileService>(d => new FileService(window));
+        services.AddSingleton<FileService>(_ => new FileService(window));
         
         // View models
         services.AddTransient<HomeViewModel>();
-        services.AddTransient<ElectricityViewModel>();
-        services.AddTransient<NaturalGasViewModel>();
+        services.AddTransient<ElectricityDashboardViewModel>();
+        services.AddTransient<NaturalGasDashboardViewModel>();
         
         services.AddScoped<ElectricityNoteViewModel>();
         services.AddScoped<NaturalGasNoteViewModel>();

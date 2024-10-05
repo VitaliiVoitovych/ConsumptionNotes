@@ -6,34 +6,34 @@ using ConsumptionNotes.Views.Addition;
 
 namespace ConsumptionNotes.ViewModels;
 
-public partial class NaturalGasViewModel(NaturalGasNotesService notesService, FileService fileService) : ViewModelBase
+public partial class ElectricityDashboardViewModel(ElectricityNotesService notesService, FileService fileService) : ViewModelBase
 {
-    public NaturalGasNotesService NotesService => notesService;
-    public NaturalGasChartService ChartService => notesService.ChartService;
-    
+    public ElectricityNotesService NotesService { get; } = notesService;
+    public ElectricityChartService ChartService => NotesService.ChartService;
+
     [RelayCommand]
     private async Task OpenAddDialog()
     {
-        var addView = Ioc.Default.GetRequiredService<NaturalGasNoteView>();
-        var addViewModel = addView.DataContext as NaturalGasNoteViewModel;
+        var addView = Ioc.Default.GetRequiredService<ElectricityNoteView>();
+        var addViewModel = addView.DataContext as ElectricityNoteViewModel;
 
         var addDialog = Dialogs.CreateAdditionDialog(addView, addViewModel!.AddCommand);
         await addDialog.ShowAsync();
     }
 
     [RelayCommand]
-    private void Remove(NaturalGasConsumption consumption)
+    private void Remove(ElectricityConsumption consumption)
     {
-        notesService.RemoveNote(consumption);
+        NotesService.RemoveNote(consumption);
     }
-    
+
     [RelayCommand]
     private async Task ImportData()
     {
         try
         {
             await using var stream = await fileService.OpenFileAsync();
-            var data = DataExporterImporter.Import<NaturalGasConsumption>(stream);
+            var data = DataExporterImporter.Import<ElectricityConsumption>(stream);
 
             await NotesService.ImportDataAsync(data);
         }
@@ -52,7 +52,7 @@ public partial class NaturalGasViewModel(NaturalGasNotesService notesService, Fi
     [RelayCommand]
     private async Task ExportData()
     {
-        const string fileName = "naturalgas";
+        const string fileName = "electricity";
         var exportFile = $"{fileName}_{DateTime.UtcNow:dd-MM-yyyy}.json";
         
         var folderPath = await fileService.OpenFolderAsync();
