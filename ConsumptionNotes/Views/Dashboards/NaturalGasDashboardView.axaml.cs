@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using Avalonia;
-
-namespace ConsumptionNotes.Views;
+﻿namespace ConsumptionNotes.Views.Dashboards;
 
 public partial class NaturalGasDashboardView : UserControl
 {

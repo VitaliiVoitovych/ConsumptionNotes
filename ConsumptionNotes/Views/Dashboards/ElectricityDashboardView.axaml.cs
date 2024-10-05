@@ -1,4 +1,4 @@
-﻿namespace ConsumptionNotes.Views;
+﻿namespace ConsumptionNotes.Views.Dashboards;
 
 public partial class ElectricityDashboardView : UserControl
 {

@@ -6,7 +6,7 @@ using ConsumptionNotes.Services.Notes.Interfaces;
 
 namespace ConsumptionNotes.Services.Notes;
 
-public abstract partial class BaseNotesService<TConsumption, TChartService, TRepository> : ObservableObject, INotesService<TConsumption>
+public abstract partial class BaseNotesService<TConsumption, TChartService, TRepository> : ObservableObject, INotesChartService<TConsumption, TChartService>
     where TConsumption : BaseConsumption
     where TChartService : BaseChartService<TConsumption>
     where TRepository : BaseRepository<TConsumption>

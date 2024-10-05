@@ -37,8 +37,7 @@ public abstract partial class ConsumptionNoteViewModelBase<TConsumption, TNotesS
         }
         catch (ArgumentException ex)
         {
-            var messageDialog = Dialogs.CreateMessageDialog("Помилка", ex.Message);
-            await messageDialog.ShowAsync();
+            await Dialogs.ShowMessageDialog("Помилка", ex.Message);
         }
     }
 }

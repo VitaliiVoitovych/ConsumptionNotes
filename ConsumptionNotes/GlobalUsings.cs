@@ -3,6 +3,7 @@ global using ConsumptionNotes.Dal.Repositories;
 global using ConsumptionNotes.Domain.Models;
 global using ConsumptionNotes.ViewModels;
 global using ConsumptionNotes.ViewModels.Addition;
+global using ConsumptionNotes.ViewModels.Dashboards;
 global using ConsumptionNotes.Services.Notes;
 global using ConsumptionNotes.Services.Charting;
 global using CommunityToolkit.Mvvm.ComponentModel;

@@ -30,4 +30,15 @@
     <ProjectReference Include="..\ConsumptionNotes.Dal\ConsumptionNotes.Dal.csproj" />
     <ProjectReference Include="..\ConsumptionNotes.Domain\ConsumptionNotes.Domain.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Dashboards\ElectricityDashboardView.axaml.cs">
+      <DependentUpon>ElectricityDashboardView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Dashboards\NaturalGasDashboardView.axaml.cs">
+      <DependentUpon>NaturalGasDashboardView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

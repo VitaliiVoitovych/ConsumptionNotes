@@ -11,7 +11,7 @@ public static class Dialogs
 
     private const string MessageDialogCloseButtonText = "Зрозуміло";
     
-    public static ContentDialog CreateMessageDialog(string title, string message)
+    public static async Task<ContentDialogResult> ShowMessageDialog(string title, string message)
     {
         var dialogBuilder = new DialogBuilder();
 
@@ -21,10 +21,11 @@ public static class Dialogs
             .SetCloseButtonText(MessageDialogCloseButtonText)
             .Build();
 
-        return messageDialog;
+        return await messageDialog.ShowAsync();
     }
 
-    public static ContentDialog CreateAdditionDialog(UserControl view, ICommand command)
+    // TODO: Improve and refactoring
+    public static async Task<ContentDialogResult> ShowAdditionDialog(UserControl view, ICommand command)
     {
         var addDialog = new DialogBuilder()
             .SetTitle(AdditionDialogTitle)
@@ -35,6 +36,6 @@ public static class Dialogs
             .SetDefaultButton(ContentDialogButton.Primary)
             .Build();
 
-        return addDialog;
+        return await addDialog.ShowAsync();
     }
 }

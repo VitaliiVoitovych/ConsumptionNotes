@@ -47,7 +47,7 @@
             
                 <ui:NavigationViewItem
                     Content="Електроенергія"
-                    Tag="ElectricityView">
+                    Tag="Dashboards.ElectricityDashboardView">
                     <ui:NavigationViewItem.IconSource>
                         <ui:ImageIconSource Source="{SvgImage /Assets/electricity.svg}"/>
                     </ui:NavigationViewItem.IconSource>
@@ -55,7 +55,7 @@
             
                 <ui:NavigationViewItem
                     Content="Газ"
-                    Tag="NaturalGasView">
+                    Tag="Dashboards.NaturalGasDashboardView">
                     <ui:NavigationViewItem.IconSource>
                         <ui:ImageIconSource Source="{SvgImage /Assets/gas.svg}"/>
                     </ui:NavigationViewItem.IconSource>
