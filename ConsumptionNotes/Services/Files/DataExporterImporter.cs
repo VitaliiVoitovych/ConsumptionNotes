@@ -1,13 +1,20 @@
 ﻿using System.IO;
 using System.Text.Json;
+using ConsumptionNotes.Domain;
 
 namespace ConsumptionNotes.Services.Files;
 
 public static class DataExporterImporter
 {
-    public static IAsyncEnumerable<T> Import<T>(Stream stream)
+    public static async Task<IAsyncEnumerable<T>> ImportAsync<T>(Stream stream)
+        where T : BaseConsumption
     {
-        return JsonSerializer.DeserializeAsyncEnumerable<T>(stream)!;
+        var options = new JsonSerializerOptions
+        {
+            Converters = { new ConsumptionConverter<T>() }
+        };
+        return (await JsonSerializer.DeserializeAsync<IAsyncEnumerable<T>>(stream, options))!;
+        //return JsonSerializer.DeserializeAsync<IAsyncEnumerable<T>>(stream, options)!;
     }
 
     public static async Task ExportAsync<T>(string path, IEnumerable<T> collection)

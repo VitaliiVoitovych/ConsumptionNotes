@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Text.Json;
 using ConsumptionNotes.Services.Files;
 using ConsumptionNotes.Services.Notes.Interfaces;
 using ConsumptionNotes.Utils.Dialogs;
@@ -31,17 +30,12 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
         try
         {
             await using var stream = await _fileService.OpenFileAsync();
-            var data = DataExporterImporter.Import<TConsumption>(stream);
-            // TODO: Deserializes the wrong data
+            var data = await DataExporterImporter.ImportAsync<TConsumption>(stream);
             await NotesService.ImportDataAsync(data);
         }
-        catch (FileNotFoundException e)
+        catch (Exception e)
         {
             await Dialogs.ShowMessageDialog("Помилка", e.Message);
-        }
-        catch (JsonException)
-        {
-            await Dialogs.ShowMessageDialog("Помилка", "Ви обрали не файл з даними");
         }
     }
     
