@@ -8,11 +8,14 @@ using ConsumptionNotes.Dal.Extensions;
 using ConsumptionNotes.Services.Files;
 using ConsumptionNotes.Views;
 using ConsumptionNotes.Views.Addition;
+using Microsoft.Extensions.Configuration;
 
 namespace ConsumptionNotes;
 
 public partial class App : Application
 {
+    private static IConfiguration? _configuration;
+    
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -21,6 +24,10 @@ public partial class App : Application
     public override void OnFrameworkInitializationCompleted()
     {
         Current!.RequestedThemeVariant = ThemeVariant.Dark;
+
+        _configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: true)
+            .Build();
         
         CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("uk-UA");
         
@@ -41,7 +48,8 @@ public partial class App : Application
         var services = new ServiceCollection();
         
         // DbContext
-        services.AddConsumptionDbContext("Data Source=test.db"); // TODO: Add Configuration file
+        var connectionString = _configuration?.GetConnectionString("DefaultConnection");
+        services.AddConsumptionDbContext(connectionString ?? "Data Source = temp.db");
         
         // Repositories
         services.AddRepositories();
