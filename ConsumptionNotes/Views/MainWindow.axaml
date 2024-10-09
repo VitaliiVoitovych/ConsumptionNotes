@@ -5,8 +5,9 @@
         xmlns:ui="using:FluentAvalonia.UI.Controls"
         mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
         x:Class="ConsumptionNotes.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/Assets/icon.ico"
         Title="ConsumptionNotes"
+        Background="{StaticResource DarkBrush}"
         MinHeight="525"
         MinWidth="1120">
 
@@ -15,8 +16,16 @@
         
         <StackPanel
             Height="35"
+            Spacing="10"
             Orientation="Horizontal"
+            Margin="5"
             Background="{StaticResource DarkBrush}">
+            
+            <Image
+                Width="35"
+                Height="35"
+                Source="{SvgImage /Assets/logo.svg}"/>
+            
             <TextBlock 
                 Text="{Binding $parent[Window].Title}"
                 VerticalAlignment="Center"
