@@ -50,7 +50,7 @@
                 
                     <DataGridTextColumn
                         Header="Місяць та рік"
-                        Width="*"
+                        Width="Auto"
                         Binding="{Binding Date, StringFormat=\MMMM yyyy}"/>
                 
                     <DataGridTextColumn
@@ -73,12 +73,15 @@
                         <DataTemplate x:DataType="models:ElectricityConsumption">
                             <StackPanel 
                                 Orientation="Horizontal"
-                                Spacing="5">
+                                Spacing="5"
+                                HorizontalAlignment="Center">
                                 
                                 <Button
+                                    Classes="RemoveNote"
                                     Command="{Binding #ElectricityDataGrid.((dvm:ElectricityDashboardViewModel)DataContext).RemoveCommand}"
-                                    CommandParameter="{Binding .}"
-                                    Content="X"/>
+                                    CommandParameter="{Binding .}">
+                                    <Image Source="{SvgImage /Assets/cross.svg}"/>
+                                </Button>
                                 
                             </StackPanel>
                         </DataTemplate>
@@ -89,9 +92,8 @@
             
             <StackPanel
                 Grid.Row="1"
-                Orientation="Horizontal"
                 HorizontalAlignment="Right"
-                Spacing="15">
+                Classes="DashboardButtonPanel">
                 
                 <Button
                     Content="Імпорт"

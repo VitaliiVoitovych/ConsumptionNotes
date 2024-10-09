@@ -6,7 +6,9 @@
         mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
         x:Class="ConsumptionNotes.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="ConsumptionNotes">
+        Title="ConsumptionNotes"
+        MinHeight="525"
+        MinWidth="1120">
 
     <Grid
         RowDefinitions="Auto, *">

@@ -8,14 +8,16 @@
              x:Class="ConsumptionNotes.Views.Addition.NaturalGasNoteView"
              x:DataType="vm:NaturalGasNoteViewModel">
     <StackPanel
-        HorizontalAlignment="Center">
+        HorizontalAlignment="Center"
+        Spacing="10">
         
         <controls:LabeledMonthYearPicker
             Text="Обрати місяць та рік"
-            SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
+            SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+            Orientation="Vertical"/>
         
         <controls:LabeledNumericUpDown
-            Text="День"
+            Text="Спожито"
             Minimum="0"
             Maximum="10000"
             Increment="1"

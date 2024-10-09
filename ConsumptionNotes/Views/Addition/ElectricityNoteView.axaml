@@ -8,18 +8,13 @@
              x:Class="ConsumptionNotes.Views.Addition.ElectricityNoteView"
              x:DataType="vm:ElectricityNoteViewModel">
     <StackPanel
-        HorizontalAlignment="Center">
-        <StackPanel
-            Orientation="Horizontal">
-            
-            <TextBlock
-                Text="Обрати місяць та рік"/>
-            
-            <DatePicker
-                DayVisible="False"
-                SelectedDate="{Binding SelectedDate}"/>
-            
-        </StackPanel>
+        HorizontalAlignment="Center"
+        Spacing="10">
+        
+        <controls:LabeledMonthYearPicker
+            Text="Обрати місяць та рік"
+            SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+            Orientation="Vertical"/>
         
         <TextBlock
             Text="Спожито кВт/год"/>

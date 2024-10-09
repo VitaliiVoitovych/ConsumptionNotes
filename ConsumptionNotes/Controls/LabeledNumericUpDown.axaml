@@ -6,16 +6,19 @@
              x:Class="ConsumptionNotes.Controls.LabeledNumericUpDown"
              x:Name="This">
     <StackPanel
-        Orientation="Horizontal">
+        Orientation="Horizontal"
+        Spacing="5">
         
         <TextBlock
-            Text="{Binding #This.Text}"/>
+            Text="{Binding #This.Text}"
+            MinWidth="100"/>
         
         <NumericUpDown
             Minimum="{Binding #This.Minimum}"
             Maximum="{Binding #This.Maximum}"
             Increment="{Binding #This.Increment}"
-            Value="{Binding #This.Value}"/>
+            Value="{Binding #This.Value}"
+            MinWidth="135"/>
         
     </StackPanel>
 </UserControl>

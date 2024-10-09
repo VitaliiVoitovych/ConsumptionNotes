@@ -1,4 +1,5 @@
 ﻿using Avalonia;
+using Avalonia.Layout;
 
 namespace ConsumptionNotes.Controls;
 
@@ -20,6 +21,15 @@ public partial class LabeledMonthYearPicker : UserControl
     {
         get => GetValue(SelectedDateProperty);
         set => SetValue(SelectedDateProperty, value);
+    }
+
+    public static readonly StyledProperty<Orientation> OrientationProperty = AvaloniaProperty.Register<LabeledMonthYearPicker, Orientation>(
+        nameof(Orientation));
+
+    public Orientation Orientation
+    {
+        get => GetValue(OrientationProperty);
+        set => SetValue(OrientationProperty, value);
     }
     
     public LabeledMonthYearPicker()

@@ -6,7 +6,8 @@
              x:Class="ConsumptionNotes.Controls.LabeledMonthYearPicker"
              x:Name="This">
     <StackPanel
-        Orientation="Horizontal">
+        Orientation="{Binding #This.Orientation}"
+        Spacing="5">
         
         <TextBlock
             Text="{Binding #This.Text}"/>

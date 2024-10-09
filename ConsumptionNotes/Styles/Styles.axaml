@@ -1,6 +1,7 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:ui="using:FluentAvalonia.UI.Controls">
+        xmlns:ui="using:FluentAvalonia.UI.Controls"
+        xmlns:views="using:ConsumptionNotes.Views">
     <Design.PreviewWith>
         <Border Padding="20">
             <!-- Add Controls for Previewer Here -->
@@ -9,22 +10,57 @@
     
     <Style Selector="TextBlock">
         <Setter Property="Foreground" Value="{StaticResource LightBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+    
+    <Style Selector="ui|ContentDialog">
+        <Setter Property="Background" Value="{StaticResource DarkBrush}"/>
+    </Style>
+    
+    <Style Selector="StackPanel.DashboardButtonPanel">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Spacing" Value="10"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+    </Style>
+    
+    <!-- DataGrid styles -->
+    <Style Selector="DataGrid">
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="CanUserSortColumns" Value="False"/>
+        <Setter Property="GridLinesVisibility" Value="All"/>
     </Style>
     
     <Style Selector="DataGridColumnHeader">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="5,0,0,0"/>
         
         <Style Selector="^ /template/ Grid#PART_ColumnHeaderRoot TextBlock">
             <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
-        </Style>
-        
-        <Style Selector="^ /template/ Grid#PART_ColumnHeaderRoot ContentPresenter">
-            <Setter Property="Grid.ColumnSpan" Value="2"/>
+            <Setter Property="TextAlignment" Value="Justify"></Setter>
         </Style>
     </Style>
     
-    <Style Selector="ui|ContentDialog">
-        <Setter Property="Background" Value="{StaticResource DarkBrush}"/>
+    <Style Selector="DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle">
+        <Setter Property="Fill" Value="Transparent"></Setter>
+    </Style>
+    
+    <Style Selector="DataGridRow:selected /template/ Rectangle#BackgroundRectangle">
+        <Setter Property="Fill" Value="Transparent"></Setter>
+    </Style>
+    
+    <Style Selector="DataGridCell:focus /template/ Rectangle">
+        <Setter Property="StrokeThickness" Value="0"/>
+    </Style>
+    
+    <Style Selector="Button.RemoveNote">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+    </Style>
+    
+    <Style Selector="Button.RemoveNote > Image">
+        <Setter Property="Width" Value="25"/>
+        <Setter Property="Height" Value="25"/>
     </Style>
 </Styles>

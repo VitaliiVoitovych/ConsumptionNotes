@@ -18,8 +18,11 @@
             
             <StackPanel>
                 <TextBlock
+                    FontSize="18"
                     Text="{Binding #Widget.Text}"/>
                 <TextBlock
+                    FontSize="20"
+                    FontWeight="Bold"
                     Text="{Binding #Widget.AverageValue}"/>
             </StackPanel>
             
