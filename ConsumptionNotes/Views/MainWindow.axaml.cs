@@ -1,3 +1,4 @@
+using ConsumptionNotes.Views.SplashScreen;
 using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Media.Animation;
 using FluentAvalonia.UI.Windowing;
@@ -10,6 +11,8 @@ namespace ConsumptionNotes.Views
         {
             InitializeComponent();
 
+            SplashScreen = new ComplexSplashScreen();
+            
             TitleBar.ExtendsContentIntoTitleBar = true;
             TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
         }
