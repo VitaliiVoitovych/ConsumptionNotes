@@ -1,6 +1,4 @@
-﻿using Avalonia;
-
-namespace ConsumptionNotes.Controls;
+﻿namespace ConsumptionNotes.Controls;
 
 public partial class LabeledNumericUpDown : UserControl
 {

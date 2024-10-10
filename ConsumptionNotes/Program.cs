@@ -1,6 +1,4 @@
-﻿using Avalonia;
-
-namespace ConsumptionNotes
+﻿namespace ConsumptionNotes
 {
     internal sealed class Program
     {

@@ -1,6 +1,4 @@
-﻿using Avalonia;
-using LiveChartsCore;
-using LiveChartsCore.Drawing;
+﻿using LiveChartsCore.Drawing;
 using LiveChartsCore.Kernel.Sketches;
 using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView.Drawing;

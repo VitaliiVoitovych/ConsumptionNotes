@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using ConsumptionNotes.Dal.Repositories.Base;
 using ConsumptionNotes.Domain.Extensions;
 using ConsumptionNotes.Services.Notes.Interfaces;
@@ -28,8 +27,6 @@ public abstract partial class BaseNotesService<TConsumption, TChartService, TRep
     public async Task LoadDataAsync()
     {
         var consumptions = await _repository.GetAll();
-        
-        Debug.WriteLine($"Loaded {consumptions.Count} consumptions from {typeof(TRepository).Name}");
         
         foreach (var consumption in consumptions)
         {

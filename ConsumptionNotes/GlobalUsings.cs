@@ -1,4 +1,5 @@
-﻿global using Avalonia.Controls;
+﻿global using Avalonia;
+global using Avalonia.Controls;
 global using ConsumptionNotes.Dal.Repositories;
 global using ConsumptionNotes.Domain.Models;
 global using ConsumptionNotes.ViewModels;
@@ -15,4 +16,5 @@ global using SkiaSharp;
 global using System;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
+global using System.IO;
 global using System.Threading.Tasks;

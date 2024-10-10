@@ -1,5 +1,4 @@
-﻿using Avalonia;
-using Avalonia.Layout;
+﻿using Avalonia.Layout;
 
 namespace ConsumptionNotes.Controls;
 

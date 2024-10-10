@@ -1,5 +1,4 @@
-﻿using System.IO;
-using ConsumptionNotes.Services.Files;
+﻿using ConsumptionNotes.Services.Files;
 using ConsumptionNotes.Services.Notes.Interfaces;
 using ConsumptionNotes.Utils.Dialogs;
 

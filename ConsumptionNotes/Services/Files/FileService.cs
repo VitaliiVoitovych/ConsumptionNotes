@@ -1,5 +1,4 @@
-﻿using System.IO;
-using Avalonia.Platform.Storage;
+﻿using Avalonia.Platform.Storage;
 
 namespace ConsumptionNotes.Services.Files;
 
