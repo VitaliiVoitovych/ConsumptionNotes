@@ -5,7 +5,6 @@
         xmlns:ui="using:FluentAvalonia.UI.Controls"
         mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
         x:Class="ConsumptionNotes.Views.MainWindow"
-        Icon="/Assets/icon.ico"
         Title="ConsumptionNotes"
         Background="{StaticResource DarkBrush}"
         MinHeight="525"
