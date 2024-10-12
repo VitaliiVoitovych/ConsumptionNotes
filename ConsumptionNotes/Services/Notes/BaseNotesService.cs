@@ -59,7 +59,7 @@ public abstract partial class BaseNotesService<TConsumption, TChartService, TRep
     public void AddNote(TConsumption consumption)
     {
         if (Consumptions.Any(c => EqualsYearAndMonth(c.Date, consumption.Date)))
-            throw new ArgumentException("Запис про цей місяць вже є");
+            throw new ArgumentException("A note for this month already exists");
 
         var index = Consumptions.LastMatchingIndex(c => c.Date < consumption.Date) + 1;
         

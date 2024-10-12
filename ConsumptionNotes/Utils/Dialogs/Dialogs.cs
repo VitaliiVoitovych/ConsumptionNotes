@@ -23,8 +23,7 @@ public static class Dialogs
 
         return await messageDialog.ShowAsync();
     }
-
-    // TODO: Improve and refactoring
+    
     public static async Task<ContentDialogResult> ShowAdditionDialog(UserControl view, ICommand command)
     {
         var addDialog = new DialogBuilder()

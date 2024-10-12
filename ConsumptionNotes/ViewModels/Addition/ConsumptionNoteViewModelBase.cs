@@ -7,6 +7,8 @@ public abstract partial class ConsumptionNoteViewModelBase<TConsumption, TNotesS
     where TConsumption : BaseConsumption
     where TNotesService : INotesService<TConsumption>
 {
+    private const string DuplicateNoteErrorMessage  = "Запис про цей місяць вже є";
+    
     [ObservableProperty] private DateTimeOffset _selectedDate = DateTimeOffset.UtcNow;
 
     private TNotesService _notesService;
@@ -35,9 +37,9 @@ public abstract partial class ConsumptionNoteViewModelBase<TConsumption, TNotesS
             _notesService.AddNote(consumption);
             UpdateDate();
         }
-        catch (ArgumentException ex)
+        catch (ArgumentException)
         {
-            await Dialogs.ShowMessageDialog("Помилка", ex.Message);
+            await Dialogs.ShowMessageDialog("Помилка", DuplicateNoteErrorMessage);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ConsumptionNotes.Services.Files;
+﻿using System.Text.Json;
+using ConsumptionNotes.Services.Files;
 using ConsumptionNotes.Services.Notes.Interfaces;
 using ConsumptionNotes.Utils.Dialogs;
 
@@ -9,6 +10,8 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
     where TChartService : BaseChartService<TConsumption>
     where TNotesService : INotesChartService<TConsumption, TChartService>
 {
+    private const string JsonFileNotSelectedMessage  = "Не обрали потрібний файл з даними";
+    
     private readonly FileService _fileService = fileService;
 
     protected abstract string ExportFileName { get; }
@@ -32,9 +35,13 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
             var data = await DataExporterImporter.ImportAsync<TConsumption>(stream);
             await NotesService.ImportDataAsync(data);
         }
-        catch (Exception e)
+        catch (JsonException)
         {
-            await Dialogs.ShowMessageDialog("Помилка", e.Message);
+            await Dialogs.ShowMessageDialog("Помилка", JsonFileNotSelectedMessage);
+        }
+        catch (FileNotFoundException ex)
+        {
+            await Dialogs.ShowMessageDialog("Помилка", ex.Message);
         }
     }
     
@@ -42,9 +49,16 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
     private async Task ExportData()
     {
         var exportFile = $"{ExportFileName}_{DateTime.UtcNow:dd-MM-yyyy}.json";
-        
-        var folderPath = await _fileService.OpenFolderAsync();
-        var filePath = Path.Combine(folderPath, exportFile);
-        await DataExporterImporter.ExportAsync(filePath, NotesService.Consumptions);
+
+        try
+        {
+            var folderPath = await _fileService.OpenFolderAsync();
+            var filePath = Path.Combine(folderPath, exportFile);
+            await DataExporterImporter.ExportAsync(filePath, NotesService.Consumptions);
+        }
+        catch (IOException ex)
+        {
+            await Dialogs.ShowMessageDialog("Помилка", ex.Message);
+        }
     }
 }
