@@ -55,6 +55,7 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
             var folderPath = await _fileService.OpenFolderAsync();
             var filePath = Path.Combine(folderPath, exportFile);
             await DataExporterImporter.ExportAsync(filePath, NotesService.Consumptions);
+            await Dialogs.ShowMessageDialog("Дані успішно експортовано!", $"Дані експортовано за місцем \r\n{filePath}");
         }
         catch (IOException ex)
         {

@@ -20,6 +20,12 @@
                 Width="250"
                 Height="250"/>
             
+            <TextBlock
+                Text="by Vitalii Voitovych"
+                HorizontalAlignment="Center"
+                FontSize="15"
+                FontWeight="Bold"/>
+            
             <ProgressBar
                 Name="LoadProgressBar"
                 MaxWidth="200"
