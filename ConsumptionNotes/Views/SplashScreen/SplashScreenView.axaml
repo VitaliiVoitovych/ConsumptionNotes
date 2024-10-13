@@ -11,10 +11,6 @@
             Spacing="10"
             VerticalAlignment="Center">
             
-            <StackPanel.Resources>
-                <StaticResource x:Key="ProgressBarForeground" ResourceKey="LightBrush" />
-            </StackPanel.Resources>
-            
             <Image
                 Source="{SvgImage /Assets/logo.svg}"
                 Width="250"

@@ -13,7 +13,7 @@
     </Application.Resources>
     
     <Application.Styles>
-        <sty:FluentAvaloniaTheme PreferUserAccentColor="True"/>
+        <sty:FluentAvaloniaTheme PreferUserAccentColor="True" CustomAccentColor="{StaticResource LightDark}"/>
         <StyleInclude Source="/Styles/Styles.axaml"/>
     </Application.Styles>
 </Application>

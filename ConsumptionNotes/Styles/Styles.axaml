@@ -7,6 +7,16 @@
         </Border>
     </Design.PreviewWith>
     
+    <Styles.Resources>
+        <StaticResource x:Key="AccentButtonForeground" ResourceKey="Light" />
+        <StaticResource x:Key="AccentButtonForegroundPointerOver" ResourceKey="Light" />
+        <StaticResource x:Key="ProgressBarForeground" ResourceKey="LightBrush" />
+        <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="MediumDarkBrush"/>
+        <Thickness x:Key="NavigationViewContentGridBorderThickness">0</Thickness>
+        <CornerRadius x:Key="NavigationViewContentGridCornerRadius">12,0,0,0</CornerRadius>
+        <StaticResource x:Key="NavigationViewSelectionIndicatorForeground" ResourceKey="LightBrush" />
+    </Styles.Resources>
+    
     <Style Selector="TextBlock">
         <Setter Property="Foreground" Value="{StaticResource LightBrush}"/>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>

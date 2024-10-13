@@ -13,10 +13,12 @@ namespace ConsumptionNotes;
 
 public partial class App : Application
 {
+    private const string AppName = "ConsumptionNotes";
     private static IConfiguration? _configuration;
     
     public override void Initialize()
     {
+        Name = AppName;
         AvaloniaXamlLoader.Load(this);
     }
 
@@ -42,13 +44,25 @@ public partial class App : Application
         base.OnFrameworkInitializationCompleted();
     }
 
+    private static string GetOrCreateDatabasePath()
+    {
+        var connectionString = _configuration?.GetConnectionString("DefaultConnection") ?? "temp.db";
+        var appDatabaseFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppName);
+        if (!Directory.Exists(appDatabaseFolderPath))
+        {
+            Directory.CreateDirectory(appDatabaseFolderPath);
+        }
+        
+        return Path.Combine(appDatabaseFolderPath, connectionString);
+    }
+    
     private static ServiceProvider ConfigureServices(Window window)
     {
         var services = new ServiceCollection();
         
         // DbContext
-        var connectionString = _configuration?.GetConnectionString("DefaultConnection");
-        services.AddConsumptionDbContext(connectionString ?? "Data Source = temp.db");
+        var path = GetOrCreateDatabasePath();
+        services.AddConsumptionDbContext($"Data Source={path}");
         
         // Repositories
         services.AddRepositories();
