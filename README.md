@@ -14,7 +14,7 @@ Electricity works only with day/night mode <br/>
 [![MIT license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/VitaliiVoitovych/ConsumptionNotes/blob/master/LICENSE.txt)
 
 ## Download
-[![Download](https://img.shields.io/badge/Download-238636)](https://img.shields.io/badge/just%20the%20message-8A2BE2)
+[![Download](https://img.shields.io/badge/Download-238636)](https://github.com/VitaliiVoitovych/ConsumptionNotes/releases)
 
 ## Screenshots
 ### Splash screen
