@@ -1,7 +1,14 @@
 # ConsumptionNotes
 
-App for electricity/natural gas consumption statistics <br/>
-Electricity works only with day/night mode <br/>
+Supported only Ukrainian language
+
+App for electricity/natural gas consumption statistics
+
+Electricity works only with day/night mode.
+
+## Supported Platform
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 
 ## Technologies
 - .NET 8
