@@ -32,9 +32,11 @@ Electricity works only with day/night mode.
 
 ### Electricity
 <img src="/Screenshots/electricity-view.png">
+<img src="/Screenshots/electricity-view2.png">
 
 ### Natural Gas
 <img src="/Screenshots/natural-gas-view.png">
+<img src="/Screenshots/natural-gas-view2.png">
 
 ### Add
 #### Electricity
