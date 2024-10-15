@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumptionNotes", "ConsumptionNotes\ConsumptionNotes.csproj", "{18312FFB-D9F8-421D-B518-220184D4A8B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumptionNotes", "ConsumptionNotes\ConsumptionNotes.csproj", "{18312FFB-D9F8-421D-B518-220184D4A8B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumptionNotes.Domain", "ConsumptionNotes.Domain\ConsumptionNotes.Domain.csproj", "{E286BD06-A6AB-4FFA-A103-F90BD1205825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumptionNotes.Domain", "ConsumptionNotes.Domain\ConsumptionNotes.Domain.csproj", "{E286BD06-A6AB-4FFA-A103-F90BD1205825}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumptionNotes.Dal", "ConsumptionNotes.Dal\ConsumptionNotes.Dal.csproj", "{6E864C6E-E93C-4D61-BA5C-2A7EB4BF16E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumptionNotes.Dal", "ConsumptionNotes.Dal\ConsumptionNotes.Dal.csproj", "{6E864C6E-E93C-4D61-BA5C-2A7EB4BF16E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
