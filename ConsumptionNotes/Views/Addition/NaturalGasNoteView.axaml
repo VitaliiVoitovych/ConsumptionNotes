@@ -20,7 +20,7 @@
             Text="Спожито"
             Minimum="0"
             Maximum="10000"
-            Increment="1"
+            Increment=".01"
             Value="{Binding CubicMetersConsumed, Mode=TwoWay}"/>
         
         <controls:LabeledNumericUpDown

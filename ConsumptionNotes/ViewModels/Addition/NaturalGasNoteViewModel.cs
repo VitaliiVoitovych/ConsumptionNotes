@@ -3,8 +3,8 @@
 public partial class NaturalGasNoteViewModel
     : ConsumptionNoteViewModelBase<NaturalGasConsumption, NaturalGasNotesService>
 {
-    [ObservableProperty] private int _cubicMetersConsumed;
-    [ObservableProperty] private decimal _cubicMeterPrice = 7.99m;
+    [ObservableProperty] private double _cubicMetersConsumed;
+    [ObservableProperty] private decimal _cubicMeterPrice = 7.95689m;
 
     public NaturalGasNoteViewModel(NaturalGasNotesService notesService)
         : base(notesService)
@@ -14,7 +14,7 @@ public partial class NaturalGasNoteViewModel
     
     protected override decimal CalculateAmount()
     {
-        return CubicMetersConsumed * CubicMeterPrice;
+        return Convert.ToDecimal(CubicMetersConsumed) * CubicMeterPrice;
     }
 
     protected override NaturalGasConsumption CreateConsumption()

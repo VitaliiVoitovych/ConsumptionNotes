@@ -5,7 +5,7 @@ namespace ConsumptionNotes.Services.Charting;
 
 public class NaturalGasChartService : BaseChartService<NaturalGasConsumption>
 {
-    private readonly ObservableCollection<int> _cubicMeterConsumed = [];
+    private readonly ObservableCollection<double> _cubicMeterConsumed = [];
 
     public IEnumerable<ISeries> CubicMeterConsumedSeries =>
     [

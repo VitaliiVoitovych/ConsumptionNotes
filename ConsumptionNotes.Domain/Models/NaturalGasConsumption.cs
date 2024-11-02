@@ -2,5 +2,5 @@
 
 public record NaturalGasConsumption(
     DateOnly Date,
-    int CubicMeterConsumed,
+    double CubicMeterConsumed,
     decimal AmountToPay) : BaseConsumption(Date, AmountToPay);
