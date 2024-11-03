@@ -24,23 +24,4 @@ Electricity works only with day/night mode.
 [![Download](https://img.shields.io/badge/Download-238636)](https://github.com/VitaliiVoitovych/ConsumptionNotes/releases)
 
 ## Screenshots
-### Splash screen
-<img src="/Screenshots/splash-screen.png">
-
-### Home
-<img src="/Screenshots/home-view.png">
-
-### Electricity
-<img src="/Screenshots/electricity-view.png">
-<img src="/Screenshots/electricity-view2.png">
-
-### Natural Gas
-<img src="/Screenshots/natural-gas-view.png">
-<img src="/Screenshots/natural-gas-view2.png">
-
-### Add
-#### Electricity
-<img src="/Screenshots/electricity-add-dialog.png">
-
-#### Natural gas
-<img src="/Screenshots/natural-gas-add-dialog.png">
+You can see the [screenshots](/Screenshots/Screenshots.md)
