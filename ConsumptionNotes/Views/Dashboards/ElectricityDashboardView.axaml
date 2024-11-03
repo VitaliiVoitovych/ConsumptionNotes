@@ -18,17 +18,17 @@
                 Spacing="10">
                 
                 <controls:ChartWidget
+                    x:Name="AmountToPayChart"
                     Text="До оплати"
                     AverageValue="{Binding NotesService.AverageAmount, StringFormat=\C2}"
-                    Height="{Binding $parent[UserControl].Bounds.Height}"
                     Series="{Binding ChartService.AmountsToPaySeries}"
                     XAxes="{Binding ChartService.DateXAxes}"
                     YAxes="{Binding ChartService.AmountToPayYAxes}"/>
                 
                 <controls:ChartWidget
+                    x:Name="ConsumptionChart"
                     Text="Споживання"
                     AverageValue="{Binding NotesService.AverageKilowattConsumed, StringFormat=\0.00 кВт/год}"
-                    Height="{Binding $parent[UserControl].Bounds.Height}"
                     Series="{Binding ChartService.KilowattConsumedSeries}"
                     XAxes="{Binding ChartService.DateXAxes}"
                     YAxes="{Binding ChartService.ConsumedYAxes}"
@@ -77,7 +77,7 @@
                                 HorizontalAlignment="Center">
                                 
                                 <Button
-                                    Classes="RemoveNote"
+                                    Classes="DashboardDataGridRemove"
                                     Command="{Binding #ElectricityDataGrid.((dvm:ElectricityDashboardViewModel)DataContext).RemoveCommand}"
                                     CommandParameter="{Binding .}">
                                     <Image Source="{SvgImage /Assets/cross.svg}"/>

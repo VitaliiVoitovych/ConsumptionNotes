@@ -8,4 +8,14 @@ public partial class ElectricityDashboardView : UserControl
 
         DataContext = Ioc.Default.GetRequiredService<ElectricityDashboardViewModel>();
     }
+
+    protected override void OnSizeChanged(SizeChangedEventArgs e)
+    {
+        base.OnSizeChanged(e);
+
+        var newHeight = e.NewSize.Height;
+        var height = newHeight > 630 ? newHeight / 2 - 10 : Bounds.Height;
+
+        ConsumptionChart.Height = AmountToPayChart.Height = height;
+    }
 }
