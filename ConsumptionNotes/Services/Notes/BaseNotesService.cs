@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using ConsumptionNotes.Dal.Repositories.Base;
+using ConsumptionNotes.Domain.Exceptions;
 using ConsumptionNotes.Domain.Extensions;
 using ConsumptionNotes.Services.Notes.Interfaces;
 
@@ -58,9 +59,8 @@ public abstract partial class BaseNotesService<TConsumption, TChartService, TRep
     
     public void AddNote(TConsumption consumption)
     {
-        if (Consumptions.Any(c => EqualsYearAndMonth(c.Date, consumption.Date)))
-            throw new ArgumentException("A note for this month already exists");
-
+        DuplicateConsumptionNoteException.ThrowIfDuplicateExists(Consumptions, consumption);
+        
         var index = Consumptions.LastMatchingIndex(c => c.Date < consumption.Date) + 1;
         
         Consumptions.Insert(index, consumption);
@@ -88,7 +88,4 @@ public abstract partial class BaseNotesService<TConsumption, TChartService, TRep
             ? Consumptions.Average(e => e.AmountToPay) 
             : 0.0m;
     }
-    
-    private static bool EqualsYearAndMonth(DateOnly date1, DateOnly date2)
-        => (date1.Month, date1.Year) == (date2.Month, date2.Year);
 }

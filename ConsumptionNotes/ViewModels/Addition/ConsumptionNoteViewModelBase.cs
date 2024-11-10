@@ -1,4 +1,5 @@
-﻿using ConsumptionNotes.Services.Notes.Interfaces;
+﻿using ConsumptionNotes.Domain.Exceptions;
+using ConsumptionNotes.Services.Notes.Interfaces;
 using ConsumptionNotes.Utils.Dialogs;
 
 namespace ConsumptionNotes.ViewModels.Addition;
@@ -8,8 +9,9 @@ public abstract partial class ConsumptionNoteViewModelBase<TConsumption, TNotesS
     where TNotesService : INotesService<TConsumption>
 {
     private const string DuplicateNoteErrorMessage  = "Запис про цей місяць вже є";
+    private const string InvalidDateErrorMessage = "Не можна додавати запис \r\nпро поточний чи майбутній місяць";
     
-    [ObservableProperty] private DateTimeOffset _selectedDate = DateTimeOffset.UtcNow;
+    [ObservableProperty] private DateTimeOffset _selectedDate = DateTimeOffset.Now;
 
     private TNotesService _notesService;
     
@@ -34,12 +36,17 @@ public abstract partial class ConsumptionNoteViewModelBase<TConsumption, TNotesS
         
         try
         {
+            InvalidConsumptionDataException.ThrowIfDateInvalid(consumption); // TODO: Improve
             _notesService.AddNote(consumption);
             UpdateDate();
         }
-        catch (ArgumentException)
+        catch (DuplicateConsumptionNoteException)
         {
             await Dialogs.ShowMessageDialog("Помилка", DuplicateNoteErrorMessage);
+        }
+        catch (InvalidConsumptionDataException)
+        {
+            await Dialogs.ShowMessageDialog("Помилка", InvalidDateErrorMessage);
         }
     }
 }
