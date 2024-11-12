@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
+using ConsumptionNotes.Controls.Dialogs;
 using ConsumptionNotes.Services.Files;
 using ConsumptionNotes.Services.Notes.Interfaces;
-using ConsumptionNotes.Utils.Dialogs;
 
 namespace ConsumptionNotes.ViewModels.Dashboards;
 
@@ -37,11 +37,11 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
         }
         catch (JsonException)
         {
-            await Dialogs.ShowMessageDialog("Помилка", JsonFileNotSelectedMessage);
+            await MessageDialog.ShowAsync("Помилка", JsonFileNotSelectedMessage, MessageDialogIcon.Error);
         }
         catch (FileNotFoundException ex)
         {
-            await Dialogs.ShowMessageDialog("Помилка", ex.Message);
+            await MessageDialog.ShowAsync("Помилка", ex.Message, MessageDialogIcon.Error);
         }
     }
     
@@ -55,11 +55,11 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
             var folderPath = await _fileService.OpenFolderAsync();
             var filePath = Path.Combine(folderPath, exportFile);
             await DataExporterImporter.ExportAsync(filePath, NotesService.Consumptions);
-            await Dialogs.ShowMessageDialog("Дані успішно експортовано!", $"Дані експортовано за місцем \r\n{filePath}");
+            await MessageDialog.ShowAsync("Дані успішно експортовано!", $"Дані експортовано за місцем \r\n{filePath}");
         }
         catch (IOException ex)
         {
-            await Dialogs.ShowMessageDialog("Помилка", ex.Message);
+            await MessageDialog.ShowAsync("Помилка", ex.Message, MessageDialogIcon.Error);
         }
     }
 }

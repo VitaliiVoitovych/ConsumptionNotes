@@ -1,6 +1,6 @@
-﻿using ConsumptionNotes.Domain.Exceptions;
+﻿using ConsumptionNotes.Controls.Dialogs;
+using ConsumptionNotes.Domain.Exceptions;
 using ConsumptionNotes.Services.Notes.Interfaces;
-using ConsumptionNotes.Utils.Dialogs;
 
 namespace ConsumptionNotes.ViewModels.Addition;
 
@@ -42,11 +42,11 @@ public abstract partial class ConsumptionNoteViewModelBase<TConsumption, TNotesS
         }
         catch (DuplicateConsumptionNoteException)
         {
-            await Dialogs.ShowMessageDialog("Помилка", DuplicateNoteErrorMessage);
+            await MessageDialog.ShowAsync("Помилка", DuplicateNoteErrorMessage, MessageDialogIcon.Warning);
         }
         catch (InvalidConsumptionDataException)
         {
-            await Dialogs.ShowMessageDialog("Помилка", InvalidDateErrorMessage);
+            await MessageDialog.ShowAsync("Помилка", InvalidDateErrorMessage, MessageDialogIcon.Warning);
         }
     }
 }
