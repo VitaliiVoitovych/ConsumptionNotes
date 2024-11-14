@@ -58,6 +58,7 @@ public partial class App : Application
     
     private static ServiceProvider ConfigureServices(Window window)
     {
+        // TODO: Refactoring Code, extract methods
         var services = new ServiceCollection();
         
         // DbContext

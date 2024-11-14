@@ -2,6 +2,7 @@
 using ConsumptionNotes.Controls.Dialogs;
 using ConsumptionNotes.Services.Files;
 using ConsumptionNotes.Services.Notes.Interfaces;
+using ConsumptionNotes.Views.Addition;
 
 namespace ConsumptionNotes.ViewModels.Dashboards;
 
@@ -20,10 +21,19 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
 
     public TChartService ChartService => NotesService.ChartService;
 
+    protected abstract BaseNoteView GetNoteView();
+    
     [RelayCommand]
     private void Remove(TConsumption consumption)
     {
         NotesService.RemoveNote(consumption);
+    }
+
+    [RelayCommand]
+    private async Task OpenAddDialog()
+    {
+        var noteView = GetNoteView();
+        await noteView.ShowDialogAsync();
     }
     
     [RelayCommand]

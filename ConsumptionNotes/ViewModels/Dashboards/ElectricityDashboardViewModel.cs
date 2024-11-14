@@ -1,5 +1,4 @@
 ﻿using ConsumptionNotes.Services.Files;
-using ConsumptionNotes.Utils.Dialogs;
 using ConsumptionNotes.Views.Addition;
 
 namespace ConsumptionNotes.ViewModels.Dashboards;
@@ -15,12 +14,8 @@ public partial class ElectricityDashboardViewModel
         
     }
     
-    [RelayCommand]
-    private async Task OpenAddDialog()
+    protected override BaseNoteView GetNoteView()
     {
-        var addView = Ioc.Default.GetRequiredService<ElectricityNoteView>();
-        var addViewModel = addView.DataContext as ElectricityNoteViewModel;
-
-        await Dialogs.ShowAdditionDialog(addView, addViewModel!.AddCommand);
+        return Ioc.Default.GetRequiredService<ElectricityNoteView>();
     }
 }

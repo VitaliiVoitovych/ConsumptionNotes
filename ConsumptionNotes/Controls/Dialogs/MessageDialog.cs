@@ -1,7 +1,6 @@
 ﻿using Avalonia.Layout;
 using Avalonia.Platform;
 using Avalonia.Svg.Skia;
-using ConsumptionNotes.Utils.Dialogs;
 using FluentAvalonia.UI.Controls;
 
 namespace ConsumptionNotes.Controls.Dialogs;

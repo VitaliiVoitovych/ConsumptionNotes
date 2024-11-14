@@ -1,5 +1,4 @@
 ﻿using ConsumptionNotes.Services.Files;
-using ConsumptionNotes.Utils.Dialogs;
 using ConsumptionNotes.Views.Addition;
 
 namespace ConsumptionNotes.ViewModels.Dashboards;
@@ -15,12 +14,8 @@ public partial class NaturalGasDashboardViewModel
         
     }
     
-    [RelayCommand]
-    private async Task OpenAddDialog()
+    protected override BaseNoteView GetNoteView()
     {
-        var addView = Ioc.Default.GetRequiredService<NaturalGasNoteView>();
-        var addViewModel = addView.DataContext as NaturalGasNoteViewModel;
-
-        await Dialogs.ShowAdditionDialog(addView, addViewModel!.AddCommand);
+        return Ioc.Default.GetRequiredService<NaturalGasNoteView>();
     }
 }
