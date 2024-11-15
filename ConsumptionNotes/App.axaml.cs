@@ -2,11 +2,12 @@ using System.Globalization;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform.Storage;
 using Avalonia.Styling;
 using ConsumptionNotes.Dal.Extensions;
 using ConsumptionNotes.Services.Files;
+using ConsumptionNotes.Startup;
 using ConsumptionNotes.Views;
-using ConsumptionNotes.Views.Addition;
 using Microsoft.Extensions.Configuration;
 
 namespace ConsumptionNotes;
@@ -26,6 +27,7 @@ public partial class App : Application
     {
         Current!.RequestedThemeVariant = ThemeVariant.Dark;
 
+        // TODO: Extract method
         _configuration = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: true)
             .Build();
@@ -36,7 +38,7 @@ public partial class App : Application
         {
             BindingPlugins.DataValidators.RemoveAt(0);
             var mainWindow = new MainWindow();
-            Ioc.Default.ConfigureServices(ConfigureServices(mainWindow));
+            Ioc.Default.ConfigureServices(ConfigureServices(mainWindow.StorageProvider));
             
             desktop.MainWindow = mainWindow;
         }
@@ -44,6 +46,7 @@ public partial class App : Application
         base.OnFrameworkInitializationCompleted();
     }
 
+    // TODO: Move to another place
     private static string GetOrCreateDatabasePath()
     {
         var connectionString = _configuration?.GetConnectionString("DefaultConnection") ?? "temp.db";
@@ -56,40 +59,23 @@ public partial class App : Application
         return Path.Combine(appDatabaseFolderPath, connectionString);
     }
     
-    private static ServiceProvider ConfigureServices(Window window)
+    private static ServiceProvider ConfigureServices(IStorageProvider storageProvider)
     {
-        // TODO: Refactoring Code, extract methods
         var services = new ServiceCollection();
-        
+        // TODO: Improve method
         // DbContext
         var path = GetOrCreateDatabasePath();
         services.AddConsumptionDbContext($"Data Source={path}");
         
-        // Repositories
-        services.AddRepositories();
+        // File Service
+        services.AddSingleton<FileService>(_ => new FileService(storageProvider));
         
-        // Chart services 
-        services.AddSingleton<ElectricityChartService>();
-        services.AddSingleton<NaturalGasChartService>();
-        
-        // Note services
-        services.AddSingleton<ElectricityNotesService>();
-        services.AddSingleton<NaturalGasNotesService>();
-        
-        // Data Service
-        services.AddSingleton<FileService>(_ => new FileService(window));
-        
-        // View models
-        services.AddTransient<HomeViewModel>();
-        services.AddTransient<ElectricityDashboardViewModel>();
-        services.AddTransient<NaturalGasDashboardViewModel>();
-        
-        services.AddScoped<ElectricityNoteViewModel>();
-        services.AddScoped<NaturalGasNoteViewModel>();
-
-        // Add views
-        services.AddTransient<ElectricityNoteView>();
-        services.AddTransient<NaturalGasNoteView>();
+        services
+            .AddRepositories()
+            .AddChartServices()
+            .AddNotesServices()
+            .AddViewModels()
+            .AddViews();
         
         return services.BuildServiceProvider();
     }

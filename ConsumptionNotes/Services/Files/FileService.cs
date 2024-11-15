@@ -6,9 +6,9 @@ public class FileService
 {
     private readonly IStorageProvider _storageProvider;
 
-    public FileService(Window window)
+    public FileService(IStorageProvider storageProvider)
     {
-        _storageProvider = window.StorageProvider;
+        _storageProvider = storageProvider;
     }
 
     public async Task<Stream> OpenFileAsync()
