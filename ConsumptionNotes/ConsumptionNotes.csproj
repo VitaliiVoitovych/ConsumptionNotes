@@ -7,8 +7,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <ApplicationIcon>Assets/consumption-app.ico</ApplicationIcon>
-    <FileVersion>1.0.1</FileVersion>
-    <InformationalVersion>1.0.1</InformationalVersion>
+    <FileVersion>1.0.2</FileVersion>
+    <InformationalVersion>1.0.2</InformationalVersion>
   </PropertyGroup>
 
   <ItemGroup>

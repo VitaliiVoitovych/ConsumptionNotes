@@ -14,7 +14,7 @@ namespace ConsumptionNotes;
 
 public partial class App : Application
 {
-    private const string AppName = "ConsumptionNotes";
+    public const string AppName = "ConsumptionNotes";
     private static IConfiguration? _configuration;
     
     public override void Initialize()
@@ -26,11 +26,8 @@ public partial class App : Application
     public override void OnFrameworkInitializationCompleted()
     {
         Current!.RequestedThemeVariant = ThemeVariant.Dark;
-
-        // TODO: Extract method
-        _configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json", optional: true)
-            .Build();
+        
+        _configuration = InitializeConfiguration();
         
         CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("uk-UA");
         
@@ -46,26 +43,18 @@ public partial class App : Application
         base.OnFrameworkInitializationCompleted();
     }
 
-    // TODO: Move to another place
-    private static string GetOrCreateDatabasePath()
+    private static IConfiguration InitializeConfiguration()
     {
-        var connectionString = _configuration?.GetConnectionString("DefaultConnection") ?? "temp.db";
-        var appDatabaseFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppName);
-        if (!Directory.Exists(appDatabaseFolderPath))
-        {
-            Directory.CreateDirectory(appDatabaseFolderPath);
-        }
-        
-        return Path.Combine(appDatabaseFolderPath, connectionString);
+        return new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: true)
+            .Build();
     }
     
     private static ServiceProvider ConfigureServices(IStorageProvider storageProvider)
     {
         var services = new ServiceCollection();
-        // TODO: Improve method
-        // DbContext
-        var path = GetOrCreateDatabasePath();
-        services.AddConsumptionDbContext($"Data Source={path}");
+        
+        services.AddDatabase(_configuration!);
         
         // File Service
         services.AddSingleton<FileService>(_ => new FileService(storageProvider));
