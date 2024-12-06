@@ -1,0 +1,78 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="using:FluentAvalonia.UI.Controls"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
+        x:Class="ConsumptionNotes.Desktop.Views.MainWindow"
+        Title="ConsumptionNotes"
+        Background="{StaticResource DarkBrush}"
+        MinHeight="525"
+        MinWidth="1120">
+
+    <Grid
+        RowDefinitions="Auto, *">
+        
+        <StackPanel
+            Height="35"
+            Spacing="10"
+            Orientation="Horizontal"
+            Margin="5"
+            Background="{StaticResource DarkBrush}">
+            
+            <Image
+                Width="35"
+                Height="35"
+                Source="{SvgImage /Assets/logo.svg}"/>
+            
+            <TextBlock 
+                Text="{Binding $parent[Window].Title}"
+                VerticalAlignment="Center"
+                FontSize="18"
+                FontWeight="Bold"/>
+        </StackPanel>
+        
+        <ui:NavigationView
+            Background="{StaticResource DarkBrush}"
+            Foreground="{StaticResource LightBrush}"
+            Grid.Row="1"
+            IsSettingsVisible="False"
+            OpenPaneLength="185"
+            PaneDisplayMode="Left"
+            SelectionChanged="NavigationView_OnSelectionChanged">
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem
+                    IsSelected="True"
+                    Content="Головна"
+                    Tag="HomeView">
+                    <ui:NavigationViewItem.IconSource>
+                        <ui:ImageIconSource Source="{SvgImage /Assets/home.svg}"/>
+                    </ui:NavigationViewItem.IconSource>
+                </ui:NavigationViewItem>
+            
+                <ui:NavigationViewItem
+                    Content="Електроенергія"
+                    Tag="Dashboards.ElectricityDashboardView">
+                    <ui:NavigationViewItem.IconSource>
+                        <ui:ImageIconSource Source="{SvgImage /Assets/electricity.svg}"/>
+                    </ui:NavigationViewItem.IconSource>
+                </ui:NavigationViewItem>
+            
+                <ui:NavigationViewItem
+                    Content="Газ"
+                    Tag="Dashboards.NaturalGasDashboardView">
+                    <ui:NavigationViewItem.IconSource>
+                        <ui:ImageIconSource Source="{SvgImage /Assets/gas.svg}"/>
+                    </ui:NavigationViewItem.IconSource>
+                </ui:NavigationViewItem>
+            
+            </ui:NavigationView.MenuItems>
+        
+            <ui:Frame 
+                x:Name="ContentFrame"/>
+        
+        </ui:NavigationView>
+        
+    </Grid>
+    
+</Window>

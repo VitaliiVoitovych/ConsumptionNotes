@@ -1,0 +1,114 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dvm="using:ConsumptionNotes.Desktop.ViewModels.Dashboards"
+             xmlns:controls="using:ConsumptionNotes.Desktop.Controls"
+             xmlns:models="using:ConsumptionNotes.Domain.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ConsumptionNotes.Desktop.Views.Dashboards.ElectricityDashboardView"
+             x:DataType="dvm:ElectricityDashboardViewModel">
+    <Grid
+        ColumnDefinitions="*,*">
+        
+        <!-- Charts -->
+        <ScrollViewer
+            VerticalScrollBarVisibility="Hidden">
+            <StackPanel
+                Spacing="10">
+                
+                <controls:ChartWidget
+                    x:Name="AmountToPayChart"
+                    Text="До оплати"
+                    AverageValue="{Binding NotesService.AverageAmount, StringFormat=\C2}"
+                    Series="{Binding ChartService.AmountsToPaySeries}"
+                    XAxes="{Binding ChartService.DateXAxes}"
+                    YAxes="{Binding ChartService.AmountToPayYAxes}"/>
+                
+                <controls:ChartWidget
+                    x:Name="ConsumptionChart"
+                    Text="Споживання"
+                    AverageValue="{Binding NotesService.AverageKilowattConsumed, StringFormat=\0.00 кВт/год}"
+                    Series="{Binding ChartService.KilowattConsumedSeries}"
+                    XAxes="{Binding ChartService.DateXAxes}"
+                    YAxes="{Binding ChartService.ConsumedYAxes}"
+                    LegendPosition="Top"
+                    LegendTextPaint="{Binding ChartService.LegendTextPaint}"/>
+                
+            </StackPanel>
+        </ScrollViewer>
+        
+        <!-- Data -->
+        <Grid
+            Grid.Column="1"
+            RowDefinitions="*,Auto">
+            
+            <DataGrid
+                x:Name="ElectricityDataGrid"
+                ItemsSource="{Binding NotesService.Consumptions}">
+                <DataGrid.Columns>
+                
+                    <DataGridTextColumn
+                        Header="Місяць та рік"
+                        Width="Auto"
+                        Binding="{Binding Date, StringFormat=\MMMM yyyy}"/>
+                
+                    <DataGridTextColumn
+                        Header="Спожито вдень"
+                        Width="*"
+                        Binding="{Binding DayKilowattConsumed}"/>
+                
+                    <DataGridTextColumn
+                        Header="Спожито вночі"
+                        Width="*"
+                        Binding="{Binding NightKilowattConsumed}"/>
+                
+                    <DataGridTextColumn
+                        Header="До оплати"
+                        Width="*"
+                        Binding="{Binding AmountToPay, StringFormat=\C2}"/>
+                
+                    <DataGridTemplateColumn
+                        Width="Auto">
+                        <DataTemplate x:DataType="models:ElectricityConsumption">
+                            <StackPanel 
+                                Orientation="Horizontal"
+                                Spacing="5"
+                                HorizontalAlignment="Center">
+                                
+                                <Button
+                                    Classes="DashboardDataGridRemove"
+                                    Command="{Binding #ElectricityDataGrid.((dvm:ElectricityDashboardViewModel)DataContext).RemoveCommand}"
+                                    CommandParameter="{Binding .}">
+                                    <Image Source="{SvgImage /Assets/cross.svg}"/>
+                                </Button>
+                                
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn>
+                
+                </DataGrid.Columns>
+            </DataGrid>
+            
+            <StackPanel
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                Classes="DashboardButtonPanel">
+                
+                <Button
+                    Content="Імпорт"
+                    Command="{Binding ImportDataCommand}"/>
+                
+                <Button
+                    Content="Експорт"
+                    Command="{Binding ExportDataCommand}"/>
+                
+                <Button
+                    Content="Додати"
+                    Command="{Binding OpenAddDialogCommand}"/>
+                
+            </StackPanel>
+            
+        </Grid>
+    </Grid>
+</UserControl>

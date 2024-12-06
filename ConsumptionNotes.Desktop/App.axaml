@@ -1,0 +1,19 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ConsumptionNotes.Desktop.App"
+             xmlns:sty="using:FluentAvalonia.Styling"
+             RequestedThemeVariant="Dark">
+  
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/Styles/Colors.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+    
+    <Application.Styles>
+        <sty:FluentAvaloniaTheme PreferUserAccentColor="True" CustomAccentColor="{StaticResource LightDark}"/>
+        <StyleInclude Source="/Styles/Styles.axaml"/>
+    </Application.Styles>
+</Application>

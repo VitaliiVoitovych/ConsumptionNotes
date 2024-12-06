@@ -1,0 +1,44 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ConsumptionNotes.Desktop.ViewModels.Addition"
+             xmlns:controls="using:ConsumptionNotes.Desktop.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ConsumptionNotes.Desktop.Views.Addition.ElectricityNoteView"
+             x:DataType="vm:ElectricityNoteViewModel">
+    <StackPanel
+        HorizontalAlignment="Center"
+        Spacing="10">
+        
+        <controls:LabeledMonthYearPicker
+            Text="Обрати місяць та рік"
+            SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+            Orientation="Vertical"/>
+        
+        <TextBlock
+            Text="Спожито кВт/год"/>
+        
+        <controls:LabeledNumericUpDown
+            Text="День"
+            Minimum="0"
+            Maximum="10000"
+            Increment="1"
+            Value="{Binding DayKilowattsConsumed, Mode=TwoWay}"/>
+        
+        <controls:LabeledNumericUpDown
+            Text="Ніч"
+            Minimum="0"
+            Maximum="10000"
+            Increment="1"
+            Value="{Binding NightKilowattsConsumed, Mode=TwoWay}"/>
+        
+        <controls:LabeledNumericUpDown
+            Text="Ціна за кВт/год"
+            Minimum="0"
+            Maximum="1000"
+            Increment=".01"
+            Value="{Binding KilowattPerHourPrice, Mode=TwoWay}"/>
+        
+    </StackPanel>
+</UserControl>
