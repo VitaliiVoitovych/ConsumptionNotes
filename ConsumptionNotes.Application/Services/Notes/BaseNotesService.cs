@@ -1,10 +1,10 @@
-﻿using System.Linq;
+﻿using ConsumptionNotes.Application.Services.Charting;
+using ConsumptionNotes.Application.Services.Notes.Interfaces;
 using ConsumptionNotes.Dal.Repositories.Base;
-using ConsumptionNotes.Desktop.Services.Notes.Interfaces;
 using ConsumptionNotes.Domain.Exceptions;
 using ConsumptionNotes.Domain.Extensions;
 
-namespace ConsumptionNotes.Desktop.Services.Notes;
+namespace ConsumptionNotes.Application.Services.Notes;
 
 public abstract partial class BaseNotesService<TConsumption, TChartService, TRepository> : ObservableObject, INotesChartService<TConsumption, TChartService>
     where TConsumption : BaseConsumption

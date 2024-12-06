@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
 using ConsumptionNotes.Desktop.Controls.Dialogs;
-using ConsumptionNotes.Desktop.Services.Charting;
+using ConsumptionNotes.Application.Services.Charting;
 using ConsumptionNotes.Desktop.Services.Files;
-using ConsumptionNotes.Desktop.Services.Notes.Interfaces;
+using ConsumptionNotes.Application.Services.Notes.Interfaces;
 using ConsumptionNotes.Desktop.Views.Addition;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Dashboards;

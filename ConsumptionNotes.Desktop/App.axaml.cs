@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace ConsumptionNotes.Desktop;
 
-public partial class App : Application
+public partial class App : Avalonia.Application
 {
     public const string AppName = "ConsumptionNotes";
     private static IConfiguration? _configuration;

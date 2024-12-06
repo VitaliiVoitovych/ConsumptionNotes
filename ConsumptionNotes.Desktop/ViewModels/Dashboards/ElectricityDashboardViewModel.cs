@@ -1,6 +1,6 @@
-﻿using ConsumptionNotes.Desktop.Services.Charting;
+﻿using ConsumptionNotes.Application.Services.Charting;
 using ConsumptionNotes.Desktop.Services.Files;
-using ConsumptionNotes.Desktop.Services.Notes;
+using ConsumptionNotes.Application.Services.Notes;
 using ConsumptionNotes.Desktop.Views.Addition;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Dashboards;

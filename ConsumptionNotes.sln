@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumptionNotes.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumptionNotes.Dal", "ConsumptionNotes.Dal\ConsumptionNotes.Dal.csproj", "{6E864C6E-E93C-4D61-BA5C-2A7EB4BF16E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumptionNotes.Application", "ConsumptionNotes.Application\ConsumptionNotes.Application.csproj", "{BC002C76-14DB-488A-A385-81CC402198D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6E864C6E-E93C-4D61-BA5C-2A7EB4BF16E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E864C6E-E93C-4D61-BA5C-2A7EB4BF16E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E864C6E-E93C-4D61-BA5C-2A7EB4BF16E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC002C76-14DB-488A-A385-81CC402198D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC002C76-14DB-488A-A385-81CC402198D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC002C76-14DB-488A-A385-81CC402198D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC002C76-14DB-488A-A385-81CC402198D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
-﻿using ConsumptionNotes.Desktop.Services.Charting;
+﻿using ConsumptionNotes.Application.Services.Charting;
 
-namespace ConsumptionNotes.Desktop.Services.Notes.Interfaces;
+namespace ConsumptionNotes.Application.Services.Notes.Interfaces;
 
 public interface INotesChartService<TConsumption, TChartService> : INotesService<TConsumption>
     where TConsumption : BaseConsumption

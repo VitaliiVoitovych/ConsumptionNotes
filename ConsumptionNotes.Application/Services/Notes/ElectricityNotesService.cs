@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using ConsumptionNotes.Desktop.Services.Charting;
+﻿using ConsumptionNotes.Application.Services.Charting;
+using ConsumptionNotes.Dal.Repositories;
 
-namespace ConsumptionNotes.Desktop.Services.Notes;
+namespace ConsumptionNotes.Application.Services.Notes;
 
 public partial class ElectricityNotesService
     : BaseNotesService<ElectricityConsumption, ElectricityChartService, ElectricityConsumptionRepository>

@@ -1,5 +1,5 @@
 ﻿using ConsumptionNotes.Desktop.Controls.Dialogs;
-using ConsumptionNotes.Desktop.Services.Notes.Interfaces;
+using ConsumptionNotes.Application.Services.Notes.Interfaces;
 using ConsumptionNotes.Domain.Exceptions;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Addition;

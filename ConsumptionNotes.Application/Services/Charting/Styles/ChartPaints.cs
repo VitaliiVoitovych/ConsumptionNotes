@@ -1,7 +1,7 @@
 ﻿using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView.Painting.Effects;
 
-namespace ConsumptionNotes.Desktop.Services.Charting.Styles;
+namespace ConsumptionNotes.Application.Services.Charting.Styles;
 
 public static class ChartPaints
 {

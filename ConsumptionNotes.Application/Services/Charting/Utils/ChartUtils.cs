@@ -1,8 +1,9 @@
-﻿using ConsumptionNotes.Desktop.Services.Charting.Styles;
+﻿using ConsumptionNotes.Application.Services.Charting.Styles;
+using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 
-namespace ConsumptionNotes.Desktop.Services.Charting.Utils;
+namespace ConsumptionNotes.Application.Services.Charting.Utils;
 
 public static class ChartUtils
 {

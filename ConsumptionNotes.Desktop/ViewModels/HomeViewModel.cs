@@ -1,5 +1,5 @@
-﻿using ConsumptionNotes.Desktop.Services.Charting;
-using ConsumptionNotes.Desktop.Services.Notes;
+﻿using ConsumptionNotes.Application.Services.Charting;
+using ConsumptionNotes.Application.Services.Notes;
 
 namespace ConsumptionNotes.Desktop.ViewModels;
 

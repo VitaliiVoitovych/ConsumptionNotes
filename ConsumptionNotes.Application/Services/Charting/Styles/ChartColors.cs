@@ -1,4 +1,4 @@
-﻿namespace ConsumptionNotes.Desktop.Services.Charting.Styles;
+﻿namespace ConsumptionNotes.Application.Services.Charting.Styles;
 
 public static class ChartColors
 {

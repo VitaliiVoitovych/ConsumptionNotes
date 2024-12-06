@@ -1,12 +1,13 @@
-﻿using ConsumptionNotes.Desktop.Services.Charting.Styles;
-using ConsumptionNotes.Desktop.Services.Charting.Utils;
+﻿using ConsumptionNotes.Application.Services.Charting.Styles;
+using ConsumptionNotes.Application.Services.Charting.Utils;
+using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 
-namespace ConsumptionNotes.Desktop.Services.Charting;
+namespace ConsumptionNotes.Application.Services.Charting;
 
 public abstract class BaseChartService<T>
-    where T: BaseConsumption
+    where T : BaseConsumption
 {
     private readonly ObservableCollection<decimal> _amountsToPayValues = [];
     private readonly ObservableCollection<string> _dateLabels = [];

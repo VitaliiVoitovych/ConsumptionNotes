@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ConsumptionNotes.Application\ConsumptionNotes.Application.csproj" />
     <ProjectReference Include="..\ConsumptionNotes.Dal\ConsumptionNotes.Dal.csproj" />
     <ProjectReference Include="..\ConsumptionNotes.Domain\ConsumptionNotes.Domain.csproj" />
   </ItemGroup>
