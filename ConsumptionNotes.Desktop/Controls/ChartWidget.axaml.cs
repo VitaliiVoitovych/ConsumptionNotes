@@ -1,4 +1,5 @@
-﻿using LiveChartsCore.Drawing;
+﻿using ConsumptionNotes.Application.Services.Charting.Styles;
+using LiveChartsCore.Drawing;
 using LiveChartsCore.Kernel.Sketches;
 using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView.Drawing;
@@ -73,6 +74,9 @@ public partial class ChartWidget : UserControl
     public ChartWidget()
     {
         InitializeComponent();
+
+        Chart.TooltipTextPaint = ChartPaints.TooltipTextPaint;
+        Chart.TooltipBackgroundPaint = ChartPaints.TooltipBackgroundPaint;
     }
 
     public void UpdateChart() => Chart.CoreChart.Update();

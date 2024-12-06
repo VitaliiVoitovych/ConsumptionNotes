@@ -12,7 +12,7 @@
         Spacing="10">
         
         <controls:LabeledMonthYearPicker
-            Text="Обрати місяць та рік"
+            Text="Місяць та рік"
             SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
             Orientation="Vertical"/>
         

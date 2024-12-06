@@ -11,4 +11,7 @@ public static class ChartColors
     public static readonly SKColor NightSeriesColor = SKColor.Parse("#29297d");
 
     public static readonly SKColor GasSeriesColor = SKColor.Parse("#367fd7");
+
+    public static readonly SKColor TooltipTextColor = SKColor.Parse("#e9ecef");
+    public static readonly SKColor TooltipBackgroundColor = SKColor.Parse("#212529");
 }
