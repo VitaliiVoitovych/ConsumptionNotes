@@ -59,7 +59,7 @@ public static class MessageDialog
     public static async Task ShowAsync(string title, string text, MessageDialogIcon icon,
         string? closeButtonText = default)
     {
-        var uriString = $"avares://ConsumptionNotes.Desktop/Assets/{icon.ToString().ToLower()}.svg"; 
+        var uriString = $"avares://ConsumptionNotes/Assets/{icon.ToString().ToLower()}.svg"; 
         var image = new Image { Source = LoadSvgImage(uriString), Height = 48};
 
         var dialog = CreateMessageDialog(title, text, closeButtonText).WithImage(image);
