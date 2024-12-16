@@ -12,9 +12,9 @@
         ColumnDefinitions="*,*">
         
         <!-- Charts -->
-        <ScrollViewer
-            VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer>
             <StackPanel
+                Margin="0,0,12,0"
                 Spacing="10">
                 
                 <controls:ChartWidget

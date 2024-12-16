@@ -37,8 +37,13 @@
         <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="CanUserSortColumns" Value="False"/>
         <Setter Property="GridLinesVisibility" Value="All"/>
-        <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
         <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+        <Style Selector="^ /template/ DataGridRowsPresenter">
+            <Setter Property="Margin" Value="0,0,13,0"/>
+        </Style>
+        <Style Selector="^ /template/ DataGridColumnHeadersPresenter">
+            <Setter Property="Margin" Value="0,0,13,0"/>
+        </Style>
     </Style>
     
     <Style Selector="DataGridColumnHeader">

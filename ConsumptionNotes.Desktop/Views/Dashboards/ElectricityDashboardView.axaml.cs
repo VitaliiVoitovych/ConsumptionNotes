@@ -1,6 +1,4 @@
-﻿using ConsumptionNotes.Desktop.ViewModels.Dashboards;
-
-namespace ConsumptionNotes.Desktop.Views.Dashboards;
+﻿namespace ConsumptionNotes.Desktop.Views.Dashboards;
 
 public partial class ElectricityDashboardView : UserControl
 {
