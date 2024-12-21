@@ -3,6 +3,39 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ConsumptionNotes.Mobile.Pages.NaturalGasDashboardPage"
-             Title="Газ">
-    
+             xmlns:views="clr-namespace:ConsumptionNotes.Mobile.Views"
+             xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels"
+             Title="Газ"
+             x:DataType="vm:NaturalGasDashboardViewModel">
+    <views:BottomSheet
+        BottomSheetBackgroundColor="{StaticResource MediumDark}"
+        DragHandleColor="{StaticResource LightDark}">
+        <views:BottomSheet.Content>
+            <ScrollView
+                Padding="10"
+                Orientation="Horizontal"
+                HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout
+                    Spacing="10">
+                    <views:ChartWidget
+                        WidthRequest="375"
+                        Text="Оплата"
+                        AverageValue="{Binding NotesService.AverageAmount, StringFormat='{0:C2}'}"
+                        Series="{Binding ChartService.AmountsToPaySeries}"
+                        XAxes="{Binding ChartService.DateXAxes}"
+                        YAxes="{Binding ChartService.AmountToPayYAxes}"/>
+                    <views:ChartWidget
+                        WidthRequest="375"
+                        Text="Споживання"
+                        AverageValue="{Binding NotesService.AverageAmount, StringFormat='{0:F2} кВт/год'}"
+                        Series="{Binding ChartService.CubicMeterConsumedSeries}"
+                        XAxes="{Binding ChartService.DateXAxes}"
+                        YAxes="{Binding ChartService.ConsumedYAxes}"/>
+                </HorizontalStackLayout>
+            </ScrollView>
+        </views:BottomSheet.Content>
+        <views:BottomSheet.BottomSheetContent>
+            <Grid/>
+        </views:BottomSheet.BottomSheetContent>
+    </views:BottomSheet>
 </ContentPage>

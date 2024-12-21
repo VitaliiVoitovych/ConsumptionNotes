@@ -19,7 +19,7 @@
             RowDefinitions="Auto, Auto, *">
             
             <Label
-                Grid.Row="1"
+                Grid.Row="0"
                 Text="{Binding Text}"
                 VerticalTextAlignment="Center"
                 FontAttributes="Bold"/>

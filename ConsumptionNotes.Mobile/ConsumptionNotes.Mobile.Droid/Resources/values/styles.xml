@@ -22,7 +22,7 @@
     </style>
 
     <style name="ToolbarMenuStyle" parent="Theme.MaterialComponents.Light">
-        <item name="colorSurface">#0f1a21</item>
+        <item name="colorSurface">@color/colorPrimary</item>
         <item name="android:textColor">@color/colorAccent</item>
     </style>
 

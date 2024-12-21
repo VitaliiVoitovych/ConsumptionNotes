@@ -7,37 +7,35 @@
              x:Class="ConsumptionNotes.Mobile.Pages.ElectricityDashboardPage"
              x:DataType="vm:ElectricityDashboardViewModel"
              Title="Електроенергія">
+    
     <views:BottomSheet
         BottomSheetBackgroundColor="{StaticResource MediumDark}"
         DragHandleColor="{StaticResource LightDark}">
         <views:BottomSheet.Content>
-            <Grid
+            <ScrollView
                 Padding="10"
-                RowDefinitions="*, Auto">
-                <CarouselView
-                    IndicatorView="Indicator">
-                    <CarouselView.ItemsSource>
-                        <x:Array Type="{x:Type views:ChartWidget}">
-                            <views:ChartWidget
-                                Text="Оплата"/>
-                            <views:ChartWidget
-                                Text="Споживання"/>
-                        </x:Array>
-                    </CarouselView.ItemsSource>
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate x:DataType="views:ChartWidget">
-                            <views:ChartWidget
-                                Margin="5"
-                                Text="{Binding Text}"/>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-                
-                <IndicatorView
-                    x:Name="Indicator"
-                    Grid.Row="1"
-                    HorizontalOptions="Center"/>
-            </Grid>
+                Orientation="Horizontal"
+                HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout
+                    Spacing="10">
+                    <views:ChartWidget
+                        WidthRequest="375"
+                        Text="Оплата"
+                        AverageValue="{Binding NotesService.AverageAmount, StringFormat='{0:C2}'}"
+                        Series="{Binding ChartService.AmountsToPaySeries}"
+                        XAxes="{Binding ChartService.DateXAxes}"
+                        YAxes="{Binding ChartService.AmountToPayYAxes}"/>
+                    <views:ChartWidget
+                        WidthRequest="375"
+                        Text="Споживання"
+                        AverageValue="{Binding NotesService.AverageAmount, StringFormat='{0:F2} кВт/год'}"
+                        Series="{Binding ChartService.KilowattConsumedSeries}"
+                        XAxes="{Binding ChartService.DateXAxes}"
+                        YAxes="{Binding ChartService.ConsumedYAxes}"
+                        LegendPosition="Top"
+                        LegendTextPaint="{Binding ChartService.LegendTextPaint}"/>
+                </HorizontalStackLayout>
+            </ScrollView>
         </views:BottomSheet.Content>
         <views:BottomSheet.BottomSheetContent>
             <Grid/>

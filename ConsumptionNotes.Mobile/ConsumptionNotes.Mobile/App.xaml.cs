@@ -11,5 +11,12 @@
         {
             return new Window(new AppShell());
         }
+
+        protected override void OnStart()
+        {
+            UserAppTheme = AppTheme.Dark;
+            
+            base.OnStart();
+        }
     }
 }

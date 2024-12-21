@@ -17,5 +17,21 @@
         <Setter Property="Shell.ForegroundColor" Value="{StaticResource Light}"/>
         <Setter Property="Shell.TitleColor" Value="{StaticResource Light}"/>
     </Style>
-    
+    <Style TargetType="ScrollView">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Never"/>
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Light}"/>
+    </Style>
+
+    <Style TargetType="Picker">
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="TextColor" Value="{StaticResource Light}"/>
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="TextColor" Value="{StaticResource Light}"/>
+    </Style>
 </ResourceDictionary>
