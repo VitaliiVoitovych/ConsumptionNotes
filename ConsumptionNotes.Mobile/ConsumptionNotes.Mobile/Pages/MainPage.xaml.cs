@@ -2,9 +2,9 @@
 
 namespace ConsumptionNotes.Mobile.Pages;
 
-public partial class NaturalGasDashboardPage : ContentPage
+public partial class MainPage : ContentPage
 {
-    public NaturalGasDashboardPage(NaturalGasDashboardViewModel vm)
+    public MainPage(MainViewModel vm)
     {
         InitializeComponent();
 
