@@ -9,8 +9,32 @@
         BottomSheetBackgroundColor="{StaticResource MediumDark}"
         DragHandleColor="{StaticResource LightDark}">
         <views:BottomSheet.Content>
-            <Grid>
+            <Grid
+                Padding="10"
+                RowDefinitions="*, Auto">
+                <CarouselView
+                    IndicatorView="Indicator">
+                    <CarouselView.ItemsSource>
+                        <x:Array Type="{x:Type views:ChartWidget}">
+                            <views:ChartWidget
+                                Text="Оплата"/>
+                            <views:ChartWidget
+                                Text="Споживання"/>
+                        </x:Array>
+                    </CarouselView.ItemsSource>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate x:DataType="views:ChartWidget">
+                            <views:ChartWidget
+                                Margin="5"
+                                Text="{Binding Text}"/>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
                 
+                <IndicatorView
+                    x:Name="Indicator"
+                    Grid.Row="1"
+                    HorizontalOptions="Center"/>
             </Grid>
         </views:BottomSheet.Content>
         <views:BottomSheet.BottomSheetContent>

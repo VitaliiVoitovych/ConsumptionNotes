@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace ConsumptionNotes.Mobile
 {
@@ -7,6 +8,7 @@ namespace ConsumptionNotes.Mobile
         public static MauiAppBuilder UseSharedMauiApp(this MauiAppBuilder builder)
         {
             builder
+                .UseSkiaSharp()
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
