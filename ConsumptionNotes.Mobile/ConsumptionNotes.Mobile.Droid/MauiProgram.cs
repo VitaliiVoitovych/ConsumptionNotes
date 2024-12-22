@@ -1,4 +1,6 @@
-﻿using ConsumptionNotes.Mobile.Droid.Handlers;
+﻿using ConsumptionNotes.Mobile.Controls;
+using ConsumptionNotes.Mobile.Droid.Handlers;
+using ConsumptionNotes.Mobile.Handlers;
 using ConsumptionNotes.Mobile.Views;
 
 namespace ConsumptionNotes.Mobile.Droid
@@ -13,6 +15,8 @@ namespace ConsumptionNotes.Mobile.Droid
                 .ConfigureMauiHandlers(handlers =>
                 {
                     handlers.AddHandler<BottomSheet, BottomSheetHandler>();
+                    handlers.AddHandler<NumericUpDown, NumericUpDownHandler>();
+                    handlers.AddHandler<SpinDatePicker, SpinDatePickerHandler>();
                 })
                 .UseSharedMauiApp();
 
