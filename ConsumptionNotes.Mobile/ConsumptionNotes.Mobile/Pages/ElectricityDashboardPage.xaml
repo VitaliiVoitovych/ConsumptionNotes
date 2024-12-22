@@ -7,7 +7,14 @@
              x:Class="ConsumptionNotes.Mobile.Pages.ElectricityDashboardPage"
              x:DataType="vm:ElectricityDashboardViewModel"
              Title="Електроенергія">
-    
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Order="Secondary"
+            Text="Додати запис"
+            Command="{Binding OpenAddPageCommand}"/>
+    </ContentPage.ToolbarItems>
+
     <views:BottomSheet
         BottomSheetBackgroundColor="{StaticResource MediumDark}"
         DragHandleColor="{StaticResource LightDark}">

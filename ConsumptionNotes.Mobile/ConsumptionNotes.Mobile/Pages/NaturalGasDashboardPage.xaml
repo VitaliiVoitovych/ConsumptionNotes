@@ -7,6 +7,14 @@
              xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels"
              Title="Газ"
              x:DataType="vm:NaturalGasDashboardViewModel">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Order="Secondary"
+            Text="Додати запис"
+            Command="{Binding OpenAddPageCommand}"/>
+    </ContentPage.ToolbarItems>
+    
     <views:BottomSheet
         BottomSheetBackgroundColor="{StaticResource MediumDark}"
         DragHandleColor="{StaticResource LightDark}">

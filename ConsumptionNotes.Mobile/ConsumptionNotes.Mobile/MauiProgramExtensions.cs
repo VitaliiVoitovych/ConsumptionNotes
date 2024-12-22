@@ -44,7 +44,13 @@ namespace ConsumptionNotes.Mobile
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<ElectricityDashboardPage>();
             builder.Services.AddTransient<NaturalGasDashboardPage>();
-            
+
+            builder.Services.AddScoped<AddElectricityViewModel>();
+            builder.Services.AddScoped<AddNaturalGasViewModel>();
+
+            builder.Services.AddScoped<AddElectricityPage>();
+            builder.Services.AddScoped<AddNaturalGasPage>();
+
             return builder;
         }
     }

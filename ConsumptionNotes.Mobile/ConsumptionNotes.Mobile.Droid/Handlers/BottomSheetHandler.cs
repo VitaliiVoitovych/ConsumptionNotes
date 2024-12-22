@@ -53,7 +53,7 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
         var behavior = BottomSheetBehavior.From(LinearLayout);
         behavior.State = BottomSheetBehavior.StateCollapsed;
         behavior.Hideable = false;
-        behavior.PeekHeight = (int)((metrics.HeightPixels - 264) * 0.65) - 92;
+        behavior.PeekHeight = (int)((metrics.HeightPixels - 264) * 0.6) - 92;
 
         var borderDrawable = new BorderDrawable(Context);
         borderDrawable.SetCornerRadius(new CornerRadius(25, 25, 0, 0));
@@ -88,7 +88,7 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
     private static void MapContent(BottomSheetHandler handler, BottomSheet bottomSheet)
     {
         var metrics = handler.Context.Resources!.DisplayMetrics;
-        var height = Convert.ToInt32(metrics!.HeightPixels * 0.35);
+        var height = Convert.ToInt32(metrics!.HeightPixels * 0.4);
         
         handler.CoordinatorLayout.AddView(bottomSheet.Content.ToPlatform(handler.MauiContext!), 0,
             new ViewGroup.LayoutParams(metrics.WidthPixels, height));

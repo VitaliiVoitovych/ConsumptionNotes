@@ -11,13 +11,14 @@
 	</PropertyGroup>
 
     <ItemGroup>
-        <MauiIcon Include="icon.svg"/>
+        <MauiIcon Include="icon.svg" />
 		<MauiSplashScreen Include="splash.svg" />
     </ItemGroup>
 
   	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.21" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.21" />
 	</ItemGroup>
 
   	<ItemGroup>

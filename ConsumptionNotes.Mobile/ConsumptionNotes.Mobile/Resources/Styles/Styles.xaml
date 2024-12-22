@@ -16,6 +16,7 @@
         <Setter Property="Shell.BackgroundColor" Value="{StaticResource PrimaryDark}"/>
         <Setter Property="Shell.ForegroundColor" Value="{StaticResource Light}"/>
         <Setter Property="Shell.TitleColor" Value="{StaticResource Light}"/>
+        <Setter Property="Shell.NavBarHasShadow" Value="False"/>
     </Style>
     <Style TargetType="ScrollView">
         <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
