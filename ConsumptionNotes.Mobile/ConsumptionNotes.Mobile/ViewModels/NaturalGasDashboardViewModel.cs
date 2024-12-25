@@ -29,7 +29,7 @@ public partial class NaturalGasDashboardViewModel(NaturalGasNotesService notesSe
     [RelayCommand]
     private async Task ExportData()
     {
-        var filename = $"electricity_{DateTime.UtcNow:dd-MM-yyyy}.json";
+        var filename = $"naturalgas_{DateTime.UtcNow:dd-MM-yyyy}.json";
         var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), filename);
 
         await DataExporterImporter.ExportAsync(filePath, NotesService.Consumptions);

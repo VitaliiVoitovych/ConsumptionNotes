@@ -2,6 +2,30 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ConsumptionNotes.Mobile.Pages.MainPage">
-    
+             xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels"
+             xmlns:views="clr-namespace:ConsumptionNotes.Mobile.Views"
+             x:Class="ConsumptionNotes.Mobile.Pages.MainPage"
+             x:DataType="vm:MainViewModel">
+    <Grid
+        Margin="10,8"
+        RowDefinitions="*,*"
+        RowSpacing="10">
+
+        <views:ChartWidget
+            Grid.Row="0"
+            Text="Електроенергія"
+            AverageValue="{Binding ElectricityNotesService.AverageAmount, StringFormat='{0:C2}'}"
+            Series="{Binding ElectricityChartService.AmountsToPaySeries}"
+            XAxes="{Binding ElectricityChartService.DateXAxes}"
+            YAxes="{Binding ElectricityChartService.AmountToPayYAxes}"/>
+
+        <views:ChartWidget
+            Grid.Row="1"
+            Text="Газ"
+            AverageValue="{Binding NaturalGasNotesService.AverageAmount, StringFormat='{0:C2}'}"
+            Series="{Binding NaturalGasChartService.AmountsToPaySeries}"
+            XAxes="{Binding NaturalGasChartService.DateXAxes}"
+            YAxes="{Binding NaturalGasChartService.AmountToPayYAxes}"/>
+        
+    </Grid>
 </ContentPage>
