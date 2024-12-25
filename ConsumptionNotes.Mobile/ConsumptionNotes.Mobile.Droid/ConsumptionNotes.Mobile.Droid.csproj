@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0-android</TargetFramework>
+		<SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>ConsumptionNotes.Mobile</RootNamespace>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseMaui>true</UseMaui>
+	</PropertyGroup>
+
+    <ItemGroup>
+        <MauiIcon Include="icon.svg" />
+		<MauiSplashScreen Include="splash.svg" />
+    </ItemGroup>
+
+  	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.21" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.21" />
+	</ItemGroup>
+
+  	<ItemGroup>
+		<ProjectReference Include="..\ConsumptionNotes.Mobile\ConsumptionNotes.Mobile.csproj" />
+	</ItemGroup>
+
+</Project>

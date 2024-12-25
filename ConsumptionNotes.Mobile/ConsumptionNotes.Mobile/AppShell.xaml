@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ConsumptionNotes.Mobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:ConsumptionNotes.Mobile.Pages"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar
+        x:Name="PhoneTabs">
+        
+        <Tab
+            Title="Головна"
+            Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}"/>
+        </Tab>
+        
+        <Tab
+            Title="Електроенергія"
+            Icon="electricity.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:ElectricityDashboardPage}"/>
+        </Tab>
+        
+        <Tab
+            Title="Газ"
+            Icon="gas.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:NaturalGasDashboardPage}"/>
+        </Tab>
+        
+    </TabBar>
+
+</Shell>

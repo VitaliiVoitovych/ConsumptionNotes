@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:ConsumptionNotes.Mobile.Views"
+             xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels"
+             xmlns:models="clr-namespace:ConsumptionNotes.Domain.Models;assembly=ConsumptionNotes.Domain"
+             x:Class="ConsumptionNotes.Mobile.Pages.ElectricityDashboardPage"
+             x:DataType="vm:ElectricityDashboardViewModel"
+             Title="Електроенергія">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Order="Secondary"
+            Text="Додати запис"
+            Command="{Binding OpenAddPageCommand}"/>
+
+        <ToolbarItem
+            Order="Secondary"
+            Text="Експорт даних"
+            Command="{Binding ExportDataCommand}"/>
+
+        <ToolbarItem
+            Order="Secondary"
+            Text="Імпорт даних"
+            Command="{Binding ImportDataCommand}"/>
+
+    </ContentPage.ToolbarItems>
+
+    <views:BottomSheet
+        BottomSheetBackgroundColor="{StaticResource MediumDark}"
+        DragHandleColor="{StaticResource LightDark}">
+        <views:BottomSheet.Content>
+            <ScrollView
+                Padding="10"
+                Orientation="Horizontal"
+                HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout
+                    Spacing="10">
+                    <views:ChartWidget
+                        WidthRequest="375"
+                        Text="Оплата"
+                        AverageValue="{Binding NotesService.AverageAmount, StringFormat='{0:C2}'}"
+                        Series="{Binding ChartService.AmountsToPaySeries}"
+                        XAxes="{Binding ChartService.DateXAxes}"
+                        YAxes="{Binding ChartService.AmountToPayYAxes}"/>
+                    <views:ChartWidget
+                        WidthRequest="375"
+                        Text="Споживання"
+                        AverageValue="{Binding NotesService.AverageKilowattConsumed, StringFormat='{0:F2} кВт/год'}"
+                        Series="{Binding ChartService.KilowattConsumedSeries}"
+                        XAxes="{Binding ChartService.DateXAxes}"
+                        YAxes="{Binding ChartService.ConsumedYAxes}"
+                        LegendPosition="Top"
+                        LegendTextPaint="{Binding ChartService.LegendTextPaint}"/>
+                </HorizontalStackLayout>
+            </ScrollView>
+        </views:BottomSheet.Content>
+        <views:BottomSheet.BottomSheetContent>
+            <Grid
+                Padding="15,0">
+                <CollectionView
+                    ItemsSource="{Binding NotesService.Consumptions}">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Vertical"
+                            ItemSpacing="12"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:ElectricityConsumption">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItem
+                                        IconImageSource="cross.png"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ElectricityDashboardViewModel}, AncestorLevel=1}, Path=RemoveCommand, x:DataType=vm:ElectricityDashboardViewModel}"
+                                        CommandParameter="{Binding .}"/>
+                                </SwipeView.RightItems>
+
+                                <Border
+                                    StrokeShape="RoundRectangle 15,15,15,15"
+                                    Stroke="{StaticResource LightDark}"
+                                    Background="{StaticResource MediumDark}"
+                                    Padding="10">
+
+                                    <Grid
+                                        RowDefinitions="Auto, *, *"
+                                        ColumnDefinitions="Auto, *, Auto"
+                                        RowSpacing="3"
+                                        ColumnSpacing="3">
+
+                                        <Label
+                                            Grid.ColumnSpan="2"
+                                            Text="{Binding Date, StringFormat='{0:MMMM yyyy}'}"
+                                            FontAttributes="Bold"
+                                            FontSize="18"
+                                            TextTransform="Uppercase"/>
+
+                                        <Ellipse
+                                            Grid.Column="0"
+                                            Grid.Row="1"
+                                            Fill="#e2e38b"
+                                            HeightRequest="16"
+                                            WidthRequest="16"/>
+                                        <Label
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Text="{Binding DayKilowattConsumed, StringFormat='День: {0} кВт/год'}"/>
+
+                                        <Ellipse
+                                            Grid.Column="0"
+                                            Grid.Row="2"
+                                            Fill="#29297D"
+                                            HeightRequest="16"
+                                            WidthRequest="16"/>
+                                        <Label
+                                            Grid.Column="1"
+                                            Grid.Row="2"
+                                            Text="{Binding NightKilowattConsumed, StringFormat='Ніч: {0} кВт/год'}"/>
+
+                                        <Label
+                                            Grid.Column="2"
+                                            Grid.RowSpan="3"
+                                            HorizontalOptions="End"
+                                            VerticalTextAlignment="End"
+                                            HorizontalTextAlignment="Center"
+                                            FontSize="18"
+                                            FontAttributes="Bold"
+                                            Text="{Binding AmountToPay, StringFormat='{0:C2}'}"/>
+                                    </Grid>
+                                </Border>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </views:BottomSheet.BottomSheetContent>
+    </views:BottomSheet>
+</ContentPage>
