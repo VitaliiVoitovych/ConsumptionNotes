@@ -1,12 +1,9 @@
 ﻿using MaterialAlertDialogBuilder = Google.Android.Material.Dialog.MaterialAlertDialogBuilder;
 using TextInputEditText = Google.Android.Material.TextField.TextInputEditText;
 using ColorStateList = Android.Content.Res.ColorStateList;
-using Microsoft.Maui.Handlers;
-using ConsumptionNotes.Mobile.Controls;
-using Microsoft.Maui.Platform;
 
 
-namespace ConsumptionNotes.Mobile.Handlers;
+namespace ConsumptionNotes.Mobile.Droid.Handlers;
 
 public class SpinDatePickerHandler : ViewHandler<SpinDatePicker, TextInputEditText>
 {

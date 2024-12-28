@@ -1,8 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using ConsumptionNotes.Application.Services.Notes;
-using ConsumptionNotes.Domain.Exceptions;
-using ConsumptionNotes.Domain.Models;
+﻿using ConsumptionNotes.Domain.Exceptions;
 
 namespace ConsumptionNotes.Mobile.ViewModels;
 

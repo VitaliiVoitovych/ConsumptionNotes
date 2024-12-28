@@ -1,10 +1,7 @@
 ﻿using Android.Views;
 using Android.Widget;
-using AndroidX.CoordinatorLayout.Widget;
-using ConsumptionNotes.Mobile.Views;
 using Google.Android.Material.BottomSheet;
-using Microsoft.Maui.Handlers;
-using Microsoft.Maui.Platform;
+using CoordinatorLayout = AndroidX.CoordinatorLayout.Widget.CoordinatorLayout;
 
 namespace ConsumptionNotes.Mobile.Droid.Handlers;
 
@@ -26,9 +23,9 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
     {
     }
 
-    private CoordinatorLayout CoordinatorLayout { get; set; }
-    private LinearLayout LinearLayout { get; set; }
-    private BottomSheetDragHandleView DragHandle { get; set; }
+    private CoordinatorLayout? CoordinatorLayout { get; set; }
+    private LinearLayout? LinearLayout { get; set; }
+    private BottomSheetDragHandleView? DragHandle { get; set; }
     
     protected override CoordinatorLayout CreatePlatformView()
     {
@@ -81,7 +78,7 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
     
     private static void MapBottomSheetContent(BottomSheetHandler handler, BottomSheet bottomSheet)
     {
-        handler.LinearLayout.AddView(bottomSheet.BottomSheetContent.ToPlatform(handler.MauiContext!),
+        handler.LinearLayout!.AddView(bottomSheet.BottomSheetContent.ToPlatform(handler.MauiContext!),
             new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent,ViewGroup.LayoutParams.MatchParent));
     }
 
@@ -90,17 +87,17 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
         var metrics = handler.Context.Resources!.DisplayMetrics;
         var height = Convert.ToInt32(metrics!.HeightPixels * 0.4);
         
-        handler.CoordinatorLayout.AddView(bottomSheet.Content.ToPlatform(handler.MauiContext!), 0,
+        handler.CoordinatorLayout!.AddView(bottomSheet.Content.ToPlatform(handler.MauiContext!), 0,
             new ViewGroup.LayoutParams(metrics.WidthPixels, height));
     }
     
     private static void MapBottomSheetBackgroundColor(BottomSheetHandler handler, BottomSheet bottomSheet)
     {
-        ((BorderDrawable)handler.LinearLayout.Background!).SetBackgroundColor(bottomSheet.BottomSheetBackgroundColor.ToPlatform());
+        ((BorderDrawable)handler.LinearLayout!.Background!).SetBackgroundColor(bottomSheet.BottomSheetBackgroundColor.ToPlatform());
     }
     
     private static void MapDragHandleColor(BottomSheetHandler handler, BottomSheet bottomSheet)
     {
-        ((BorderDrawable)handler.DragHandle.Background!).SetBackgroundColor(bottomSheet.DragHandleColor.ToPlatform());
+        ((BorderDrawable)handler.DragHandle!.Background!).SetBackgroundColor(bottomSheet.DragHandleColor.ToPlatform());
     }
 }

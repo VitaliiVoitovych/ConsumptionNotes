@@ -1,12 +1,9 @@
-﻿using ConsumptionNotes.Mobile.Controls;
-using Google.Android.Material.TextField;
-using Microsoft.Maui.Handlers;
-using Microsoft.Maui.Platform;
-using AButton = Android.Widget.Button;
+﻿using AButton = Android.Widget.Button;
 using ColorStateList = Android.Content.Res.ColorStateList;
 using InputTypes = Android.Text.InputTypes;
+using TextInputEditText = Google.Android.Material.TextField.TextInputEditText;
 
-namespace ConsumptionNotes.Mobile.Handlers;
+namespace ConsumptionNotes.Mobile.Droid.Handlers;
 
 public class NumericUpDownHandler : StepperHandler
 {

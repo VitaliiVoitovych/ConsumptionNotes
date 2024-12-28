@@ -1,8 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using ConsumptionNotes.Application.Services.Charting;
-using ConsumptionNotes.Application.Services.Notes;
-
-namespace ConsumptionNotes.Mobile.ViewModels;
+﻿namespace ConsumptionNotes.Mobile.ViewModels;
 
 public class MainViewModel : ObservableObject
 {

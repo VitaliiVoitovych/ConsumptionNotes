@@ -1,10 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using ConsumptionNotes.Application.Services.Charting;
-using ConsumptionNotes.Application.Services.Notes;
-using ConsumptionNotes.Domain.Models;
-using ConsumptionNotes.Mobile.Pages;
-using ConsumptionNotes.Mobile.Services.Files;
+﻿using ConsumptionNotes.Mobile.Services.Files;
 using System.Text.Json;
 
 namespace ConsumptionNotes.Mobile.ViewModels;

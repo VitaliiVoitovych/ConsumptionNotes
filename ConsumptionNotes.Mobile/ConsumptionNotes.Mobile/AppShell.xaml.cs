@@ -1,6 +1,4 @@
-﻿using ConsumptionNotes.Mobile.Pages;
-
-namespace ConsumptionNotes.Mobile;
+﻿namespace ConsumptionNotes.Mobile;
 
 public partial class AppShell : Shell
 {

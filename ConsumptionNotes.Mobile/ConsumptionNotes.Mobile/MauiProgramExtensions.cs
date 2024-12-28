@@ -1,9 +1,5 @@
-﻿using ConsumptionNotes.Application.Services.Charting;
-using ConsumptionNotes.Application.Services.Notes;
-using ConsumptionNotes.Dal.Extensions;
-using ConsumptionNotes.Mobile.Pages;
+﻿using ConsumptionNotes.Dal.Extensions;
 using ConsumptionNotes.Mobile.Services.Files;
-using ConsumptionNotes.Mobile.ViewModels;
 using Microsoft.Extensions.Logging;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 

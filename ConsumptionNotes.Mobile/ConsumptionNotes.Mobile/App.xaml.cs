@@ -1,22 +1,21 @@
-﻿namespace ConsumptionNotes.Mobile
+﻿namespace ConsumptionNotes.Mobile;
+
+public partial class App : Microsoft.Maui.Controls.Application
 {
-    public partial class App : Microsoft.Maui.Controls.Application
+    public App()
     {
-        public App()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
-        }
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new AppShell());
+    }
 
-        protected override void OnStart()
-        {
-            UserAppTheme = AppTheme.Dark;
-            
-            base.OnStart();
-        }
+    protected override void OnStart()
+    {
+        UserAppTheme = AppTheme.Dark;
+        
+        base.OnStart();
     }
 }
