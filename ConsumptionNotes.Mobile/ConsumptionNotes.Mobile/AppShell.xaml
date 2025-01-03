@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:ConsumptionNotes.Mobile.Pages"
+    xmlns:dpages="clr-namespace:ConsumptionNotes.Mobile.Pages.Dashboards"
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar
@@ -18,13 +19,13 @@
         <Tab
             Title="Електроенергія"
             Icon="electricity.png">
-            <ShellContent ContentTemplate="{DataTemplate pages:ElectricityDashboardPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate dpages:ElectricityDashboardPage}"/>
         </Tab>
         
         <Tab
             Title="Газ"
             Icon="gas.png">
-            <ShellContent ContentTemplate="{DataTemplate pages:NaturalGasDashboardPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate dpages:NaturalGasDashboardPage}"/>
         </Tab>
         
     </TabBar>

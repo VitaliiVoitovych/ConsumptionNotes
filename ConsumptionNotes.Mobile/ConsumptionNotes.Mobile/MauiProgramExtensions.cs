@@ -1,5 +1,7 @@
 ﻿using ConsumptionNotes.Dal.Extensions;
 using ConsumptionNotes.Mobile.Services.Files;
+using ConsumptionNotes.Mobile.ViewModels.Addition;
+using ConsumptionNotes.Mobile.ViewModels.Dashboards;
 using Microsoft.Extensions.Logging;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 

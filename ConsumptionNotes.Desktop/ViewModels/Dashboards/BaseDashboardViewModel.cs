@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using ConsumptionNotes.Desktop.Controls.Dialogs;
 using ConsumptionNotes.Application.Services.Charting;
+using ConsumptionNotes.Application.Services.Files;
 using ConsumptionNotes.Desktop.Services.Files;
 using ConsumptionNotes.Application.Services.Notes.Interfaces;
 using ConsumptionNotes.Desktop.Views.Addition;
@@ -13,8 +14,6 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
     where TNotesService : INotesChartService<TConsumption, TChartService>
 {
     private const string JsonFileNotSelectedMessage  = "Не обрали потрібний файл з даними";
-    
-    private readonly FileService _fileService = fileService;
 
     protected abstract string ExportFileName { get; }
     
@@ -42,8 +41,8 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
     {
         try
         {
-            await using var stream = await _fileService.OpenFileAsync();
-            var data = await DataExporterImporter.ImportAsync<TConsumption>(stream);
+            await using var stream = await fileService.OpenFileAsync();
+            var data = await DataExporterImporter<TConsumption>.ImportAsync(stream);
             await NotesService.ImportDataAsync(data);
         }
         catch (JsonException)
@@ -63,9 +62,9 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
 
         try
         {
-            var folderPath = await _fileService.OpenFolderAsync();
+            var folderPath = await fileService.OpenFolderAsync();
             var filePath = Path.Combine(folderPath, exportFile);
-            await DataExporterImporter.ExportAsync(filePath, NotesService.Consumptions);
+            await DataExporterImporter<TConsumption>.ExportAsync(filePath, NotesService.Consumptions);
             await MessageDialog.ShowAsync("Дані успішно експортовано!", $"Дані експортовано за місцем \r\n{filePath}");
         }
         catch (IOException ex)

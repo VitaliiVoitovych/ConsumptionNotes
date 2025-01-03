@@ -1,3 +1,5 @@
+using ConsumptionNotes.Mobile.ViewModels.Addition;
+
 namespace ConsumptionNotes.Mobile.Pages;
 
 public partial class AddElectricityPage : ContentPage

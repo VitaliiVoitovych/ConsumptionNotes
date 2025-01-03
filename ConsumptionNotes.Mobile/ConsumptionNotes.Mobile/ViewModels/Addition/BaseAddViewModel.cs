@@ -1,25 +1,28 @@
-﻿using ConsumptionNotes.Domain.Exceptions;
+﻿using ConsumptionNotes.Application.Services.Notes.Interfaces;
+using ConsumptionNotes.Domain.Exceptions;
 
-namespace ConsumptionNotes.Mobile.ViewModels;
+namespace ConsumptionNotes.Mobile.ViewModels.Addition;
 
-public partial class AddNaturalGasViewModel(NaturalGasNotesService notesService) : ObservableObject
+public abstract partial class BaseAddViewModel<TConsumption, TNotesService>(TNotesService notesService) : ObservableObject
+    where TConsumption : BaseConsumption
+    where TNotesService : INotesService<TConsumption>
 {
-    [ObservableProperty] private DateOnly _selectedDate = DateOnly.FromDateTime(DateTime.Now);
-    [ObservableProperty] private double _cubicMeterConsumed;
-    [ObservableProperty] private decimal _cubicMeterPrice = 7.95689m;
+    [ObservableProperty] protected DateOnly _selectedDate = DateOnly.FromDateTime(DateTime.Now);
 
     [RelayCommand]
-    private async Task GoBack()
+    protected async Task GoBack()
     {
         await Shell.Current.GoToAsync("..", true);
     }
 
-    [RelayCommand]
-    private async Task Add()
-    {
-        var amountToPay = Convert.ToDecimal(CubicMeterConsumed) * CubicMeterPrice;
+    protected abstract decimal CalculateAmount();
 
-        var consumption = new NaturalGasConsumption(SelectedDate, CubicMeterConsumed, amountToPay);
+    protected abstract TConsumption CreateConsumption();
+
+    [RelayCommand]
+    protected async Task Add()
+    {
+        var consumption = CreateConsumption();
         try
         {
             InvalidConsumptionDataException.ThrowIfDateInvalid(consumption);
@@ -36,5 +39,5 @@ public partial class AddNaturalGasViewModel(NaturalGasNotesService notesService)
         }
     }
 
-    private void UpdateDate() => SelectedDate = SelectedDate.AddMonths(1);
+    protected void UpdateDate() => SelectedDate = SelectedDate.AddMonths(1);
 }
