@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels.Addition"
+             xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels.Adding"
              xmlns:controls="clr-namespace:ConsumptionNotes.Mobile.Controls"
-             x:Class="ConsumptionNotes.Mobile.Pages.AddNaturalGasPage"
+             x:Class="ConsumptionNotes.Mobile.Pages.Adding.AddNaturalGasPage"
              Shell.PresentationMode="ModalAnimated"
              x:DataType="vm:AddNaturalGasViewModel">
     <VerticalStackLayout

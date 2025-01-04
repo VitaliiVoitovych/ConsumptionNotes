@@ -15,5 +15,5 @@
     <ProjectReference Include="..\ConsumptionNotes.Dal\ConsumptionNotes.Dal.csproj" />
     <ProjectReference Include="..\ConsumptionNotes.Domain\ConsumptionNotes.Domain.csproj" />
   </ItemGroup>
-
+  
 </Project>

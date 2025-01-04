@@ -8,8 +8,8 @@
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <AssemblyName>ConsumptionNotes</AssemblyName>
     <ApplicationIcon>Assets/consumption-app.ico</ApplicationIcon>
-    <FileVersion>1.0.3</FileVersion>
-    <InformationalVersion>1.0.3</InformationalVersion>
+    <FileVersion>1.1.0</FileVersion>
+    <InformationalVersion>1.1.0</InformationalVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿global using Avalonia;
 global using Avalonia.Controls;
+global using ConsumptionNotes.Application.Localization;
 global using ConsumptionNotes.Application.Services.Notes;
 global using ConsumptionNotes.Application.Services.Charting;
 global using ConsumptionNotes.Domain.Models;

@@ -1,6 +1,4 @@
-﻿using ConsumptionNotes.Mobile.ViewModels.Addition;
-
-namespace ConsumptionNotes.Mobile.ViewModels.Addition;
+﻿namespace ConsumptionNotes.Mobile.ViewModels.Adding;
 
 public partial class AddElectricityViewModel(ElectricityNotesService notesService) : BaseAddViewModel<ElectricityConsumption, ElectricityNotesService>(notesService)
 {

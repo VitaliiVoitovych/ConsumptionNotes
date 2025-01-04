@@ -26,7 +26,7 @@ public partial class App : Avalonia.Application
     public override void OnFrameworkInitializationCompleted()
     {
         Current!.RequestedThemeVariant = ThemeVariant.Dark;
-        
+
         _configuration = InitializeConfiguration();
         
         CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("uk-UA");

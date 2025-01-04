@@ -1,6 +1,5 @@
 ﻿using ConsumptionNotes.Dal.Extensions;
 using ConsumptionNotes.Mobile.Services.Files;
-using ConsumptionNotes.Mobile.ViewModels.Addition;
 using ConsumptionNotes.Mobile.ViewModels.Dashboards;
 using Microsoft.Extensions.Logging;
 using SkiaSharp.Views.Maui.Controls.Hosting;
@@ -27,7 +26,7 @@ namespace ConsumptionNotes.Mobile
             const string filename = "consumption.db";
             var connectionString = Path.Combine(FileSystem.Current.AppDataDirectory, filename);
             builder.Services.AddConsumptionDbContext($"Data Source={connectionString}");
-
+            
             builder.Services.AddRepositories();
 
             builder.Services.AddSingleton<ElectricityChartService>();

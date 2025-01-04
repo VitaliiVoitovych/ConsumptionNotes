@@ -1,4 +1,6 @@
-﻿namespace ConsumptionNotes.Mobile;
+﻿using CultureInfo = System.Globalization.CultureInfo;
+
+namespace ConsumptionNotes.Mobile;
 
 public partial class App : Microsoft.Maui.Controls.Application
 {
@@ -14,6 +16,8 @@ public partial class App : Microsoft.Maui.Controls.Application
 
     protected override void OnStart()
     {
+        CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("uk-UA");
+
         UserAppTheme = AppTheme.Dark;
         
         base.OnStart();

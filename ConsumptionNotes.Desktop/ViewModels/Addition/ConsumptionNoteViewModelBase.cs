@@ -8,8 +8,7 @@ public abstract partial class ConsumptionNoteViewModelBase<TConsumption, TNotesS
     where TConsumption : BaseConsumption
     where TNotesService : INotesService<TConsumption>
 {
-    private const string DuplicateNoteErrorMessage  = "Запис про цей місяць вже є";
-    private const string InvalidDateErrorMessage = "Не можна додавати запис \r\nпро поточний чи майбутній місяць";
+   
     
     [ObservableProperty] private DateTimeOffset _selectedDate = DateTimeOffset.Now;
 
@@ -42,11 +41,11 @@ public abstract partial class ConsumptionNoteViewModelBase<TConsumption, TNotesS
         }
         catch (DuplicateConsumptionNoteException)
         {
-            await MessageDialog.ShowAsync("Помилка", DuplicateNoteErrorMessage, MessageDialogIcon.Warning);
+            await MessageDialog.ShowAsync("Помилка", ExceptionMessages.DuplicateNoteErrorMessage, MessageDialogIcon.Warning);
         }
         catch (InvalidConsumptionDataException)
         {
-            await MessageDialog.ShowAsync("Помилка", InvalidDateErrorMessage, MessageDialogIcon.Warning);
+            await MessageDialog.ShowAsync("Помилка", ExceptionMessages.InvalidDateErrorMessage, MessageDialogIcon.Warning);
         }
     }
 }

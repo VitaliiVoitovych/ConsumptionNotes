@@ -1,6 +1,4 @@
-using ConsumptionNotes.Mobile.ViewModels.Addition;
-
-namespace ConsumptionNotes.Mobile.Pages;
+namespace ConsumptionNotes.Mobile.Pages.Adding;
 
 public partial class AddNaturalGasPage : ContentPage
 {

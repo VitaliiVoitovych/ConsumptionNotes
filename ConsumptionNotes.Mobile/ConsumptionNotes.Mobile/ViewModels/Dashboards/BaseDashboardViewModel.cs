@@ -1,5 +1,6 @@
 ﻿using ConsumptionNotes.Application.Services.Files;
 using ConsumptionNotes.Application.Services.Notes.Interfaces;
+using ConsumptionNotes.Domain.Exceptions;
 using ConsumptionNotes.Mobile.Services.Files;
 using System.Text.Json;
 
@@ -10,8 +11,6 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
     where TChartService : BaseChartService<TConsumption>
     where TNotesService : INotesChartService<TConsumption, TChartService>
 {
-    private const string JsonFileNotSelectedMessage = "Не обрали потрібний файл з даними";
-
     protected abstract string ExportFileName { get; }
 
     protected abstract string AddPageRoute { get; }
@@ -36,17 +35,17 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
     {
         try
         {
-            var file = await fileService.OpenFileAsync();
+            var file = await fileService.OpenFileAsync(FileService.Json, "Виберіть файл з даними .json");
             var data = await DataExporterImporter<TConsumption>.ImportAsync(file);
             await NotesService.ImportDataAsync(data);
         }
-        catch (FileNotFoundException ex)
+        catch (FileNotSelectedException)
         {
-            await Shell.Current.DisplayAlert("Помилка!", ex.Message, "Зрозуміло");
+            await Shell.Current.DisplayAlert("Помилка!", ExceptionMessages.FileNotSelectedExceptionMessage, "Зрозуміло");
         }
         catch (JsonException)
         {
-            await Shell.Current.DisplayAlert("Помилка!", JsonFileNotSelectedMessage, "Зрозуміло");
+            await Shell.Current.DisplayAlert("Помилка!", ExceptionMessages.JsonFileNotSelectedMessage, "Зрозуміло");
         }
     }
 
@@ -58,7 +57,7 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
 
         await DataExporterImporter<TConsumption>.ExportAsync(filePath, NotesService.Consumptions);
 
-        await fileService.ShareFileAsync(filePath);
+        await fileService.ShareFileAsync(filePath, "Експортувати дані");
         try
         {
             File.Delete(filePath);

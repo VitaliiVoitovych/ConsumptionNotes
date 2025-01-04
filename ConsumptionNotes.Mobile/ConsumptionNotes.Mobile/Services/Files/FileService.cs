@@ -1,24 +1,31 @@
-﻿namespace ConsumptionNotes.Mobile.Services.Files;
+﻿using ConsumptionNotes.Domain.Exceptions;
+
+namespace ConsumptionNotes.Mobile.Services.Files;
 
 public class FileService
 {
-    private readonly PickOptions pickOptions = new()
-    {
-        PickerTitle = FileServicesConstants.FilePickerTitle,
-        FileTypes = FileServicesConstants.FilePickerFileType
-    };
+    public static readonly FilePickerFileType Json = new(new Dictionary<DevicePlatform, IEnumerable<string>>
+            {
+                { DevicePlatform.Android, ["application/json"] }
+            });
 
-    public async Task<Stream> OpenFileAsync()
+    public async Task<Stream> OpenFileAsync(FilePickerFileType filePickerFileType, string? title = default)
     {
-        var result = await FilePicker.Default.PickAsync(pickOptions) ?? throw new FileNotFoundException(FileServicesConstants.OpenFileExceptionMessage);
+        var pickOptions = new PickOptions()
+        {
+            PickerTitle = title,
+            FileTypes = filePickerFileType,
+        };
+
+        var result = await FilePicker.Default.PickAsync(pickOptions) ?? throw new FileNotSelectedException("File not selected");
         return await result.OpenReadAsync();
     }
 
-    public async Task ShareFileAsync(string filePath)
+    public async Task ShareFileAsync(string filePath, string? title = default)
     {
         await Share.Default.RequestAsync(new ShareFileRequest
         {
-            Title = FileServicesConstants.ShareFileTitle,
+            Title = title,
             File = new ShareFile(filePath)
         });
     }

@@ -1,7 +1,7 @@
 ﻿using ConsumptionNotes.Application.Services.Notes.Interfaces;
 using ConsumptionNotes.Domain.Exceptions;
 
-namespace ConsumptionNotes.Mobile.ViewModels.Addition;
+namespace ConsumptionNotes.Mobile.ViewModels.Adding;
 
 public abstract partial class BaseAddViewModel<TConsumption, TNotesService>(TNotesService notesService) : ObservableObject
     where TConsumption : BaseConsumption
@@ -31,11 +31,11 @@ public abstract partial class BaseAddViewModel<TConsumption, TNotesService>(TNot
         }
         catch (DuplicateConsumptionNoteException)
         {
-            await Shell.Current.DisplayAlert("Помилка!", "Запис про цей місяць вже є", "Зрозуміло");
+            await Shell.Current.DisplayAlert("Помилка!", ExceptionMessages.DuplicateNoteErrorMessage, "Зрозуміло");
         }
         catch (InvalidConsumptionDataException)
         {
-            await Shell.Current.DisplayAlert("Помилка!", "Не можна додавати запис \r\nпро поточний чи майбутній місяць", "Зрозуміло");
+            await Shell.Current.DisplayAlert("Помилка!", ExceptionMessages.InvalidDateErrorMessage, "Зрозуміло");
         }
     }
 
