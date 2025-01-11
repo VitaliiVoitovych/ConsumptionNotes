@@ -9,7 +9,7 @@
     <!-- Brushes-->
     <SolidColorBrush x:Key="DarkBrush" Color="{StaticResource Dark}"/>
     <SolidColorBrush x:Key="MediumDarkBrush" Color="{StaticResource MediumDark}"/>
-    <SolidColorBrush x:Key="LightDarkBrush" Color="{StaticResource LightDark}"></SolidColorBrush>
-    <SolidColorBrush x:Key="LightBrush" Color="{StaticResource Light}"></SolidColorBrush>
+    <SolidColorBrush x:Key="LightDarkBrush" Color="{StaticResource LightDark}"/>
+    <SolidColorBrush x:Key="LightBrush" Color="{StaticResource Light}"/>
     
 </ResourceDictionary>

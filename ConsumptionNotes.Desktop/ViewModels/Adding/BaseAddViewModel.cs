@@ -2,23 +2,18 @@
 using ConsumptionNotes.Application.Services.Notes.Interfaces;
 using ConsumptionNotes.Domain.Exceptions;
 
-namespace ConsumptionNotes.Desktop.ViewModels.Addition;
+namespace ConsumptionNotes.Desktop.ViewModels.Adding;
 
-public abstract partial class ConsumptionNoteViewModelBase<TConsumption, TNotesService> : ViewModelBase
+public abstract partial class BaseAddViewModel<TConsumption, TNotesService>(TNotesService notesService) : ViewModelBase
     where TConsumption : BaseConsumption
     where TNotesService : INotesService<TConsumption>
 {
    
     
-    [ObservableProperty] private DateTimeOffset _selectedDate = DateTimeOffset.Now;
+    [ObservableProperty] private DateTimeOffset _selectedDate = DateTimeOffset.Now.AddMonths(-1);
 
-    private TNotesService _notesService;
-    
-    protected ConsumptionNoteViewModelBase(TNotesService notesService)
-    {
-        _notesService = notesService;
-    }
-    
+    private TNotesService _notesService = notesService;
+
     protected abstract decimal CalculateAmount();
 
     protected abstract TConsumption CreateConsumption();

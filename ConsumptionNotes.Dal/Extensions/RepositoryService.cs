@@ -1,5 +1,4 @@
 ﻿using ConsumptionNotes.Dal.Repositories;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace ConsumptionNotes.Dal.Extensions;
 

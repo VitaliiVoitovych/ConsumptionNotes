@@ -6,14 +6,16 @@ using System.Text.Json;
 
 namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
 
-public abstract partial class BaseDashboardViewModel<TConsumption, TChartService, TNotesService>(TNotesService notesService, FileService fileService) : ObservableObject
+public abstract partial class BaseDashboardViewModel<TConsumption, TChartService, TNotesService>(TNotesService notesService, FileSystemService fileSystemService) : ViewModelBase
     where TConsumption : BaseConsumption
     where TChartService : BaseChartService<TConsumption>
     where TNotesService : INotesChartService<TConsumption, TChartService>
 {
+    protected IAsyncRelayCommand? openAddingPageCommand;
+    
     protected abstract string ExportFileName { get; }
 
-    protected abstract string AddPageRoute { get; }
+    public abstract IAsyncRelayCommand OpenAddingPageCommand { get; }
 
     public TNotesService NotesService { get; } = notesService;
     public TChartService ChartService => NotesService.ChartService;
@@ -25,17 +27,11 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
     }
 
     [RelayCommand]
-    private async Task OpenAddPage()
-    {
-        await Shell.Current.GoToAsync(AddPageRoute, true);
-    }
-
-    [RelayCommand]
     private async Task ImportData()
     {
         try
         {
-            var file = await fileService.OpenFileAsync(FileService.Json, "Виберіть файл з даними .json");
+            var file = await fileSystemService.OpenFileAsync(FileServiceConstants.JsonPickOptions, "Виберіть файл з даними .json");
             var data = await DataExporterImporter<TConsumption>.ImportAsync(file);
             await NotesService.ImportDataAsync(data);
         }
@@ -57,7 +53,7 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
 
         await DataExporterImporter<TConsumption>.ExportAsync(filePath, NotesService.Consumptions);
 
-        await fileService.ShareFileAsync(filePath, "Експортувати дані");
+        await fileSystemService.ShareFileAsync(filePath, "Експортувати дані");
         try
         {
             File.Delete(filePath);

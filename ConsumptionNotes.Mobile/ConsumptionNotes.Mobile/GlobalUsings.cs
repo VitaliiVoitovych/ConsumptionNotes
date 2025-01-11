@@ -9,3 +9,4 @@ global using ConsumptionNotes.Mobile.Pages.Dashboards;
 global using ConsumptionNotes.Mobile.Pages.Adding;
 global using ConsumptionNotes.Mobile.ViewModels;
 global using ConsumptionNotes.Mobile.ViewModels.Adding;
+global using ConsumptionNotes.Mobile.ViewModels.Dashboards;

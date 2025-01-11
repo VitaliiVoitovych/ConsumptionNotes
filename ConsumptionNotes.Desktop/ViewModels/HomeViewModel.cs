@@ -1,7 +1,4 @@
-﻿using ConsumptionNotes.Application.Services.Charting;
-using ConsumptionNotes.Application.Services.Notes;
-
-namespace ConsumptionNotes.Desktop.ViewModels;
+﻿namespace ConsumptionNotes.Desktop.ViewModels;
 
 public class HomeViewModel: ViewModelBase
 {

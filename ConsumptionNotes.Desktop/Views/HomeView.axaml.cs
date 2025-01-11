@@ -1,6 +1,4 @@
-﻿using ConsumptionNotes.Desktop.ViewModels;
-
-namespace ConsumptionNotes.Desktop.Views;
+﻿namespace ConsumptionNotes.Desktop.Views;
 
 public partial class HomeView : UserControl
 {

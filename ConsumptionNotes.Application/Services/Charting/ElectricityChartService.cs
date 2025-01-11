@@ -1,7 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using ConsumptionNotes.Application.Services.Charting.Styles;
+﻿using ConsumptionNotes.Application.Services.Charting.Styles;
 using ConsumptionNotes.Application.Services.Charting.Utils;
-using ConsumptionNotes.Domain.Models;
 using LiveChartsCore;
 
 namespace ConsumptionNotes.Application.Services.Charting;

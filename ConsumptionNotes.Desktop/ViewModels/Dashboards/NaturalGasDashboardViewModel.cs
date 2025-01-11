@@ -1,23 +1,12 @@
-﻿using ConsumptionNotes.Application.Services.Charting;
-using ConsumptionNotes.Desktop.Services.Files;
-using ConsumptionNotes.Application.Services.Notes;
-using ConsumptionNotes.Desktop.Views.Addition;
+﻿using ConsumptionNotes.Desktop.Services.Files;
+using ConsumptionNotes.Desktop.Views.Adding;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Dashboards;
 
-public partial class NaturalGasDashboardViewModel 
-    : BaseDashboardViewModel<NaturalGasConsumption, NaturalGasChartService, NaturalGasNotesService>
+public class NaturalGasDashboardViewModel(NaturalGasNotesService notesService, FileSystemService fileSystemService)
+    : BaseDashboardViewModel<NaturalGasConsumption, NaturalGasChartService, NaturalGasNotesService>(notesService,
+        fileSystemService)
 {
     protected override string ExportFileName => "naturalgas";
-
-    public NaturalGasDashboardViewModel(NaturalGasNotesService notesService, FileService fileService)
-        : base(notesService, fileService)
-    {
-        
-    }
-    
-    protected override BaseNoteView GetNoteView()
-    {
-        return Ioc.Default.GetRequiredService<NaturalGasNoteView>();
-    }
+    protected override UserControl AddingView => Ioc.Default.GetRequiredService<NaturalGasNoteView>();
 }

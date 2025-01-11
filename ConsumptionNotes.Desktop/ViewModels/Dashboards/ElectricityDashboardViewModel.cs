@@ -1,23 +1,12 @@
-﻿using ConsumptionNotes.Application.Services.Charting;
-using ConsumptionNotes.Desktop.Services.Files;
-using ConsumptionNotes.Application.Services.Notes;
-using ConsumptionNotes.Desktop.Views.Addition;
+﻿using ConsumptionNotes.Desktop.Services.Files;
+using ConsumptionNotes.Desktop.Views.Adding;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Dashboards;
 
-public partial class ElectricityDashboardViewModel 
-    : BaseDashboardViewModel<ElectricityConsumption, ElectricityChartService, ElectricityNotesService>
+public class ElectricityDashboardViewModel(ElectricityNotesService notesService, FileSystemService fileSystemService)
+    : BaseDashboardViewModel<ElectricityConsumption, ElectricityChartService, ElectricityNotesService>(notesService,
+        fileSystemService)
 {
     protected override string ExportFileName => "electricity";
-
-    public ElectricityDashboardViewModel(ElectricityNotesService notesService, FileService fileService)
-        : base(notesService, fileService)
-    {
-        
-    }
-    
-    protected override BaseNoteView GetNoteView()
-    {
-        return Ioc.Default.GetRequiredService<ElectricityNoteView>();
-    }
+    protected override UserControl AddingView => Ioc.Default.GetRequiredService<ElectricityNoteView>();
 }

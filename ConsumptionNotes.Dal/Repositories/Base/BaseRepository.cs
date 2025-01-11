@@ -1,7 +1,4 @@
-﻿using ConsumptionNotes.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-
-namespace ConsumptionNotes.Dal.Repositories.Base;
+﻿namespace ConsumptionNotes.Dal.Repositories.Base;
 
 public abstract class BaseRepository<T>
     where T : BaseConsumption

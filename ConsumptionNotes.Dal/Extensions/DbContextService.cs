@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace ConsumptionNotes.Dal.Extensions;
+﻿namespace ConsumptionNotes.Dal.Extensions;
 
 public static class DbContextService
 {

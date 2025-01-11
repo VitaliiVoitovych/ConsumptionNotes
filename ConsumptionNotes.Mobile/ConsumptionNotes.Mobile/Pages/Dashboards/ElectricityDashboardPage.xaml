@@ -13,7 +13,7 @@
         <ToolbarItem
             Order="Secondary"
             Text="Додати запис"
-            Command="{Binding OpenAddPageCommand}"/>
+            Command="{Binding OpenAddingPageCommand}"/>
 
         <ToolbarItem
             Order="Secondary"

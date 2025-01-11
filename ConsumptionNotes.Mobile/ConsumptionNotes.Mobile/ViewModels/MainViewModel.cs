@@ -1,6 +1,6 @@
 ﻿namespace ConsumptionNotes.Mobile.ViewModels;
 
-public class MainViewModel : ObservableObject
+public class MainViewModel : ViewModelBase
 {
     public ElectricityNotesService ElectricityNotesService { get; }
     public NaturalGasNotesService NaturalGasNotesService { get; }

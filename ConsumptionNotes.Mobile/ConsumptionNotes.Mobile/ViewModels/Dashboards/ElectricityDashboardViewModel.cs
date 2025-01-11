@@ -2,10 +2,13 @@
 
 namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
 
-public partial class ElectricityDashboardViewModel(ElectricityNotesService notesService, FileService fileService)
-    : BaseDashboardViewModel<ElectricityConsumption, ElectricityChartService, ElectricityNotesService>(notesService, fileService)
+public class ElectricityDashboardViewModel(ElectricityNotesService notesService, FileSystemService fileSystemService)
+    : BaseDashboardViewModel<ElectricityConsumption, ElectricityChartService, ElectricityNotesService>(notesService, fileSystemService)
 {
     protected override string ExportFileName => "electricity";
-
-    protected override string AddPageRoute => nameof(AddElectricityPage);
+    
+    public override IAsyncRelayCommand OpenAddingPageCommand => openAddingPageCommand ??= new AsyncRelayCommand(async () =>
+    {
+        await Shell.Current.GoToAsync($"{nameof(AddElectricityPage)}", true);
+    });
 }

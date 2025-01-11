@@ -3,14 +3,17 @@ using ConsumptionNotes.Domain.Exceptions;
 
 namespace ConsumptionNotes.Mobile.ViewModels.Adding;
 
-public abstract partial class BaseAddViewModel<TConsumption, TNotesService>(TNotesService notesService) : ObservableObject
+public abstract partial class BaseAddViewModel<TConsumption, TNotesService>(TNotesService notesService) 
+    : ViewModelBase
     where TConsumption : BaseConsumption
     where TNotesService : INotesService<TConsumption>
 {
-    [ObservableProperty] protected DateOnly _selectedDate = DateOnly.FromDateTime(DateTime.Now);
+    [ObservableProperty] private DateOnly _selectedDate = DateOnly.FromDateTime(DateTime.Now.AddMonths(-1));
+    
+    private TNotesService _notesService = notesService;
 
     [RelayCommand]
-    protected async Task GoBack()
+    private async Task GoBack()
     {
         await Shell.Current.GoToAsync("..", true);
     }
@@ -20,13 +23,13 @@ public abstract partial class BaseAddViewModel<TConsumption, TNotesService>(TNot
     protected abstract TConsumption CreateConsumption();
 
     [RelayCommand]
-    protected async Task Add()
+    private async Task Add()
     {
         var consumption = CreateConsumption();
         try
         {
             InvalidConsumptionDataException.ThrowIfDateInvalid(consumption);
-            notesService.AddNote(consumption);
+            _notesService.AddNote(consumption);
             UpdateDate();
         }
         catch (DuplicateConsumptionNoteException)
@@ -39,5 +42,5 @@ public abstract partial class BaseAddViewModel<TConsumption, TNotesService>(TNot
         }
     }
 
-    protected void UpdateDate() => SelectedDate = SelectedDate.AddMonths(1);
+    private void UpdateDate() => SelectedDate = SelectedDate.AddMonths(1);
 }

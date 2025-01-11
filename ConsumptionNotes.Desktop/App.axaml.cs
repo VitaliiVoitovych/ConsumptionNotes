@@ -9,10 +9,11 @@ using ConsumptionNotes.Desktop.Services.Files;
 using ConsumptionNotes.Desktop.Views;
 using ConsumptionNotes.Desktop.Startup;
 using Microsoft.Extensions.Configuration;
+using ConsumptionNotes.Application.Services;
 
 namespace ConsumptionNotes.Desktop;
 
-public partial class App : Avalonia.Application
+public class App : Avalonia.Application
 {
     public const string AppName = "ConsumptionNotes";
     private static IConfiguration? _configuration;
@@ -57,7 +58,7 @@ public partial class App : Avalonia.Application
         services.AddDatabase(_configuration!);
         
         // File Service
-        services.AddSingleton<FileService>(_ => new FileService(storageProvider));
+        services.AddSingleton<FileSystemService>(_ => new FileSystemService(storageProvider));
         
         services
             .AddRepositories()

@@ -37,7 +37,7 @@ public static class MessageDialog
         };
     }
     
-    private static ContentDialog CreateMessageDialog(string title, string text, string? closeButtonText)
+    private static ContentDialog CreateMessageDialog(string title, string text, string? closeButtonText = default)
     {
         return new ContentDialog
         {

@@ -1,7 +1,4 @@
-﻿using ConsumptionNotes.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-
-namespace ConsumptionNotes.Dal;
+﻿namespace ConsumptionNotes.Dal;
 
 public sealed class ConsumptionNotesDbContext : DbContext
 {

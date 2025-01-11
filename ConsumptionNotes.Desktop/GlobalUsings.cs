@@ -5,7 +5,7 @@ global using ConsumptionNotes.Application.Services.Notes;
 global using ConsumptionNotes.Application.Services.Charting;
 global using ConsumptionNotes.Domain.Models;
 global using ConsumptionNotes.Desktop.ViewModels;
-global using ConsumptionNotes.Desktop.ViewModels.Addition;
+global using ConsumptionNotes.Desktop.ViewModels.Adding;
 global using ConsumptionNotes.Desktop.ViewModels.Dashboards;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.DependencyInjection;

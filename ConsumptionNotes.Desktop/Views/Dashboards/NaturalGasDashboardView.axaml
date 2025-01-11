@@ -99,7 +99,7 @@
                 
                 <Button
                     Content="Додати"
-                    Command="{Binding OpenAddDialogCommand}"/>
+                    Command="{Binding OpenAddingDialogCommand}"/>
                 
             </StackPanel>
             

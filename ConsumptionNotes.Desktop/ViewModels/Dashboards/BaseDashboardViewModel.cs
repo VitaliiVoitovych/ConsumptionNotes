@@ -3,23 +3,24 @@ using ConsumptionNotes.Desktop.Controls.Dialogs;
 using ConsumptionNotes.Application.Services.Files;
 using ConsumptionNotes.Desktop.Services.Files;
 using ConsumptionNotes.Application.Services.Notes.Interfaces;
-using ConsumptionNotes.Desktop.Views.Addition;
+using ConsumptionNotes.Desktop.Extensions;
 using ConsumptionNotes.Domain.Exceptions;
+using FluentAvalonia.UI.Controls;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Dashboards;
 
-public abstract partial class BaseDashboardViewModel<TConsumption, TChartService, TNotesService>(TNotesService notesService, FileService fileService) : ViewModelBase
+public abstract partial class BaseDashboardViewModel<TConsumption, TChartService, TNotesService>(TNotesService notesService, FileSystemService fileSystemService) : ViewModelBase
     where TConsumption : BaseConsumption
     where TChartService : BaseChartService<TConsumption>
     where TNotesService : INotesChartService<TConsumption, TChartService>
 {
     protected abstract string ExportFileName { get; }
     
+    protected abstract UserControl AddingView { get; }
+    
     public TNotesService NotesService { get; } = notesService;
 
     public TChartService ChartService => NotesService.ChartService;
-
-    protected abstract BaseNoteView GetNoteView();
     
     [RelayCommand]
     private void Remove(TConsumption consumption)
@@ -28,10 +29,10 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
     }
 
     [RelayCommand]
-    private async Task OpenAddDialog()
+    private async Task OpenAddingDialog()
     {
-        var noteView = GetNoteView();
-        await noteView.ShowDialogAsync();
+        var viewmodel = AddingView.DataContext as BaseAddViewModel<TConsumption, TNotesService>;
+        await AddingView.ShowContentDialog("Новий запис", "Відмінити", "Додати", ContentDialogButton.Primary, viewmodel!.AddCommand);
     }
     
     [RelayCommand]
@@ -39,7 +40,7 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
     {
         try
         {
-            await using var stream = await fileService.OpenFileAsync("Виберіть файл для імпорту даних", false, FileServiceConstants.JsonFileType);
+            await using var stream = await fileSystemService.OpenFileAsync("Виберіть файл для імпорту даних", FileServiceConstants.JsonFileType);
             var data = await DataExporterImporter<TConsumption>.ImportAsync(stream);
             await NotesService.ImportDataAsync(data);
         }
@@ -60,7 +61,7 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
 
         try
         {
-            var folderPath = await fileService.OpenFolderAsync("Виберіть папку для експорту даних");
+            var folderPath = await fileSystemService.OpenFolderAsync("Виберіть папку для експорту даних");
             var filePath = Path.Combine(folderPath, exportFile);
             await DataExporterImporter<TConsumption>.ExportAsync(filePath, NotesService.Consumptions);
             await MessageDialog.ShowAsync("Дані успішно експортовано!", $"Дані експортовано за місцем \r\n{filePath}");

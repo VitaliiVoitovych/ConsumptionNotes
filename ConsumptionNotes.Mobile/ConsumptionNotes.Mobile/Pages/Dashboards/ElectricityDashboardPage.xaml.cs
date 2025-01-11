@@ -1,6 +1,4 @@
-﻿using ConsumptionNotes.Mobile.ViewModels.Dashboards;
-
-namespace ConsumptionNotes.Mobile.Pages.Dashboards;
+﻿namespace ConsumptionNotes.Mobile.Pages.Dashboards;
 
 public partial class ElectricityDashboardPage : ContentPage
 {

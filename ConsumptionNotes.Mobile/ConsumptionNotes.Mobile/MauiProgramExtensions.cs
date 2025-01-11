@@ -1,6 +1,6 @@
-﻿using ConsumptionNotes.Dal.Extensions;
+﻿using ConsumptionNotes.Application.Services;
+using ConsumptionNotes.Dal.Extensions;
 using ConsumptionNotes.Mobile.Services.Files;
-using ConsumptionNotes.Mobile.ViewModels.Dashboards;
 using Microsoft.Extensions.Logging;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
@@ -29,13 +29,10 @@ namespace ConsumptionNotes.Mobile
             
             builder.Services.AddRepositories();
 
-            builder.Services.AddSingleton<ElectricityChartService>();
-            builder.Services.AddSingleton<NaturalGasChartService>();
+            builder.Services.AddChartServices();
+            builder.Services.AddNotesServices();
 
-            builder.Services.AddSingleton<ElectricityNotesService>();
-            builder.Services.AddSingleton<NaturalGasNotesService>();
-
-            builder.Services.AddSingleton<FileService>();
+            builder.Services.AddSingleton<FileSystemService>();
 
             builder.Services.AddTransient<MainViewModel>();
             builder.Services.AddTransient<ElectricityDashboardViewModel>();

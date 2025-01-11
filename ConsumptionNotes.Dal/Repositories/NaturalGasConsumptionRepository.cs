@@ -1,5 +1,4 @@
 ﻿using ConsumptionNotes.Dal.Repositories.Base;
-using ConsumptionNotes.Domain.Models;
 
 namespace ConsumptionNotes.Dal.Repositories;
 
