@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels.Adding"
              xmlns:controls="clr-namespace:ConsumptionNotes.Mobile.Controls"
-             x:Class="ConsumptionNotes.Mobile.Pages.Adding.AddElectricityPage"
+             x:Class="ConsumptionNotes.Mobile.Pages.Adding.NaturalAddingGasPage"
              Shell.PresentationMode="ModalAnimated"
-             x:DataType="vm:AddElectricityViewModel">
+             x:DataType="vm:NaturalAddingGasViewModel">
     <VerticalStackLayout
         HorizontalOptions="Center"
         VerticalOptions="Center">
@@ -23,32 +23,17 @@
         </Grid>
 
         <Label
-            Text="Спожито кВт/год"
-            FontSize="18"/>
-        <Label
-            Text="День"/>
-
+            Text="Спожито м³"/>
         <controls:NumericUpDown
-            Value="{Binding DayKilowattConsumed}"
+            Value="{Binding CubicMeterConsumed}"
             Minimum="0"
             Maximum="10000"
-            Increment="1"/>
+            Increment=".01"/>
 
         <Label
-            Text="Ніч:"/>
-
+            Text="Ціна за м³"/>
         <controls:NumericUpDown
-            Value="{Binding NightKilowattConsumed}"
-            Minimum="0"
-            Maximum="10000"
-            Increment="1"/>
-
-        <Label
-            Text="Ціна за кВт/год"
-            Margin="0,15,0,0"/>
-
-        <controls:NumericUpDown
-            Value="{Binding KilowattPerHourPrice}"
+            Value="{Binding CubicMeterPrice}"
             Minimum="0.0"
             Maximum="100"
             Increment=".01"/>
@@ -68,5 +53,6 @@
                 Text="Додати запис"
                 Command="{Binding AddCommand}"/>
         </Grid>
+
     </VerticalStackLayout>
 </ContentPage>

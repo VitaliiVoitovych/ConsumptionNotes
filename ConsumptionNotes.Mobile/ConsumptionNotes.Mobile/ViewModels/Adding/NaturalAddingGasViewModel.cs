@@ -1,7 +1,7 @@
 ﻿namespace ConsumptionNotes.Mobile.ViewModels.Adding;
 
-public partial class AddNaturalGasViewModel(NaturalGasNotesService notesService) 
-    : BaseAddViewModel<NaturalGasConsumption, NaturalGasNotesService>(notesService)
+public partial class NaturalAddingGasViewModel(NaturalGasNotesService notesService) 
+    : BaseAddingViewModel<NaturalGasConsumption, NaturalGasNotesService>(notesService)
 {
     [ObservableProperty] private double _cubicMeterConsumed;
     [ObservableProperty] private decimal _cubicMeterPrice = 7.95689m;

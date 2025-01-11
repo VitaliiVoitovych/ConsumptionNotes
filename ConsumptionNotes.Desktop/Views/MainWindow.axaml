@@ -44,7 +44,7 @@
                 <ui:NavigationViewItem
                     IsSelected="True"
                     Content="Головна"
-                    Tag="HomeView">
+                    Tag="MainView">
                     <ui:NavigationViewItem.IconSource>
                         <ui:ImageIconSource Source="{SvgImage /Assets/home.svg}"/>
                     </ui:NavigationViewItem.IconSource>

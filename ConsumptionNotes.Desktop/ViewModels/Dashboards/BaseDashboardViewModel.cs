@@ -31,7 +31,7 @@ public abstract partial class BaseDashboardViewModel<TConsumption, TChartService
     [RelayCommand]
     private async Task OpenAddingDialog()
     {
-        var viewmodel = AddingView.DataContext as BaseAddViewModel<TConsumption, TNotesService>;
+        var viewmodel = AddingView.DataContext as BaseAddingViewModel<TConsumption, TNotesService>;
         await AddingView.ShowContentDialog("Новий запис", "Відмінити", "Додати", ContentDialogButton.Primary, viewmodel!.AddCommand);
     }
     

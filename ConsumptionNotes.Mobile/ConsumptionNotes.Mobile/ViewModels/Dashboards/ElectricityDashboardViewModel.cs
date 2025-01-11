@@ -9,6 +9,6 @@ public class ElectricityDashboardViewModel(ElectricityNotesService notesService,
     
     public override IAsyncRelayCommand OpenAddingPageCommand => openAddingPageCommand ??= new AsyncRelayCommand(async () =>
     {
-        await Shell.Current.GoToAsync($"{nameof(AddElectricityPage)}", true);
+        await Shell.Current.GoToAsync($"{nameof(ElectricityAddingPage)}", true);
     });
 }

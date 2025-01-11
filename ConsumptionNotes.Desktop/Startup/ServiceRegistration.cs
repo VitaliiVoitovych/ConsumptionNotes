@@ -8,18 +8,18 @@ public static class ServiceRegistration
     {
         // Adding views
         return services
-            .AddTransient<ElectricityNoteView>()
-            .AddTransient<NaturalGasNoteView>();
+            .AddTransient<ElectricityAddingView>()
+            .AddTransient<NaturalGasAddingView>();
     }
 
     public static IServiceCollection AddViewModels(this IServiceCollection services)
     {
         return services
-            .AddTransient<HomeViewModel>()
+            .AddTransient<MainViewModel>()
             .AddTransient<ElectricityDashboardViewModel>()
             .AddTransient<NaturalGasDashboardViewModel>()
             // Adding view models
-            .AddScoped<ElectricityAddViewModel>()
-            .AddScoped<NaturalGasAddViewModel>();
+            .AddScoped<ElectricityAddingViewModel>()
+            .AddScoped<NaturalGasAddingViewModel>();
     }
 }

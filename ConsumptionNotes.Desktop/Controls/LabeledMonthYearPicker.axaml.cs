@@ -1,4 +1,5 @@
-﻿using Avalonia.Layout;
+﻿using Avalonia.Data;
+using Avalonia.Layout;
 
 namespace ConsumptionNotes.Desktop.Controls;
 
@@ -14,7 +15,7 @@ public partial class LabeledMonthYearPicker : UserControl
     }
 
     public static readonly StyledProperty<DateTimeOffset?> SelectedDateProperty = AvaloniaProperty.Register<LabeledMonthYearPicker, DateTimeOffset?>(
-        nameof(SelectedDate));
+        nameof(SelectedDate), defaultBindingMode: BindingMode.TwoWay);
 
     public DateTimeOffset? SelectedDate
     {

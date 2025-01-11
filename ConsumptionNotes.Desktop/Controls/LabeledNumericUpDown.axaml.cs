@@ -1,4 +1,6 @@
-﻿namespace ConsumptionNotes.Desktop.Controls;
+﻿using Avalonia.Data;
+
+namespace ConsumptionNotes.Desktop.Controls;
 
 public partial class LabeledNumericUpDown : UserControl
 {
@@ -39,7 +41,7 @@ public partial class LabeledNumericUpDown : UserControl
     }
 
     public static readonly StyledProperty<decimal?> ValueProperty = AvaloniaProperty.Register<LabeledNumericUpDown, decimal?>(
-        nameof(Value));
+        nameof(Value), defaultBindingMode: BindingMode.TwoWay);
 
     public decimal? Value
     {

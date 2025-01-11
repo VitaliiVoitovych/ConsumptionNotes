@@ -1,6 +1,6 @@
 ﻿namespace ConsumptionNotes.Desktop.ViewModels;
 
-public class HomeViewModel: ViewModelBase
+public class MainViewModel: ViewModelBase
 {
     public ElectricityNotesService ElectricityNotesService { get; }
     public NaturalGasNotesService NaturalGasNotesService { get; }
@@ -8,7 +8,7 @@ public class HomeViewModel: ViewModelBase
     public ElectricityChartService ElectricityChartService => ElectricityNotesService.ChartService;
     public NaturalGasChartService NaturalGasChartService => NaturalGasNotesService.ChartService;
 
-    public HomeViewModel(ElectricityNotesService electricityNotesService,
+    public MainViewModel(ElectricityNotesService electricityNotesService,
         NaturalGasNotesService naturalGasNotesService)
     {
         ElectricityNotesService = electricityNotesService;

@@ -5,15 +5,15 @@
              xmlns:vm="using:ConsumptionNotes.Desktop.ViewModels.Adding"
              xmlns:controls="using:ConsumptionNotes.Desktop.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ConsumptionNotes.Desktop.Views.Adding.ElectricityNoteView"
-             x:DataType="vm:ElectricityAddViewModel">
+             x:Class="ConsumptionNotes.Desktop.Views.Adding.ElectricityAddingView"
+             x:DataType="vm:ElectricityAddingViewModel">
     <StackPanel
         HorizontalAlignment="Center"
         Spacing="10">
         
         <controls:LabeledMonthYearPicker
             Text="Місяць та рік"
-            SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+            SelectedDate="{Binding SelectedDate}"
             Orientation="Vertical"/>
         
         <TextBlock
@@ -24,21 +24,21 @@
             Minimum="0"
             Maximum="10000"
             Increment="1"
-            Value="{Binding DayKilowattsConsumed, Mode=TwoWay}"/>
+            Value="{Binding DayKilowattsConsumed}"/>
         
         <controls:LabeledNumericUpDown
             Text="Ніч"
             Minimum="0"
             Maximum="10000"
             Increment="1"
-            Value="{Binding NightKilowattsConsumed, Mode=TwoWay}"/>
+            Value="{Binding NightKilowattsConsumed}"/>
         
         <controls:LabeledNumericUpDown
             Text="Ціна за кВт/год"
             Minimum="0"
             Maximum="1000"
             Increment=".01"
-            Value="{Binding KilowattPerHourPrice, Mode=TwoWay}"/>
+            Value="{Binding KilowattPerHourPrice}"/>
         
     </StackPanel>
 </UserControl>

@@ -40,10 +40,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\Adding\AddElectricityPage.xaml">
+	  <MauiXaml Update="Pages\Adding\ElectricityAddingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Adding\AddNaturalGasPage.xaml">
+	  <MauiXaml Update="Pages\Adding\NaturalAddingGasPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

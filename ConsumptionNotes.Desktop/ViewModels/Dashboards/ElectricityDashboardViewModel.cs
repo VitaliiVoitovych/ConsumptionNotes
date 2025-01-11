@@ -8,5 +8,5 @@ public class ElectricityDashboardViewModel(ElectricityNotesService notesService,
         fileSystemService)
 {
     protected override string ExportFileName => "electricity";
-    protected override UserControl AddingView => Ioc.Default.GetRequiredService<ElectricityNoteView>();
+    protected override UserControl AddingView => Ioc.Default.GetRequiredService<ElectricityAddingView>();
 }

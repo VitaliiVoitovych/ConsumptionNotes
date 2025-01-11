@@ -5,15 +5,15 @@
              xmlns:vm="using:ConsumptionNotes.Desktop.ViewModels.Adding"
              xmlns:controls="using:ConsumptionNotes.Desktop.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ConsumptionNotes.Desktop.Views.Adding.NaturalGasNoteView"
-             x:DataType="vm:NaturalGasAddViewModel">
+             x:Class="ConsumptionNotes.Desktop.Views.Adding.NaturalGasAddingView"
+             x:DataType="vm:NaturalGasAddingViewModel">
     <StackPanel
         HorizontalAlignment="Center"
         Spacing="10">
         
         <controls:LabeledMonthYearPicker
             Text="Місяць та рік"
-            SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+            SelectedDate="{Binding SelectedDate}"
             Orientation="Vertical"/>
         
         <controls:LabeledNumericUpDown
@@ -21,14 +21,14 @@
             Minimum="0"
             Maximum="10000"
             Increment=".01"
-            Value="{Binding CubicMetersConsumed, Mode=TwoWay}"/>
+            Value="{Binding CubicMetersConsumed}"/>
         
         <controls:LabeledNumericUpDown
             Text="Ціна за м³"
             Minimum="0"
             Maximum="1000"
             Increment=".01"
-            Value="{Binding CubicMeterPrice, Mode=TwoWay}"/>
+            Value="{Binding CubicMeterPrice}"/>
         
     </StackPanel>
 </UserControl>

@@ -3,7 +3,7 @@ using ConsumptionNotes.Domain.Exceptions;
 
 namespace ConsumptionNotes.Mobile.ViewModels.Adding;
 
-public abstract partial class BaseAddViewModel<TConsumption, TNotesService>(TNotesService notesService) 
+public abstract partial class BaseAddingViewModel<TConsumption, TNotesService>(TNotesService notesService) 
     : ViewModelBase
     where TConsumption : BaseConsumption
     where TNotesService : INotesService<TConsumption>

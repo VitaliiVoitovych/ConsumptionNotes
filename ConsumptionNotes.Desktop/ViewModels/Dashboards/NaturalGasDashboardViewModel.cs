@@ -8,5 +8,5 @@ public class NaturalGasDashboardViewModel(NaturalGasNotesService notesService, F
         fileSystemService)
 {
     protected override string ExportFileName => "naturalgas";
-    protected override UserControl AddingView => Ioc.Default.GetRequiredService<NaturalGasNoteView>();
+    protected override UserControl AddingView => Ioc.Default.GetRequiredService<NaturalGasAddingView>();
 }

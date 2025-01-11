@@ -9,6 +9,6 @@ public class NaturalGasDashboardViewModel(NaturalGasNotesService notesService, F
     
     public override IAsyncRelayCommand OpenAddingPageCommand => openAddingPageCommand ??= new AsyncRelayCommand(async () =>
     {
-        await Shell.Current.GoToAsync($"{nameof(AddNaturalGasPage)}", true);
+        await Shell.Current.GoToAsync($"{nameof(NaturalAddingGasPage)}", true);
     });
 }

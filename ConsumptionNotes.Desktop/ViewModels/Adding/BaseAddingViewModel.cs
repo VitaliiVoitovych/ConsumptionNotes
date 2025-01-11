@@ -4,7 +4,7 @@ using ConsumptionNotes.Domain.Exceptions;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Adding;
 
-public abstract partial class BaseAddViewModel<TConsumption, TNotesService>(TNotesService notesService) : ViewModelBase
+public abstract partial class BaseAddingViewModel<TConsumption, TNotesService>(TNotesService notesService) : ViewModelBase
     where TConsumption : BaseConsumption
     where TNotesService : INotesService<TConsumption>
 {

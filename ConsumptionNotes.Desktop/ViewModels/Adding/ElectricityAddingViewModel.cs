@@ -1,7 +1,7 @@
 ﻿namespace ConsumptionNotes.Desktop.ViewModels.Adding;
 
-public partial class ElectricityAddViewModel(ElectricityNotesService notesService)
-    : BaseAddViewModel<ElectricityConsumption, ElectricityNotesService>(notesService)
+public partial class ElectricityAddingViewModel(ElectricityNotesService notesService)
+    : BaseAddingViewModel<ElectricityConsumption, ElectricityNotesService>(notesService)
 {
     [ObservableProperty] private int _dayKilowattsConsumed;
     [ObservableProperty] private int _nightKilowattsConsumed;

@@ -5,8 +5,8 @@
              xmlns:vm="using:ConsumptionNotes.Desktop.ViewModels"
              xmlns:controls="using:ConsumptionNotes.Desktop.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ConsumptionNotes.Desktop.Views.HomeView"
-             x:DataType="vm:HomeViewModel">
+             x:Class="ConsumptionNotes.Desktop.Views.MainView"
+             x:DataType="vm:MainViewModel">
     <Grid
         ColumnDefinitions="*,*">
         
