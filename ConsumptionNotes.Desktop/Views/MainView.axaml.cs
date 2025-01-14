@@ -1,4 +1,6 @@
-﻿namespace ConsumptionNotes.Desktop.Views;
+﻿using ConsumptionNotes.Application.ViewModels;
+
+namespace ConsumptionNotes.Desktop.Views;
 
 public partial class MainView : UserControl
 {

@@ -39,13 +39,4 @@
 	  <ProjectReference Include="..\..\ConsumptionNotes.Domain\ConsumptionNotes.Domain.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <MauiXaml Update="Pages\Adding\ElectricityAddingPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\Adding\NaturalAddingGasPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>
-
 </Project>

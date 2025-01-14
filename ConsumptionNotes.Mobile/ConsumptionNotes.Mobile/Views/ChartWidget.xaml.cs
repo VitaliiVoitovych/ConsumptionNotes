@@ -75,6 +75,7 @@ public partial class ChartWidget : ContentView
     public ChartWidget()
     {
         InitializeComponent();
+        // TODO: Fixes that
         Chart.TooltipTextPaint = ChartPaints.TooltipTextPaint;
         Chart.TooltipBackgroundPaint = ChartPaints.TooltipBackgroundPaint;
     }

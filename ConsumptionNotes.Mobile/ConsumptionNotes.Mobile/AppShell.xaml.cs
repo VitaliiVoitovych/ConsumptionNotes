@@ -7,7 +7,7 @@ public partial class AppShell : Shell
         InitializeComponent();
 
         Routing.RegisterRoute(nameof(ElectricityAddingPage), typeof(ElectricityAddingPage));
-        Routing.RegisterRoute(nameof(NaturalAddingGasPage), typeof(NaturalAddingGasPage));
+        Routing.RegisterRoute(nameof(NaturalGasAddingPage), typeof(NaturalGasAddingPage));
 
         CurrentItem = PhoneTabs;
     }

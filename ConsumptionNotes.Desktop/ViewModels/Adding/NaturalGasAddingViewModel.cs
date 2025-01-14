@@ -1,21 +1,14 @@
-﻿namespace ConsumptionNotes.Desktop.ViewModels.Adding;
+﻿using ConsumptionNotes.Application.ViewModels.Adding;
+using ConsumptionNotes.Desktop.Commands;
 
-public partial class NaturalGasAddingViewModel(NaturalGasNotesService notesService)
-    : BaseAddingViewModel<NaturalGasConsumption, NaturalGasNotesService>(notesService)
+namespace ConsumptionNotes.Desktop.ViewModels.Adding;
+
+public class NaturalGasAddingViewModel : BaseNaturalGasAddingViewModel
 {
-    [ObservableProperty] private double _cubicMetersConsumed;
-    [ObservableProperty] private decimal _cubicMeterPrice = 7.95689m;
-
-    protected override decimal CalculateAmount()
+    public AddNoteCommands AddNoteCommand { get; }
+    
+    public NaturalGasAddingViewModel(NaturalGasNotesService notesService) : base(notesService)
     {
-        return Convert.ToDecimal(CubicMetersConsumed) * CubicMeterPrice;
-    }
-
-    protected override NaturalGasConsumption CreateConsumption()
-    {
-        return new NaturalGasConsumption(
-            DateOnly.FromDateTime(SelectedDate.DateTime),
-            CubicMetersConsumed,
-            CalculateAmount());
+        AddNoteCommand = new AddNoteCommands(AddNote);
     }
 }

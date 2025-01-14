@@ -1,4 +1,5 @@
 ﻿using ConsumptionNotes.Application.Services;
+using ConsumptionNotes.Application.ViewModels;
 using ConsumptionNotes.Dal.Extensions;
 using ConsumptionNotes.Mobile.Services.Files;
 using Microsoft.Extensions.Logging;
@@ -43,10 +44,10 @@ namespace ConsumptionNotes.Mobile
             builder.Services.AddTransient<NaturalGasDashboardPage>();
 
             builder.Services.AddScoped<ElectricityAddingViewModel>();
-            builder.Services.AddScoped<NaturalAddingGasViewModel>();
+            builder.Services.AddScoped<NaturalGasAddingViewModel>();
 
             builder.Services.AddScoped<ElectricityAddingPage>();
-            builder.Services.AddScoped<NaturalAddingGasPage>();
+            builder.Services.AddScoped<NaturalGasAddingPage>();
 
             return builder;
         }

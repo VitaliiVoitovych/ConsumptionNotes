@@ -4,4 +4,5 @@ public enum MessageDialogIcon
 {
     Error,
     Warning
+    // TODO: Add Success icon
 }

@@ -13,16 +13,16 @@
         <ToolbarItem
             Order="Secondary"
             Text="Додати запис"
-            Command="{Binding OpenAddingPageCommand}"/>
+            Command="{Binding OpenAddingPageCommand.Command}"/>
         <ToolbarItem
             Order="Secondary"
             Text="Експорт даних"
-            Command="{Binding ExportDataCommand}"/>
+            Command="{Binding ExportDataCommand.Command}"/>
 
         <ToolbarItem
             Order="Secondary"
             Text="Імпорт даних"
-            Command="{Binding ImportDataCommand}"/>
+            Command="{Binding ImportDataCommand.Command}"/>
 
     </ContentPage.ToolbarItems>
     

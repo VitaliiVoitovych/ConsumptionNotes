@@ -1,4 +1,6 @@
-﻿namespace ConsumptionNotes.Mobile.Pages;
+﻿using ConsumptionNotes.Application.ViewModels;
+
+namespace ConsumptionNotes.Mobile.Pages;
 
 public partial class MainPage : ContentPage
 {

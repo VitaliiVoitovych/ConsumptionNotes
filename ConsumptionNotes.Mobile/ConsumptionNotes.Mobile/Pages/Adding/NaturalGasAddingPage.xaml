@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels.Adding"
              xmlns:controls="clr-namespace:ConsumptionNotes.Mobile.Controls"
-             x:Class="ConsumptionNotes.Mobile.Pages.Adding.NaturalAddingGasPage"
+             x:Class="ConsumptionNotes.Mobile.Pages.Adding.NaturalGasAddingPage"
              Shell.PresentationMode="ModalAnimated"
-             x:DataType="vm:NaturalAddingGasViewModel">
+             x:DataType="vm:NaturalGasAddingViewModel">
     <VerticalStackLayout
         HorizontalOptions="Center"
         VerticalOptions="Center">
@@ -46,12 +46,12 @@
                 Grid.Column="0"
                 HeightRequest="45"
                 Text="Назад"
-                Command="{Binding GoBackCommand}"/>
+                Command="{Binding GoToBackCommand.Command}"/>
             <Button
                 Grid.Column="1"
                 HeightRequest="45"
                 Text="Додати запис"
-                Command="{Binding AddCommand}"/>
+                Command="{Binding AddNoteCommand.Command}"/>
         </Grid>
 
     </VerticalStackLayout>

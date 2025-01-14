@@ -1,24 +1,14 @@
-﻿namespace ConsumptionNotes.Desktop.ViewModels.Adding;
+﻿using ConsumptionNotes.Application.ViewModels.Adding;
+using ConsumptionNotes.Desktop.Commands;
 
-public partial class ElectricityAddingViewModel(ElectricityNotesService notesService)
-    : BaseAddingViewModel<ElectricityConsumption, ElectricityNotesService>(notesService)
+namespace ConsumptionNotes.Desktop.ViewModels.Adding;
+
+public class ElectricityAddingViewModel : BaseElectricityAddingViewModel
 {
-    [ObservableProperty] private int _dayKilowattsConsumed;
-    [ObservableProperty] private int _nightKilowattsConsumed;
-    [ObservableProperty] private decimal _kilowattPerHourPrice = 4.32m;
+    public AddNoteCommands AddNoteCommand { get; }
 
-    protected override decimal CalculateAmount()
+    public ElectricityAddingViewModel(ElectricityNotesService notesService) : base(notesService)
     {
-        return DayKilowattsConsumed * KilowattPerHourPrice +
-               NightKilowattsConsumed * (KilowattPerHourPrice * 0.5m);
-    }
-
-    protected override ElectricityConsumption CreateConsumption()
-    {
-        return new ElectricityConsumption(
-            DateOnly.FromDateTime(SelectedDate.DateTime),
-            DayKilowattsConsumed,
-            NightKilowattsConsumed,
-            CalculateAmount());
+        AddNoteCommand = new AddNoteCommands(AddNote);
     }
 }

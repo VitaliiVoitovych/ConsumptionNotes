@@ -3,13 +3,13 @@ using ConsumptionNotes.Mobile.Commands;
 
 namespace ConsumptionNotes.Mobile.ViewModels.Adding;
 
-public class ElectricityAddingViewModel : BaseElectricityAddingViewModel
+public class NaturalGasAddingViewModel : BaseNaturalGasAddingViewModel
 {
-    public GoToCommand GoToBackCommand { get; } = new("..", true);
-
+    public GoToCommand GoToBackCommand { get; } = new("", true);
+    
     public AddNoteCommand AddNoteCommand { get; }
 
-    public ElectricityAddingViewModel(ElectricityNotesService notesService) : base(notesService)
+    public NaturalGasAddingViewModel(NaturalGasNotesService notesService) : base(notesService)
     {
         AddNoteCommand = new AddNoteCommand(AddNote);
     }

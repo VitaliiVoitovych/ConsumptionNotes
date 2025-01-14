@@ -67,6 +67,7 @@ public class NumericUpDownHandler : StepperHandler
 
     private void OnEntryTextChanged(object? sender, Android.Text.TextChangedEventArgs e)
     {
+        // TODO: Fix bug
         if (string.IsNullOrWhiteSpace(TextField!.Text))
         {
             VirtualView.Value = 0.0;

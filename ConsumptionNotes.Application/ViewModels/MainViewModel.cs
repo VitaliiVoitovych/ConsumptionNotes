@@ -1,4 +1,7 @@
-﻿namespace ConsumptionNotes.Mobile.ViewModels;
+﻿using ConsumptionNotes.Application.Services.Charting;
+using ConsumptionNotes.Application.Services.Notes;
+
+namespace ConsumptionNotes.Application.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {

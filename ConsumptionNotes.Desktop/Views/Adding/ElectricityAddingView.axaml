@@ -4,16 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:ConsumptionNotes.Desktop.ViewModels.Adding"
              xmlns:controls="using:ConsumptionNotes.Desktop.Controls"
+             xmlns:converters="using:ConsumptionNotes.Desktop.Converters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ConsumptionNotes.Desktop.Views.Adding.ElectricityAddingView"
              x:DataType="vm:ElectricityAddingViewModel">
+    <UserControl.Resources>
+        <converters:DateConverter x:Key="DateConverter"/>
+    </UserControl.Resources>
     <StackPanel
         HorizontalAlignment="Center"
         Spacing="10">
         
         <controls:LabeledMonthYearPicker
             Text="Місяць та рік"
-            SelectedDate="{Binding SelectedDate}"
+            SelectedDate="{Binding SelectedDate, Converter={StaticResource DateConverter}}"
             Orientation="Vertical"/>
         
         <TextBlock
@@ -24,14 +28,14 @@
             Minimum="0"
             Maximum="10000"
             Increment="1"
-            Value="{Binding DayKilowattsConsumed}"/>
+            Value="{Binding DayKilowattConsumed}"/>
         
         <controls:LabeledNumericUpDown
             Text="Ніч"
             Minimum="0"
             Maximum="10000"
             Increment="1"
-            Value="{Binding NightKilowattsConsumed}"/>
+            Value="{Binding NightKilowattConsumed}"/>
         
         <controls:LabeledNumericUpDown
             Text="Ціна за кВт/год"

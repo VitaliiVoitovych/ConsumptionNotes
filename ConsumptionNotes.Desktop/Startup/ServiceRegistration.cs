@@ -1,4 +1,5 @@
-﻿using ConsumptionNotes.Desktop.Views.Adding;
+﻿using ConsumptionNotes.Application.ViewModels;
+using ConsumptionNotes.Desktop.Views.Adding;
 
 namespace ConsumptionNotes.Desktop.Startup;
 

@@ -97,11 +97,11 @@
                 
                 <Button
                     Content="Імпорт"
-                    Command="{Binding ImportDataCommand}"/>
+                    Command="{Binding ImportDataCommand.Command}"/>
                 
                 <Button
                     Content="Експорт"
-                    Command="{Binding ExportDataCommand}"/>
+                    Command="{Binding ExportDataCommand.Command}"/>
                 
                 <Button
                     Content="Додати"

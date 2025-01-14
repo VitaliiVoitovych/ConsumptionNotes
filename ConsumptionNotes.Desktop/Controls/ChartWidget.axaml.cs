@@ -74,10 +74,11 @@ public partial class ChartWidget : UserControl
     public ChartWidget()
     {
         InitializeComponent();
-
+        // TODO: Fixes that
         Chart.TooltipTextPaint = ChartPaints.TooltipTextPaint;
         Chart.TooltipBackgroundPaint = ChartPaints.TooltipBackgroundPaint;
     }
 
+    // TODO: Remove unsuded methods
     public void UpdateChart() => Chart.CoreChart.Update();
 }

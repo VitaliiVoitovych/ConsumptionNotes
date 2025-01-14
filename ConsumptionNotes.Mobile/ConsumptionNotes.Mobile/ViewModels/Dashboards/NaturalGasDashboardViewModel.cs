@@ -1,14 +1,21 @@
-﻿using ConsumptionNotes.Mobile.Services.Files;
+﻿using ConsumptionNotes.Application.ViewModels;
+using ConsumptionNotes.Mobile.Commands;
+using ConsumptionNotes.Mobile.Services.Files;
 
 namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
 
-public class NaturalGasDashboardViewModel(NaturalGasNotesService notesService, FileSystemService fileSystemService)
-    : BaseDashboardViewModel<NaturalGasConsumption, NaturalGasChartService, NaturalGasNotesService>(notesService, fileSystemService)
+public class NaturalGasDashboardViewModel
+    : BaseDashboardViewModel<NaturalGasConsumption, NaturalGasChartService, NaturalGasNotesService>
 {
-    protected override string ExportFileName => "naturalgas";
+    public GoToCommand OpenAddingPageCommand { get; } = new(nameof(NaturalGasAddingPage), true);
+
+    public ImportDataCommand ImportDataCommand { get; }
+    public ExportDataCommand ExportDataCommand { get; }
     
-    public override IAsyncRelayCommand OpenAddingPageCommand => openAddingPageCommand ??= new AsyncRelayCommand(async () =>
+    public NaturalGasDashboardViewModel(NaturalGasNotesService notesService, FileSystemService fileSystemService)
+        : base(notesService)
     {
-        await Shell.Current.GoToAsync($"{nameof(NaturalAddingGasPage)}", true);
-    });
+        ImportDataCommand = new ImportDataCommand(fileSystemService, ImportFromStream);
+        ExportDataCommand = new ExportDataCommand(fileSystemService, WriteToFile);
+    }
 }

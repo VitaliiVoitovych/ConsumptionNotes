@@ -1,14 +1,21 @@
-﻿using ConsumptionNotes.Mobile.Services.Files;
+﻿using ConsumptionNotes.Application.ViewModels;
+using ConsumptionNotes.Mobile.Commands;
+using ConsumptionNotes.Mobile.Services.Files;
 
 namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
 
-public class ElectricityDashboardViewModel(ElectricityNotesService notesService, FileSystemService fileSystemService)
-    : BaseDashboardViewModel<ElectricityConsumption, ElectricityChartService, ElectricityNotesService>(notesService, fileSystemService)
+public class ElectricityDashboardViewModel
+    : BaseDashboardViewModel<ElectricityConsumption, ElectricityChartService, ElectricityNotesService>
 {
-    protected override string ExportFileName => "electricity";
+    public GoToCommand OpenAddingPageCommand { get; } = new(nameof(ElectricityAddingPage), true);
+
+    public ImportDataCommand ImportDataCommand { get; }
+    public ExportDataCommand ExportDataCommand { get; }
     
-    public override IAsyncRelayCommand OpenAddingPageCommand => openAddingPageCommand ??= new AsyncRelayCommand(async () =>
+    public ElectricityDashboardViewModel(ElectricityNotesService notesService, FileSystemService fileSystemService)
+        : base(notesService)
     {
-        await Shell.Current.GoToAsync($"{nameof(ElectricityAddingPage)}", true);
-    });
+        ImportDataCommand = new ImportDataCommand(fileSystemService, ImportFromStream);
+        ExportDataCommand = new ExportDataCommand(fileSystemService, WriteToFile);
+    }
 }
