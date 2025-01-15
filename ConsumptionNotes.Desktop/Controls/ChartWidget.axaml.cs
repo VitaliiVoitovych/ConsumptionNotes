@@ -1,8 +1,5 @@
-﻿using ConsumptionNotes.Application.Services.Charting.Styles;
-using LiveChartsCore.Drawing;
-using LiveChartsCore.Kernel.Sketches;
+﻿using LiveChartsCore.Kernel.Sketches;
 using LiveChartsCore.Measure;
-using LiveChartsCore.SkiaSharpView.Drawing;
 
 namespace ConsumptionNotes.Desktop.Controls;
 
@@ -61,24 +58,9 @@ public partial class ChartWidget : UserControl
         get => GetValue(LegendPositionProperty);
         set => SetValue(LegendPositionProperty, value);
     }
-
-    public static readonly StyledProperty<IPaint<SkiaSharpDrawingContext>> LegendTextPaintProperty = AvaloniaProperty.Register<ChartWidget, IPaint<SkiaSharpDrawingContext>>(
-        nameof(LegendTextPaint));
-
-    public IPaint<SkiaSharpDrawingContext> LegendTextPaint
-    {
-        get => GetValue(LegendTextPaintProperty);
-        set => SetValue(LegendTextPaintProperty, value);
-    }
     
     public ChartWidget()
     {
         InitializeComponent();
-        // TODO: Fixes that
-        Chart.TooltipTextPaint = ChartPaints.TooltipTextPaint;
-        Chart.TooltipBackgroundPaint = ChartPaints.TooltipBackgroundPaint;
     }
-
-    // TODO: Remove unsuded methods
-    public void UpdateChart() => Chart.CoreChart.Update();
 }

@@ -12,6 +12,7 @@
         RowSpacing="10">
 
         <views:ChartWidget
+            x:Name="AmountToPayChart"
             Grid.Row="0"
             Text="Електроенергія"
             AverageValue="{Binding ElectricityNotesService.AverageAmount, StringFormat='{0:C2}'}"
@@ -20,6 +21,7 @@
             YAxes="{Binding ElectricityChartService.AmountToPayYAxes}"/>
 
         <views:ChartWidget
+            x:Name="ConsumptionChart"
             Grid.Row="1"
             Text="Газ"
             AverageValue="{Binding NaturalGasNotesService.AverageAmount, StringFormat='{0:C2}'}"

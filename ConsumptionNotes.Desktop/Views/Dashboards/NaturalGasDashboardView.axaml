@@ -31,8 +31,7 @@
                     AverageValue="{Binding NotesService.AverageCubicMeterConsumed, StringFormat=\0.00 м³}"
                     Series="{Binding ChartService.CubicMeterConsumedSeries}"
                     XAxes="{Binding ChartService.DateXAxes}"
-                    YAxes="{Binding ChartService.ConsumedYAxes}"
-                    LegendTextPaint="{Binding ChartService.LegendTextPaint}"/>
+                    YAxes="{Binding ChartService.ConsumedYAxes}"/>
                 
             </StackPanel>
         </ScrollViewer>

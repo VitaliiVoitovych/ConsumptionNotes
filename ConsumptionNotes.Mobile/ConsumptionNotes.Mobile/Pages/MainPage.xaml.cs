@@ -10,4 +10,12 @@ public partial class MainPage : ContentPage
 
         BindingContext = vm;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        
+        AmountToPayChart.UpdateChart();
+        ConsumptionChart.UpdateChart();
+    }
 }

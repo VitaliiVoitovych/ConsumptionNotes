@@ -2,7 +2,6 @@
 using ConsumptionNotes.Application.Services.Charting.Utils;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
-using LiveChartsCore.SkiaSharpView.Painting;
 
 namespace ConsumptionNotes.Application.Services.Charting;
 
@@ -36,8 +35,6 @@ public abstract class BaseChartService<T>
             LabelsPaint = ChartPaints.AxisLabelsPaint,
         }
     ];
-
-    public SolidColorPaint LegendTextPaint => ChartPaints.LegendTextPaint;
 
     public virtual void AddValues(T consumption)
     {

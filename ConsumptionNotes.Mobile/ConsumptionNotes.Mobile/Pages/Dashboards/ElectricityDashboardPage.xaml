@@ -51,8 +51,7 @@
                         Series="{Binding ChartService.KilowattConsumedSeries}"
                         XAxes="{Binding ChartService.DateXAxes}"
                         YAxes="{Binding ChartService.ConsumedYAxes}"
-                        LegendPosition="Top"
-                        LegendTextPaint="{Binding ChartService.LegendTextPaint}"/>
+                        LegendPosition="Top"/>
                 </HorizontalStackLayout>
             </ScrollView>
         </views:BottomSheet.Content>

@@ -1,9 +1,6 @@
-﻿using ConsumptionNotes.Application.Services.Charting.Styles;
-using LiveChartsCore;
-using LiveChartsCore.Drawing;
+﻿using LiveChartsCore;
 using LiveChartsCore.Kernel.Sketches;
 using LiveChartsCore.Measure;
-using LiveChartsCore.SkiaSharpView.Drawing;
 
 namespace ConsumptionNotes.Mobile.Views;
 
@@ -62,22 +59,10 @@ public partial class ChartWidget : ContentView
 		get => (LegendPosition)GetValue(LegendPositionProperty);
 		set => SetValue(LegendPositionProperty, value);
 	}
-
-	public static readonly BindableProperty LegendTextPaintProperty =
-		BindableProperty.Create(nameof(LegendTextPaint), typeof(IPaint<SkiaSharpDrawingContext>), typeof(ChartWidget), default);
-
-	public IPaint<SkiaSharpDrawingContext> LegendTextPaint
-	{
-		get => (IPaint<SkiaSharpDrawingContext>)GetValue(LegendTextPaintProperty);
-		set => SetValue(LegendTextPaintProperty, value);
-	}
     
     public ChartWidget()
     {
         InitializeComponent();
-        // TODO: Fixes that
-        Chart.TooltipTextPaint = ChartPaints.TooltipTextPaint;
-        Chart.TooltipBackgroundPaint = ChartPaints.TooltipBackgroundPaint;
     }
 
     public void UpdateChart() => Chart.CoreChart.Update();
