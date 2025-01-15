@@ -16,7 +16,7 @@ public class ExportDataCommand(FileSystemService fileSystemService, Func<string,
         {
             var folderPath = await fileSystemService.OpenFolderAsync("Виберіть папку для експорту даних");
             var filePath = await writeToFile.Invoke(folderPath);
-            await MessageDialog.ShowAsync("Дані успішно експортовано!", $"Дані експортовано за місцем \r\n{filePath}");
+            await MessageDialog.ShowAsync("Дані успішно експортовано!", $"Дані експортовано за місцем \r\n{filePath}", MessageDialogIcon.Success);
         }
         catch (FolderNotSelectedException)
         {
