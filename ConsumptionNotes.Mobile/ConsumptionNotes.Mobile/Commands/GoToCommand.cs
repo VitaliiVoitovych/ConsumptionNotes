@@ -1,9 +1,8 @@
-﻿namespace ConsumptionNotes.Mobile.Commands;
+﻿using ConsumptionNotes.Application.Commands.Base;
 
-public class GoToCommand(string route, bool animated = false)
+namespace ConsumptionNotes.Mobile.Commands;
+
+public class GoToCommand(string route, bool animated = false) : AsyncCommandBase
 {
-    private IAsyncRelayCommand? _command;
-    public IAsyncRelayCommand Command => _command ??= new AsyncRelayCommand(GoToAsync);
-
-    private async Task GoToAsync() => await Shell.Current.GoToAsync(route, animated);
+    public override async Task ExecuteAsync() => await Shell.Current.GoToAsync(route, animated);
 }

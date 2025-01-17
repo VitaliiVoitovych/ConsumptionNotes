@@ -1,15 +1,20 @@
-﻿using ConsumptionNotes.Application.Services.Notes.Interfaces;
+﻿using CommunityToolkit.Mvvm.Input;
+using ConsumptionNotes.Application.Services.Notes.Interfaces;
+using ConsumptionNotes.Application.ViewModels.Adding.Interfaces;
 using ConsumptionNotes.Domain.Exceptions;
 
 namespace ConsumptionNotes.Application.ViewModels.Adding;
 
-public abstract partial class BaseAddingViewModel<TConsumption, TNotesService>(TNotesService notesService) : ViewModelBase
+public abstract partial class BaseAddingViewModel<TConsumption, TNotesService>(TNotesService notesService) 
+    : ViewModelBase, IAddingViewModel
     where TConsumption : BaseConsumption
     where TNotesService : INotesService<TConsumption>
 {
     private TNotesService _notesService = notesService;
     
     [ObservableProperty] private DateOnly _selectedDate = DateOnly.FromDateTime(DateTime.Now.AddMonths(-1));
+    
+    public required AsyncRelayCommand AddNoteCommand { get; init; }
     
     protected abstract TConsumption CreateConsumption();
 

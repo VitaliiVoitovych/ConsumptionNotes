@@ -1,14 +1,12 @@
-﻿using ConsumptionNotes.Mobile.Services.Files;
+﻿using ConsumptionNotes.Application.Commands.Base;
+using ConsumptionNotes.Mobile.Services.Files;
 
 namespace ConsumptionNotes.Mobile.Commands;
 
 public class ExportDataCommand(FileSystemService fileSystemService, Func<string, Task<string>> writeToFile)
+    : AsyncCommandBase
 {
-    private IAsyncRelayCommand? _command;
-    
-    public IAsyncRelayCommand Command => _command ??= new AsyncRelayCommand(Export);
-
-    private async Task Export()
+    public override async Task ExecuteAsync()
     {
         var filePath = await writeToFile.Invoke(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
         

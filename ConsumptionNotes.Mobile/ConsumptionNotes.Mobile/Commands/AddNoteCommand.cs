@@ -1,26 +1,16 @@
-﻿using ConsumptionNotes.Domain.Exceptions;
+﻿using ConsumptionNotes.Application.Commands.Base;
 
 namespace ConsumptionNotes.Mobile.Commands;
 
-public class AddNoteCommand(Action addNote)
+public class AddNoteCommand(Action addNote) : AddNoteCommandBase(addNote)
 {
-    private IAsyncRelayCommand? _command;
-    
-    public IAsyncRelayCommand Command => _command ??= new AsyncRelayCommand(Add);
-    
-    private async Task Add()
+    protected override async Task HandleDuplicateConsumptionNoteException()
     {
-        try
-        {
-            addNote.Invoke();
-        }
-        catch (DuplicateConsumptionNoteException)
-        {
-            await Shell.Current.DisplayAlert("Помилка!", ExceptionMessages.DuplicateNoteErrorMessage, "Зрозуміло");
-        }
-        catch (InvalidConsumptionDataException)
-        {
-            await Shell.Current.DisplayAlert("Помилка!", ExceptionMessages.InvalidDateErrorMessage, "Зрозуміло");
-        }
+        await Shell.Current.DisplayAlert("Помилка!", ExceptionMessages.DuplicateNoteErrorMessage, "Зрозуміло");
+    }
+
+    protected override async Task HandleInvalidConsumptionDataException()
+    {
+        await Shell.Current.DisplayAlert("Помилка!", ExceptionMessages.InvalidDateErrorMessage, "Зрозуміло");
     }
 }

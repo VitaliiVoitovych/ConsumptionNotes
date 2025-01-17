@@ -1,27 +1,17 @@
-﻿using ConsumptionNotes.Desktop.Controls.Dialogs;
-using ConsumptionNotes.Domain.Exceptions;
+﻿using ConsumptionNotes.Application.Commands.Base;
+using ConsumptionNotes.Desktop.Controls.Dialogs;
 
 namespace ConsumptionNotes.Desktop.Commands;
 
-public class AddNoteCommands(Action addNote)
+public class AddNoteCommands(Action addNote) : AddNoteCommandBase(addNote)
 {
-    private IAsyncRelayCommand? _command;
-    
-    public IAsyncRelayCommand Command => _command ??= new AsyncRelayCommand(Add);
-
-    private async Task Add()
+    protected override async Task HandleDuplicateConsumptionNoteException()
     {
-        try
-        {
-            addNote.Invoke();
-        }
-        catch (DuplicateConsumptionNoteException)
-        {
-            await MessageDialog.ShowAsync("Помилка", ExceptionMessages.DuplicateNoteErrorMessage, MessageDialogIcon.Warning);
-        }
-        catch (InvalidConsumptionDataException)
-        {
-            await MessageDialog.ShowAsync("Помилка", ExceptionMessages.InvalidDateErrorMessage, MessageDialogIcon.Warning);
-        }
+        await MessageDialog.ShowAsync("Помилка", ExceptionMessages.DuplicateNoteErrorMessage, MessageDialogIcon.Warning);
+    }
+
+    protected override async Task HandleInvalidConsumptionDataException()
+    {
+        await MessageDialog.ShowAsync("Помилка", ExceptionMessages.InvalidDateErrorMessage, MessageDialogIcon.Warning);
     }
 }

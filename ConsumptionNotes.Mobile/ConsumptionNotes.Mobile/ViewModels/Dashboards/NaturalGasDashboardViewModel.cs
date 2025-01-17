@@ -7,10 +7,10 @@ namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
 public class NaturalGasDashboardViewModel
     : BaseDashboardViewModel<NaturalGasConsumption, NaturalGasChartService, NaturalGasNotesService>
 {
-    public GoToCommand OpenAddingPageCommand { get; } = new(nameof(NaturalGasAddingPage), true);
+    public AsyncRelayCommand OpenAddingPageCommand { get; } = new GoToCommand(nameof(NaturalGasAddingPage), true);
 
-    public ImportDataCommand ImportDataCommand { get; }
-    public ExportDataCommand ExportDataCommand { get; }
+    public AsyncRelayCommand ImportDataCommand { get; }
+    public AsyncRelayCommand ExportDataCommand { get; }
     
     public NaturalGasDashboardViewModel(NaturalGasNotesService notesService, FileSystemService fileSystemService)
         : base(notesService)

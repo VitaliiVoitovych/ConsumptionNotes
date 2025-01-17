@@ -1,16 +1,14 @@
-﻿using ConsumptionNotes.Desktop.Controls.Dialogs;
+﻿using ConsumptionNotes.Application.Commands.Base;
+using ConsumptionNotes.Desktop.Controls.Dialogs;
 using ConsumptionNotes.Desktop.Services.Files;
 using ConsumptionNotes.Domain.Exceptions;
 
 namespace ConsumptionNotes.Desktop.Commands;
 
 public class ExportDataCommand(FileSystemService fileSystemService, Func<string, Task<string>> writeToFile)
+    : AsyncCommandBase
 {
-    private IAsyncRelayCommand? _command;
-    
-    public IAsyncRelayCommand Command => _command ??= new AsyncRelayCommand(Export);
-
-    private async Task Export()
+    public override async Task ExecuteAsync()
     {
         try
         {

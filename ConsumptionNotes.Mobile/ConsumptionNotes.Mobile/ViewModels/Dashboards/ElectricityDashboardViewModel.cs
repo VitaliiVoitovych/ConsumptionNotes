@@ -7,10 +7,10 @@ namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
 public class ElectricityDashboardViewModel
     : BaseDashboardViewModel<ElectricityConsumption, ElectricityChartService, ElectricityNotesService>
 {
-    public GoToCommand OpenAddingPageCommand { get; } = new(nameof(ElectricityAddingPage), true);
+    public AsyncRelayCommand OpenAddingPageCommand { get; } = new GoToCommand(nameof(ElectricityAddingPage), true);
 
-    public ImportDataCommand ImportDataCommand { get; }
-    public ExportDataCommand ExportDataCommand { get; }
+    public AsyncRelayCommand ImportDataCommand { get; }
+    public AsyncRelayCommand ExportDataCommand { get; }
     
     public ElectricityDashboardViewModel(ElectricityNotesService notesService, FileSystemService fileSystemService)
         : base(notesService)

@@ -61,12 +61,12 @@
                 Grid.Column="0"
                 HeightRequest="45"
                 Text="Назад"
-                Command="{Binding GoToBackCommand.Command}"/>
+                Command="{Binding GoToBackCommand}"/>
             <Button
                 Grid.Column="1"
                 HeightRequest="45"
                 Text="Додати запис"
-                Command="{Binding AddNoteCommand.Command}"/>
+                Command="{Binding AddNoteCommand}"/>
         </Grid>
     </VerticalStackLayout>
 </ContentPage>
