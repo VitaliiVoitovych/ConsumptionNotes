@@ -3,7 +3,7 @@ using ConsumptionNotes.Desktop.Views.Adding;
 
 namespace ConsumptionNotes.Desktop.Startup;
 
-public static class ServiceRegistration
+public static class ServicesRegistration
 {
     public static IServiceCollection AddViews(this IServiceCollection services)
     {

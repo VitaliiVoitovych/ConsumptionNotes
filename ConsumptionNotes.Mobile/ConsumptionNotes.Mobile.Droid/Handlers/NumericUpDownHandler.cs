@@ -33,6 +33,7 @@ public class NumericUpDownHandler : StepperHandler
         TextField = new TextInputEditText(Context)
         {
             InputType = InputTypes.ClassNumber | InputTypes.NumberFlagSigned,
+            EmojiCompatEnabled = false,
         };
         TextField.SetMinWidth((int)Context.ToPixels(120));
 
@@ -67,14 +68,13 @@ public class NumericUpDownHandler : StepperHandler
 
     private void OnEntryTextChanged(object? sender, Android.Text.TextChangedEventArgs e)
     {
-        // TODO: Fix bug
         if (string.IsNullOrWhiteSpace(TextField!.Text))
         {
             VirtualView.Value = 0.0;
             TextField.Text = $"{VirtualView.Value}";
             return;
         }
-        if (double.TryParse(TextField.Text, out var value))
+        if (double.TryParse(TextField!.Text, out var value))
         {
             if (value >= VirtualView.Minimum && value <= VirtualView.Maximum)
             {
@@ -84,16 +84,16 @@ public class NumericUpDownHandler : StepperHandler
         }
     }
 
-    public static void MapValue(NumericUpDownHandler handler, NumericUpDown numericUpDown)
+    private static void MapValue(NumericUpDownHandler handler, NumericUpDown numericUpDown)
     {
         handler.PlatformView.UpdateValue(numericUpDown);
 
         handler.TextField!.Text = numericUpDown.Value.ToString();
     }
 
-    public static void MapIncrement(NumericUpDownHandler handler, NumericUpDown numericUpDown)
+    private static void MapIncrement(NumericUpDownHandler handler, NumericUpDown numericUpDown)
     {
-        handler.PlatformView?.UpdateIncrement(numericUpDown);
+        handler.PlatformView.UpdateIncrement(numericUpDown);
 
         if (!double.IsInteger(numericUpDown.Increment))
         {
@@ -104,8 +104,6 @@ public class NumericUpDownHandler : StepperHandler
 
     private static void MapUnderlineColor(NumericUpDownHandler handler, NumericUpDown numericUpDown)
     {
-        // TODO: Text field Cursor styling: Color (Solved. Need Review) | need API 29
-        //handler.TextField!.TextCursorDrawable.SetTintList(ColorStateList.ValueOf(numericUpDown.UnderlineColor.ToPlatform()));
         handler.TextField!.BackgroundTintList = ColorStateList.ValueOf(numericUpDown.UnderlineColor.ToPlatform());
     }
 
@@ -120,6 +118,9 @@ public class NumericUpDownHandler : StepperHandler
     private static void MapTextColor(NumericUpDownHandler handler, NumericUpDown numericUpDown)
     {
         handler.TextField!.UpdateTextColor(numericUpDown);
+        
+        // TODO: Text field Cursor styling: Color (Solved. Need Review) | need API 29
+        //handler.TextField!.TextCursorDrawable.SetTintList(ColorStateList.ValueOf(numericUpDown.TextColor.ToPlatform()));
     }
 
     private static void MapFont(NumericUpDownHandler handler, NumericUpDown numericUpDown)
