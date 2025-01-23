@@ -16,4 +16,5 @@ public interface INotesService<TConsumption>
     Task ImportDataAsync(IAsyncEnumerable<TConsumption> data);
     void AddNote(TConsumption consumption);
     void RemoveNote(TConsumption consumption);
+    void UpdateNote(TConsumption consumption);
 }

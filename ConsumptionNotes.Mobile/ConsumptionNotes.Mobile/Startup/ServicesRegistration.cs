@@ -1,4 +1,6 @@
 ﻿using ConsumptionNotes.Application.ViewModels;
+using ConsumptionNotes.Mobile.Pages.Editing;
+using ConsumptionNotes.Mobile.ViewModels.Editing;
 
 namespace ConsumptionNotes.Mobile.Startup;
 
@@ -13,7 +15,10 @@ public static class ServicesRegistration
             .AddTransient<NaturalGasDashboardPage>()
             // Adding pages
             .AddScoped<ElectricityAddingPage>()
-            .AddScoped<NaturalGasAddingPage>();
+            .AddScoped<NaturalGasAddingPage>()
+            // Editing pages
+            .AddTransient<ElectricityEditingPage>()
+            .AddTransient<NaturalGasEditingPage>();
     }
 
     public static IServiceCollection AddViewModels(this IServiceCollection services)
@@ -25,6 +30,9 @@ public static class ServicesRegistration
             .AddTransient<NaturalGasDashboardViewModel>()
             // Adding view models
             .AddScoped<ElectricityAddingViewModel>()
-            .AddScoped<NaturalGasAddingViewModel>();
+            .AddScoped<NaturalGasAddingViewModel>()
+            // Editing view models
+            .AddTransient<ElectricityEditingViewModel>()
+            .AddTransient<NaturalGasEditingViewModel>();
     }
 }

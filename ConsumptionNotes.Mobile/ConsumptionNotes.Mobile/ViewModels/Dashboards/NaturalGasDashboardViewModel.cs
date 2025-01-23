@@ -1,10 +1,11 @@
 ﻿using ConsumptionNotes.Application.ViewModels;
 using ConsumptionNotes.Mobile.Commands;
+using ConsumptionNotes.Mobile.Pages.Editing;
 using ConsumptionNotes.Mobile.Services.Files;
 
 namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
 
-public class NaturalGasDashboardViewModel
+public partial class NaturalGasDashboardViewModel
     : BaseDashboardViewModel<NaturalGasConsumption, NaturalGasChartService, NaturalGasNotesService>
 {
     public AsyncRelayCommand OpenAddingPageCommand { get; } = new GoToCommand(nameof(NaturalGasAddingPage), true);
@@ -17,5 +18,16 @@ public class NaturalGasDashboardViewModel
     {
         ImportDataCommand = new ImportDataCommand(fileSystemService, ImportFromStream);
         ExportDataCommand = new ExportDataCommand(fileSystemService, WriteToFile);
+    }
+    
+    [RelayCommand]
+    private async Task OpenEditingPage(NaturalGasConsumption? consumption)
+    {
+        if (consumption is null) return;
+
+        await Shell.Current.GoToAsync($"{nameof(NaturalGasEditingPage)}?id={consumption.Date}", true, new Dictionary<string, object>
+        {
+            {"Consumption", consumption}
+        });
     }
 }

@@ -67,11 +67,18 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:NaturalGasConsumption">
                             <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItem
+                                        IconImageSource="edit.png"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NaturalGasDashboardViewModel}, AncestorLevel=1}, Path=OpenEditingPageCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </SwipeView.LeftItems>
                                 <SwipeView.RightItems>
                                     <SwipeItem
                                         IconImageSource="cross.png"
                                         BackgroundColor="Transparent"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NaturalGasDashboardViewModel}, AncestorLevel=1}, Path=RemoveCommand, x:DataType=vm:NaturalGasDashboardViewModel}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NaturalGasDashboardViewModel}, AncestorLevel=1}, Path=RemoveCommand}"
                                         CommandParameter="{Binding .}"/>
                                 </SwipeView.RightItems>
 
@@ -104,7 +111,7 @@
                                             Grid.Column="1"
                                             Grid.Row="1"
                                             Text="{Binding CubicMeterConsumed,
-                                                    StringFormat='Спожито: {0} м³'}"/>
+                                                    StringFormat='Спожито: {0:F2} м³'}"/>
                                         <Label
                                             Grid.Column="1"
                                             Grid.RowSpan="2"

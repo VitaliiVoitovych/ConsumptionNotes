@@ -30,4 +30,10 @@ public class NaturalGasChartService : BaseChartService<NaturalGasConsumption>
         base.RemoveValues(index);
         _cubicMeterConsumed.RemoveAt(index);
     }
+
+    public override void UpdateValues(int index, NaturalGasConsumption consumption)
+    {
+        base.UpdateValues(index, consumption);
+        _cubicMeterConsumed[index] = consumption.CubicMeterConsumed;
+    }
 }

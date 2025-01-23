@@ -6,7 +6,8 @@ using ConsumptionNotes.Domain.Extensions;
 
 namespace ConsumptionNotes.Application.Services.Notes;
 
-public abstract partial class BaseNotesService<TConsumption, TChartService, TRepository> : ObservableObject, INotesChartService<TConsumption, TChartService>
+public abstract partial class BaseNotesService<TConsumption, TChartService, TRepository> 
+    : ObservableObject, INotesChartService<TConsumption, TChartService>
     where TConsumption : BaseConsumption
     where TChartService : BaseChartService<TConsumption>
     where TRepository : BaseRepository<TConsumption>
@@ -82,6 +83,16 @@ public abstract partial class BaseNotesService<TConsumption, TChartService, TRep
         UpdateAverageValues();
     }
 
+    public void UpdateNote(TConsumption consumption)
+    {
+        var index = Consumptions.LastMatchingIndex(c => c.Date == consumption.Date);
+        
+        ChartService.UpdateValues(index, consumption);
+        
+        _repository.Update(Consumptions[index]);
+        UpdateAverageValues();
+    }
+    
     protected virtual void UpdateAverageValues()
     {
         AverageAmount = Consumptions.Count > 0 

@@ -69,11 +69,18 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:ElectricityConsumption">
                             <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItem
+                                        IconImageSource="edit.png"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ElectricityDashboardViewModel}, AncestorLevel=1}, Path=OpenEditingPageCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </SwipeView.LeftItems>
                                 <SwipeView.RightItems>
                                     <SwipeItem
                                         IconImageSource="cross.png"
                                         BackgroundColor="Transparent"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ElectricityDashboardViewModel}, AncestorLevel=1}, Path=RemoveCommand, x:DataType=vm:ElectricityDashboardViewModel}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ElectricityDashboardViewModel}, AncestorLevel=1}, Path=RemoveCommand}"
                                         CommandParameter="{Binding .}"/>
                                 </SwipeView.RightItems>
 

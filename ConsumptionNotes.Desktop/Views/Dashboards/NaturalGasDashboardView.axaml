@@ -9,7 +9,8 @@
              x:Class="ConsumptionNotes.Desktop.Views.Dashboards.NaturalGasDashboardView"
              x:DataType="dvm:NaturalGasDashboardViewModel">
     <Grid
-        ColumnDefinitions="*,*">
+        ColumnDefinitions="*,*"
+        x:Name="SomeGrid">
         
         <!-- Charts -->
         <ScrollViewer>
@@ -65,12 +66,20 @@
                         Width="Auto">
                         <DataTemplate x:DataType="models:NaturalGasConsumption">
                             <StackPanel 
+                                Margin="5"
                                 Orientation="Horizontal"
                                 Spacing="5"
                                 HorizontalAlignment="Center">
                                 
                                 <Button
-                                    Classes="DashboardDataGridRemove"
+                                    Classes="DashboardDataGridButton"
+                                    Command="{Binding #NaturalGasDataGrid.((dvm:NaturalGasDashboardViewModel)DataContext).OpenEditingDialogCommand}"
+                                    CommandParameter="{Binding .}">
+                                    <Image Source="{SvgImage /Assets/edit.svg}"/>
+                                </Button>
+                                
+                                <Button
+                                    Classes="DashboardDataGridButton"
                                     Command="{Binding #NaturalGasDataGrid.((dvm:NaturalGasDashboardViewModel)DataContext).RemoveCommand}"
                                     CommandParameter="{Binding .}">
                                     <Image Source="{SvgImage /Assets/cross.svg}"/>

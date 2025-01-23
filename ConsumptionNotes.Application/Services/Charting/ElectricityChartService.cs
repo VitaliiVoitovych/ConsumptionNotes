@@ -35,4 +35,11 @@ public class ElectricityChartService : BaseChartService<ElectricityConsumption>
         _dayKilowattConsumed.RemoveAt(index);
         _nightKilowattConsumed.RemoveAt(index);
     }
+
+    public override void UpdateValues(int index, ElectricityConsumption consumption)
+    {
+        base.UpdateValues(index, consumption);
+        _dayKilowattConsumed[index] = consumption.DayKilowattConsumed;
+        _nightKilowattConsumed[index] = consumption.NightKilowattConsumed;
+    }
 }
