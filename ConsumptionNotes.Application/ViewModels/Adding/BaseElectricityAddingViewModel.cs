@@ -1,10 +1,11 @@
-﻿using ConsumptionNotes.Application.Services;
+﻿using ConsumptionNotes.Application.Models;
+using ConsumptionNotes.Application.Services;
 using ConsumptionNotes.Application.Services.Notes;
 
 namespace ConsumptionNotes.Application.ViewModels.Adding;
 
 public abstract partial class BaseElectricityAddingViewModel(ElectricityNotesService notesService) 
-    : BaseAddingViewModel<ElectricityConsumption, ElectricityNotesService>(notesService)
+    : BaseAddingViewModel<ElectricityConsumption, ObservableElectricityConsumption, ElectricityNotesService>(notesService)
 {
     [ObservableProperty] private int _dayKilowattConsumed;
     [ObservableProperty] private int _nightKilowattConsumed;

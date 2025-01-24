@@ -1,4 +1,5 @@
-﻿using ConsumptionNotes.Application.ViewModels;
+﻿using ConsumptionNotes.Application.Models;
+using ConsumptionNotes.Application.ViewModels;
 using ConsumptionNotes.Mobile.Commands;
 using ConsumptionNotes.Mobile.Pages.Editing;
 using ConsumptionNotes.Mobile.Services.Files;
@@ -6,7 +7,7 @@ using ConsumptionNotes.Mobile.Services.Files;
 namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
 
 public partial class ElectricityDashboardViewModel
-    : BaseDashboardViewModel<ElectricityConsumption, ElectricityChartService, ElectricityNotesService>
+    : BaseDashboardViewModel<ElectricityConsumption, ObservableElectricityConsumption, ElectricityChartService, ElectricityNotesService>
 {
     public AsyncRelayCommand OpenAddingPageCommand { get; } = new GoToCommand(nameof(ElectricityAddingPage), true);
 
@@ -21,7 +22,7 @@ public partial class ElectricityDashboardViewModel
     }
 
     [RelayCommand]
-    private async Task OpenEditingPage(ElectricityConsumption? consumption)
+    private async Task OpenEditingPage(ObservableElectricityConsumption? consumption)
     {
         if (consumption is null) return;
 

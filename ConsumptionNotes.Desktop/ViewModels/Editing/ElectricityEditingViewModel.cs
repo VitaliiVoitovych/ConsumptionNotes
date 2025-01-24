@@ -1,26 +1,25 @@
 ﻿using ConsumptionNotes.Application.Services;
-using ConsumptionNotes.Application.ViewModels;
+using ConsumptionNotes.Application.Models;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Editing;
 
-public partial class ElectricityEditingViewModel(ElectricityNotesService notesService) : ViewModelBase
+public partial class ElectricityEditingViewModel(ElectricityNotesService notesService) 
+    : BaseEditingViewModel<ElectricityConsumption, ObservableElectricityConsumption>
 {
-    public ElectricityConsumption Consumption { get; private set; }
     
     [ObservableProperty] private int _dayKilowattConsumed;
     [ObservableProperty] private int _nightKilowattConsumed;
     [ObservableProperty] private decimal _kilowattPerHourPrice = 4.32m;
 
-    public void SetConsumption(ElectricityConsumption consumption)
+    public override void SetConsumption(ObservableElectricityConsumption consumption)
     {
-        Consumption = consumption;
+        base.SetConsumption(consumption);
 
         DayKilowattConsumed = Consumption.DayKilowattConsumed;
         NightKilowattConsumed = Consumption.NightKilowattConsumed;
     }
     
-    [RelayCommand]
-    private void Update()
+    protected override void Update()
     {
         var amountToPay =
             PaymentCalculator.CalculateElectricityPayment(DayKilowattConsumed, NightKilowattConsumed,
@@ -30,6 +29,6 @@ public partial class ElectricityEditingViewModel(ElectricityNotesService notesSe
         Consumption.NightKilowattConsumed = NightKilowattConsumed;
         Consumption.AmountToPay = amountToPay;
         
-        notesService.UpdateNote(Consumption);
+        notesService.UpdateNote(Consumption.Consumption);
     }
 }

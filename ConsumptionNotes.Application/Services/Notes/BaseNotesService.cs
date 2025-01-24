@@ -1,4 +1,6 @@
-﻿using ConsumptionNotes.Application.Services.Charting;
+﻿using ConsumptionNotes.Application.Extensions;
+using ConsumptionNotes.Application.Models;
+using ConsumptionNotes.Application.Services.Charting;
 using ConsumptionNotes.Application.Services.Notes.Interfaces;
 using ConsumptionNotes.Dal.Repositories.Base;
 using ConsumptionNotes.Domain.Exceptions;
@@ -6,9 +8,10 @@ using ConsumptionNotes.Domain.Extensions;
 
 namespace ConsumptionNotes.Application.Services.Notes;
 
-public abstract partial class BaseNotesService<TConsumption, TChartService, TRepository> 
-    : ObservableObject, INotesChartService<TConsumption, TChartService>
+public abstract partial class BaseNotesService<TConsumption, TObservableConsumption, TChartService, TRepository> 
+    : ObservableObject, INotesChartService<TConsumption, TObservableConsumption, TChartService>
     where TConsumption : BaseConsumption
+    where TObservableConsumption : ObservableBaseConsumption<TConsumption>
     where TChartService : BaseChartService<TConsumption>
     where TRepository : BaseRepository<TConsumption>
 {
@@ -17,7 +20,7 @@ public abstract partial class BaseNotesService<TConsumption, TChartService, TRep
     
     public TChartService ChartService { get; }
 
-    public ObservableCollection<TConsumption> Consumptions { get; }
+    public ObservableCollection<TObservableConsumption> Consumptions { get; }
     
     protected BaseNotesService(TChartService chartService, TRepository repository)
     {
@@ -32,7 +35,7 @@ public abstract partial class BaseNotesService<TConsumption, TChartService, TRep
         
         foreach (var consumption in consumptions)
         {
-            Consumptions.Add(consumption);
+            Consumptions.Add(consumption.Convert<TConsumption, TObservableConsumption>());
             ChartService.AddValues(consumption);
         }
         UpdateAverageValues();
@@ -54,17 +57,17 @@ public abstract partial class BaseNotesService<TConsumption, TChartService, TRep
 
         foreach (var consumption in consumptions)
         {
-            RemoveNote(consumption);
+            RemoveNote(consumption.Consumption);
         }
     }
     
     public void AddNote(TConsumption consumption)
     {
-        DuplicateConsumptionNoteException.ThrowIfDuplicateExists(Consumptions, consumption);
+        DuplicateConsumptionNoteException.ThrowIfDuplicateExists(Consumptions.ToConsumptionsList<TConsumption, TObservableConsumption>(), consumption);
         
         var index = Consumptions.LastMatchingIndex(c => c.Date < consumption.Date) + 1;
         
-        Consumptions.Insert(index, consumption);
+        Consumptions.Insert(index, consumption.Convert<TConsumption, TObservableConsumption>());
         ChartService.AddValues(index, consumption);
 
         _repository.Add(consumption);
@@ -74,7 +77,7 @@ public abstract partial class BaseNotesService<TConsumption, TChartService, TRep
 
     public void RemoveNote(TConsumption consumption)
     {
-        var index = Consumptions.IndexOf(consumption);
+        var index = Consumptions.IndexOf(consumption.Convert<TConsumption, TObservableConsumption>());
         Consumptions.RemoveAt(index);
         ChartService.RemoveValues(index);
 
@@ -89,7 +92,7 @@ public abstract partial class BaseNotesService<TConsumption, TChartService, TRep
         
         ChartService.UpdateValues(index, consumption);
         
-        _repository.Update(Consumptions[index]);
+        _repository.Update(Consumptions[index].Consumption);
         UpdateAverageValues();
     }
     

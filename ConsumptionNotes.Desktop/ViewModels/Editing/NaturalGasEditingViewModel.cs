@@ -1,30 +1,29 @@
-﻿using ConsumptionNotes.Application.Services;
-using ConsumptionNotes.Application.ViewModels;
+﻿using ConsumptionNotes.Application.Models;
+using ConsumptionNotes.Application.Services;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Editing;
 
-public partial class NaturalGasEditingViewModel(NaturalGasNotesService notesService) : ViewModelBase
+public partial class NaturalGasEditingViewModel(NaturalGasNotesService notesService) 
+    : BaseEditingViewModel<NaturalGasConsumption, ObservableNaturalGasConsumption>
 {
-    public NaturalGasConsumption Consumption { get; private set; }
     
     [ObservableProperty] private double _cubicMeterConsumed;
     [ObservableProperty] private decimal _cubicMeterPrice = 7.95689m;
     
-    public void SetConsumption(NaturalGasConsumption consumption)
+    public override void SetConsumption(ObservableNaturalGasConsumption consumption)
     {
-        Consumption = consumption;
+        base.SetConsumption(consumption);
 
         CubicMeterConsumed = Consumption.CubicMeterConsumed;
     }
     
-    [RelayCommand]
-    private void Update()
+    protected override void Update()
     {
         var amountToPay = PaymentCalculator.CalculateNaturalGasPayment(CubicMeterConsumed, CubicMeterPrice);
         
         Consumption.CubicMeterConsumed = CubicMeterConsumed;
         Consumption.AmountToPay = amountToPay;
         
-        notesService.UpdateNote(Consumption);
+        notesService.UpdateNote(Consumption.Consumption);
     }
 }

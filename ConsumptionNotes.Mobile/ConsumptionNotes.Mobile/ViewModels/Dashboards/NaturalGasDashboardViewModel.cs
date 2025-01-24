@@ -1,4 +1,5 @@
-﻿using ConsumptionNotes.Application.ViewModels;
+﻿using ConsumptionNotes.Application.Models;
+using ConsumptionNotes.Application.ViewModels;
 using ConsumptionNotes.Mobile.Commands;
 using ConsumptionNotes.Mobile.Pages.Editing;
 using ConsumptionNotes.Mobile.Services.Files;
@@ -6,7 +7,7 @@ using ConsumptionNotes.Mobile.Services.Files;
 namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
 
 public partial class NaturalGasDashboardViewModel
-    : BaseDashboardViewModel<NaturalGasConsumption, NaturalGasChartService, NaturalGasNotesService>
+    : BaseDashboardViewModel<NaturalGasConsumption, ObservableNaturalGasConsumption, NaturalGasChartService, NaturalGasNotesService>
 {
     public AsyncRelayCommand OpenAddingPageCommand { get; } = new GoToCommand(nameof(NaturalGasAddingPage), true);
 
@@ -21,7 +22,7 @@ public partial class NaturalGasDashboardViewModel
     }
     
     [RelayCommand]
-    private async Task OpenEditingPage(NaturalGasConsumption? consumption)
+    private async Task OpenEditingPage(ObservableNaturalGasConsumption? consumption)
     {
         if (consumption is null) return;
 
