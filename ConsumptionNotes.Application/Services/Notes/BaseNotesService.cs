@@ -77,7 +77,7 @@ public abstract partial class BaseNotesService<TConsumption, TObservableConsumpt
 
     public void RemoveNote(TConsumption consumption)
     {
-        var index = Consumptions.IndexOf(consumption.Convert<TConsumption, TObservableConsumption>());
+        var index = Consumptions.LastMatchingIndex(c => c.Date == consumption.Date);
         Consumptions.RemoveAt(index);
         ChartService.RemoveValues(index);
 
