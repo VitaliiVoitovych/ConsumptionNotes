@@ -71,12 +71,20 @@
                         Width="Auto">
                         <DataTemplate x:DataType="models:ElectricityConsumption">
                             <StackPanel 
+                                Margin="5"
                                 Orientation="Horizontal"
                                 Spacing="5"
                                 HorizontalAlignment="Center">
                                 
                                 <Button
-                                    Classes="DashboardDataGridRemove"
+                                    Classes="DashboardDataGridButton"
+                                    Command="{Binding #ElectricityDataGrid.((dvm:ElectricityDashboardViewModel)DataContext).OpenEditingDialogCommand}"
+                                    CommandParameter="{Binding .}">
+                                    <Image Source="{SvgImage /Assets/edit.svg}"/>
+                                </Button>
+                                
+                                <Button
+                                    Classes="DashboardDataGridButton"
                                     Command="{Binding #ElectricityDataGrid.((dvm:ElectricityDashboardViewModel)DataContext).RemoveCommand}"
                                     CommandParameter="{Binding .}">
                                     <Image Source="{SvgImage /Assets/cross.svg}"/>

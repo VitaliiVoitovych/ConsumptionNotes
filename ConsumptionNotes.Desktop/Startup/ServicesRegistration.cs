@@ -1,5 +1,7 @@
 ﻿using ConsumptionNotes.Application.ViewModels;
+using ConsumptionNotes.Desktop.ViewModels.Editing;
 using ConsumptionNotes.Desktop.Views.Adding;
+using ConsumptionNotes.Desktop.Views.Editing;
 
 namespace ConsumptionNotes.Desktop.Startup;
 
@@ -10,7 +12,10 @@ public static class ServicesRegistration
         // Adding views
         return services
             .AddTransient<ElectricityAddingView>()
-            .AddTransient<NaturalGasAddingView>();
+            .AddTransient<NaturalGasAddingView>()
+            // Editing views
+            .AddTransient<ElectricityEditingView>()
+            .AddTransient<NaturalGasEditingView>();
     }
 
     public static IServiceCollection AddViewModels(this IServiceCollection services)
@@ -21,6 +26,9 @@ public static class ServicesRegistration
             .AddTransient<NaturalGasDashboardViewModel>()
             // Adding view models
             .AddScoped<ElectricityAddingViewModel>()
-            .AddScoped<NaturalGasAddingViewModel>();
+            .AddScoped<NaturalGasAddingViewModel>()
+            //
+            .AddTransient<ElectricityEditingViewModel>()
+            .AddTransient<NaturalGasEditingViewModel>();
     }
 }

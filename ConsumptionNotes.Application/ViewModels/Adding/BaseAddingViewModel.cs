@@ -1,14 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using ConsumptionNotes.Application.Models;
 using ConsumptionNotes.Application.Services.Notes.Interfaces;
 using ConsumptionNotes.Application.ViewModels.Adding.Interfaces;
 using ConsumptionNotes.Domain.Exceptions;
 
 namespace ConsumptionNotes.Application.ViewModels.Adding;
 
-public abstract partial class BaseAddingViewModel<TConsumption, TNotesService>(TNotesService notesService) 
+public abstract partial class BaseAddingViewModel<TConsumption, TObservableConsumption, TNotesService>(TNotesService notesService) 
     : ViewModelBase, IAddingViewModel
     where TConsumption : BaseConsumption
-    where TNotesService : INotesService<TConsumption>
+    where TObservableConsumption : ObservableBaseConsumption<TConsumption>
+    where TNotesService : INotesService<TConsumption, TObservableConsumption>
 {
     private TNotesService _notesService = notesService;
     

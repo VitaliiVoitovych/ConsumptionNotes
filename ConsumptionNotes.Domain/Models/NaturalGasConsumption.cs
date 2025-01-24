@@ -1,6 +1,9 @@
 ﻿namespace ConsumptionNotes.Domain.Models;
 
-public record NaturalGasConsumption(
-    DateOnly Date,
-    double CubicMeterConsumed,
-    decimal AmountToPay) : BaseConsumption(Date, AmountToPay);
+public class NaturalGasConsumption(
+    DateOnly date,
+    double cubicMeterConsumed,
+    decimal amountToPay) : BaseConsumption(date, amountToPay)
+{
+    public double CubicMeterConsumed { get; set; } = cubicMeterConsumed;
+}

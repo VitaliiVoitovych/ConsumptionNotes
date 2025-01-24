@@ -1,0 +1,29 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ConsumptionNotes.Desktop.ViewModels.Editing"
+             xmlns:controls="using:ConsumptionNotes.Desktop.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ConsumptionNotes.Desktop.Views.Editing.NaturalGasEditingView"
+             x:DataType="vm:NaturalGasEditingViewModel">
+    <StackPanel
+        HorizontalAlignment="Center"
+        Spacing="10">
+        
+        <controls:LabeledNumericUpDown
+            Text="Спожито"
+            Minimum="0"
+            Maximum="10000"
+            Increment=".01"
+            Value="{Binding CubicMeterConsumed}"/>
+        
+        <controls:LabeledNumericUpDown
+            Text="Ціна за м³"
+            Minimum="0"
+            Maximum="1000"
+            Increment=".01"
+            Value="{Binding CubicMeterPrice}"/>
+        
+    </StackPanel>
+</UserControl>

@@ -24,6 +24,12 @@ public abstract class BaseRepository<T>
         return SaveChanges();
     }
 
+    public virtual int Update(T entity)
+    {
+        Table.Update(entity);
+        return SaveChanges();
+    }
+    
     public virtual async Task<List<T>> GetAll()
     {
         return await Table.OrderBy(e => e.Date).ToListAsync();

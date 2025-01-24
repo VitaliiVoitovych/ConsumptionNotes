@@ -1,10 +1,11 @@
-﻿using ConsumptionNotes.Application.Services.Charting;
+﻿using ConsumptionNotes.Application.Models;
+using ConsumptionNotes.Application.Services.Charting;
 using ConsumptionNotes.Dal.Repositories;
 
 namespace ConsumptionNotes.Application.Services.Notes;
 
 public partial class ElectricityNotesService
-    : BaseNotesService<ElectricityConsumption, ElectricityChartService, ElectricityConsumptionRepository>
+    : BaseNotesService<ElectricityConsumption, ObservableElectricityConsumption, ElectricityChartService, ElectricityConsumptionRepository>
 {
     [ObservableProperty] private double _averageKilowattConsumed;
     

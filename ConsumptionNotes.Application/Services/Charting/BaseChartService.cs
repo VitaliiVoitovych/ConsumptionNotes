@@ -53,4 +53,9 @@ public abstract class BaseChartService<T>
         _dateLabels.RemoveAt(index);
         _amountsToPayValues.RemoveAt(index);
     }
+
+    public virtual void UpdateValues(int index, T consumption)
+    {
+        _amountsToPayValues[index] = consumption.AmountToPay;
+    }
 }
