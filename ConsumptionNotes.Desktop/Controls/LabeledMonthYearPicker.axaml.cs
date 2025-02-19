@@ -1,7 +1,4 @@
-﻿using Avalonia.Data;
-using Avalonia.Layout;
-
-namespace ConsumptionNotes.Desktop.Controls;
+﻿namespace ConsumptionNotes.Desktop.Controls;
 
 public partial class LabeledMonthYearPicker : UserControl
 {

@@ -1,19 +1,14 @@
-using System.Globalization;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using Avalonia.Platform.Storage;
 using Avalonia.Styling;
-using ConsumptionNotes.Dal.Extensions;
-using ConsumptionNotes.Desktop.Services.Files;
-using ConsumptionNotes.Desktop.Views;
 using ConsumptionNotes.Desktop.Startup;
-using Microsoft.Extensions.Configuration;
-using ConsumptionNotes.Application.Services;
+using ConsumptionNotes.Presentation.Charts;
+using ConsumptionNotes.Presentation.Notes;
 
 namespace ConsumptionNotes.Desktop;
 
-public class App : Avalonia.Application
+public class App : Application
 {
     public const string AppName = "ConsumptionNotes";
     private static IConfiguration? _configuration;
@@ -63,7 +58,7 @@ public class App : Avalonia.Application
         services
             .AddRepositories()
             .AddChartServices()
-            .AddNotesServices()
+            .AddObservableNotesService()
             .AddViewModels()
             .AddViews();
         

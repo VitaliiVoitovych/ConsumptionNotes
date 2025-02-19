@@ -3,7 +3,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
-             xmlns:chartingStyle="clr-namespace:ConsumptionNotes.Application.Services.Charting.Styles;assembly=ConsumptionNotes.Application"
+             xmlns:chartsStyle="clr-namespace:ConsumptionNotes.Presentation.Charts.Styles;assembly=ConsumptionNotes.Presentation"
              xmlns:views="clr-namespace:ConsumptionNotes.Mobile.Views"
              x:Class="ConsumptionNotes.Mobile.Views.ChartWidget"
              x:DataType="views:ChartWidget"
@@ -40,9 +40,9 @@
                 XAxes="{Binding XAxes}"
                 YAxes="{Binding YAxes}"
                 LegendPosition="{Binding LegendPosition}"
-                LegendTextPaint="{x:Static chartingStyle:ChartPaints.LegendTextPaint}"
-                TooltipTextPaint="{x:Static chartingStyle:ChartPaints.TooltipTextPaint}"
-                TooltipBackgroundPaint="{x:Static chartingStyle:ChartPaints.TooltipBackgroundPaint}"/>
+                LegendTextPaint="{x:Static chartsStyle:Paints.LegendTextPaint}"
+                TooltipTextPaint="{x:Static chartsStyle:Paints.TooltipTextPaint}"
+                TooltipBackgroundPaint="{x:Static chartsStyle:Paints.TooltipBackgroundPaint}"/>
             
         </Grid>
         

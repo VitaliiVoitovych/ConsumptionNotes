@@ -4,13 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:dvm="using:ConsumptionNotes.Desktop.ViewModels.Dashboards"
              xmlns:controls="using:ConsumptionNotes.Desktop.Controls"
-             xmlns:models="using:ConsumptionNotes.Domain.Models"
+             xmlns:models="using:ConsumptionNotes.Presentation.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ConsumptionNotes.Desktop.Views.Dashboards.NaturalGasDashboardView"
              x:DataType="dvm:NaturalGasDashboardViewModel">
     <Grid
-        ColumnDefinitions="*,*"
-        x:Name="SomeGrid">
+        ColumnDefinitions="*,*">
         
         <!-- Charts -->
         <ScrollViewer>
@@ -44,7 +43,7 @@
             
             <DataGrid
                 x:Name="NaturalGasDataGrid"
-                ItemsSource="{Binding NotesService.Consumptions}">
+                ItemsSource="{Binding NotesService.ObservableConsumptions}">
                 <DataGrid.Columns>
                 
                     <DataGridTextColumn
@@ -64,7 +63,7 @@
                 
                     <DataGridTemplateColumn
                         Width="Auto">
-                        <DataTemplate x:DataType="models:NaturalGasConsumption">
+                        <DataTemplate x:DataType="models:ObservableNaturalGasConsumption">
                             <StackPanel 
                                 Margin="5"
                                 Orientation="Horizontal"
@@ -103,7 +102,8 @@
                 
                 <Button
                     Content="Експорт"
-                    Command="{Binding ExportDataCommand}"/>
+                    Command="{Binding ExportDataCommand}"
+                    CommandParameter="{Binding NotesService.Consumptions}"/>
                 
                 <Button
                     Content="Додати"

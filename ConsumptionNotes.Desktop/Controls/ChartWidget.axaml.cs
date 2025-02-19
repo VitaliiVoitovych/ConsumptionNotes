@@ -1,4 +1,5 @@
-﻿using LiveChartsCore.Kernel.Sketches;
+﻿using LiveChartsCore;
+using LiveChartsCore.Kernel.Sketches;
 using LiveChartsCore.Measure;
 
 namespace ConsumptionNotes.Desktop.Controls;

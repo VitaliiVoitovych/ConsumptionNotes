@@ -1,6 +1,4 @@
-﻿using ConsumptionNotes.Mobile.ViewModels.Editing;
-
-namespace ConsumptionNotes.Mobile.Pages.Editing;
+﻿namespace ConsumptionNotes.Mobile.Pages.Editing;
 
 public partial class ElectricityEditingPage : ContentPage
 {

@@ -9,6 +9,13 @@
     <VerticalStackLayout
         HorizontalOptions="Center"
         VerticalOptions="Center">
+        
+        <Label
+            FontSize="20"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            Text="Новий запис"/>
+        
         <Grid
             ColumnDefinitions="*, *">
             <Label

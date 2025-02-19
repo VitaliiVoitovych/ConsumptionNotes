@@ -1,6 +1,4 @@
-﻿using ConsumptionNotes.Application.ViewModels;
-using ConsumptionNotes.Mobile.Pages.Editing;
-using ConsumptionNotes.Mobile.ViewModels.Editing;
+﻿using ConsumptionNotes.Presentation.ViewModels;
 
 namespace ConsumptionNotes.Mobile.Startup;
 

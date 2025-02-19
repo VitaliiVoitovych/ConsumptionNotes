@@ -1,34 +1,21 @@
-﻿using ConsumptionNotes.Application.Models;
-using ConsumptionNotes.Application.ViewModels;
-using ConsumptionNotes.Mobile.Commands;
-using ConsumptionNotes.Mobile.Pages.Editing;
-using ConsumptionNotes.Mobile.Services.Files;
+﻿using ConsumptionNotes.Presentation.ViewModels.Dashboards;
 
 namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
-
-public partial class ElectricityDashboardViewModel
-    : BaseDashboardViewModel<ElectricityConsumption, ObservableElectricityConsumption, ElectricityChartService, ElectricityNotesService>
+public class ElectricityDashboardViewModel
+    : DashboardViewModelBase<ElectricityConsumption, ObservableElectricityConsumption, ElectricityChartService, ObservableElectricityNotesService>
 {
     public AsyncRelayCommand OpenAddingPageCommand { get; } = new GoToCommand(nameof(ElectricityAddingPage), true);
-
-    public AsyncRelayCommand ImportDataCommand { get; }
-    public AsyncRelayCommand ExportDataCommand { get; }
     
-    public ElectricityDashboardViewModel(ElectricityNotesService notesService, FileSystemService fileSystemService)
+    public AsyncRelayCommand<ObservableElectricityConsumption> OpenEditingPageCommand { get; } =
+        new GoToCommand<ObservableElectricityConsumption>(nameof(ElectricityEditingPage), "Consumption", true);
+    
+    public AsyncRelayCommand ImportDataCommand { get; }
+    public AsyncRelayCommand<IEnumerable<ElectricityConsumption>> ExportDataCommand { get; }
+    
+    public ElectricityDashboardViewModel(ObservableElectricityNotesService notesService, FileSystemService fileSystemService)
         : base(notesService)
     {
-        ImportDataCommand = new ImportDataCommand(fileSystemService, ImportFromStream);
-        ExportDataCommand = new ExportDataCommand(fileSystemService, WriteToFile);
-    }
-
-    [RelayCommand]
-    private async Task OpenEditingPage(ObservableElectricityConsumption? consumption)
-    {
-        if (consumption is null) return;
-
-        await Shell.Current.GoToAsync($"{nameof(ElectricityEditingPage)}", true, new Dictionary<string, object>
-        {
-            { "Consumption", consumption }
-        });
+        ImportDataCommand = new ImportDataCommand<ElectricityConsumption, ObservableElectricityConsumption>(fileSystemService, NotesService);
+        ExportDataCommand = new ExportDataCommand<ElectricityConsumption>(fileSystemService, ExportFilename);
     }
 }

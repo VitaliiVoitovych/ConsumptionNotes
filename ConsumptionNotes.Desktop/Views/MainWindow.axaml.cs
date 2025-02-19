@@ -1,5 +1,4 @@
 using ConsumptionNotes.Desktop.Views.SplashScreen;
-using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Media.Animation;
 using FluentAvalonia.UI.Windowing;
 

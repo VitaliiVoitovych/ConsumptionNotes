@@ -4,14 +4,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:ConsumptionNotes.Mobile.Views"
              xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels.Dashboards"
-             xmlns:models="clr-namespace:ConsumptionNotes.Application.Models;assembly=ConsumptionNotes.Application"
+             xmlns:models="clr-namespace:ConsumptionNotes.Presentation.Models;assembly=ConsumptionNotes.Presentation"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
              x:Class="ConsumptionNotes.Mobile.Pages.Dashboards.NaturalGasDashboardPage"
              Title="Газ"
              x:DataType="vm:NaturalGasDashboardViewModel">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem
-            Order="Secondary"
+            IconImageSource="add.png"
             Text="Додати запис"
             Command="{Binding OpenAddingPageCommand}"/>
         <ToolbarItem
@@ -30,34 +31,33 @@
         BottomSheetBackgroundColor="{StaticResource MediumDark}"
         DragHandleColor="{StaticResource LightDark}">
         <views:BottomSheet.Content>
-            <ScrollView
-                Padding="10"
-                Orientation="Horizontal"
-                HorizontalScrollBarVisibility="Never">
-                <HorizontalStackLayout
-                    Spacing="10">
-                    <views:ChartWidget
-                        WidthRequest="375"
-                        Text="Оплата"
-                        AverageValue="{Binding NotesService.AverageAmount, StringFormat='{0:C2}'}"
-                        Series="{Binding ChartService.AmountsToPaySeries}"
-                        XAxes="{Binding ChartService.DateXAxes}"
-                        YAxes="{Binding ChartService.AmountToPayYAxes}"/>
-                    <views:ChartWidget
-                        WidthRequest="375"
-                        Text="Споживання"
-                        AverageValue="{Binding NotesService.AverageCubicMeterConsumed, StringFormat='{0:F2} м³'}"
-                        Series="{Binding ChartService.CubicMeterConsumedSeries}"
-                        XAxes="{Binding ChartService.DateXAxes}"
-                        YAxes="{Binding ChartService.ConsumedYAxes}"/>
-                </HorizontalStackLayout>
-            </ScrollView>
+            <Grid
+                Padding="10">
+                <cards:CarouselView>
+                    <cards:CarouselView.ItemsSource>
+                        <x:Array Type="{x:Type View}">
+                            <views:ChartWidget
+                                Text="Оплата"
+                                AverageValue="{Binding NotesService.AverageAmount, StringFormat='{0:C2}'}"
+                                Series="{Binding ChartService.AmountsToPaySeries}"
+                                XAxes="{Binding ChartService.DateXAxes}"
+                                YAxes="{Binding ChartService.AmountToPayYAxes}" />
+                            <views:ChartWidget
+                                Text="Споживання"
+                                AverageValue="{Binding NotesService.AverageCubicMeterConsumed, StringFormat='{0:F2} м³'}"
+                                Series="{Binding ChartService.CubicMeterConsumedSeries}"
+                                XAxes="{Binding ChartService.DateXAxes}"
+                                YAxes="{Binding ChartService.ConsumedYAxes}"/>
+                        </x:Array>
+                    </cards:CarouselView.ItemsSource>
+                </cards:CarouselView>
+            </Grid>
         </views:BottomSheet.Content>
         <views:BottomSheet.BottomSheetContent>
             <Grid
                 Padding="15,0">
                 <CollectionView
-                    ItemsSource="{Binding NotesService.Consumptions}">
+                    ItemsSource="{Binding NotesService.ObservableConsumptions}">
 
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout

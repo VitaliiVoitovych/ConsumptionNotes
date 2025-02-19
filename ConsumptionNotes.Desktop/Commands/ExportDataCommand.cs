@@ -1,24 +1,22 @@
-﻿using ConsumptionNotes.Application.Commands.Base;
-using ConsumptionNotes.Desktop.Controls.Dialogs;
-using ConsumptionNotes.Desktop.Services.Files;
-using ConsumptionNotes.Domain.Exceptions;
+﻿using ConsumptionNotes.Presentation.Commands.Base;
 
 namespace ConsumptionNotes.Desktop.Commands;
 
-public class ExportDataCommand(FileSystemService fileSystemService, Func<string, Task<string>> writeToFile)
-    : AsyncCommandBase
+public class ExportDataCommand<TConsumption>(FileSystemService fileSystemService, string exportFilename)
+    : ExportDataCommandBase<TConsumption>(exportFilename)
+    where TConsumption : BaseConsumption
 {
-    public override async Task ExecuteAsync()
+    public override async Task ExecuteAsync(IEnumerable<TConsumption>? collection)
     {
         try
         {
             var folderPath = await fileSystemService.OpenFolderAsync("Виберіть папку для експорту даних");
-            var filePath = await writeToFile.Invoke(folderPath);
+            var filePath = await WriteToFile(folderPath, collection);
             await MessageDialog.ShowAsync("Дані успішно експортовано!", $"Дані експортовано за місцем \r\n{filePath}", MessageDialogIcon.Success);
         }
         catch (FolderNotSelectedException)
         {
-            await MessageDialog.ShowAsync("Помилка", ExceptionMessages.FolderNotSelectedExceptionMessage, MessageDialogIcon.Error);
+            await MessageDialog.ShowAsync("Помилка", "Папка не була вибрана", MessageDialogIcon.Error);
         }
     }
 }

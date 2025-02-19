@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace ConsumptionNotes.Desktop.Views.Dashboards;
+﻿namespace ConsumptionNotes.Desktop.Views.Dashboards;
 
 public partial class NaturalGasDashboardView : UserControl
 {
@@ -9,12 +7,6 @@ public partial class NaturalGasDashboardView : UserControl
         InitializeComponent();
 
         DataContext = Ioc.Default.GetRequiredService<NaturalGasDashboardViewModel>();
-
-        NaturalGasDataGrid.GotFocus += (s, e) =>
-        {
-            NaturalGasDataGrid.UpdateLayout();
-            OnLoaded(e);
-        };
     }
 
     protected override void OnSizeChanged(SizeChangedEventArgs e)

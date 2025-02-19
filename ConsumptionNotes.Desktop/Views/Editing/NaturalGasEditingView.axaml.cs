@@ -1,6 +1,4 @@
-﻿using ConsumptionNotes.Desktop.ViewModels.Editing;
-
-namespace ConsumptionNotes.Desktop.Views.Editing;
+﻿namespace ConsumptionNotes.Desktop.Views.Editing;
 
 public partial class NaturalGasEditingView : UserControl
 {

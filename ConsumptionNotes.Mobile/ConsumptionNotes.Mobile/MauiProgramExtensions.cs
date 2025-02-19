@@ -1,9 +1,11 @@
-﻿using ConsumptionNotes.Application.Services;
-using ConsumptionNotes.Dal.Extensions;
-using ConsumptionNotes.Mobile.Services.Files;
+﻿using ConsumptionNotes.Dal.Extensions;
 using ConsumptionNotes.Mobile.Startup;
+using ConsumptionNotes.Presentation.Charts;
+using ConsumptionNotes.Presentation.Notes;
 using Microsoft.Extensions.Logging;
+using PanCardView;
 using SkiaSharp.Views.Maui.Controls.Hosting;
+using Syncfusion.Maui.Toolkit.Hosting;
 
 namespace ConsumptionNotes.Mobile
 {
@@ -12,8 +14,10 @@ namespace ConsumptionNotes.Mobile
         public static MauiAppBuilder UseSharedMauiApp(this MauiAppBuilder builder)
         {
             builder
+                .ConfigureSyncfusionToolkit()
                 .UseSkiaSharp()
                 .UseMauiApp<App>()
+                .UseCardsView()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -30,7 +34,7 @@ namespace ConsumptionNotes.Mobile
                 .AddDatabase()
                 .AddRepositories()
                 .AddChartServices()
-                .AddNotesServices()
+                .AddObservableNotesService()
                 .AddViewModels()
                 .AddPages();
             

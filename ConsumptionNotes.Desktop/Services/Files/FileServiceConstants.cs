@@ -1,6 +1,4 @@
-﻿using Avalonia.Platform.Storage;
-
-namespace ConsumptionNotes.Desktop.Services.Files;
+﻿namespace ConsumptionNotes.Desktop.Services.Files;
 
 public static class FileServiceConstants
 {

@@ -1,7 +1,4 @@
-﻿using ConsumptionNotes.Dal.Extensions;
-using Microsoft.Extensions.Configuration;
-
-namespace ConsumptionNotes.Desktop.Startup;
+﻿namespace ConsumptionNotes.Desktop.Startup;
 
 public static class DatabaseRegistration
 {

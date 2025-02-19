@@ -1,7 +1,4 @@
-﻿using Avalonia.Platform.Storage;
-using ConsumptionNotes.Domain.Exceptions;
-
-namespace ConsumptionNotes.Desktop.Services.Files;
+﻿namespace ConsumptionNotes.Desktop.Services.Files;
 
 public class FileSystemService(IStorageProvider storageProvider)
 {

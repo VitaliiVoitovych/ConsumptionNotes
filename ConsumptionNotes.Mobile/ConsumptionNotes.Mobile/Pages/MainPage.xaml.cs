@@ -1,4 +1,4 @@
-﻿using ConsumptionNotes.Application.ViewModels;
+﻿using ConsumptionNotes.Presentation.ViewModels;
 
 namespace ConsumptionNotes.Mobile.Pages;
 
@@ -14,7 +14,7 @@ public partial class MainPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        
+
         AmountToPayChart.UpdateChart();
         ConsumptionChart.UpdateChart();
     }

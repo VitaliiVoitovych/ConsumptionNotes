@@ -1,4 +1,4 @@
-﻿using ConsumptionNotes.Application.ViewModels;
+﻿using ConsumptionNotes.Presentation.ViewModels;
 
 namespace ConsumptionNotes.Desktop.Views;
 

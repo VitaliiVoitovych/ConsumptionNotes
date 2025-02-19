@@ -1,7 +1,5 @@
-﻿using Avalonia.Layout;
-using Avalonia.Platform;
+﻿using Avalonia.Platform;
 using Avalonia.Svg.Skia;
-using FluentAvalonia.UI.Controls;
 
 namespace ConsumptionNotes.Desktop.Controls.Dialogs;
 
@@ -37,7 +35,7 @@ public static class MessageDialog
         };
     }
     
-    private static ContentDialog CreateMessageDialog(string title, string text, string? closeButtonText = default)
+    private static ContentDialog CreateMessageDialog(string title, string text, string? closeButtonText = null)
     {
         return new ContentDialog
         {
@@ -50,14 +48,14 @@ public static class MessageDialog
     #endregion
     
     #region Show methods
-    public static async Task ShowAsync(string title, string text, string? closeButtonText = default)
+    public static async Task ShowAsync(string title, string text, string? closeButtonText = null)
     {
         var dialog = CreateMessageDialog(title, text, closeButtonText);
         await dialog.ShowAsync();
     }
 
     public static async Task ShowAsync(string title, string text, MessageDialogIcon icon,
-        string? closeButtonText = default)
+        string? closeButtonText = null)
     {
         var uriString = $"avares://ConsumptionNotes/Assets/MessageDialogIcons/{icon.ToString().ToLower()}.svg"; 
         var image = new Image { Source = LoadSvgImage(uriString), Height = 48};

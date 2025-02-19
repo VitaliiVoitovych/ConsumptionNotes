@@ -1,0 +1,1 @@
+﻿global using ConsumptionNotes.Domain.Models;

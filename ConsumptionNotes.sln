@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumptionNotes.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumptionNotes.Dal", "ConsumptionNotes.Dal\ConsumptionNotes.Dal.csproj", "{6E864C6E-E93C-4D61-BA5C-2A7EB4BF16E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumptionNotes.Application", "ConsumptionNotes.Application\ConsumptionNotes.Application.csproj", "{BC002C76-14DB-488A-A385-81CC402198D2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumptionNotes.Mobile", "ConsumptionNotes.Mobile\ConsumptionNotes.Mobile\ConsumptionNotes.Mobile.csproj", "{9614F5A0-1FCF-43CB-8BF3-DFDF3A92F083}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumptionNotes.Mobile.Droid", "ConsumptionNotes.Mobile\ConsumptionNotes.Mobile.Droid\ConsumptionNotes.Mobile.Droid.csproj", "{EB0E6BBA-1B4E-4E4C-A99F-B455734EAAA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumptionNotes.Presentation", "ConsumptionNotes.Presentation\ConsumptionNotes.Presentation.csproj", "{C794FF56-8A5D-47C8-B4B5-FBC4EAF7F1EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumptionNotes.Infrastructure", "ConsumptionNotes.Infrastructure\ConsumptionNotes.Infrastructure.csproj", "{9AA1C82B-B923-4837-A4EC-FDEEE58219F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +35,6 @@ Global
 		{6E864C6E-E93C-4D61-BA5C-2A7EB4BF16E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E864C6E-E93C-4D61-BA5C-2A7EB4BF16E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E864C6E-E93C-4D61-BA5C-2A7EB4BF16E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC002C76-14DB-488A-A385-81CC402198D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC002C76-14DB-488A-A385-81CC402198D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC002C76-14DB-488A-A385-81CC402198D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC002C76-14DB-488A-A385-81CC402198D2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9614F5A0-1FCF-43CB-8BF3-DFDF3A92F083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9614F5A0-1FCF-43CB-8BF3-DFDF3A92F083}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9614F5A0-1FCF-43CB-8BF3-DFDF3A92F083}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,11 +45,21 @@ Global
 		{EB0E6BBA-1B4E-4E4C-A99F-B455734EAAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB0E6BBA-1B4E-4E4C-A99F-B455734EAAA7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EB0E6BBA-1B4E-4E4C-A99F-B455734EAAA7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C794FF56-8A5D-47C8-B4B5-FBC4EAF7F1EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C794FF56-8A5D-47C8-B4B5-FBC4EAF7F1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C794FF56-8A5D-47C8-B4B5-FBC4EAF7F1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C794FF56-8A5D-47C8-B4B5-FBC4EAF7F1EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AA1C82B-B923-4837-A4EC-FDEEE58219F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AA1C82B-B923-4837-A4EC-FDEEE58219F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AA1C82B-B923-4837-A4EC-FDEEE58219F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AA1C82B-B923-4837-A4EC-FDEEE58219F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E263BF0A-C342-4391-A586-D9966AC865F3}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal

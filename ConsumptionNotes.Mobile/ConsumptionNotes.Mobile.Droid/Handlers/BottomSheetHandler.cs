@@ -24,7 +24,7 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
     }
 
     private CoordinatorLayout? CoordinatorLayout { get; set; }
-    private LinearLayout? LinearLayout { get; set; }
+    private LinearLayout? BottomContentLayout { get; set; }
     private BottomSheetDragHandleView? DragHandle { get; set; }
     
     protected override CoordinatorLayout CreatePlatformView()
@@ -33,7 +33,7 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
 
         var metrics = Context.Resources!.DisplayMetrics;
         
-        LinearLayout = new LinearLayout(Context)
+        BottomContentLayout = new LinearLayout(Context)
         {
             LayoutParameters = new CoordinatorLayout.LayoutParams(
                 metrics!.WidthPixels,
@@ -44,17 +44,17 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
             Orientation = Orientation.Vertical
         };
         
-        LinearLayout.SetGravity(GravityFlags.CenterHorizontal);
-        CoordinatorLayout.AddView(LinearLayout);
+        BottomContentLayout.SetGravity(GravityFlags.CenterHorizontal);
+        CoordinatorLayout.AddView(BottomContentLayout);
         
-        var behavior = BottomSheetBehavior.From(LinearLayout);
+        var behavior = BottomSheetBehavior.From(BottomContentLayout);
         behavior.State = BottomSheetBehavior.StateCollapsed;
         behavior.Hideable = false;
         behavior.PeekHeight = (int)((metrics.HeightPixels - 264) * 0.6) - 92;
 
         var borderDrawable = new BorderDrawable(Context);
         borderDrawable.SetCornerRadius(new CornerRadius(25, 25, 0, 0));
-        LinearLayout.Background = borderDrawable;
+        BottomContentLayout.Background = borderDrawable;
 
         var dragViewBorder = new BorderDrawable(Context);
         dragViewBorder.SetCornerRadius(new CornerRadius(25));
@@ -63,7 +63,7 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
         {
             LayoutParameters = new LinearLayout.LayoutParams(
                 (int)Context.ToPixels(35),
-                (int)Context.ToPixels(6))
+                (int)Context.ToPixels(4))
             {
                 TopMargin = 25,
                 BottomMargin = 25
@@ -71,14 +71,14 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
             Background = dragViewBorder,
         };
         
-        LinearLayout.AddView(DragHandle);
+        BottomContentLayout.AddView(DragHandle);
         
         return CoordinatorLayout;
     }
     
     private static void MapBottomSheetContent(BottomSheetHandler handler, BottomSheet bottomSheet)
     {
-        handler.LinearLayout!.AddView(bottomSheet.BottomSheetContent.ToPlatform(handler.MauiContext!),
+        handler.BottomContentLayout!.AddView(bottomSheet.BottomSheetContent.ToPlatform(handler.MauiContext!),
             new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent,ViewGroup.LayoutParams.MatchParent));
     }
 
@@ -93,7 +93,7 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
     
     private static void MapBottomSheetBackgroundColor(BottomSheetHandler handler, BottomSheet bottomSheet)
     {
-        ((BorderDrawable)handler.LinearLayout!.Background!).SetBackgroundColor(bottomSheet.BottomSheetBackgroundColor.ToPlatform());
+        ((BorderDrawable)handler.BottomContentLayout!.Background!).SetBackgroundColor(bottomSheet.BottomSheetBackgroundColor.ToPlatform());
     }
     
     private static void MapDragHandleColor(BottomSheetHandler handler, BottomSheet bottomSheet)

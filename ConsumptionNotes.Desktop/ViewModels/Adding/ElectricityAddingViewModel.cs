@@ -1,12 +1,14 @@
-﻿using ConsumptionNotes.Application.ViewModels.Adding;
-using ConsumptionNotes.Desktop.Commands;
+﻿using ConsumptionNotes.Presentation.ViewModels.Adding;
+using ConsumptionNotes.Desktop.ViewModels.Adding.Interfaces;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Adding;
 
-public class ElectricityAddingViewModel : BaseElectricityAddingViewModel
+public class ElectricityAddingViewModel : ElectricityAddingViewModelBase, IAddingViewModel
 {
-    public ElectricityAddingViewModel(ElectricityNotesService notesService) : base(notesService)
+    public AsyncRelayCommand AddNoteCommand { get; }
+    
+    public ElectricityAddingViewModel(ObservableElectricityNotesService notesService) : base(notesService)
     {
-        AddNoteCommand = new AddNoteCommands(AddNote);
+        AddNoteCommand = new AddNoteCommand(AddNote);
     }
 }

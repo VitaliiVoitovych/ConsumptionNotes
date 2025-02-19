@@ -1,12 +1,12 @@
-﻿using System.Text.Json;
-using ConsumptionNotes.Application.Commands.Base;
-using ConsumptionNotes.Domain.Exceptions;
-using ConsumptionNotes.Mobile.Services.Files;
+﻿using ConsumptionNotes.Presentation.Commands.Base;
+using ConsumptionNotes.Presentation.Notes.Services.Interfaces;
 
 namespace ConsumptionNotes.Mobile.Commands;
 
-public class ImportDataCommand(FileSystemService fileSystemService, Func<Stream, Task> importFromStream)
-    : ImportDataCommandBase(importFromStream)
+public class ImportDataCommand<TConsumption, TObservableConsumption>(FileSystemService fileSystemService, IObservableNotesService<TConsumption, TObservableConsumption> notesService)
+    : ImportDataCommandBase<TConsumption, TObservableConsumption>(notesService)
+    where TConsumption : BaseConsumption
+    where TObservableConsumption : ObservableBaseConsumption<TConsumption>
 {
     protected override async Task<Stream> OpenFileAsync()
     {
@@ -15,11 +15,11 @@ public class ImportDataCommand(FileSystemService fileSystemService, Func<Stream,
 
     protected override async Task HandleFileNotSelectedException()
     {
-        await Shell.Current.DisplayAlert("Помилка!", ExceptionMessages.FileNotSelectedExceptionMessage, "Зрозуміло");
+        await Shell.Current.DisplayAlert("Помилка!", "Не було обрано файл", "Зрозуміло");
     }
 
     protected override async Task HandleJsonException()
     {
-        await Shell.Current.DisplayAlert("Помилка!", ExceptionMessages.JsonFileNotSelectedMessage, "Зрозуміло");
+        await Shell.Current.DisplayAlert("Помилка!", "Папка не була вибрана", "Зрозуміло");
     }
 }

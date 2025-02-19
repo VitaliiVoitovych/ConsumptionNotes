@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
-             xmlns:chartingStyle="using:ConsumptionNotes.Application.Services.Charting.Styles"
+             xmlns:chartsStyle="using:ConsumptionNotes.Presentation.Charts.Styles"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ConsumptionNotes.Desktop.Controls.ChartWidget"
              x:Name="Widget">
@@ -35,9 +35,9 @@
                 XAxes="{Binding #Widget.XAxes}"
                 YAxes="{Binding #Widget.YAxes}"
                 LegendPosition="{Binding #Widget.LegendPosition}"
-                LegendTextPaint="{x:Static chartingStyle:ChartPaints.LegendTextPaint}"
-                TooltipTextPaint="{x:Static chartingStyle:ChartPaints.TooltipTextPaint}"
-                TooltipBackgroundPaint="{x:Static chartingStyle:ChartPaints.TooltipBackgroundPaint}"/>
+                LegendTextPaint="{x:Static chartsStyle:Paints.LegendTextPaint}"
+                TooltipTextPaint="{x:Static chartsStyle:Paints.TooltipTextPaint}"
+                TooltipBackgroundPaint="{x:Static chartsStyle:Paints.TooltipBackgroundPaint}"/>
             
         </Grid>
         

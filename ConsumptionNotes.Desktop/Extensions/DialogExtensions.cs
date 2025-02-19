@@ -1,5 +1,4 @@
 ﻿using System.Windows.Input;
-using FluentAvalonia.UI.Controls;
 
 namespace ConsumptionNotes.Desktop.Extensions;
 

@@ -1,11 +1,12 @@
-﻿using ConsumptionNotes.Application.Commands.Base;
-using ConsumptionNotes.Desktop.Controls.Dialogs;
-using ConsumptionNotes.Desktop.Services.Files;
+﻿using ConsumptionNotes.Presentation.Commands.Base;
+using ConsumptionNotes.Presentation.Notes.Services.Interfaces;
 
 namespace ConsumptionNotes.Desktop.Commands;
 
-public class ImportDataCommand(FileSystemService fileSystemService, Func<Stream, Task> importFromStream)
-    : ImportDataCommandBase(importFromStream)
+public class ImportDataCommand<TConsumption, TObservableConsumption>(FileSystemService fileSystemService, IObservableNotesService<TConsumption, TObservableConsumption> notesService)
+    : ImportDataCommandBase<TConsumption, TObservableConsumption>(notesService)
+    where TConsumption : BaseConsumption
+    where TObservableConsumption : ObservableBaseConsumption<TConsumption>
 {
     protected override async Task<Stream> OpenFileAsync()
     {
@@ -14,11 +15,11 @@ public class ImportDataCommand(FileSystemService fileSystemService, Func<Stream,
 
     protected override async Task HandleFileNotSelectedException()
     {
-        await MessageDialog.ShowAsync("Помилка", ExceptionMessages.FileNotSelectedExceptionMessage, MessageDialogIcon.Error);
+        await MessageDialog.ShowAsync("Помилка", "Не було обрано файл", MessageDialogIcon.Error);
     }
 
     protected override async Task HandleJsonException()
     {
-        await MessageDialog.ShowAsync("Помилка", ExceptionMessages.JsonFileNotSelectedMessage, MessageDialogIcon.Error);
+        await MessageDialog.ShowAsync("Помилка", "Не обрали потрібний файл з даними", MessageDialogIcon.Error);
     }
 }

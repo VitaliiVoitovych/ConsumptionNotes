@@ -1,7 +1,4 @@
-﻿using ConsumptionNotes.Application.ViewModels;
-using ConsumptionNotes.Desktop.ViewModels.Editing;
-using ConsumptionNotes.Desktop.Views.Adding;
-using ConsumptionNotes.Desktop.Views.Editing;
+﻿using ConsumptionNotes.Presentation.ViewModels;
 
 namespace ConsumptionNotes.Desktop.Startup;
 
