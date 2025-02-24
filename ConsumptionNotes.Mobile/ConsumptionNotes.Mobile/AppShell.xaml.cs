@@ -13,6 +13,8 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(ElectricityEditingPage), typeof(ElectricityEditingPage));
         Routing.RegisterRoute(nameof(NaturalGasEditingPage), typeof(NaturalGasEditingPage));
         
+        Routing.RegisterRoute(nameof(CalculatorPage), typeof(CalculatorPage));
+        
         CurrentItem = PhoneTabs;
     }
 }

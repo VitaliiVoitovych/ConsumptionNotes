@@ -1,4 +1,5 @@
-﻿using ConsumptionNotes.Presentation.ViewModels;
+﻿using ConsumptionNotes.Mobile.ViewModels;
+using ConsumptionNotes.Presentation.ViewModels;
 
 namespace ConsumptionNotes.Mobile.Startup;
 
@@ -7,6 +8,7 @@ public static class ServicesRegistration
     public static IServiceCollection AddPages(this IServiceCollection services)
     {
         return services
+            .AddTransient<CalculatorPage>()
             .AddTransient<MainPage>()
             // Dashboard pages
             .AddTransient<ElectricityDashboardPage>()
@@ -22,6 +24,7 @@ public static class ServicesRegistration
     public static IServiceCollection AddViewModels(this IServiceCollection services)
     {
         return services
+            .AddTransient<CalculatorViewModel>()
             .AddTransient<MainViewModel>()
             // Dashboard view models
             .AddTransient<ElectricityDashboardViewModel>()

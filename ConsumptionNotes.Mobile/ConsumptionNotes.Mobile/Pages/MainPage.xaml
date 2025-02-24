@@ -4,30 +4,148 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ConsumptionNotes.Presentation.ViewModels;assembly=ConsumptionNotes.Presentation"
              xmlns:views="clr-namespace:ConsumptionNotes.Mobile.Views"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
              x:Class="ConsumptionNotes.Mobile.Pages.MainPage"
              x:DataType="vm:MainViewModel">
     <Grid
-        Margin="10,8"
+        Padding="10,8"
         RowDefinitions="*,*"
         RowSpacing="10">
-
-        <views:ChartWidget
-            x:Name="AmountToPayChart"
-            Grid.Row="0"
-            Text="Електроенергія"
-            AverageValue="{Binding ElectricityNotesService.AverageAmount, StringFormat='{0:C2}'}"
-            Series="{Binding ElectricityChartService.AmountsToPaySeries}"
-            XAxes="{Binding ElectricityChartService.DateXAxes}"
-            YAxes="{Binding ElectricityChartService.AmountToPayYAxes}"/>
-
-        <views:ChartWidget
-            x:Name="ConsumptionChart"
-            Grid.Row="1"
-            Text="Газ"
-            AverageValue="{Binding NaturalGasNotesService.AverageAmount, StringFormat='{0:C2}'}"
-            Series="{Binding NaturalGasChartService.AmountsToPaySeries}"
-            XAxes="{Binding NaturalGasChartService.DateXAxes}"
-            YAxes="{Binding NaturalGasChartService.AmountToPayYAxes}"/>
         
+        <VerticalStackLayout
+            VerticalOptions="End"
+            Spacing="7">
+            
+            <Border
+                BackgroundColor="{StaticResource MediumDark}"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 15,15,15,15">
+                <Grid
+                    Padding="10,5"
+                    ColumnDefinitions="Auto, *"
+                    RowDefinitions="Auto, Auto, *, *"
+                    RowSpacing="3"
+                    ColumnSpacing="3">
+                    
+                    <Image
+                        WidthRequest="35"
+                        HeightRequest="35"
+                        Source="electricity.png"/>
+                    
+                    <Label
+                        Grid.Column="1"
+                        VerticalTextAlignment="Center"
+                        FontSize="18"
+                        Text="Електроенергія"/>
+                    
+                    <Border
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        StrokeThickness="0.25"
+                        Stroke="{StaticResource LightDark}"/>
+                    
+                    <Label
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="Вдень: 10 кВт/год"/>
+                    <Label
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Text="Вночі: 10 кВт/год"/>
+                    
+                </Grid>
+            </Border>
+            
+            <Border
+                BackgroundColor="{StaticResource MediumDark}"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 15,15,15,15">
+                <Grid
+                    Padding="10,5"
+                    ColumnDefinitions="Auto, *"
+                    RowDefinitions="*, Auto, *"
+                    RowSpacing="3"
+                    ColumnSpacing="3">
+                    
+                    <Image
+                        WidthRequest="35"
+                        HeightRequest="35"
+                        Source="gas.png"/>
+                    
+                    <Label
+                        Grid.Column="1"
+                        VerticalTextAlignment="Center"
+                        FontSize="18"
+                        Text="Газ"/>
+                    
+                    <Border
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        StrokeThickness="0.25"
+                        Stroke="{StaticResource LightDark}"/>
+                    
+                    <Label
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="Спожито: 10 м³"/>
+                    
+                </Grid>
+            </Border>
+            
+            <Border
+                StrokeThickness="0.25"
+                Stroke="{StaticResource MediumDark}"/>
+            
+            <Border
+                BackgroundColor="{StaticResource MediumDark}"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 15,15,15,15">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="TapGestureRecognizer_OnTapped"/>
+                </Border.GestureRecognizers>
+                <Grid
+                    Padding="10"
+                    ColumnDefinitions="Auto, *"
+                    RowSpacing="3">
+                    
+                    <Image
+                        WidthRequest="35"
+                        HeightRequest="35"
+                        Source="calculator.png"/>
+                    
+                    <Label
+                        Grid.Column="1"
+                        VerticalTextAlignment="Center"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        Text="Калькулятор"/>
+                    
+                </Grid>
+            </Border>
+            
+        </VerticalStackLayout>
+        
+        <cards:CarouselView
+            x:Name="Charts"
+            Grid.Row="1">
+            <cards:CarouselView.ItemsSource>
+                <x:Array Type="{x:Type View}">
+                    <views:ChartWidget
+                        Text="Електроенергія"
+                        AverageValue="{Binding ElectricityNotesService.AverageAmount, StringFormat='{0:C2}'}"
+                        Series="{Binding ElectricityChartService.AmountsToPaySeries}"
+                        XAxes="{Binding ElectricityChartService.DateXAxes}"
+                        YAxes="{Binding ElectricityChartService.AmountToPayYAxes}"/>
+
+                    <views:ChartWidget
+                        Text="Газ"
+                        AverageValue="{Binding NaturalGasNotesService.AverageAmount, StringFormat='{0:C2}'}"
+                        Series="{Binding NaturalGasChartService.AmountsToPaySeries}"
+                        XAxes="{Binding NaturalGasChartService.DateXAxes}"
+                        YAxes="{Binding NaturalGasChartService.AmountToPayYAxes}"/>
+                </x:Array>
+            </cards:CarouselView.ItemsSource>
+        </cards:CarouselView>
     </Grid>
 </ContentPage>
