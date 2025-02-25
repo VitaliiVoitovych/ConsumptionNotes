@@ -10,6 +10,7 @@ public abstract partial class ObservableNotesServiceBase<TConsumption, TObservab
     where TChartService : ConsumptionChartServiceBase<TConsumption>
     where TNotesService : INotesService<TConsumption>
 {
+    [ObservableProperty] private TObservableConsumption? _lastRecord;
     [ObservableProperty] private decimal _averageAmount;
     
     public TChartService ChartService { get; }
@@ -48,6 +49,7 @@ public abstract partial class ObservableNotesServiceBase<TConsumption, TObservab
         }
         
         UpdateAverageValues();
+        UpdateLastRecord();
     }
 
     public async Task ImportDataAsync(IAsyncEnumerable<TConsumption> data)
@@ -65,6 +67,7 @@ public abstract partial class ObservableNotesServiceBase<TConsumption, TObservab
         }
         
         UpdateAverageValues();
+        UpdateLastRecord();
     }
     
     public void Add(TObservableConsumption observableConsumption)
@@ -76,6 +79,7 @@ public abstract partial class ObservableNotesServiceBase<TConsumption, TObservab
         ChartService.InsertValues(index, observableConsumption.Consumption);
         
         UpdateAverageValues();
+        UpdateLastRecord();
     }
 
     public void Remove(TObservableConsumption observableConsumption)
@@ -87,6 +91,7 @@ public abstract partial class ObservableNotesServiceBase<TConsumption, TObservab
         ChartService.RemoveValues(index);
         
         UpdateAverageValues();
+        UpdateLastRecord();
     }
 
     public void Update(TObservableConsumption consumption)
@@ -98,10 +103,16 @@ public abstract partial class ObservableNotesServiceBase<TConsumption, TObservab
         ChartService.UpdateValues(index, consumption.Consumption);
         
         UpdateAverageValues();
+        UpdateLastRecord();
     }
     
     protected virtual void UpdateAverageValues()
     {
         AverageAmount = NotesService.AverageAmount;
+    }
+
+    private void UpdateLastRecord()
+    {
+        LastRecord = ObservableConsumptions.LastOrDefault();
     }
 }

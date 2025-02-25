@@ -10,7 +10,7 @@
     <VerticalStackLayout
         VerticalOptions="Center"
         HorizontalOptions="Center"
-        Spacing="5">
+        Spacing="7">
 
         <Label
             Text="Електроенергія" />
@@ -51,7 +51,7 @@
             Text="{Binding ElectricityAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
         
         <Border
-            StrokeThickness="0.25"
+            StrokeThickness="0.5"
             Stroke="{StaticResource LightDarkBrush}" />
 
         <Label
@@ -78,7 +78,7 @@
             Text="{Binding NaturalGasAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
         
         <Border
-            StrokeThickness="0.25"
+            StrokeThickness="0.5"
             Stroke="{StaticResource LightDarkBrush}" />
 
         <Button

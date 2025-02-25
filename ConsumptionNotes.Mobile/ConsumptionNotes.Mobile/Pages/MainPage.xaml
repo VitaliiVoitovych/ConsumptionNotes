@@ -16,14 +16,20 @@
             VerticalOptions="End"
             Spacing="7">
             
+            <Label
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Text="Останні записи"/>
+            
             <Border
                 BackgroundColor="{StaticResource MediumDark}"
                 StrokeThickness="0"
                 StrokeShape="RoundRectangle 15,15,15,15">
                 <Grid
-                    Padding="10,5"
+                    Padding="10"
                     ColumnDefinitions="Auto, *"
-                    RowDefinitions="Auto, Auto, *, *"
+                    RowDefinitions="Auto, Auto, *, *, *"
                     RowSpacing="3"
                     ColumnSpacing="3">
                     
@@ -35,23 +41,32 @@
                     <Label
                         Grid.Column="1"
                         VerticalTextAlignment="Center"
-                        FontSize="18"
+                        FontSize="16"
+                        FontAttributes="Bold"
                         Text="Електроенергія"/>
                     
                     <Border
                         Grid.Row="1"
                         Grid.ColumnSpan="2"
-                        StrokeThickness="0.25"
+                        StrokeThickness="0.5"
                         Stroke="{StaticResource LightDark}"/>
                     
                     <Label
                         Grid.Row="2"
                         Grid.ColumnSpan="2"
-                        Text="Вдень: 10 кВт/год"/>
+                        FontSize="14"
+                        Text="{Binding ElectricityNotesService.LastRecord.DayKilowattConsumed, StringFormat='Вдень: {0} кВт/год', FallbackValue='Вдень: N/A'}"/>
                     <Label
                         Grid.Row="3"
                         Grid.ColumnSpan="2"
-                        Text="Вночі: 10 кВт/год"/>
+                        FontSize="14"
+                        Text="{Binding ElectricityNotesService.LastRecord.NightKilowattConsumed, StringFormat='Вдень: {0} кВт/год', FallbackValue='Вночі: N/A'}"/>
+                    
+                    <Label
+                        Grid.Row="4"
+                        Grid.ColumnSpan="2"
+                        FontSize="14"
+                        Text="{Binding ElectricityNotesService.LastRecord.AmountToPay, StringFormat='До оплати: {0:C2}', FallbackValue='До оплати: N/A'}"/>
                     
                 </Grid>
             </Border>
@@ -61,9 +76,9 @@
                 StrokeThickness="0"
                 StrokeShape="RoundRectangle 15,15,15,15">
                 <Grid
-                    Padding="10,5"
+                    Padding="10"
                     ColumnDefinitions="Auto, *"
-                    RowDefinitions="*, Auto, *"
+                    RowDefinitions="*, Auto, *, *"
                     RowSpacing="3"
                     ColumnSpacing="3">
                     
@@ -75,25 +90,33 @@
                     <Label
                         Grid.Column="1"
                         VerticalTextAlignment="Center"
-                        FontSize="18"
+                        FontSize="16"
+                        FontAttributes="Bold"
                         Text="Газ"/>
                     
                     <Border
                         Grid.Row="1"
                         Grid.ColumnSpan="2"
-                        StrokeThickness="0.25"
+                        StrokeThickness="0.5"
                         Stroke="{StaticResource LightDark}"/>
                     
                     <Label
                         Grid.Row="2"
                         Grid.ColumnSpan="2"
-                        Text="Спожито: 10 м³"/>
+                        FontSize="14"
+                        Text="{Binding NaturalGasNotesService.LastRecord.CubicMeterConsumed, StringFormat='Спожито: {0:F2} м³', FallbackValue='Спожито: N/A'}"/>
+                    
+                    <Label
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        FontSize="14"
+                        Text="{Binding NaturalGasNotesService.LastRecord.AmountToPay, StringFormat='До оплати: {0:C2}', FallbackValue='До оплати: N/A'}"/>
                     
                 </Grid>
             </Border>
             
             <Border
-                StrokeThickness="0.25"
+                StrokeThickness="0.5"
                 Stroke="{StaticResource MediumDark}"/>
             
             <Border
