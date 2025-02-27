@@ -8,9 +8,48 @@
              x:Class="ConsumptionNotes.Desktop.Views.MainView"
              x:DataType="vm:MainViewModel">
     <Grid
-        ColumnDefinitions="*,*">
+        ColumnDefinitions="*,*"
+        RowDefinitions="*, *">
+        
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="10"
+            Spacing="10"
+            VerticalAlignment="Bottom">
+            
+            <Button
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left"
+                BorderThickness="0"
+                CornerRadius="15"
+                Padding="10"
+                Click="OpenCalculatorDialog">
+                <Button.Content>
+                    <Grid
+                        ColumnDefinitions="Auto, *">
+                        
+                        <Image
+                            Width="35"
+                            Height="35"
+                            Source="{SvgImage /Assets/calculator.svg}"/>
+                        
+                        <TextBlock
+                            Grid.Column="1"
+                            Margin="10, 0 ,0 ,0"
+                            Text="Калькулятор"
+                            FontSize="20"
+                            FontWeight="Bold"/>
+                        
+                    </Grid>
+                </Button.Content>
+            </Button>
+            
+        </StackPanel>
         
         <controls:ChartWidget
+            Grid.Column="0"
+            Grid.Row="1"
             Text="Електроенергія"
             AverageValue="{Binding ElectricityNotesService.AverageAmount, StringFormat=\C2}"
             Series="{Binding ElectricityChartService.AmountsToPaySeries}"
@@ -18,7 +57,9 @@
             XAxes="{Binding ElectricityChartService.DateXAxes}"/>
         
         <controls:ChartWidget
+            Grid.Row="0"
             Grid.Column="1"
+            Grid.RowSpan="2"
             Text="Газ"
             AverageValue="{Binding NaturalGasNotesService.AverageAmount, StringFormat=\C2}"
             Series="{Binding NaturalGasChartService.AmountsToPaySeries}"

@@ -1,0 +1,82 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ConsumptionNotes.Desktop.ViewModels"
+             xmlns:controls="using:ConsumptionNotes.Desktop.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ConsumptionNotes.Desktop.Views.CalculatorView"
+             x:DataType="vm:CalculatorViewModel">
+    <Grid
+        ColumnDefinitions="*, *">
+        
+        <StackPanel
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="5, 0"
+            Spacing="10">
+            
+            <TextBlock
+                Text="Електроенергія"/>
+            
+            <TextBlock
+                Text="Спожито кВт/год"/>
+        
+            <controls:LabeledNumericUpDown
+                Value="{Binding DayKilowattConsumed}"
+                Text="День"
+                Minimum="0"
+                Maximum="10000"
+                Increment="1"/>
+        
+            <controls:LabeledNumericUpDown
+                Value="{Binding NightKilowattConsumed}"
+                Text="Ніч"
+                Minimum="0"
+                Maximum="10000"
+                Increment="1"/>
+        
+            <controls:LabeledNumericUpDown
+                Value="{Binding KilowattPerHourPrice}"
+                Text="Ціна за кВт/год"
+                Minimum="0"
+                Maximum="1000"
+                Increment=".01"/>
+            
+            <TextBlock
+                Text="{Binding ElectricityAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
+            
+        </StackPanel>
+        
+        <StackPanel
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="5, 0"
+            Spacing="10">
+            
+            <TextBlock
+                Text="Газ"/>
+            
+            <controls:LabeledNumericUpDown
+                Value="{Binding CubicMeterConsumed}"
+                Text="Спожито м³"
+                Minimum="0"
+                Maximum="10000"
+                Increment=".01"/>
+        
+            <controls:LabeledNumericUpDown
+                Value="{Binding CubicMeterPrice}"
+                Text="Ціна за м³"
+                Minimum="0"
+                Maximum="1000"
+                Increment=".01"/>
+
+            <TextBlock
+                Text="{Binding NaturalGasAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
+            
+        </StackPanel>
+        
+    </Grid>
+</UserControl>
