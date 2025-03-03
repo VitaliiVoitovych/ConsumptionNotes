@@ -15,8 +15,87 @@
             Grid.Row="0"
             Grid.Column="0"
             Margin="10"
-            Spacing="10"
+            Spacing="7"
             VerticalAlignment="Bottom">
+            
+            <Border
+                CornerRadius="15"
+                Padding="10"
+                Background="#313538">
+                <StackPanel
+                    Spacing="3">
+                    
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Spacing="5">
+                        
+                        <Image
+                            Source="{SvgImage /Assets/electricity.svg}"
+                            Width="35"
+                            Height="35"/>
+                    
+                        <TextBlock
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Text="Електроенергія"/>
+                        
+                    </StackPanel>
+                    
+                    <Rectangle
+                        Height="1"
+                        Fill="{StaticResource LightDarkBrush}"/>
+                    
+                    <TextBlock
+                        FontSize="14"
+                        Text="{Binding ElectricityNotesService.LastRecord.DayKilowattConsumed, StringFormat='Вдень: {0} кВт/год', FallbackValue='Вдень: N/A'}"/>
+                    
+                    <TextBlock
+                        FontSize="14"
+                        Text="{Binding ElectricityNotesService.LastRecord.DayKilowattConsumed, StringFormat='Вночі: {0} кВт/год', FallbackValue='Вночі: N/A'}"/>
+                    
+                    <TextBlock
+                        FontSize="14"
+                        Text="{Binding ElectricityNotesService.LastRecord.AmountToPay, StringFormat='До оплати: {0:C2}', FallbackValue='До оплати: N/A'}"/>
+                    
+                </StackPanel>
+            </Border>
+            
+            <Border
+                Padding="10"
+                CornerRadius="15"
+                Background="#313538">
+                <StackPanel
+                    Spacing="3">
+                    
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Spacing="5">
+                        
+                        <Image
+                            Source="{SvgImage /Assets/gas.svg}"
+                            Width="35"
+                            Height="35"/>
+                    
+                        <TextBlock
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Text="Газ"/>
+                        
+                    </StackPanel>
+                    
+                    <Rectangle
+                        Height="1"
+                        Fill="{StaticResource LightDarkBrush}"/>
+                    
+                    <TextBlock
+                        FontSize="14"
+                        Text="{Binding NaturalGasNotesService.LastRecord.CubicMeterConsumed, StringFormat='Спожито: {0:F2} м³', FallbackValue='Спожито: N/A'}"/>
+                    
+                    <TextBlock
+                        FontSize="14"
+                        Text="{Binding NaturalGasNotesService.LastRecord.AmountToPay, StringFormat='До оплати: {0:C2}', FallbackValue='До оплати: N/A'}"/>
+                </StackPanel>
+            </Border>
             
             <Button
                 HorizontalAlignment="Stretch"
@@ -38,7 +117,7 @@
                             Grid.Column="1"
                             Margin="10, 0 ,0 ,0"
                             Text="Калькулятор"
-                            FontSize="20"
+                            FontSize="18"
                             FontWeight="Bold"/>
                         
                     </Grid>
@@ -48,8 +127,9 @@
         </StackPanel>
         
         <controls:ChartWidget
-            Grid.Column="0"
-            Grid.Row="1"
+            Grid.Row="0"
+            Grid.Column="1"
+            x:Name="ElectricityAmountToPayChart"
             Text="Електроенергія"
             AverageValue="{Binding ElectricityNotesService.AverageAmount, StringFormat=\C2}"
             Series="{Binding ElectricityChartService.AmountsToPaySeries}"
@@ -57,14 +137,14 @@
             XAxes="{Binding ElectricityChartService.DateXAxes}"/>
         
         <controls:ChartWidget
-            Grid.Row="0"
-            Grid.Column="1"
-            Grid.RowSpan="2"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            x:Name="NaturalGasAmountToPayChart"
             Text="Газ"
             AverageValue="{Binding NaturalGasNotesService.AverageAmount, StringFormat=\C2}"
             Series="{Binding NaturalGasChartService.AmountsToPaySeries}"
             YAxes="{Binding NaturalGasChartService.AmountToPayYAxes}"
             XAxes="{Binding NaturalGasChartService.DateXAxes}"/>
-        
     </Grid>
 </UserControl>

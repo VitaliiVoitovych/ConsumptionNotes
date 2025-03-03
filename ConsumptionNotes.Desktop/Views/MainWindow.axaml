@@ -3,12 +3,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="using:FluentAvalonia.UI.Controls"
-        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="640"
         x:Class="ConsumptionNotes.Desktop.Views.MainWindow"
         Title="ConsumptionNotes"
         Background="{StaticResource DarkBrush}"
-        MinHeight="525"
-        MinWidth="1120">
+        MinHeight="640"
+        MinWidth="1180"
+        WindowStartupLocation="CenterScreen">
 
     <Grid
         RowDefinitions="Auto, *">
