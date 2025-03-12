@@ -3,6 +3,9 @@
 ### Main page
 <img src="main-page.jpg" width="300">
 
+### Calculator page
+<img src="calculator-page.jpg" width="300">
+
 ## Dashboard pages
 ### Electricity
 <img src="electricity-dashboard-page.jpg" width="300">

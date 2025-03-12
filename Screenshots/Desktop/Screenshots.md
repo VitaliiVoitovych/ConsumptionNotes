@@ -3,7 +3,10 @@
 <img src="splash-screen.png">
 
 ### Main view
-<img src="home-view.png">
+<img src="main-view.png">
+
+### Calculator Dialog
+<img src="calculator-dialog.png">
 
 ## Dashboard views
 ### Electricity
