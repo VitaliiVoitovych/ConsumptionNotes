@@ -55,7 +55,7 @@
         </views:BottomSheet.Content>
         <views:BottomSheet.BottomSheetContent>
             <Grid
-                Padding="15,0">
+                Padding="15,0,15,100">
                 <CollectionView
                     ItemsSource="{Binding NotesService.ObservableConsumptions}">
 

@@ -6,7 +6,6 @@
              xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels.Dashboards"
              xmlns:models="clr-namespace:ConsumptionNotes.Presentation.Models;assembly=ConsumptionNotes.Presentation"
              xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
-             xmlns:bottomsheet="clr-namespace:Syncfusion.Maui.Toolkit.BottomSheet;assembly=Syncfusion.Maui.Toolkit"
              x:Class="ConsumptionNotes.Mobile.Pages.Dashboards.ElectricityDashboardPage"
              x:DataType="vm:ElectricityDashboardViewModel"
              Title="Електроенергія">
@@ -58,7 +57,7 @@
         </views:BottomSheet.Content>
         <views:BottomSheet.BottomSheetContent>
             <Grid
-                Padding="15,0">
+                Padding="15,0,15,100">
                 <CollectionView
                     ItemsSource="{Binding NotesService.ObservableConsumptions}">
 

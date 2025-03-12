@@ -2,81 +2,109 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="using:ConsumptionNotes.Desktop.ViewModels"
+             xmlns:vm="using:ConsumptionNotes.Presentation.ViewModels"
              xmlns:controls="using:ConsumptionNotes.Desktop.Controls"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
              x:Class="ConsumptionNotes.Desktop.Views.CalculatorView"
              x:DataType="vm:CalculatorViewModel">
+    <UserControl.Styles>
+        <Style Selector="TextBlock.Title">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style Selector="TextBlock.FooterText">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="TextAlignment" Value="End"/>
+        </Style>
+    </UserControl.Styles>
     <Grid
-        ColumnDefinitions="*, *">
+        ColumnDefinitions="*, 1, *">
         
-        <StackPanel
+        <Grid
             Grid.Column="0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Margin="5, 0"
-            Spacing="10">
+            Margin="0,0,4,0"
+            RowDefinitions="Auto, *">
             
             <TextBlock
+                Grid.Row="0"
+                Classes="Title"
                 Text="Електроенергія"/>
             
-            <TextBlock
-                Text="Спожито кВт/год"/>
+            <StackPanel
+                Grid.Row="1"
+                Margin="0,10,0,0"
+                VerticalAlignment="Bottom"
+                Spacing="10">
+                
+                <controls:LabeledNumericUpDown
+                    Value="{Binding DayKilowattConsumed}"
+                    Text="День"
+                    Minimum="0"
+                    Maximum="10000"
+                    Increment="1"/>
         
-            <controls:LabeledNumericUpDown
-                Value="{Binding DayKilowattConsumed}"
-                Text="День"
-                Minimum="0"
-                Maximum="10000"
-                Increment="1"/>
+                <controls:LabeledNumericUpDown
+                    Value="{Binding NightKilowattConsumed}"
+                    Text="Ніч"
+                    Minimum="0"
+                    Maximum="10000"
+                    Increment="1"/>
         
-            <controls:LabeledNumericUpDown
-                Value="{Binding NightKilowattConsumed}"
-                Text="Ніч"
-                Minimum="0"
-                Maximum="10000"
-                Increment="1"/>
-        
-            <controls:LabeledNumericUpDown
-                Value="{Binding KilowattPerHourPrice}"
-                Text="Ціна за кВт/год"
-                Minimum="0"
-                Maximum="1000"
-                Increment=".01"/>
+                <controls:LabeledNumericUpDown
+                    Value="{Binding KilowattPerHourPrice}"
+                    Text="Ціна за кВт/год"
+                    Minimum="0"
+                    Maximum="1000"
+                    Increment=".01"/>
+                
+                <TextBlock
+                    Classes="FooterText"
+                    Text="{Binding ElectricityAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
+                
+            </StackPanel>
             
-            <TextBlock
-                Text="{Binding ElectricityAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
-            
-        </StackPanel>
+        </Grid>
         
-        <StackPanel
+        <Rectangle
             Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Margin="5, 0"
-            Spacing="10">
+            Fill="{StaticResource LightDarkBrush}"/>
+        
+        <Grid
+            Grid.Column="2"
+            Margin="4,0,0,0"
+            RowDefinitions="Auto, *">
             
             <TextBlock
+                Grid.Row="0"
+                Classes="Title"
                 Text="Газ"/>
             
-            <controls:LabeledNumericUpDown
-                Value="{Binding CubicMeterConsumed}"
-                Text="Спожито м³"
-                Minimum="0"
-                Maximum="10000"
-                Increment=".01"/>
+            <StackPanel
+                Grid.Row="1"
+                Margin="0,10,0,0"
+                VerticalAlignment="Bottom"
+                Spacing="10">
+                
+                <controls:LabeledNumericUpDown
+                    Value="{Binding CubicMeterConsumed}"
+                    Text="Спожито м³"
+                    Minimum="0"
+                    Maximum="10000"
+                    Increment=".01"/>
         
-            <controls:LabeledNumericUpDown
-                Value="{Binding CubicMeterPrice}"
-                Text="Ціна за м³"
-                Minimum="0"
-                Maximum="1000"
-                Increment=".01"/>
-
-            <TextBlock
-                Text="{Binding NaturalGasAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
-            
-        </StackPanel>
-        
+                <controls:LabeledNumericUpDown
+                    Value="{Binding CubicMeterPrice}"
+                    Text="Ціна за м³"
+                    Minimum="0"
+                    Maximum="1000"
+                    Increment=".01"/>
+                
+                <TextBlock
+                    Classes="FooterText"
+                    Text="{Binding NaturalGasAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
+                
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

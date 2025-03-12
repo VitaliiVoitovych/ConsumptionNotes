@@ -5,7 +5,6 @@ using ConsumptionNotes.Presentation.Notes;
 using Microsoft.Extensions.Logging;
 using PanCardView;
 using SkiaSharp.Views.Maui.Controls.Hosting;
-using Syncfusion.Maui.Toolkit.Hosting;
 
 namespace ConsumptionNotes.Mobile
 {
@@ -14,7 +13,6 @@ namespace ConsumptionNotes.Mobile
         public static MauiAppBuilder UseSharedMauiApp(this MauiAppBuilder builder)
         {
             builder
-                .ConfigureSyncfusionToolkit()
                 .UseSkiaSharp()
                 .UseMauiApp<App>()
                 .UseCardsView()

@@ -79,7 +79,7 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
     private static void MapBottomSheetContent(BottomSheetHandler handler, BottomSheet bottomSheet)
     {
         handler.BottomContentLayout!.AddView(bottomSheet.BottomSheetContent.ToPlatform(handler.MauiContext!),
-            new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent,ViewGroup.LayoutParams.MatchParent));
+            new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent));
     }
 
     private static void MapContent(BottomSheetHandler handler, BottomSheet bottomSheet)

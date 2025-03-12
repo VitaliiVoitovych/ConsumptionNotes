@@ -1,5 +1,5 @@
 ﻿using ConsumptionNotes.Mobile.Views;
-using ConsumptionNotes.Presentation.ViewModels;
+using ConsumptionNotes.Mobile.ViewModels;
 
 namespace ConsumptionNotes.Mobile.Pages;
 

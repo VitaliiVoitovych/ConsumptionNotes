@@ -8,7 +8,7 @@
              x:Class="ConsumptionNotes.Desktop.Views.Editing.ElectricityEditingView"
              x:DataType="vm:ElectricityEditingViewModel">
     <StackPanel
-        HorizontalAlignment="Center"
+        HorizontalAlignment="Stretch"
         Spacing="10">
         <TextBlock
             Text="Спожито кВт/год"/>

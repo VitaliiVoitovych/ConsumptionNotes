@@ -12,22 +12,27 @@
         <StaticResource x:Key="AccentButtonForegroundPointerOver" ResourceKey="Light" />
         <StaticResource x:Key="ProgressBarForeground" ResourceKey="LightBrush" />
         <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="MediumDarkBrush"/>
+        <StaticResource x:Key="NavigationViewSelectionIndicatorForeground" ResourceKey="LightBrush" />
         <Thickness x:Key="NavigationViewContentGridBorderThickness">0</Thickness>
         <CornerRadius x:Key="NavigationViewContentGridCornerRadius">12,0,0,0</CornerRadius>
-        <StaticResource x:Key="NavigationViewSelectionIndicatorForeground" ResourceKey="LightBrush" />
+        <x:Double x:Key="NavigationViewItemOnLeftIconBoxHeight">22</x:Double>
     </Styles.Resources>
     
     <Style Selector="TextBlock">
         <Setter Property="Foreground" Value="{StaticResource LightBrush}"/>
-        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
     
     <Style Selector="ui|ContentDialog">
         <Setter Property="Background" Value="{StaticResource DarkBrush}"/>
     </Style>
     
+    <Style Selector="ui|NavigationViewItem">
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    
     <Style Selector="StackPanel.DashboardButtonPanel">
-        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Margin" Value="0,10,10,0"/>
         <Setter Property="Spacing" Value="10"/>
         <Setter Property="Orientation" Value="Horizontal"/>
     </Style>
@@ -38,11 +43,21 @@
         <Setter Property="CanUserSortColumns" Value="False"/>
         <Setter Property="GridLinesVisibility" Value="All"/>
         <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="BorderBrush" Value="#15FFFFFF"/>
+        <Setter Property="BorderThickness" Value="1,1,0,1"/>
+    </Style>
+    
+    <Style
+         Selector="DataGrid.VerticalScrollBarVisible">
         <Style Selector="^ /template/ DataGridRowsPresenter">
-            <Setter Property="Margin" Value="0,0,13,0"/>
+            <Setter Property="Margin" Value="0,0,12,0"/>
         </Style>
         <Style Selector="^ /template/ DataGridColumnHeadersPresenter">
-            <Setter Property="Margin" Value="0,0,13,0"/>
+            <Setter Property="Margin" Value="0,0,12,0"/>
+        </Style>
+        <Style Selector="^ /template/ ScrollBar:vertical /template/ Border#VerticalRoot">
+            <Setter Property="BorderThickness" Value="1,0,0,0"/>
+            <Setter Property="BorderBrush" Value="#15FFFFFF"/>
         </Style>
     </Style>
     
@@ -53,16 +68,16 @@
         
         <Style Selector="^ /template/ Grid#PART_ColumnHeaderRoot TextBlock">
             <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
-            <Setter Property="TextAlignment" Value="Justify"></Setter>
+            <Setter Property="TextAlignment" Value="Justify"/>
         </Style>
     </Style>
     
     <Style Selector="DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle">
-        <Setter Property="Fill" Value="Transparent"></Setter>
+        <Setter Property="Fill" Value="Transparent"/>
     </Style>
     
     <Style Selector="DataGridRow:selected /template/ Rectangle#BackgroundRectangle">
-        <Setter Property="Fill" Value="Transparent"></Setter>
+        <Setter Property="Fill" Value="Transparent"/>
     </Style>
     
     <Style Selector="DataGridCell:focus /template/ Rectangle">

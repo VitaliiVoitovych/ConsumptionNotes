@@ -1,4 +1,4 @@
-﻿using ConsumptionNotes.Mobile.ViewModels;
+﻿using ConsumptionNotes.Presentation.ViewModels;
 
 namespace ConsumptionNotes.Mobile.Pages;
 
@@ -9,5 +9,7 @@ public partial class CalculatorPage : ContentPage
         InitializeComponent();
 
         BindingContext = vm;
+
+        BackButton.Command = new GoToCommand("..", true).Command;
     }
 }

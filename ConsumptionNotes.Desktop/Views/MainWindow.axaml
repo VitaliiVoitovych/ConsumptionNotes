@@ -38,7 +38,7 @@
             Foreground="{StaticResource LightBrush}"
             Grid.Row="1"
             IsSettingsVisible="False"
-            OpenPaneLength="185"
+            OpenPaneLength="195"
             PaneDisplayMode="Left"
             SelectionChanged="NavigationView_OnSelectionChanged">
             <ui:NavigationView.MenuItems>

@@ -1,6 +1,6 @@
 ﻿namespace ConsumptionNotes.Presentation.ViewModels;
 
-public class MainViewModel : ViewModelBase
+public abstract class BaseMainViewModel : ViewModelBase
 {
     public ObservableElectricityNotesService ElectricityNotesService { get; }
     public ObservableNaturalGasNotesService NaturalGasNotesService { get; }
@@ -8,7 +8,7 @@ public class MainViewModel : ViewModelBase
     public ElectricityChartService ElectricityChartService => ElectricityNotesService.ChartService;
     public NaturalGasChartService NaturalGasChartService => NaturalGasNotesService.ChartService;
     
-    public MainViewModel(
+    protected BaseMainViewModel(
         ObservableElectricityNotesService electricityNotesService, 
         ObservableNaturalGasNotesService naturalGasNotesService)
     {

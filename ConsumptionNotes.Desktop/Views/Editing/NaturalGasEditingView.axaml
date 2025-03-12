@@ -8,11 +8,11 @@
              x:Class="ConsumptionNotes.Desktop.Views.Editing.NaturalGasEditingView"
              x:DataType="vm:NaturalGasEditingViewModel">
     <StackPanel
-        HorizontalAlignment="Center"
+        HorizontalAlignment="Stretch"
         Spacing="10">
         
         <controls:LabeledNumericUpDown
-            Text="Спожито"
+            Text="Спожито м³"
             Minimum="0"
             Maximum="10000"
             Increment=".01"

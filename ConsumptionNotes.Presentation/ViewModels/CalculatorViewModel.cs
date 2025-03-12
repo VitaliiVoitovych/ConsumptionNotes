@@ -1,8 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using ConsumptionNotes.Presentation.ViewModels;
-using PaymentCalculator = ConsumptionNotes.Infrastructure.PaymentCalculator;
+﻿using PaymentCalculator = ConsumptionNotes.Infrastructure.PaymentCalculator;
 
-namespace ConsumptionNotes.Mobile.ViewModels;
+namespace ConsumptionNotes.Presentation.ViewModels;
 
 public partial class CalculatorViewModel : ViewModelBase
 {
@@ -44,8 +42,6 @@ public partial class CalculatorViewModel : ViewModelBase
     
     [ObservableProperty] private decimal _electricityAmountToPay;
     [ObservableProperty] private decimal _naturalGasAmountToPay;
-    
-    public AsyncRelayCommand GoToBackCommand { get; } = new GoToCommand("..", true);
 
     private void SetPropertyAndUpdateAmount<T>(ref T field, T value, Action updateMethod)
     {

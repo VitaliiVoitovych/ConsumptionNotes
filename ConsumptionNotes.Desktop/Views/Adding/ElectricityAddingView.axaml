@@ -12,7 +12,7 @@
         <converters:DateConverter x:Key="DateConverter"/>
     </UserControl.Resources>
     <StackPanel
-        HorizontalAlignment="Center"
+        HorizontalAlignment="Stretch"
         Spacing="10">
         
         <controls:LabeledMonthYearPicker

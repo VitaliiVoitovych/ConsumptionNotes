@@ -3,7 +3,53 @@
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:ConsumptionNotes.Mobile.Controls">
+    xmlns:controls="clr-namespace:ConsumptionNotes.Mobile.Controls"
+    xmlns:views="clr-namespace:ConsumptionNotes.Mobile.Views">
+    
+    <ControlTemplate
+        x:Key="IconRoundedCardTemplate"
+        x:DataType="views:CardView">
+        <Border
+            StrokeShape="RoundRectangle 15,15,15,15"
+            StrokeThickness="0"
+            Background="{TemplateBinding CardBackground}"
+            Padding="10">
+            
+            <Grid
+                ColumnDefinitions="Auto, *"
+                RowDefinitions="30, 1, *"
+                RowSpacing="5"
+                ColumnSpacing="5">
+                
+                <Image
+                    MaximumWidthRequest="30"
+                    Source="{TemplateBinding Icon}"/>
+                
+                <Label
+                    Grid.Column="1"
+                    VerticalTextAlignment="Center"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    Text="{TemplateBinding Title}"/>
+                
+                <BoxView
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    HeightRequest="1"
+                    BackgroundColor="{TemplateBinding LineColor}"/>
+                
+                <ContentPresenter
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Content="{TemplateBinding Content}"/>
+            </Grid>
+            
+        </Border>
+    </ControlTemplate>
+    
+    <Style TargetType="views:CardView">
+        <Setter Property="ControlTemplate" Value="{StaticResource IconRoundedCardTemplate}"/>
+    </Style>
     
     <Style TargetType="TabBar">
         <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource MediumDark}"/>

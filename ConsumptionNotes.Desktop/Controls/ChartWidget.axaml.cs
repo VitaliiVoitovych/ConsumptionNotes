@@ -4,7 +4,7 @@ using LiveChartsCore.Measure;
 
 namespace ConsumptionNotes.Desktop.Controls;
 
-public partial class ChartWidget : UserControl
+public partial class ChartWidget : Border
 {
     public static readonly StyledProperty<string?> TextProperty = AvaloniaProperty.Register<ChartWidget, string?>(
         nameof(Text));

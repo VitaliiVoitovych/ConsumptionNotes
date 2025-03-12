@@ -2,7 +2,7 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:ConsumptionNotes.Presentation.ViewModels;assembly=ConsumptionNotes.Presentation"
+             xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels"
              xmlns:views="clr-namespace:ConsumptionNotes.Mobile.Views"
              xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
              x:Class="ConsumptionNotes.Mobile.Pages.MainPage"
@@ -11,113 +11,48 @@
         Padding="10,8"
         RowDefinitions="*,*"
         RowSpacing="10">
-        
+
         <VerticalStackLayout
             VerticalOptions="End"
             Spacing="7">
-            
-            <Label
-                FontSize="20"
-                HorizontalTextAlignment="Center"
-                VerticalTextAlignment="Center"
-                Text="Останні записи"/>
-            
-            <Border
-                BackgroundColor="{StaticResource MediumDark}"
-                StrokeThickness="0"
-                StrokeShape="RoundRectangle 15,15,15,15">
-                <Grid
-                    Padding="10"
-                    ColumnDefinitions="Auto, *"
-                    RowDefinitions="Auto, Auto, *, *, *"
-                    RowSpacing="3"
-                    ColumnSpacing="3">
-                    
-                    <Image
-                        WidthRequest="35"
-                        HeightRequest="35"
-                        Source="electricity.png"/>
-                    
+
+            <views:CardView
+                CardBackground="{StaticResource MediumDarkBrush}"
+                LineColor="{StaticResource LightDark}"
+                Title="Електроенергія"
+                Icon="electricity.png">
+                <VerticalStackLayout>
                     <Label
-                        Grid.Column="1"
-                        VerticalTextAlignment="Center"
                         FontSize="16"
-                        FontAttributes="Bold"
-                        Text="Електроенергія"/>
-                    
-                    <Border
-                        Grid.Row="1"
-                        Grid.ColumnSpan="2"
-                        StrokeThickness="0.5"
-                        Stroke="{StaticResource LightDark}"/>
-                    
-                    <Label
-                        Grid.Row="2"
-                        Grid.ColumnSpan="2"
-                        FontSize="14"
                         Text="{Binding ElectricityNotesService.LastRecord.DayKilowattConsumed, StringFormat='Вдень: {0} кВт/год', FallbackValue='Вдень: N/A'}"/>
                     <Label
-                        Grid.Row="3"
-                        Grid.ColumnSpan="2"
-                        FontSize="14"
-                        Text="{Binding ElectricityNotesService.LastRecord.NightKilowattConsumed, StringFormat='Вдень: {0} кВт/год', FallbackValue='Вночі: N/A'}"/>
-                    
-                    <Label
-                        Grid.Row="4"
-                        Grid.ColumnSpan="2"
-                        FontSize="14"
-                        Text="{Binding ElectricityNotesService.LastRecord.AmountToPay, StringFormat='До оплати: {0:C2}', FallbackValue='До оплати: N/A'}"/>
-                    
-                </Grid>
-            </Border>
-            
-            <Border
-                BackgroundColor="{StaticResource MediumDark}"
-                StrokeThickness="0"
-                StrokeShape="RoundRectangle 15,15,15,15">
-                <Grid
-                    Padding="10"
-                    ColumnDefinitions="Auto, *"
-                    RowDefinitions="*, Auto, *, *"
-                    RowSpacing="3"
-                    ColumnSpacing="3">
-                    
-                    <Image
-                        WidthRequest="35"
-                        HeightRequest="35"
-                        Source="gas.png"/>
-                    
-                    <Label
-                        Grid.Column="1"
-                        VerticalTextAlignment="Center"
                         FontSize="16"
-                        FontAttributes="Bold"
-                        Text="Газ"/>
-                    
-                    <Border
-                        Grid.Row="1"
-                        Grid.ColumnSpan="2"
-                        StrokeThickness="0.5"
-                        Stroke="{StaticResource LightDark}"/>
-                    
+                        Text="{Binding ElectricityNotesService.LastRecord.NightKilowattConsumed, StringFormat='Вночі: {0} кВт/год', FallbackValue='Вночі: N/A'}"/>
                     <Label
-                        Grid.Row="2"
-                        Grid.ColumnSpan="2"
-                        FontSize="14"
+                        FontSize="16"
+                        Text="{Binding ElectricityNotesService.LastRecord.AmountToPay, StringFormat='До оплати: {0:C2}', FallbackValue='До оплати: N/A'}"/>
+                </VerticalStackLayout>
+            </views:CardView>
+            
+            <views:CardView
+                CardBackground="{StaticResource MediumDarkBrush}"
+                LineColor="{StaticResource LightDark}"
+                Title="Газ"
+                Icon="gas.png">
+                <VerticalStackLayout>
+                    <Label
+                        FontSize="16"
                         Text="{Binding NaturalGasNotesService.LastRecord.CubicMeterConsumed, StringFormat='Спожито: {0:F2} м³', FallbackValue='Спожито: N/A'}"/>
                     
                     <Label
-                        Grid.Row="3"
-                        Grid.ColumnSpan="2"
-                        FontSize="14"
+                        FontSize="16"
                         Text="{Binding NaturalGasNotesService.LastRecord.AmountToPay, StringFormat='До оплати: {0:C2}', FallbackValue='До оплати: N/A'}"/>
-                    
-                </Grid>
-            </Border>
+                </VerticalStackLayout>
+            </views:CardView>
             
-            <Border
-                StrokeThickness="0.5"
-                Stroke="{StaticResource MediumDark}"/>
+            <BoxView
+                HeightRequest="1"
+                Background="{StaticResource LightDarkBrush}"/>
             
             <Border
                 BackgroundColor="{StaticResource MediumDark}"
@@ -125,7 +60,7 @@
                 StrokeShape="RoundRectangle 15,15,15,15">
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer
-                        Tapped="TapGestureRecognizer_OnTapped"/>
+                        Command="{Binding OpenCalculatorPage}"/>
                 </Border.GestureRecognizers>
                 <Grid
                     Padding="10"

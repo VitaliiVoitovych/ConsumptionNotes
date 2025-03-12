@@ -1,0 +1,39 @@
+﻿<Border xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ConsumptionNotes.Desktop.Controls.CardView"
+             x:Name="Card"
+             Padding="10"
+             CornerRadius="15"
+             Background="{Binding #Card.Background}">
+    <StackPanel
+        Spacing="5">
+            
+        <StackPanel
+            Orientation="Horizontal"
+            Spacing="5">
+                
+            <Image
+                Height="30"
+                MaxWidth="30"
+                Source="{Binding #Card.Icon}"/>
+                
+            <TextBlock
+                FontSize="16"
+                FontWeight="Bold"
+                Text="{Binding #Card.Title}"/>
+                
+        </StackPanel>
+            
+        <Rectangle
+            Height="1"
+            Fill="{Binding #Card.LineColor}"/>
+            
+        
+        <ContentPresenter
+            Content="{Binding #Card.Content}"/>
+            
+    </StackPanel>
+</Border>

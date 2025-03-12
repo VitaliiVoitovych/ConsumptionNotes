@@ -2,89 +2,122 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:ConsumptionNotes.Mobile.ViewModels"
+             xmlns:vm="clr-namespace:ConsumptionNotes.Presentation.ViewModels;assembly=ConsumptionNotes.Presentation"
              xmlns:controls="clr-namespace:ConsumptionNotes.Mobile.Controls"
              x:Class="ConsumptionNotes.Mobile.Pages.CalculatorPage"
              x:DataType="vm:CalculatorViewModel"
              Shell.PresentationMode="ModalAnimated">
-    <VerticalStackLayout
-        VerticalOptions="Center"
-        HorizontalOptions="Center"
-        Spacing="7">
-
-        <Label
-            Text="Електроенергія" />
-        <Label
-            Text="Спожито кВт/год"
-            FontSize="18" />
-        <Label
-            Text="День" />
-
-        <controls:NumericUpDown
-            Value="{Binding DayKilowattConsumed}"
-            Minimum="0"
-            Maximum="10000"
-            Increment="1" />
-
-        <Label
-            Text="Ніч:" />
-
-        <controls:NumericUpDown
-            Value="{Binding NightKilowattConsumed}"
-            Minimum="0"
-            Maximum="10000"
-            Increment="1" />
-
-        <Label
-            Text="Ціна за кВт/год"
-            Margin="0,15,0,0" />
-
-        <controls:NumericUpDown
-            Value="{Binding KilowattPerHourPrice}"
-            Minimum="0.0"
-            Maximum="100"
-            Increment=".01" />
-
-        <Label
-            FontSize="20"
-            FontAttributes="Bold"
-            Text="{Binding ElectricityAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
+    <Grid
+        RowDefinitions="*, *, Auto"
+        RowSpacing="10"
+        VerticalOptions="Center">
         
-        <Border
-            StrokeThickness="0.5"
-            Stroke="{StaticResource LightDarkBrush}" />
+        <VerticalStackLayout
+            Spacing="7">
+            
+            <Label
+                Text="Електроенергія" 
+                Padding="40, 10"
+                FontSize="18"
+                FontAttributes="Bold"
+                Background="{StaticResource MediumDark}"/>
+            <VerticalStackLayout
+                Spacing="7"
+                HorizontalOptions="Center">
+                
+                <Label
+                    Text="Спожито кВт/год"
+                    FontSize="18" />
+                <Label
+                    Text="День" />
 
-        <Label
-            Text="Газ" />
-        <Label
-            Text="Спожито м³" />
-        <controls:NumericUpDown
-            Value="{Binding CubicMeterConsumed}"
-            Minimum="0"
-            Maximum="10000"
-            Increment=".01" />
+                <controls:NumericUpDown
+                    Value="{Binding DayKilowattConsumed}"
+                    Minimum="0"
+                    Maximum="10000"
+                    Increment="1" />
 
-        <Label
-            Text="Ціна за м³" />
-        <controls:NumericUpDown
-            Value="{Binding CubicMeterPrice}"
-            Minimum="0.0"
-            Maximum="100"
-            Increment=".01" />
+                <Label
+                    Text="Ніч:" />
 
-        <Label
-            FontSize="20"
-            FontAttributes="Bold"
-            Text="{Binding NaturalGasAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
+                <controls:NumericUpDown
+                    Value="{Binding NightKilowattConsumed}"
+                    Minimum="0"
+                    Maximum="10000"
+                    Increment="1" />
+
+                <Label
+                    Text="Ціна за кВт/год"
+                    Margin="0,15,0,0" />
+
+                <controls:NumericUpDown
+                    Value="{Binding KilowattPerHourPrice}"
+                    Minimum="0.0"
+                    Maximum="100"
+                    Increment=".01" />
+
+                <Label
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding ElectricityAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
+            </VerticalStackLayout>
+            
+            <BoxView
+                HeightRequest="1"
+                Background="{StaticResource LightDarkBrush}"/>
+            
+        </VerticalStackLayout>
         
-        <Border
-            StrokeThickness="0.5"
-            Stroke="{StaticResource LightDarkBrush}" />
+        <VerticalStackLayout
+            Grid.Row="1"
+            Spacing="7">
+            
+            <Label
+                Text="Газ" 
+                Padding="40, 10"
+                FontSize="20"
+                FontAttributes="Bold"
+                Background="{StaticResource MediumDark}"/>
+        
+            <VerticalStackLayout
+                Spacing="7"
+                HorizontalOptions="Center">
+                <Label
+                    Text="Спожито м³" />
+                <controls:NumericUpDown
+                    Value="{Binding CubicMeterConsumed}"
+                    Minimum="0"
+                    Maximum="10000"
+                    Increment=".01" />
 
+                <Label
+                    Text="Ціна за м³" />
+                <controls:NumericUpDown
+                    Value="{Binding CubicMeterPrice}"
+                    Minimum="0.0"
+                    Maximum="100"
+                    Increment=".01" />
+
+                <Label
+                    HorizontalTextAlignment="Center"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    Text="{Binding NaturalGasAmountToPay, StringFormat='До оплати: {0:C2}'}"/>
+            </VerticalStackLayout>
+        
+            <BoxView
+                HeightRequest="1"
+                Background="{StaticResource LightDarkBrush}"/>
+            
+        </VerticalStackLayout>
+        
         <Button
+            Grid.Row="2"
             Text="Назад"
-            Command="{Binding GoToBackCommand}"
-            HeightRequest="45"/>
+            x:Name="BackButton"
+            HeightRequest="55"
+            Margin="40, 0"/>
         
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>
