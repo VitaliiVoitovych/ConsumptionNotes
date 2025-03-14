@@ -88,6 +88,11 @@
         <Setter Property="BackgroundColor" Value="{StaticResource MediumDark}"/>
         <Setter Property="CornerRadius" Value="10"/>
     </Style>
+
+    <Style TargetType="CollectionView">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Never"/>
+    </Style>
     
     <Style TargetType="controls:NumericUpDown">
         <Setter Property="TextColor" Value="{StaticResource Light}"/>
