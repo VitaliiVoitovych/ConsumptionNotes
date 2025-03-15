@@ -30,7 +30,6 @@ public abstract class ConsumptionChartServiceBase<TConsumption>
         new()
         {
             Labels = _dateLabels,
-            MaxLimit = Constants.MaxXAxisLabels,
             LabelsPaint = Paints.AxisLabelsPaint
         }
     ];

@@ -2,7 +2,7 @@
 
 namespace ConsumptionNotes.Mobile;
 
-public partial class App : Microsoft.Maui.Controls.Application
+public partial class App : Application
 {
     public App()
     {
@@ -19,7 +19,7 @@ public partial class App : Microsoft.Maui.Controls.Application
         CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("uk-UA");
 
         UserAppTheme = AppTheme.Dark;
-        
+
         base.OnStart();
     }
 }
