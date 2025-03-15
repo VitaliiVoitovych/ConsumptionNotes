@@ -8,7 +8,7 @@ public static class ServicesRegistration
     public static IServiceCollection AddViews(this IServiceCollection services)
     {
         return services
-            .AddTransient<CalculatorViewModel>()
+            .AddTransient<CalculatorView>()
              // Adding views
             .AddTransient<ElectricityAddingView>()
             .AddTransient<NaturalGasAddingView>()
@@ -20,7 +20,7 @@ public static class ServicesRegistration
     public static IServiceCollection AddViewModels(this IServiceCollection services)
     {
         return services
-            .AddTransient<CalculatorView>()
+            .AddTransient<CalculatorViewModel>()
             .AddTransient<MainViewModel>()
             .AddTransient<ElectricityDashboardViewModel>()
             .AddTransient<NaturalGasDashboardViewModel>()

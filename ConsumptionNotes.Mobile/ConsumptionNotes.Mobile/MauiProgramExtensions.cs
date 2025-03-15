@@ -2,6 +2,7 @@
 using ConsumptionNotes.Mobile.Startup;
 using ConsumptionNotes.Presentation.Charts;
 using ConsumptionNotes.Presentation.Notes;
+using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Extensions.Logging;
 using PanCardView;
 using SkiaSharp.Views.Maui.Controls.Hosting;
@@ -14,6 +15,7 @@ namespace ConsumptionNotes.Mobile
         {
             builder
                 .UseSkiaSharp()
+                .UseLiveCharts()
                 .UseMauiApp<App>()
                 .UseCardsView()
                 .ConfigureFonts(fonts =>
