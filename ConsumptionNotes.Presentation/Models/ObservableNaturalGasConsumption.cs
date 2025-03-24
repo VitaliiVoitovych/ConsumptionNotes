@@ -1,7 +1,7 @@
 ﻿namespace ConsumptionNotes.Presentation.Models;
 
 public class ObservableNaturalGasConsumption(NaturalGasConsumption consumption)
-    : ObservableBaseConsumption<NaturalGasConsumption>(consumption)
+    : ObservableConsumptionBase<NaturalGasConsumption>(consumption)
 {
     public double CubicMeterConsumed
     {

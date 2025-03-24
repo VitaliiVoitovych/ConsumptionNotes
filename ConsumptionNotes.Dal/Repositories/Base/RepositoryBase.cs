@@ -1,12 +1,12 @@
 ﻿namespace ConsumptionNotes.Dal.Repositories.Base;
 
-public abstract class BaseRepository<T>
-    where T : BaseConsumption
+public abstract class RepositoryBase<T>
+    where T : ConsumptionBase
 {
     public ConsumptionNotesDbContext Context { get; }
     public DbSet<T> Table { get; }
 
-    protected BaseRepository(ConsumptionNotesDbContext context)
+    protected RepositoryBase(ConsumptionNotesDbContext context)
     {
         Context = context;
         Table = Context.Set<T>();

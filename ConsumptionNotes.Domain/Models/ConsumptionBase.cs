@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace ConsumptionNotes.Domain.Models;
 
-public abstract class BaseConsumption(DateOnly date, decimal amountToPay)
+public abstract class ConsumptionBase(DateOnly date, decimal amountToPay)
 {
     [Key, JsonIgnore]
     public int Id { get; init; }

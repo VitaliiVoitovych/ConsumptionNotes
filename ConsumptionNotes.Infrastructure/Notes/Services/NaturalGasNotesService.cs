@@ -3,7 +3,7 @@
 namespace ConsumptionNotes.Infrastructure.Notes.Services;
 
 public class NaturalGasNotesService(NaturalGasConsumptionRepository repository)
-    : NotesServiceBase<NaturalGasConsumption, NaturalGasConsumptionRepository>(repository)
+    : ConsumptionNotesServiceBase<NaturalGasConsumption, NaturalGasConsumptionRepository>(repository)
 {
     public double AverageCubicMeterConsumed { get; private set; }
     

@@ -2,8 +2,8 @@
 
 public abstract partial class ConsumptionAddingViewModelBase<TConsumption, TObservableConsumption, TNotesService>(TNotesService notesService)
     : ViewModelBase
-    where TConsumption : BaseConsumption
-    where TObservableConsumption : ObservableBaseConsumption<TConsumption>
+    where TConsumption : ConsumptionBase
+    where TObservableConsumption : ObservableConsumptionBase<TConsumption>
     where TNotesService : IObservableNotesService<TConsumption, TObservableConsumption>
 {
     private TNotesService _notesService = notesService;

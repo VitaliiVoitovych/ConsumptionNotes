@@ -5,7 +5,7 @@ using ConsumptionNotes.Domain.Models;
 namespace ConsumptionNotes.Domain.Converters;
 
 public class ConsumptionConverter<T> : JsonConverter<T>
-    where T : BaseConsumption
+    where T : ConsumptionBase
 {
     public override T? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

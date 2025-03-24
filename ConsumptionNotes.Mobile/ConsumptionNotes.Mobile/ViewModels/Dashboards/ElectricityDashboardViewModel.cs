@@ -4,10 +4,10 @@ namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
 public class ElectricityDashboardViewModel
     : DashboardViewModelBase<ElectricityConsumption, ObservableElectricityConsumption, ElectricityChartService, ObservableElectricityNotesService>
 {
-    public AsyncRelayCommand OpenAddingPageCommand { get; } = new GoToCommand(nameof(ElectricityAddingPage), true);
+    public AsyncRelayCommand OpenAddingPageCommand { get; } = new GoToCommand(nameof(ElectricityAddingPage));
     
     public AsyncRelayCommand<ObservableElectricityConsumption> OpenEditingPageCommand { get; } =
-        new GoToCommand<ObservableElectricityConsumption>(nameof(ElectricityEditingPage), "Consumption", true);
+        new GoToCommand<ObservableElectricityConsumption>(nameof(ElectricityEditingPage), "Consumption");
     
     public AsyncRelayCommand ImportDataCommand { get; }
     public AsyncRelayCommand<IEnumerable<ElectricityConsumption>> ExportDataCommand { get; }

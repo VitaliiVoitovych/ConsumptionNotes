@@ -4,7 +4,7 @@ namespace ConsumptionNotes.Mobile.ViewModels.Adding;
 
 public class ElectricityAddingViewModel : ElectricityAddingViewModelBase
 {
-    public AsyncRelayCommand GoToBackCommand { get; } = new GoToCommand("..", true);
+    public AsyncRelayCommand GoToBackCommand { get; } = new GoToCommand("..");
     
     public AsyncRelayCommand AddNoteCommand { get; }
     

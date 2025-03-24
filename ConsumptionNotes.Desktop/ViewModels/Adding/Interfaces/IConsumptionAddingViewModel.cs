@@ -1,6 +1,6 @@
 ﻿namespace ConsumptionNotes.Desktop.ViewModels.Adding.Interfaces;
 
-public interface IAddingViewModel
+public interface IConsumptionAddingViewModel
 {
     AsyncRelayCommand AddNoteCommand { get; }
 }

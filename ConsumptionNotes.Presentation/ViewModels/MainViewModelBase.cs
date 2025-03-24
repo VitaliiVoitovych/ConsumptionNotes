@@ -1,6 +1,8 @@
-﻿namespace ConsumptionNotes.Presentation.ViewModels;
+﻿using System.Diagnostics;
 
-public abstract class BaseMainViewModel : ViewModelBase
+namespace ConsumptionNotes.Presentation.ViewModels;
+
+public abstract class MainViewModelBase : ViewModelBase
 {
     public ObservableElectricityNotesService ElectricityNotesService { get; }
     public ObservableNaturalGasNotesService NaturalGasNotesService { get; }
@@ -8,7 +10,7 @@ public abstract class BaseMainViewModel : ViewModelBase
     public ElectricityChartService ElectricityChartService => ElectricityNotesService.ChartService;
     public NaturalGasChartService NaturalGasChartService => NaturalGasNotesService.ChartService;
     
-    protected BaseMainViewModel(
+    protected MainViewModelBase(
         ObservableElectricityNotesService electricityNotesService, 
         ObservableNaturalGasNotesService naturalGasNotesService)
     {
@@ -17,8 +19,10 @@ public abstract class BaseMainViewModel : ViewModelBase
         
         Task.Run(async () =>
         {
-            await ElectricityNotesService.LoadDataAsync();
-            await NaturalGasNotesService.LoadDataAsync();
+            var electricityLoad = ElectricityNotesService.LoadDataAsync();
+            var naturalGasLoad = NaturalGasNotesService.LoadDataAsync();
+
+            await Task.WhenAll(electricityLoad, naturalGasLoad);
         });
     }
 }

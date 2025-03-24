@@ -5,7 +5,7 @@ namespace ConsumptionNotes.Desktop.ViewModels;
 public partial class MainViewModel(
     ObservableElectricityNotesService electricityNotesService,
     ObservableNaturalGasNotesService naturalGasNotesService)
-    : BaseMainViewModel(electricityNotesService, naturalGasNotesService)
+    : MainViewModelBase(electricityNotesService, naturalGasNotesService)
 {
     [RelayCommand]
     private async Task OpenCalculatorDialog()

@@ -5,7 +5,7 @@ namespace ConsumptionNotes.Mobile.ViewModels.Editing;
 public class NaturalGasEditingViewModel(ObservableNaturalGasNotesService notesService) 
     : NaturalGasEditingViewModelBase(notesService), IQueryAttributable
 {
-    public AsyncRelayCommand GoToBackCommand { get; } = new GoToCommand("..", true);
+    public AsyncRelayCommand GoToBackCommand { get; } = new GoToCommand("..");
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {

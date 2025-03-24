@@ -12,7 +12,7 @@ public class NumericUpDownHandler : StepperHandler
     private TextInputEditText? TextField { get; set; }
     public new NumericUpDown VirtualView => (NumericUpDown)base.VirtualView;
 
-    public static IPropertyMapper<IStepper, IStepperHandler> PropertyMapper = new PropertyMapper<NumericUpDown, NumericUpDownHandler>(ViewHandler.ViewMapper)
+    public static IPropertyMapper<IStepper, IStepperHandler> PropertyMapper = new PropertyMapper<NumericUpDown, NumericUpDownHandler>(ViewMapper)
     {
         [nameof(ITextStyle.TextColor)] = MapTextColor,
         [nameof(ITextStyle.Font)] = MapFont,
@@ -95,11 +95,9 @@ public class NumericUpDownHandler : StepperHandler
     {
         handler.PlatformView.UpdateIncrement(numericUpDown);
 
-        if (!double.IsInteger(numericUpDown.Increment))
-        {
-            handler.TextField!.InputType |= InputTypes.NumberFlagDecimal;
-            handler.TextField.KeyListener = LocalizedDigitsKeyListener.Create(handler.TextField.InputType);
-        }
+        if (double.IsInteger(numericUpDown.Increment)) return;
+        handler.TextField!.InputType |= InputTypes.NumberFlagDecimal;
+        handler.TextField.KeyListener = LocalizedDigitsKeyListener.Create(handler.TextField.InputType);
     }
 
     private static void MapUnderlineColor(NumericUpDownHandler handler, NumericUpDown numericUpDown)
@@ -119,8 +117,7 @@ public class NumericUpDownHandler : StepperHandler
     {
         handler.TextField!.UpdateTextColor(numericUpDown);
         
-        // TODO: Text field Cursor styling: Color (Solved. Need Review) | need API 29
-        //handler.TextField!.TextCursorDrawable.SetTintList(ColorStateList.ValueOf(numericUpDown.TextColor.ToPlatform()));
+        handler.TextField!.TextCursorDrawable?.SetTintList(ColorStateList.ValueOf(numericUpDown.TextColor.ToPlatform()));
     }
 
     private static void MapFont(NumericUpDownHandler handler, NumericUpDown numericUpDown)

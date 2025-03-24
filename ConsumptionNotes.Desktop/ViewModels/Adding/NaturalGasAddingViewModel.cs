@@ -3,7 +3,7 @@ using ConsumptionNotes.Presentation.ViewModels.Adding;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Adding;
 
-public class NaturalGasAddingViewModel : NaturalGasAddingViewModelBase, IAddingViewModel
+public class NaturalGasAddingViewModel : NaturalGasAddingViewModelBase, IConsumptionAddingViewModel
 {
     public AsyncRelayCommand AddNoteCommand { get; }
     

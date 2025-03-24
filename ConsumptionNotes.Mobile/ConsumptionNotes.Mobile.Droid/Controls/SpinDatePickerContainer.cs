@@ -60,11 +60,11 @@ public class SpinDatePickerContainer : LinearLayout
             AddView(picker, NumberPickerLayoutParams);
     }
 
-    private void SetValueForPickers(DateOnly date) => (_yearPicker!.Value, _monthPicker!.Value, _dayPicker!.Value) = date; // Sets value for pickers
+    private void SetValueForPickers(DateOnly date) => (_yearPicker.Value, _monthPicker.Value, _dayPicker.Value) = date; // Sets value for pickers
 
     private NumberPicker CreateNumberPicker(int minValue, int maxValue)
     {
-        return new(Context)
+        return new NumberPicker(Context)
         {
             MinValue = minValue,
             MaxValue = maxValue,

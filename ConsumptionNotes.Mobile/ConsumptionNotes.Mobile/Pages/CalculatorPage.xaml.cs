@@ -10,6 +10,6 @@ public partial class CalculatorPage : ContentPage
 
         BindingContext = vm;
 
-        BackButton.Command = new GoToCommand("..", true).Command;
+        BackButton.Command = new GoToCommand("..").Command;
     }
 }

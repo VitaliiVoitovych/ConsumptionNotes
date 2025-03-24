@@ -5,9 +5,9 @@ using ConsumptionNotes.Infrastructure.Notes.Services.Interfaces;
 
 namespace ConsumptionNotes.Infrastructure.Notes.Services;
 
-public abstract class NotesServiceBase<TConsumption, TRepository> : INotesService<TConsumption>
-    where TConsumption : BaseConsumption
-    where TRepository : BaseRepository<TConsumption>
+public abstract class ConsumptionNotesServiceBase<TConsumption, TRepository> : INotesService<TConsumption>
+    where TConsumption : ConsumptionBase
+    where TRepository : RepositoryBase<TConsumption>
 {
     private readonly TRepository _repository;
     
@@ -15,7 +15,7 @@ public abstract class NotesServiceBase<TConsumption, TRepository> : INotesServic
     
     public List<TConsumption> Consumptions { get; }
 
-    protected NotesServiceBase(TRepository repository)
+    protected ConsumptionNotesServiceBase(TRepository repository)
     {
         _repository = repository;
         Consumptions = [];
@@ -32,11 +32,7 @@ public abstract class NotesServiceBase<TConsumption, TRepository> : INotesServic
     public async Task LoadDataAsync()
     {
         var consumptions = await _repository.GetAll();
-
-        foreach (var consumption in consumptions)
-        {
-            Consumptions.Add(consumption);
-        }
+        Consumptions.AddRange(consumptions);
         
         UpdateAverageValues();
     }

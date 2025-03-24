@@ -1,7 +1,7 @@
 ﻿namespace ConsumptionNotes.Infrastructure.Notes.Services.Interfaces;
 
 public interface INotesService<TConsumption>
-    where TConsumption : BaseConsumption
+    where TConsumption : ConsumptionBase
 {
     decimal AverageAmount { get; }
     

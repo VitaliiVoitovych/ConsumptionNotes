@@ -12,7 +12,7 @@ public class InvalidConsumptionDataException : Exception
         : base(message, innerException) {}
 
     public static void ThrowIfDateInvalid<TConsumption>(TConsumption consumption)
-        where TConsumption : BaseConsumption
+        where TConsumption : ConsumptionBase
     {
         if (consumption.Date >= DateOnly.FromDateTime(DateTime.Now))
             throw new InvalidConsumptionDataException("Cannot add for the current or future month");

@@ -4,7 +4,7 @@ using ConsumptionNotes.Presentation.Charts.Utils;
 namespace ConsumptionNotes.Presentation.Charts.Services;
 
 public abstract class ConsumptionChartServiceBase<TConsumption>
-    where TConsumption : BaseConsumption
+    where TConsumption : ConsumptionBase
 {
     // Series values
     private readonly ObservableCollection<decimal> _amountToPayValues = [];

@@ -5,7 +5,7 @@ public class ElectricityConsumption(
     int dayKilowattConsumed,
     int nightKilowattConsumed,
     decimal amountToPay)
-    : BaseConsumption(date, amountToPay)
+    : ConsumptionBase(date, amountToPay)
 {
     public int DayKilowattConsumed { get; set; } = dayKilowattConsumed;
     public int NightKilowattConsumed { get; set; } = nightKilowattConsumed;

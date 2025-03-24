@@ -3,7 +3,7 @@ using ConsumptionNotes.Desktop.ViewModels.Adding.Interfaces;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Adding;
 
-public class ElectricityAddingViewModel : ElectricityAddingViewModelBase, IAddingViewModel
+public class ElectricityAddingViewModel : ElectricityAddingViewModelBase, IConsumptionAddingViewModel
 {
     public AsyncRelayCommand AddNoteCommand { get; }
     

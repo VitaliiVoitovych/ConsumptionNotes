@@ -5,8 +5,8 @@ namespace ConsumptionNotes.Mobile.Commands;
 
 public class ImportDataCommand<TConsumption, TObservableConsumption>(FileSystemService fileSystemService, IObservableNotesService<TConsumption, TObservableConsumption> notesService)
     : ImportDataCommandBase<TConsumption, TObservableConsumption>(notesService)
-    where TConsumption : BaseConsumption
-    where TObservableConsumption : ObservableBaseConsumption<TConsumption>
+    where TConsumption : ConsumptionBase
+    where TObservableConsumption : ObservableConsumptionBase<TConsumption>
 {
     protected override async Task<Stream> OpenFileAsync()
     {
@@ -21,5 +21,10 @@ public class ImportDataCommand<TConsumption, TObservableConsumption>(FileSystemS
     protected override async Task HandleJsonException()
     {
         await Shell.Current.DisplayAlert("Помилка!", "Папка не була вибрана", "Зрозуміло");
+    }
+
+    protected override async Task HandleInvalidOperationException()
+    {
+        await Shell.Current.DisplayAlert("Помилка!", "Не вдалося прочитати дані", "Зрозуміло");
     }
 }

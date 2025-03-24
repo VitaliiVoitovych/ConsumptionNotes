@@ -5,10 +5,10 @@ namespace ConsumptionNotes.Mobile.ViewModels.Dashboards;
 public class NaturalGasDashboardViewModel
     : DashboardViewModelBase<NaturalGasConsumption, ObservableNaturalGasConsumption, NaturalGasChartService, ObservableNaturalGasNotesService>
 {
-    public AsyncRelayCommand OpenAddingPageCommand { get; } = new GoToCommand(nameof(NaturalGasAddingPage), true);
+    public AsyncRelayCommand OpenAddingPageCommand { get; } = new GoToCommand(nameof(NaturalGasAddingPage));
 
     public AsyncRelayCommand<ObservableNaturalGasConsumption> OpenEditingPageCommand { get; } =
-        new GoToCommand<ObservableNaturalGasConsumption>(nameof(NaturalGasEditingPage), "Consumption", true);
+        new GoToCommand<ObservableNaturalGasConsumption>(nameof(NaturalGasEditingPage), "Consumption");
     
     public AsyncRelayCommand ImportDataCommand { get; }
     public AsyncRelayCommand<IEnumerable<NaturalGasConsumption>> ExportDataCommand { get; }

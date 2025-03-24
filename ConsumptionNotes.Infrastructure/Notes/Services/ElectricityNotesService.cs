@@ -3,7 +3,7 @@
 namespace ConsumptionNotes.Infrastructure.Notes.Services;
 
 public class ElectricityNotesService(ElectricityConsumptionRepository repository) 
-    : NotesServiceBase<ElectricityConsumption, ElectricityConsumptionRepository>(repository)
+    : ConsumptionNotesServiceBase<ElectricityConsumption, ElectricityConsumptionRepository>(repository)
 {
     public double AverageKilowattConsumed { get; private set; }
 

@@ -9,7 +9,7 @@ public partial class ElectricityDashboardViewModel
     public AsyncRelayCommand<IEnumerable<ElectricityConsumption>> ExportDataCommand { get; }
 
     public AsyncRelayCommand OpenAddingDialogCommand { get; } =
-        new OpenAddingDialogCommand<ElectricityAddingView, ElectricityAddingViewModel>();
+        new OpenAddingDialogCommand<ElectricityAddingView>();
     
     public ElectricityDashboardViewModel(ObservableElectricityNotesService notesService, FileSystemService fileSystemService)
         : base(notesService)

@@ -9,7 +9,7 @@ public partial class NaturalGasDashboardViewModel
     public AsyncRelayCommand<IEnumerable<NaturalGasConsumption>> ExportDataCommand { get; }
 
     public AsyncRelayCommand OpenAddingDialogCommand { get; } =
-        new OpenAddingDialogCommand<NaturalGasAddingView, NaturalGasAddingViewModel>();
+        new OpenAddingDialogCommand<NaturalGasAddingView>();
     
     public NaturalGasDashboardViewModel(ObservableNaturalGasNotesService notesService, FileSystemService fileSystemService)
         : base(notesService)
@@ -24,6 +24,6 @@ public partial class NaturalGasDashboardViewModel
         var view = Ioc.Default.GetRequiredService<NaturalGasEditingView>();
         var viewModel = view.DataContext as NaturalGasEditingViewModel;
         viewModel!.SetConsumption(consumption);
-        await view.ShowContentDialog($"Редагувати запис:\n{consumption.Date:MMMM yyyy}", "Відмінити", "Оновити", ContentDialogButton.Primary, viewModel!.UpdateCommand);
+        await view.ShowContentDialog($"Редагувати запис:\n{consumption.Date:MMMM yyyy}", "Відмінити", "Оновити", ContentDialogButton.Primary, viewModel.UpdateCommand);
     }
 }

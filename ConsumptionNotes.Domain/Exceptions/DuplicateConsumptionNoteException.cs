@@ -12,7 +12,7 @@ public class DuplicateConsumptionNoteException : Exception
         : base(message, innerException) { }
 
     public static void ThrowIfDuplicateExists <TConsumption>(IEnumerable<TConsumption> consumptions, TConsumption consumption)
-        where TConsumption : BaseConsumption
+        where TConsumption : ConsumptionBase
     {
         if (consumptions.Any(c => EqualsYearAndMonth(c.Date, consumption.Date)))
             throw new DuplicateConsumptionNoteException("A note for this month already exists");

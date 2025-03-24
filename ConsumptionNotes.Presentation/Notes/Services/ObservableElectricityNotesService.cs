@@ -3,7 +3,7 @@
 public partial class ObservableElectricityNotesService(
     ElectricityChartService chartService,
     ElectricityNotesService notesService)
-    : ObservableNotesServiceBase<ElectricityConsumption, ObservableElectricityConsumption, ElectricityChartService,
+    : ObservableConsumptionNotesServiceBase<ElectricityConsumption, ObservableElectricityConsumption, ElectricityChartService,
         ElectricityNotesService>(chartService, notesService)
 {
     [ObservableProperty] private double _averageKilowattConsumed;

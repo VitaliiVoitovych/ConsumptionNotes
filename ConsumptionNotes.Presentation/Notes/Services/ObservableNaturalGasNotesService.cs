@@ -3,7 +3,7 @@
 public partial class ObservableNaturalGasNotesService(
     NaturalGasChartService chartService,
     NaturalGasNotesService notesService)
-    : ObservableNotesServiceBase<NaturalGasConsumption, ObservableNaturalGasConsumption, NaturalGasChartService,
+    : ObservableConsumptionNotesServiceBase<NaturalGasConsumption, ObservableNaturalGasConsumption, NaturalGasChartService,
         NaturalGasNotesService>(chartService, notesService)
 {
     [ObservableProperty] private double _averageCubicMeterConsumed;

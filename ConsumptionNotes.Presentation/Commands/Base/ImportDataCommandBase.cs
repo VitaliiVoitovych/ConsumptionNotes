@@ -4,8 +4,8 @@ namespace ConsumptionNotes.Presentation.Commands.Base;
 
 public abstract class ImportDataCommandBase<TConsumption, TObservableConsumption>(IObservableNotesService<TConsumption, TObservableConsumption> notesService) 
     : AsyncCommandBase
-    where TConsumption : BaseConsumption
-    where TObservableConsumption : ObservableBaseConsumption<TConsumption>
+    where TConsumption : ConsumptionBase
+    where TObservableConsumption : ObservableConsumptionBase<TConsumption>
 {
     private async Task ImportFromStream(Stream stream)
     {
@@ -28,9 +28,14 @@ public abstract class ImportDataCommandBase<TConsumption, TObservableConsumption
         {
             await HandleJsonException();
         }
+        catch (InvalidOperationException)
+        {
+            await HandleInvalidOperationException();
+        }
     }
 
     protected abstract Task<Stream> OpenFileAsync();
     protected abstract Task HandleFileNotSelectedException();
     protected abstract Task HandleJsonException();
+    protected abstract Task HandleInvalidOperationException();
 }

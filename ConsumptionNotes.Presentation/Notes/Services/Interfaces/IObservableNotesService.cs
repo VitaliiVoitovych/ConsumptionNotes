@@ -2,16 +2,16 @@
 
 public interface IObservableNotesChartService<TConsumption, TObservableConsumption, TChartService> 
     : IObservableNotesService<TConsumption, TObservableConsumption>
-    where TConsumption : BaseConsumption
-    where TObservableConsumption : ObservableBaseConsumption<TConsumption>
+    where TConsumption : ConsumptionBase
+    where TObservableConsumption : ObservableConsumptionBase<TConsumption>
     where TChartService : ConsumptionChartServiceBase<TConsumption>
 {
     public TChartService ChartService { get; }
 }
 
 public interface IObservableNotesService<TConsumption, TObservableConsumption>
-    where TConsumption : BaseConsumption
-    where TObservableConsumption : ObservableBaseConsumption<TConsumption>
+    where TConsumption : ConsumptionBase
+    where TObservableConsumption : ObservableConsumptionBase<TConsumption>
 {
     public List<TConsumption> Consumptions { get; }
     

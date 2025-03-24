@@ -4,7 +4,7 @@ namespace ConsumptionNotes.Desktop.Commands;
 
 public class ExportDataCommand<TConsumption>(FileSystemService fileSystemService, string exportFilename)
     : ExportDataCommandBase<TConsumption>(exportFilename)
-    where TConsumption : BaseConsumption
+    where TConsumption : ConsumptionBase
 {
     public override async Task ExecuteAsync(IEnumerable<TConsumption>? collection)
     {

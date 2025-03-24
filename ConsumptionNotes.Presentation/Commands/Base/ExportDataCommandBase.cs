@@ -1,7 +1,7 @@
 ﻿namespace ConsumptionNotes.Presentation.Commands.Base;
 
 public abstract class ExportDataCommandBase<TConsumption>(string exportFilename) : AsyncCommandBase<IEnumerable<TConsumption>>
-    where TConsumption : BaseConsumption
+    where TConsumption : ConsumptionBase
 {
     protected async Task<string> WriteToFile(string folderPath, IEnumerable<TConsumption> collection)
     {

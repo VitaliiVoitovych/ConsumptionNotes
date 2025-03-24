@@ -2,14 +2,12 @@
 using TextInputEditText = Google.Android.Material.TextField.TextInputEditText;
 using ColorStateList = Android.Content.Res.ColorStateList;
 
-
 namespace ConsumptionNotes.Mobile.Droid.Handlers;
 
 public class SpinDatePickerHandler : ViewHandler<SpinDatePicker, TextInputEditText>
 {
     private DateOnly Date { get; set; }
     private string? DateFormat { get; set; }
-    private TextInputEditText? TextField { get; set; }
 
     public static IPropertyMapper<SpinDatePicker, SpinDatePickerHandler> PropertyMapper = new PropertyMapper<SpinDatePicker, SpinDatePickerHandler>(ViewMapper)
     {
@@ -31,7 +29,7 @@ public class SpinDatePickerHandler : ViewHandler<SpinDatePicker, TextInputEditTe
 
     protected override TextInputEditText CreatePlatformView()
     {
-        TextField = new TextInputEditText(Context)
+        var textField = new TextInputEditText(Context)
         {
             TextAlignment = Android.Views.TextAlignment.Center,
             InputType = Android.Text.InputTypes.Null,
@@ -39,7 +37,7 @@ public class SpinDatePickerHandler : ViewHandler<SpinDatePicker, TextInputEditTe
             Clickable = true,
         };
 
-        return TextField;
+        return textField;
     }
 
     protected override void ConnectHandler(TextInputEditText platformView)
@@ -77,8 +75,8 @@ public class SpinDatePickerHandler : ViewHandler<SpinDatePicker, TextInputEditTe
         using var builder = new MaterialAlertDialogBuilder(Context, Resource.Style.CustomMaterialDialogStyle);
 
         builder.SetTitle(VirtualView.Title);
-        builder.SetNegativeButton(Android.Resource.String.Cancel, (o, args) => { });
-        builder.SetPositiveButton("Вибрати", (s, args) => VirtualView.SelectedDate = datePickerDialogContainer.SelectedDate);
+        builder.SetNegativeButton(Android.Resource.String.Cancel, (_, _) => { });
+        builder.SetPositiveButton("Вибрати", (_, _) => VirtualView.SelectedDate = datePickerDialogContainer.SelectedDate);
 
         builder.SetView(datePickerDialogContainer);
 
@@ -100,17 +98,17 @@ public class SpinDatePickerHandler : ViewHandler<SpinDatePicker, TextInputEditTe
 
     private static void MapUnderlineColor(SpinDatePickerHandler handler, SpinDatePicker picker)
     {
-        handler.TextField!.BackgroundTintList = ColorStateList.ValueOf(picker.UnderlineColor.ToPlatform());
+        handler.PlatformView.BackgroundTintList = ColorStateList.ValueOf(picker.UnderlineColor.ToPlatform());
     }
 
     private static void MapTextColor(SpinDatePickerHandler handler, SpinDatePicker picker)
     {
-        handler.TextField!.UpdateTextColor(picker);
+        handler.PlatformView.UpdateTextColor(picker);
     }
 
     private static void MapFont(SpinDatePickerHandler handler, SpinDatePicker picker)
     {
         var fontManager = handler.MauiContext?.Services.GetRequiredService<IFontManager>()!;
-        handler.TextField!.UpdateFont(picker, fontManager);
+        handler.PlatformView.UpdateFont(picker, fontManager);
     }
 }

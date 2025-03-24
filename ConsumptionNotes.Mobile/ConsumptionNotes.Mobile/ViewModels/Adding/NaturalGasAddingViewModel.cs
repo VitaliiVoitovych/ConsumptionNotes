@@ -4,7 +4,7 @@ namespace ConsumptionNotes.Mobile.ViewModels.Adding;
 
 public class NaturalGasAddingViewModel : NaturalGasAddingViewModelBase
 {
-    public AsyncRelayCommand GoToBackCommand { get; } = new GoToCommand("..", true);
+    public AsyncRelayCommand GoToBackCommand { get; } = new GoToCommand("..");
     public AsyncRelayCommand AddNoteCommand { get; }
     
     public NaturalGasAddingViewModel(ObservableNaturalGasNotesService notesService) : base(notesService)

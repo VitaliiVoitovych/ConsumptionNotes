@@ -1,7 +1,7 @@
 ﻿namespace ConsumptionNotes.Presentation.Models;
 
 public class ObservableElectricityConsumption(ElectricityConsumption consumption) 
-    : ObservableBaseConsumption<ElectricityConsumption>(consumption)
+    : ObservableConsumptionBase<ElectricityConsumption>(consumption)
 {
     public int DayKilowattConsumed
     {

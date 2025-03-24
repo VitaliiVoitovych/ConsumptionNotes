@@ -3,10 +3,10 @@ using ConsumptionNotes.Infrastructure.Notes.Services.Interfaces;
 
 namespace ConsumptionNotes.Presentation.Notes.Services;
 
-public abstract partial class ObservableNotesServiceBase<TConsumption, TObservableConsumption, TChartService, TNotesService>
+public abstract partial class ObservableConsumptionNotesServiceBase<TConsumption, TObservableConsumption, TChartService, TNotesService>
     : ObservableObject, IObservableNotesChartService<TConsumption, TObservableConsumption, TChartService>
-    where TConsumption : BaseConsumption
-    where TObservableConsumption : ObservableBaseConsumption<TConsumption>
+    where TConsumption : ConsumptionBase
+    where TObservableConsumption : ObservableConsumptionBase<TConsumption>
     where TChartService : ConsumptionChartServiceBase<TConsumption>
     where TNotesService : INotesService<TConsumption>
 {
@@ -20,7 +20,7 @@ public abstract partial class ObservableNotesServiceBase<TConsumption, TObservab
 
     public List<TConsumption> Consumptions => NotesService.Consumptions;
     
-    protected ObservableNotesServiceBase(TChartService chartService, TNotesService notesService)
+    protected ObservableConsumptionNotesServiceBase(TChartService chartService, TNotesService notesService)
     {
         ChartService = chartService;
         NotesService = notesService;
@@ -34,12 +34,9 @@ public abstract partial class ObservableNotesServiceBase<TConsumption, TObservab
         ObservableConsumptions.Clear();
         ChartService.ClearValues();
     }
-    
-    public async Task LoadDataAsync()
-    {
-        await NotesService.LoadDataAsync();
 
-        // TODO: Improve
+    private void InitializeData()
+    {
         foreach (var consumption in NotesService.Consumptions)
         {
             var observableConsumption = ToObservableConsumptionObject(consumption);
@@ -51,6 +48,13 @@ public abstract partial class ObservableNotesServiceBase<TConsumption, TObservab
         UpdateAverageValues();
         UpdateLastRecord();
     }
+    
+    public async Task LoadDataAsync()
+    {
+        await NotesService.LoadDataAsync();
+
+        InitializeData();
+    }
 
     public async Task ImportDataAsync(IAsyncEnumerable<TConsumption> data)
     {
@@ -58,16 +62,7 @@ public abstract partial class ObservableNotesServiceBase<TConsumption, TObservab
         
         await NotesService.ImportDataAsync(data);
         
-        foreach (var consumption in NotesService.Consumptions)
-        {
-            var observableConsumption = ToObservableConsumptionObject(consumption);
-            ObservableConsumptions.Add(observableConsumption);
-            
-            ChartService.AddValues(consumption);
-        }
-        
-        UpdateAverageValues();
-        UpdateLastRecord();
+        InitializeData();
     }
     
     public void Add(TObservableConsumption observableConsumption)

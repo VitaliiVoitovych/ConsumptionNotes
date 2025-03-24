@@ -4,7 +4,7 @@ using ConsumptionNotes.Domain.Converters;
 namespace ConsumptionNotes.Infrastructure;
 
 public static class ConsumptionDataSerializer<TConsumption>
-    where  TConsumption: BaseConsumption
+    where  TConsumption: ConsumptionBase
 {
     private static readonly JsonSerializerOptions Options = new()
     {
@@ -13,7 +13,8 @@ public static class ConsumptionDataSerializer<TConsumption>
 
     public static async Task<IAsyncEnumerable<TConsumption>> DeserializeAsync(Stream stream)
     {
-        return await JsonSerializer.DeserializeAsync<IAsyncEnumerable<TConsumption>>(stream, Options); // TODO: Possible Null
+        var result = await JsonSerializer.DeserializeAsync<IAsyncEnumerable<TConsumption>>(stream, Options);
+        return result ?? throw new InvalidOperationException("Failed to deserialize consumption data.");
     }
 
     public static async Task SerializeAsync(string path, IEnumerable<TConsumption> consumptions)

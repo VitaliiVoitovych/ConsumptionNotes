@@ -2,7 +2,7 @@
 
 namespace ConsumptionNotes.Dal.Repositories;
 
-public class NaturalGasConsumptionRepository : BaseRepository<NaturalGasConsumption>
+public class NaturalGasConsumptionRepository : RepositoryBase<NaturalGasConsumption>
 {
     public NaturalGasConsumptionRepository(ConsumptionNotesDbContext context) : base(context)
     {

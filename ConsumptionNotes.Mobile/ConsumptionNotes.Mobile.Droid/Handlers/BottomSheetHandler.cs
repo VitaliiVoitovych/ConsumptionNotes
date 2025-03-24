@@ -22,14 +22,13 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
     public BottomSheetHandler(IPropertyMapper mapper, CommandMapper? commandMapper = null) : base(mapper, commandMapper)
     {
     }
-
-    private CoordinatorLayout? CoordinatorLayout { get; set; }
+    
     private LinearLayout? BottomContentLayout { get; set; }
     private BottomSheetDragHandleView? DragHandle { get; set; }
     
     protected override CoordinatorLayout CreatePlatformView()
     {
-        CoordinatorLayout = new CoordinatorLayout(Context);
+        var coordinatorLayout = new CoordinatorLayout(Context);
 
         var metrics = Context.Resources!.DisplayMetrics;
         
@@ -45,7 +44,7 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
         };
         
         BottomContentLayout.SetGravity(GravityFlags.CenterHorizontal);
-        CoordinatorLayout.AddView(BottomContentLayout);
+        coordinatorLayout.AddView(BottomContentLayout);
         
         var behavior = BottomSheetBehavior.From(BottomContentLayout);
         behavior.State = BottomSheetBehavior.StateCollapsed;
@@ -73,7 +72,7 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
         
         BottomContentLayout.AddView(DragHandle);
         
-        return CoordinatorLayout;
+        return coordinatorLayout;
     }
     
     private static void MapBottomSheetContent(BottomSheetHandler handler, BottomSheet bottomSheet)
@@ -87,7 +86,7 @@ public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
         var metrics = handler.Context.Resources!.DisplayMetrics;
         var height = Convert.ToInt32(metrics!.HeightPixels * 0.4);
         
-        handler.CoordinatorLayout!.AddView(bottomSheet.Content.ToPlatform(handler.MauiContext!), 0,
+        handler.PlatformView.AddView(bottomSheet.Content.ToPlatform(handler.MauiContext!), 0,
             new ViewGroup.LayoutParams(metrics.WidthPixels, height));
     }
     

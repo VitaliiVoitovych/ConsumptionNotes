@@ -3,8 +3,8 @@
 public partial class DashboardViewModelBase<TConsumption, TObservableConsumption, TChartService, TNotesService>(
     TNotesService notesService)
     : ViewModelBase
-    where TConsumption : BaseConsumption
-    where TObservableConsumption : ObservableBaseConsumption<TConsumption>
+    where TConsumption : ConsumptionBase
+    where TObservableConsumption : ObservableConsumptionBase<TConsumption>
     where TChartService : ConsumptionChartServiceBase<TConsumption>
     where TNotesService : IObservableNotesChartService<TConsumption, TObservableConsumption, TChartService>
 {

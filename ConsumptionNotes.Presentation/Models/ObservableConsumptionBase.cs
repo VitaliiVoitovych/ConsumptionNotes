@@ -1,7 +1,7 @@
 ﻿namespace ConsumptionNotes.Presentation.Models;
 
-public abstract class ObservableBaseConsumption<TConsumption>(TConsumption consumption) : ObservableObject
-    where TConsumption : BaseConsumption
+public abstract class ObservableConsumptionBase<TConsumption>(TConsumption consumption) : ObservableObject
+    where TConsumption : ConsumptionBase
 {
     public TConsumption Consumption { get; } = consumption;
 

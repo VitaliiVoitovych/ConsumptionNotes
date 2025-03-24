@@ -2,12 +2,12 @@
 
 namespace ConsumptionNotes.Mobile.Commands;
 
-public class GoToCommand(string route, bool animate = false) : AsyncCommandBase
+public class GoToCommand(string route, bool animate = true) : AsyncCommandBase
 {
     public override async Task ExecuteAsync() => await Shell.Current.GoToAsync(route, animate);
 }
 
-public class GoToCommand<T>(string route, string paramsName, bool animate = false)
+public class GoToCommand<T>(string route, string singleParamName, bool animate = true)
     : AsyncCommandBase<T>
 {
     public override async Task ExecuteAsync(T? obj)
@@ -16,7 +16,7 @@ public class GoToCommand<T>(string route, string paramsName, bool animate = fals
 
         await Shell.Current.GoToAsync(route, animate, new Dictionary<string, object>
         {
-            {paramsName, obj}
+            {singleParamName, obj}
         });
     }
 }
