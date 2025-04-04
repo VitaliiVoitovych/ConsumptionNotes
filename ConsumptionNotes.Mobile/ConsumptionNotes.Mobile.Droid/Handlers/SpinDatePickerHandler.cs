@@ -9,7 +9,7 @@ public class SpinDatePickerHandler : ViewHandler<SpinDatePicker, TextInputEditTe
     private DateOnly Date { get; set; }
     private string? DateFormat { get; set; }
 
-    public static IPropertyMapper<SpinDatePicker, SpinDatePickerHandler> PropertyMapper = new PropertyMapper<SpinDatePicker, SpinDatePickerHandler>(ViewMapper)
+    public static readonly IPropertyMapper<SpinDatePicker, SpinDatePickerHandler> PropertyMapper = new PropertyMapper<SpinDatePicker, SpinDatePickerHandler>(ViewMapper)
     {
         [nameof(SpinDatePicker.IsDayVisible)] = MapIsDayVisible, // Always First
         [nameof(SpinDatePicker.SelectedDate)] = MapSelectedDate,

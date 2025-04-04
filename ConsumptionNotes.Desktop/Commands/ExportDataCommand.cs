@@ -2,12 +2,13 @@
 
 namespace ConsumptionNotes.Desktop.Commands;
 
-public class ExportDataCommand<TConsumption>(FileSystemService fileSystemService, string exportFilename)
-    : ExportDataCommandBase<TConsumption>(exportFilename)
+public class ExportDataCommand<TConsumption>(FileSystemService fileSystemService)
+    : ExportDataCommandBase<TConsumption>
     where TConsumption : ConsumptionBase
 {
     public override async Task ExecuteAsync(IEnumerable<TConsumption>? collection)
     {
+        if (collection is null) return;
         try
         {
             var folderPath = await fileSystemService.OpenFolderAsync("Виберіть папку для експорту даних");

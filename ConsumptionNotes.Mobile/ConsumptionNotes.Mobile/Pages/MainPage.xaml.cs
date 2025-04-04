@@ -21,9 +21,4 @@ public partial class MainPage : ContentPage
             chartWidget.UpdateChart();
         }
     }
-
-    private void TapGestureRecognizer_OnTapped(object? sender, TappedEventArgs e)
-    {
-        Shell.Current.GoToAsync(nameof(CalculatorPage), true);
-    }
 }

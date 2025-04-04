@@ -1,19 +1,19 @@
 ﻿namespace ConsumptionNotes.Presentation.ViewModels.Editing;
 
-public abstract partial class ConsumptionEditingViewModelBase<TConsumption, TObservableConsumption, TNotesService>(
-    TNotesService notesService) 
+public abstract partial class ConsumptionEditingViewModelBase<TConsumption, TObservableConsumption>(
+    IObservableNotesService<TConsumption, TObservableConsumption> notesService) 
     : ViewModelBase
     where TConsumption : ConsumptionBase
     where TObservableConsumption : ObservableConsumptionBase<TConsumption>
-    where TNotesService : IObservableNotesService<TConsumption, TObservableConsumption>
 {
-    private TNotesService _notesService = notesService;
-    
+    // TODO: Possible Null
     public TObservableConsumption Consumption { get; protected set; }
 
+    public abstract void SetConsumption(TObservableConsumption consumption);
+    
     [RelayCommand]
     protected virtual void Update()
     {
-        _notesService.Update(Consumption);
+        notesService.Update(Consumption);
     }
 }

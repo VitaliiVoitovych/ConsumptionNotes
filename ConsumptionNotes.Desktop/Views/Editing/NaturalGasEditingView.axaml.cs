@@ -1,6 +1,7 @@
 ﻿namespace ConsumptionNotes.Desktop.Views.Editing;
 
-public partial class NaturalGasEditingView : UserControl
+public partial class NaturalGasEditingView : 
+    ConsumptionEditingView<NaturalGasConsumption, ObservableNaturalGasConsumption>
 {
     public NaturalGasEditingView()
     {

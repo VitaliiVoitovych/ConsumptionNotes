@@ -7,7 +7,7 @@ public static class PaymentCalculator
     public static decimal CalculateElectricityPayment(int dayKilowattConsumed, int nightKilowattConsumed, decimal kilowattPerHourPrice)
     {
         return dayKilowattConsumed * kilowattPerHourPrice +
-               nightKilowattConsumed * (kilowattPerHourPrice * NightKilowattPriceMultiplier);
+               nightKilowattConsumed * kilowattPerHourPrice * NightKilowattPriceMultiplier;
     }
     
     public static decimal CalculateNaturalGasPayment(double cubicMeterConsumed, decimal cubicMeterPrice)

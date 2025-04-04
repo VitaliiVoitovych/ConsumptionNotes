@@ -17,6 +17,6 @@ public class NaturalGasDashboardViewModel
         : base(notesService)
     {
         ImportDataCommand = new ImportDataCommand<NaturalGasConsumption, ObservableNaturalGasConsumption>(fileSystemService, NotesService);
-        ExportDataCommand = new ExportDataCommand<NaturalGasConsumption>(fileSystemService, ExportFilename);
+        ExportDataCommand = new ExportDataCommand<NaturalGasConsumption>(fileSystemService);
     }
 }

@@ -7,6 +7,7 @@ public static class MessageDialog
 {
     private const string DefaultCloseButtonText = "OK";
 
+    // TODO: Move to another place
     private static SvgImage LoadSvgImage(string uriString)
     {
         using var stream = AssetLoader.Open(new Uri(uriString));

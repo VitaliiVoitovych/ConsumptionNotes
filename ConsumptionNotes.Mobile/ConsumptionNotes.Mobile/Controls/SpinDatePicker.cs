@@ -23,7 +23,7 @@ public class SpinDatePicker : View, ITextStyle, IFontElement
     }
     #endregion
 
-    public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(SpinDatePicker), default);
+    public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(SpinDatePicker));
     public string? Title
     {
         get => (string?)GetValue(TitleProperty);

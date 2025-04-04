@@ -89,7 +89,7 @@ public class NumericUpDown : Stepper, ITextStyle, IFontElement
 
     public void OnFontAttributesChanged(FontAttributes oldValue, FontAttributes newValue) => HandleFontChanged();
 
-    void HandleFontChanged()
+    private void HandleFontChanged()
     {
         InvalidateMeasure();
     }

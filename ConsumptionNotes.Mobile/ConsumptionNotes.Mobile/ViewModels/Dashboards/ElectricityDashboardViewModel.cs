@@ -16,6 +16,6 @@ public class ElectricityDashboardViewModel
         : base(notesService)
     {
         ImportDataCommand = new ImportDataCommand<ElectricityConsumption, ObservableElectricityConsumption>(fileSystemService, NotesService);
-        ExportDataCommand = new ExportDataCommand<ElectricityConsumption>(fileSystemService, ExportFilename);
+        ExportDataCommand = new ExportDataCommand<ElectricityConsumption>(fileSystemService);
     }
 }

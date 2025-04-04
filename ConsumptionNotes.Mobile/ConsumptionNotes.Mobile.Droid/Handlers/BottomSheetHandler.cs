@@ -8,7 +8,7 @@ namespace ConsumptionNotes.Mobile.Droid.Handlers;
 public class BottomSheetHandler : ViewHandler<BottomSheet, CoordinatorLayout>
 {
 
-    public static IPropertyMapper<BottomSheet, BottomSheetHandler> PropertyMapper =
+    public static readonly IPropertyMapper<BottomSheet, BottomSheetHandler> PropertyMapper =
         new PropertyMapper<BottomSheet, BottomSheetHandler>()
         {
             [nameof(BottomSheet.Content)] = MapContent,

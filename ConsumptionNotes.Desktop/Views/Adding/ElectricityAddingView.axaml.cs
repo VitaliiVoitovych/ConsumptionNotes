@@ -1,6 +1,7 @@
 ﻿namespace ConsumptionNotes.Desktop.Views.Adding;
 
-public partial class ElectricityAddingView : UserControl
+public partial class ElectricityAddingView : 
+    ConsumptionAddingView<ElectricityConsumption, ObservableElectricityConsumption>
 {
     public ElectricityAddingView()
     {

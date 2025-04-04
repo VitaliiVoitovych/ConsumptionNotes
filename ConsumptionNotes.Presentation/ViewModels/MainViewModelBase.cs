@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace ConsumptionNotes.Presentation.ViewModels;
+﻿namespace ConsumptionNotes.Presentation.ViewModels;
 
 public abstract class MainViewModelBase : ViewModelBase
 {

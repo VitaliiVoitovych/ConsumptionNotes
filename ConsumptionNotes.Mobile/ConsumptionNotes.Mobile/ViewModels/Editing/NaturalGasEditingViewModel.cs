@@ -9,9 +9,8 @@ public class NaturalGasEditingViewModel(ObservableNaturalGasNotesService notesSe
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
-        Consumption = (ObservableNaturalGasConsumption)query[nameof(Consumption)];
-        OnPropertyChanged(nameof(Consumption));
+        SetConsumption((ObservableNaturalGasConsumption)query[nameof(Consumption)]);
         
-        CubicMeterConsumed = Consumption.CubicMeterConsumed;
+        OnPropertyChanged(nameof(Consumption));
     }
 }

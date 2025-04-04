@@ -8,8 +8,6 @@ public partial class DashboardViewModelBase<TConsumption, TObservableConsumption
     where TChartService : ConsumptionChartServiceBase<TConsumption>
     where TNotesService : IObservableNotesChartService<TConsumption, TObservableConsumption, TChartService>
 {
-    protected readonly string ExportFilename = typeof(TConsumption).Name;
-
     public TNotesService NotesService { get; } = notesService;
     public TChartService ChartService => NotesService.ChartService;
 

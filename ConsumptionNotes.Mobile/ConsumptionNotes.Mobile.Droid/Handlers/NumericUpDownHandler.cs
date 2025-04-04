@@ -12,7 +12,7 @@ public class NumericUpDownHandler : StepperHandler
     private TextInputEditText? TextField { get; set; }
     public new NumericUpDown VirtualView => (NumericUpDown)base.VirtualView;
 
-    public static IPropertyMapper<IStepper, IStepperHandler> PropertyMapper = new PropertyMapper<NumericUpDown, NumericUpDownHandler>(ViewMapper)
+    public static readonly IPropertyMapper<IStepper, IStepperHandler> PropertyMapper = new PropertyMapper<NumericUpDown, NumericUpDownHandler>(ViewMapper)
     {
         [nameof(ITextStyle.TextColor)] = MapTextColor,
         [nameof(ITextStyle.Font)] = MapFont,

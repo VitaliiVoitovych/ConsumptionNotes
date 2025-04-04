@@ -50,12 +50,11 @@ public class App : Application
     {
         var services = new ServiceCollection();
         
-        services.AddDatabase(_configuration!);
-        
         // File Service
         services.AddSingleton<FileSystemService>(_ => new FileSystemService(storageProvider));
         
         services
+            .AddDatabase(_configuration!)
             .AddRepositories()
             .AddChartServices()
             .AddObservableNotesService()

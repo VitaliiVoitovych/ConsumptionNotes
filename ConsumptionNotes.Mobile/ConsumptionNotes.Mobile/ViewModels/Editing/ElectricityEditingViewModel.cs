@@ -9,10 +9,8 @@ public class ElectricityEditingViewModel(ObservableElectricityNotesService notes
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
-        Consumption = (ObservableElectricityConsumption)query[nameof(Consumption)];
-        OnPropertyChanged(nameof(Consumption));
+        SetConsumption((ObservableElectricityConsumption)query[nameof(Consumption)]);
         
-        DayKilowattConsumed = Consumption.DayKilowattConsumed;
-        NightKilowattConsumed = Consumption.NightKilowattConsumed;
+        OnPropertyChanged(nameof(Consumption));
     }
 }

@@ -1,14 +1,11 @@
-﻿using ConsumptionNotes.Desktop.ViewModels.Adding.Interfaces;
-using ConsumptionNotes.Presentation.ViewModels.Adding;
+﻿using ConsumptionNotes.Presentation.ViewModels.Adding;
 
 namespace ConsumptionNotes.Desktop.ViewModels.Adding;
 
-public class NaturalGasAddingViewModel : NaturalGasAddingViewModelBase, IConsumptionAddingViewModel
+public class NaturalGasAddingViewModel : NaturalGasAddingViewModelBase
 {
-    public AsyncRelayCommand AddNoteCommand { get; }
-    
     public NaturalGasAddingViewModel(ObservableNaturalGasNotesService notesService) : base(notesService)
     {
-        AddNoteCommand = new AddNoteCommand(AddNote);
+        
     }
 }
