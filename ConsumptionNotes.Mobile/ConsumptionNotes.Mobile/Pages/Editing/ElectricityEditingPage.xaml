@@ -43,7 +43,7 @@
             Margin="0,15,0,0"/>
 
         <controls:NumericUpDown
-            Value="{Binding KilowattPerHourPrice}"
+            Value="{Binding KilowattHourPrice}"
             Minimum="0.0"
             Maximum="100"
             Increment=".01"/>

@@ -18,11 +18,11 @@ public partial class CalculatorViewModel : ViewModelBase
         set => SetPropertyAndUpdateAmount(ref _nightKilowattConsumed, value, UpdateElectricityAmount);
     }
     
-    private decimal _kilowattPerHourPrice = 4.32m;
-    public decimal KilowattPerHourPrice
+    private decimal _kilowattHourPrice = ConsumptionTariffs.KilowattHourPrice;
+    public decimal KilowattHourPrice
     {
-        get => _kilowattPerHourPrice;
-        set => SetPropertyAndUpdateAmount(ref _kilowattPerHourPrice, value, UpdateElectricityAmount);
+        get => _kilowattHourPrice;
+        set => SetPropertyAndUpdateAmount(ref _kilowattHourPrice, value, UpdateElectricityAmount);
     }
 
     private double _cubicMeterConsumed;
@@ -32,7 +32,7 @@ public partial class CalculatorViewModel : ViewModelBase
         set => SetPropertyAndUpdateAmount(ref _cubicMeterConsumed, value, UpdateNaturalGasAmount);
     }
     
-    private decimal _cubicMeterPrice = 7.95689m;
+    private decimal _cubicMeterPrice = ConsumptionTariffs.CubicMeterPrice;
     public decimal CubicMeterPrice
     {
         get => _cubicMeterPrice;
@@ -54,7 +54,7 @@ public partial class CalculatorViewModel : ViewModelBase
     {
         ElectricityAmountToPay =
             PaymentCalculator.CalculateElectricityPayment(DayKilowattConsumed, NightKilowattConsumed,
-                KilowattPerHourPrice);
+                KilowattHourPrice);
     }
 
     private void UpdateNaturalGasAmount()

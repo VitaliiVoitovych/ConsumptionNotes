@@ -1,22 +1,11 @@
-﻿using Avalonia.Platform;
-using Avalonia.Svg.Skia;
-
-namespace ConsumptionNotes.Desktop.Controls.Dialogs;
+﻿namespace ConsumptionNotes.Desktop.Controls.Dialogs;
 
 public static class MessageDialog
 {
     private const string DefaultCloseButtonText = "OK";
-
-    // TODO: Move to another place
-    private static SvgImage LoadSvgImage(string uriString)
-    {
-        using var stream = AssetLoader.Open(new Uri(uriString));
-        var svg = SvgSource.LoadFromStream(stream);
-        return new SvgImage { Source = svg };
-    }
     
     #region Build Methods
-    private static ContentDialog WithImage(this ContentDialog dialog, Image image)
+    private static ContentDialog AddIcon(this ContentDialog dialog, Image image)
     {
         var container = dialog.Content as StackPanel;
         container?.Children.Insert(0, image);
@@ -59,9 +48,9 @@ public static class MessageDialog
         string? closeButtonText = null)
     {
         var uriString = $"avares://ConsumptionNotes/Assets/MessageDialogIcons/{icon.ToString().ToLower()}.svg"; 
-        var image = new Image { Source = LoadSvgImage(uriString), Height = 48};
+        var image = new Image { Source = AssetsExtensions.LoadSvgFromAssets(uriString), Height = 48};
 
-        var dialog = CreateMessageDialog(title, text, closeButtonText).WithImage(image);
+        var dialog = CreateMessageDialog(title, text, closeButtonText).AddIcon(image);
         await dialog.ShowAsync();
     }
     #endregion

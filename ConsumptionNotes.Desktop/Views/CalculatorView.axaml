@@ -52,7 +52,7 @@
                     Increment="1"/>
         
                 <controls:LabeledNumericUpDown
-                    Value="{Binding KilowattPerHourPrice}"
+                    Value="{Binding KilowattHourPrice}"
                     Text="Ціна за кВт/год"
                     Minimum="0"
                     Maximum="1000"

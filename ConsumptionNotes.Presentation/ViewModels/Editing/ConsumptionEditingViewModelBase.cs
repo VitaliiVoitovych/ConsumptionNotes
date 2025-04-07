@@ -6,8 +6,7 @@ public abstract partial class ConsumptionEditingViewModelBase<TConsumption, TObs
     where TConsumption : ConsumptionBase
     where TObservableConsumption : ObservableConsumptionBase<TConsumption>
 {
-    // TODO: Possible Null
-    public TObservableConsumption Consumption { get; protected set; }
+    public TObservableConsumption Consumption { get; protected set; } = null!;
 
     public abstract void SetConsumption(TObservableConsumption consumption);
     

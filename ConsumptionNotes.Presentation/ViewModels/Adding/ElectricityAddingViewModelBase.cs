@@ -5,11 +5,11 @@ public abstract partial class ElectricityAddingViewModelBase(ObservableElectrici
 {
     [ObservableProperty] private int _dayKilowattConsumed;
     [ObservableProperty] private int _nightKilowattConsumed;
-    [ObservableProperty] private decimal _kilowattPerHourPrice = 4.32m;
+    [ObservableProperty] private decimal _kilowattHourPrice = ConsumptionTariffs.KilowattHourPrice;
 
     protected override ObservableElectricityConsumption CreateConsumption()
     {
-        var amount = PaymentCalculator.CalculateElectricityPayment(DayKilowattConsumed, NightKilowattConsumed, KilowattPerHourPrice);
+        var amount = PaymentCalculator.CalculateElectricityPayment(DayKilowattConsumed, NightKilowattConsumed, KilowattHourPrice);
         var consumption = new ElectricityConsumption(
             SelectedDate,
             DayKilowattConsumed,

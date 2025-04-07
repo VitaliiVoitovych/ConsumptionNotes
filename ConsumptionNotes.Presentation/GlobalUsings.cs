@@ -1,4 +1,5 @@
-﻿global using ConsumptionNotes.Domain.Exceptions;
+﻿global using ConsumptionNotes.Domain;
+global using ConsumptionNotes.Domain.Exceptions;
 global using ConsumptionNotes.Domain.Models;
 
 global using ConsumptionNotes.Infrastructure;

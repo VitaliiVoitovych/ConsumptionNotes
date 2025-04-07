@@ -4,7 +4,7 @@ public abstract partial class NaturalGasEditingViewModelBase(ObservableNaturalGa
     : ConsumptionEditingViewModelBase<NaturalGasConsumption, ObservableNaturalGasConsumption>(notesService)
 {
     [ObservableProperty] private double _cubicMeterConsumed;
-    [ObservableProperty] private decimal _cubicMeterPrice = 7.95689m;
+    [ObservableProperty] private decimal _cubicMeterPrice = ConsumptionTariffs.CubicMeterPrice;
 
     public override void SetConsumption(ObservableNaturalGasConsumption consumption)
     {

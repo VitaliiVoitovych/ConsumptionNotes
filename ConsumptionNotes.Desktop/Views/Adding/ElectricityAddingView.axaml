@@ -42,7 +42,7 @@
             Minimum="0"
             Maximum="1000"
             Increment=".01"
-            Value="{Binding KilowattPerHourPrice}"/>
+            Value="{Binding KilowattHourPrice}"/>
         
     </StackPanel>
 </UserControl>
