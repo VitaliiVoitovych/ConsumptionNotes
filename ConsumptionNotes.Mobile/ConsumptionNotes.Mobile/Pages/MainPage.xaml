@@ -19,7 +19,7 @@
             <views:CardView
                 CardBackground="{StaticResource MediumDarkBrush}"
                 LineColor="{StaticResource LightDark}"
-                Title="Електроенергія"
+                Title="{Binding ElectricityNotesService.LastRecord.Date, StringFormat='Електроенергія | {0:MMMM yyyy}', FallbackValue= 'N/A'}"
                 Icon="electricity.png">
                 <VerticalStackLayout>
                     <Label
@@ -37,7 +37,7 @@
             <views:CardView
                 CardBackground="{StaticResource MediumDarkBrush}"
                 LineColor="{StaticResource LightDark}"
-                Title="Газ"
+                Title="{Binding NaturalGasNotesService.LastRecord.Date, StringFormat='Газ | {0:MMMM yyyy}', FallbackValue='N/A'}"
                 Icon="gas.png">
                 <VerticalStackLayout>
                     <Label

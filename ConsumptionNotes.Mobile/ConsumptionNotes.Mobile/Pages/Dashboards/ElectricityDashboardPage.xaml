@@ -19,7 +19,8 @@
         <ToolbarItem
             Order="Secondary"
             Text="Експорт даних"
-            Command="{Binding ExportDataCommand}" />
+            Command="{Binding ExportDataCommand}" 
+            CommandParameter="{Binding NotesService.Consumptions}"/>
 
         <ToolbarItem
             Order="Secondary"

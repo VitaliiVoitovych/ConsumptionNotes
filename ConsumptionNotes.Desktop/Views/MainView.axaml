@@ -22,7 +22,7 @@
             
             <controls:CardView
                 Background="#313538"
-                Title="Електроенергія"
+                Title="{Binding ElectricityNotesService.LastRecord.Date, StringFormat='Електроенергія | {0:MMMM yyyy}', FallbackValue= 'N/A'}"
                 Icon="{SvgImage /Assets/electricity.svg}"
                 LineColor="{StaticResource  LightDarkBrush}">
                 <controls:CardView.Content>
@@ -46,7 +46,7 @@
             
             <controls:CardView
                 Background="#313538"
-                Title="Газ"
+                Title="{Binding NaturalGasNotesService.LastRecord.Date, StringFormat='Газ | {0:MMMM yyyy}', FallbackValue='N/A'}"
                 Icon="{SvgImage /Assets/gas.svg}"
                 LineColor="{StaticResource  LightDarkBrush}">
                 <controls:CardView.Content>
